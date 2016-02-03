@@ -7,6 +7,8 @@ import android.view.MenuItem;
 
 public class BudgetActivity extends Activity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
