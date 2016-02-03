@@ -1,16 +1,33 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
+
+    private final int RETURN = 1;
+    private Button weddingDress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        weddingDress = (Button) findViewById(R.id.weddingDress);
+
+        weddingDress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myweddingDressActivity = new Intent(MainActivity.this, WeddingDressActivity.class);
+
+                startActivityForResult(myweddingDressActivity, RETURN);
+            }
+        });
     }
 
     @Override
