@@ -8,4 +8,12 @@
     <TextView android:text="Summit is just checking!" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wedding Dresses"
+        android:id="@+id/weddingDress"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
