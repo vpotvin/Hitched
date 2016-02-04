@@ -33,6 +33,7 @@ public class DetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail,container,false);
         mVendorRecycleView = (RecyclerView) view.findViewById(R.id.detail_vendor_recycle_view);
         mVendorRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        updateUI();
         return view;
     }
 
