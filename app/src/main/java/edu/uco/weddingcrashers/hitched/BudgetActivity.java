@@ -1,27 +1,24 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-public class MainActivity extends Activity {
-    private Button TungNguyenButton;
+public class BudgetActivity extends Activity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        TungNguyenButton = (Button)findViewById(R.id.Tung_Nguyen_Button);
+        setContentView(R.layout.activity_budget);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_budget, menu);
         return true;
     }
 
@@ -39,8 +36,4 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-     public void launchActivity(View view){
-         Intent i = new Intent(this,DetailActivity.class);
-         startActivity(i);
-     }
 }
