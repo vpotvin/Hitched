@@ -27,7 +27,7 @@ public class VendorList {
             vendor.setVendorName("Vendor "+i);
             vendor.setVendorContact("None");
             vendor.setVendorWebsite("None");
-
+            mVendors.add(vendor);
         }
     }
 
