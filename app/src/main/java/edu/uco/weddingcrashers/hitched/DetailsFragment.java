@@ -1,14 +1,17 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -32,7 +35,7 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail,container,false);
         mVendorRecycleView = (RecyclerView) view.findViewById(R.id.detail_vendor_recycle_view);
-        mVendorRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mVendorRecycleView.setLayoutManager(new GridLayoutManager(getActivity(),1));
         updateUI();
         return view;
     }
@@ -45,22 +48,29 @@ public class DetailsFragment extends Fragment {
         mVendorRecycleView.setAdapter(mAdapter);
     }
 
-    private class VendorHolder extends RecyclerView.ViewHolder{
+    private class VendorHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private Vendor mVendor;
         private TextView mNameTextView;
-        private TextView mInfoTextView;
+        private ImageView mImageView;
 
         public VendorHolder(View itemView) {
             super(itemView);
-            mNameTextView = (TextView)itemView.findViewById(R.id.list_item_vendor_name_text_view);
-            mInfoTextView = (TextView)itemView.findViewById(R.id.list_item_vendor_info_text_view);
-
+            itemView.setOnClickListener(this);
+            mImageView = (ImageView)itemView.findViewById(R.id.vendorListImageView);
+            mNameTextView = (TextView)itemView.findViewById(R.id.list_item_vendor_name_text_view)  ;
 
         }
         public void bindVendor(Vendor vendor){
             mVendor = vendor;
             mNameTextView.setText(mVendor.getVendorName());
-            mInfoTextView.setText(mVendor.getVendorContact());
+            mImageView.setImageResource(R.drawable.a);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(getActivity(),"clicked",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getActivity(),VendorActivity.class);
+            startActivity(intent);
         }
     }
 
