@@ -3,19 +3,259 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="#F6ECEB">
 
-    <TextView android:text="Summit is just checking!" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-              android:id="@+id/textView"/>
-
-    <Button
+    <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button For Tung Nguyen Activity"
-        android:id="@+id/Tung_Nguyen_Button"
-        android:layout_below="@+id/textView"
+        android:layout_height="120sp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:onClick="launchActivity"/>
+        android:orientation="horizontal"
+        android:id="@+id/mainmenutablelayout"
+        android:layout_alignParentEnd="true">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You"
+                android:id="@+id/you"
+                android:layout_column="0"
+                android:textSize="26sp"
+                android:typeface="normal"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_column="1"
+                android:src="@drawable/mm_ring"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your"
+                android:id="@+id/your"
+                android:layout_column="2"
+                android:textSize="26sp"
+                android:typeface="normal"
+                android:layout_gravity="center_vertical"
+                android:layout_span="1" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="230sp"
+        android:id="@+id/frameLayout"
+        android:layout_below="@+id/mainmenutablelayout"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Venue"
+            android:id="@+id/venue"
+            android:layout_gravity="left|top"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dress"
+            android:id="@+id/dress"
+            android:layout_gravity="center_horizontal|top"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cake"
+            android:id="@+id/cake"
+            android:layout_gravity="right|top"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Party"
+            android:id="@+id/party"
+            android:layout_gravity="center"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vendor"
+            android:id="@+id/vendor"
+            android:layout_gravity="right|center_vertical"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:onClick="launchActivity"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invites"
+            android:id="@+id/invites"
+            android:layout_gravity="left|bottom"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registry"
+            android:id="@+id/registry"
+            android:layout_gravity="center_horizontal|bottom"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Budget"
+            android:id="@+id/budget"
+            android:layout_gravity="right|bottom"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Honeymoon"
+            android:id="@+id/honeymoon"
+            android:layout_gravity="left|center_vertical"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_below="@+id/frameLayout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="false"
+        android:paddingTop="10sp"
+        android:paddingBottom="15sp">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasks"
+            android:id="@+id/tasks"
+            android:layout_gravity="left|bottom"
+            android:background="#DABCD2"
+            android:textColor="#000000"
+            android:width="100dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contacts"
+            android:id="@+id/contacts"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="#DABCD2"
+            android:textColor="#000000"
+            android:width="100dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Account"
+            android:id="@+id/update"
+            android:layout_gravity="right|bottom"
+            android:background="#DABCD2"
+            android:textColor="#000000"
+            android:width="100dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Assign Seats"
+            android:id="@+id/assignseats"
+            android:layout_gravity="left|top"
+            android:background="#DABCD2"
+            android:textColor="#000000"
+            android:width="100dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guest List"
+            android:id="@+id/guestlist"
+            android:layout_gravity="center_horizontal|top"
+            android:background="#DABCD2"
+            android:textColor="#000000"
+            android:width="100dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Itinerary"
+            android:id="@+id/itinerary"
+            android:layout_gravity="right|top"
+            android:background="#DABCD2"
+            android:textColor="#000000"
+            android:width="100dp" />
+    </FrameLayout>
 
 </RelativeLayout>
