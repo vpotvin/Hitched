@@ -100,8 +100,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cake"
-        android:id="@+id/cake"
+        android:text="Picture"
+        android:id="@+id/picture"
         android:layout_gravity="right|top"
         android:height="70dp"
         android:width="100dp"
