@@ -43,4 +43,9 @@ public class MainActivity extends Activity {
          Intent i = new Intent(this,DetailActivity.class);
          startActivity(i);
      }
+
+    public void launchBudgetActivity(View view) {
+        Intent i = new Intent(this, BudgetActivity.class);
+        startActivity(i);
+    }
 }
