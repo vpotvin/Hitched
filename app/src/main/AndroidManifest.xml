@@ -22,6 +22,10 @@
             android:label="@string/title_activity_budget" >
         </activity>
         <activity
+            android:name=".MasterWeddingList"
+            android:label="@string/title_activity_checklist" >
+        </activity>
+        <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"
             android:theme="@style/Theme.AppCompat.Light" >
