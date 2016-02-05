@@ -6,4 +6,6 @@
     <string name="title_activity_budget">Budget</string>
     <string name="update_budget">Update Budget</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_vendor">VendorActivity</string>
+    <string name="title_activity_checklist">Wedding Tasks</string>
 </resources>

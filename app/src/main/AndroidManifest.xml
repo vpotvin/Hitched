@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.uco.weddingcrashers.hitched" >
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,10 +22,18 @@
             android:label="@string/title_activity_budget" >
         </activity>
         <activity
+            android:name=".MasterWeddingList"
+            android:label="@string/title_activity_checklist" >
+        </activity>
+        <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"
+            android:theme="@style/Theme.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name=".VendorActivity"
+            android:label="@string/title_activity_vendor"
             android:theme="@style/Theme.AppCompat.Light">
-
         </activity>
     </application>
 
