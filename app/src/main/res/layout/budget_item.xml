@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!-- TextViews for multi-column ListView in activity_budget.xml -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/budgetItemTitle"/>
+        android:layout_weight="1"
+        android:id="@+id/budgetItemTitle"
+        />
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:id="@+id/budgetItemValue"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:id="@+id/budgetItemUsed"/>
 
 </LinearLayout>
