@@ -29,9 +29,18 @@ public class MasterWeddingList extends Activity {
 
         theList = new ArrayList<MasterListItem>();
 
-        theList.add(new MasterListItem("Test Item",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item1",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item2",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item3",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item4",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item5",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item6",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item7",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item8",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item9",new Date(),new Date(),"here are some notes",false));
+        theList.add(new MasterListItem("Test Item10",new Date(),new Date(),"here are some notes",false));
 
-        masterListAdapter = new RecViewAdapter(theList);
+        masterListAdapter = new RecViewAdapter(this,theList);
         recyclerView.setAdapter(masterListAdapter);
 
     }
