@@ -31,12 +31,21 @@ public class MainActivity extends Activity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
+
         budget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent budget = new Intent(MainActivity.this, BudgetActivity.class);
                 startActivity(budget);
             }
         });
+
+        tasks.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent taskList = new Intent(MainActivity.this, MasterWeddingList.class);
+                startActivity(taskList);
+            }
+        });
+
 //rehana
     }
 

@@ -1,5 +1,6 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -18,10 +19,11 @@ import java.util.ArrayList;
 public class RecViewAdapter extends RecyclerView.Adapter {
 
     private ArrayList<MasterListItem> theList;
+    private LayoutInflater inflater;
 
-
-    public RecViewAdapter(ArrayList<MasterListItem> theList) {
+    public RecViewAdapter(Context context,ArrayList<MasterListItem> theList) {
         this.theList = theList;
+        inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -33,7 +35,9 @@ public class RecViewAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        //MasterListItem current = theList.get(position);
+
         MyViewHolder holder1 = (MyViewHolder) holder;
         TextView title = holder1.title;
         TextView dueDate = holder1.dueDate;
@@ -50,7 +54,7 @@ public class RecViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return theList.size();
     }
 
 
