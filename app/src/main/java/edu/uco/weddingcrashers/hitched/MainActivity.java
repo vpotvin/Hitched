@@ -9,13 +9,35 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-    private Button TungNguyenButton;
+    private Button venue,dress,cake,honeymoon,party,vendor;
+    private Button invites,registry,budget,assignseats;
+    private Button itinerary,guestlist,tasks,contacts,update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TungNguyenButton = (Button)findViewById(R.id.Tung_Nguyen_Button);
+        dress = (Button)findViewById(R.id.dress);
+        cake = (Button)findViewById(R.id.cake);
+        honeymoon = (Button)findViewById(R.id.honeymoon);
+        party = (Button)findViewById(R.id.party);
+        vendor = (Button)findViewById(R.id.vendor);
+        invites = (Button)findViewById(R.id.invites);
+        registry = (Button)findViewById(R.id.registry);
+        budget = (Button)findViewById(R.id.budget);
+        assignseats = (Button)findViewById(R.id.assignseats);
+        itinerary = (Button)findViewById(R.id.itinerary);
+        guestlist = (Button)findViewById(R.id.guestlist);
+        tasks = (Button)findViewById(R.id.tasks);
+        contacts = (Button)findViewById(R.id.contacts);
+        update = (Button)findViewById(R.id.update);
+        budget.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent budget = new Intent(MainActivity.this, BudgetActivity.class);
+                startActivity(budget);
+            }
+        });
+//rehana
     }
 
     @Override
