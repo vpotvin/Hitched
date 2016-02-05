@@ -80,4 +80,12 @@ public class MainActivity extends Activity {
         Intent i = new Intent(this, BudgetActivity.class);
         startActivity(i);
     }
+
+    public void pictureActivity(View view){
+        Intent intent = new Intent(MainActivity.this, Pictures.class);
+        startActivity(intent);
+    }
+
+
+
 }

@@ -107,7 +107,8 @@
         android:width="100dp"
         android:background="#88CDE6"
         android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="pictureActivity"/>
 
     <Button
         android:layout_width="wrap_content"
