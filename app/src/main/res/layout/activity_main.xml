@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView"
                 android:layout_column="1"
-                android:src="@drawable/mm_ring"
+                
                 android:layout_gravity="center_vertical" />
 
             <TextView

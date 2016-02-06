@@ -1,16 +1,20 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.Activity;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class BudgetActivity extends Activity {
+public class BudgetActivity extends Activity implements BudgetUpdateFragment.BudgetUpdateListener {
 
     private ArrayList<BudgetItem> budgetItems;
 
@@ -20,6 +24,7 @@ public class BudgetActivity extends Activity {
     TextView budgetView;
     TextView budgetUsedView;
     ListView budgetListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,29 @@ public class BudgetActivity extends Activity {
 
         budgetListView.setAdapter(budgetItemAdapter);
 
+
+
+    }
+
+    public void updateBudgetAndUsed(double budget, double used) {
+        this.budget = budget;
+        this.used = used;
+
+        budgetView.setText(NumberFormat.getCurrencyInstance().format(budget));
+        budgetUsedView.setText(NumberFormat.getCurrencyInstance().format(used));
+    }
+
+    public void launchUpdateDialog(View v) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment newFragment = BudgetUpdateFragment.newInstance(budget, used);
+
+        newFragment.show(ft, "dialog");
 
 
     }

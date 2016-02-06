@@ -21,7 +21,8 @@
         android:layout_alignParentEnd="true"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        android:background="#DE84B5" />
+        android:background="#DE84B5"
+        android:onClick="launchUpdateDialog"/>
 
     <!--TextView to update budget used value -->
 
