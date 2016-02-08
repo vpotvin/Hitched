@@ -9,4 +9,7 @@
     <string name="title_activity_vendor">VendorActivity</string>
     <string name="title_activity_checklist">Wedding Tasks</string>
     <string name="title_activity_pictures_web">PicturesWeb</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
