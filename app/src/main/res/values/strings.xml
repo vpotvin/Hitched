@@ -8,4 +8,5 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_vendor">VendorActivity</string>
     <string name="title_activity_checklist">Wedding Tasks</string>
+    <string name="title_activity_pictures_web">PicturesWeb</string>
 </resources>
