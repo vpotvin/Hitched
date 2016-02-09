@@ -12,11 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.parse.ParseObject;
-
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class BudgetActivity extends Activity implements
         BudgetUpdateFragment.BudgetUpdateListener {
 
@@ -28,6 +27,7 @@ public class BudgetActivity extends Activity implements
     TextView budgetView;
     TextView budgetUsedView;
     ListView budgetListView;
+    BudgetItemAdapter budgetItemAdapter;
 
 
     @Override
@@ -54,14 +54,25 @@ public class BudgetActivity extends Activity implements
         budgetItems.add(budgetItem);
         budgetItems.add(budgetItem2);
 
-        BudgetItemAdapter budgetItemAdapter = new BudgetItemAdapter(this, budgetItems);
+        budgetItemAdapter = new BudgetItemAdapter(this, budgetItems);
 
         budgetListView = (ListView) findViewById(R.id.itemizedBudgetList);
 
         budgetListView.setAdapter(budgetItemAdapter);
         budgetListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
+                                           long id) {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+                DialogFragment newFragment = BudgetUpdateFragment.newInstance(
+                        budgetItems.get(position).getValue(), budgetItems.get(position).getUsed(),
+                        position, budgetItems.get(position).getTitle());
+                newFragment.show(ft, "dialog");
                 return false;
             }
         });
@@ -82,6 +93,28 @@ public class BudgetActivity extends Activity implements
             budgetItems.get(position).setValue(budget);
             budgetItems.get(position).setUsed(used);
         }
+
+        removeDialog();
+    }
+
+    protected void removeDialog() {
+        Fragment dialog = getFragmentManager().findFragmentByTag("dialog");
+        if (dialog != null) ((DialogFragment) dialog).dismiss();
+        budgetItemAdapter.notifyDataSetChanged();
+    }
+
+    public void launchNewItemDialog(View v){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment newFragment = BudgetUpdateFragment.newInstance(0, 0, -2,
+                BudgetUpdateFragment.NEW_FLAG);
+
+        newFragment.show(ft, "dialog");
     }
 
     public void launchUpdateDialog(View v) {
@@ -92,19 +125,19 @@ public class BudgetActivity extends Activity implements
         }
         ft.addToBackStack(null);
 
-        DialogFragment newFragment;
-
-        if(v.getId() == R.id.updateBudgetBtn) newFragment =
-                BudgetUpdateFragment.newInstance(budget, used, -1);
-        else {
-            int pos = ((ListView) v).getCheckedItemPosition();
-            newFragment = BudgetUpdateFragment.newInstance(budgetItems.get(pos).getValue(),
-                    budgetItems.get(pos).getUsed(), pos);
-        }
+        DialogFragment newFragment = BudgetUpdateFragment.newInstance(budget, used, -1, null);
 
         newFragment.show(ft, "dialog");
 
 
+    }
+
+    public void deleteItem(int pos) {
+        budgetItems.remove(pos);
+    }
+
+    public void addItem(BudgetItem item) {
+        budgetItems.add(item);
     }
 
     @Override
