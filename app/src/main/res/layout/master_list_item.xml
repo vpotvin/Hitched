@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
 
-    <android.support.v7.widget.CardView
+<android.support.v7.widget.CardView
+    android:id="@+id/masterListCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="50dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardCornerRadius="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:cardUseCompatPadding="true"
+    android:background="#DABCD2"
+    xmlns:app="http://schemas.android.com/tools">
 
 
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/masterListCardView"
+    <!--
+    android:layout_alignParentStart="true"
         android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
-        android:layout_below="@+id/addTaskButton"
-        android:layout_alignParentStart="true">
+    android:layout_below="@+id/addTaskButton"
+    -->
+
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical" android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#DABCD2">
 
 
             <TextView
@@ -55,4 +61,3 @@
 
 
 
-</LinearLayout>

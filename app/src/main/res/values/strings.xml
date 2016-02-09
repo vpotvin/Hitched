@@ -12,4 +12,7 @@
     <string name="bu_dialog_btn_label">Update</string>
     <string name="title_activity_checklist">Wedding Tasks</string>
     <string name="title_activity_pictures_web">PicturesWeb</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
