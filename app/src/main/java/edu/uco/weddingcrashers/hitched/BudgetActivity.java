@@ -8,13 +8,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class BudgetActivity extends Activity implements BudgetUpdateFragment.BudgetUpdateListener {
+public class BudgetActivity extends Activity implements
+        BudgetUpdateFragment.BudgetUpdateListener {
 
     private ArrayList<BudgetItem> budgetItems;
 
@@ -57,17 +59,29 @@ public class BudgetActivity extends Activity implements BudgetUpdateFragment.Bud
         budgetListView = (ListView) findViewById(R.id.itemizedBudgetList);
 
         budgetListView.setAdapter(budgetItemAdapter);
+        budgetListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                return false;
+            }
+        });
 
 
 
     }
 
-    public void updateBudgetAndUsed(double budget, double used) {
-        this.budget = budget;
-        this.used = used;
+    public void updateBudgetAndUsed(double budget, double used, int position) {
 
-        budgetView.setText(NumberFormat.getCurrencyInstance().format(budget));
-        budgetUsedView.setText(NumberFormat.getCurrencyInstance().format(used));
+        if(position == -1) {
+            this.budget = budget;
+            this.used = used;
+
+            budgetView.setText(NumberFormat.getCurrencyInstance().format(budget));
+            budgetUsedView.setText(NumberFormat.getCurrencyInstance().format(used));
+        } else {
+            budgetItems.get(position).setValue(budget);
+            budgetItems.get(position).setUsed(used);
+        }
     }
 
     public void launchUpdateDialog(View v) {
@@ -78,7 +92,15 @@ public class BudgetActivity extends Activity implements BudgetUpdateFragment.Bud
         }
         ft.addToBackStack(null);
 
-        DialogFragment newFragment = BudgetUpdateFragment.newInstance(budget, used);
+        DialogFragment newFragment;
+
+        if(v.getId() == R.id.updateBudgetBtn) newFragment =
+                BudgetUpdateFragment.newInstance(budget, used, -1);
+        else {
+            int pos = ((ListView) v).getCheckedItemPosition();
+            newFragment = BudgetUpdateFragment.newInstance(budgetItems.get(pos).getValue(),
+                    budgetItems.get(pos).getUsed(), pos);
+        }
 
         newFragment.show(ft, "dialog");
 
@@ -106,4 +128,5 @@ public class BudgetActivity extends Activity implements BudgetUpdateFragment.Bud
 
         return super.onOptionsItemSelected(item);
     }
+
 }

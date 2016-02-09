@@ -33,7 +33,8 @@
         android:layout_height="320dp"
         android:id="@+id/itemizedBudgetList"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:longClickable="true"/>
 
     <FrameLayout
         android:layout_width="match_parent"
