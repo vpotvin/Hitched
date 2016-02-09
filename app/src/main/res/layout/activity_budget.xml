@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="edu.uco.weddingcrashers.hitched.Budget"
+    android:orientation="vertical">
+
+    <!--TextView to update stored budget value-->
+
+    <!--Button to update budget value-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/updateBudgetBtn"
+        android:text="@string/update_budget"
+        android:layout_above="@+id/itemizedBudgetList"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:background="#DE84B5"
+        android:onClick="launchUpdateDialog"/>
+
+    <!--TextView to update budget used value -->
+
+    <!--ListView for viewing and updating individual Budget items-->
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:id="@+id/itemizedBudgetList"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/updateBudgetBtn"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/budgetValueText"
+            android:textColor="#000000"
+            android:background="#88CDE6"
+            android:layout_gravity="center"
+            android:height="40sp"
+            android:width="100sp"
+            android:layout_column="0"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/budgetUsedText"
+            android:layout_row="0"
+            android:layout_marginLeft="60sp"
+            android:hint="Value"
+            android:gravity="center"
+            android:textIsSelectable="false"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/budgetUsedText"
+            android:textColor="#000000"
+            android:background="#88CDE6"
+            android:layout_weight="0.48"
+            android:layout_gravity="center"
+            android:width="100sp"
+            android:layout_column="2"
+            android:layout_alignBottom="@+id/budgetValueText"
+            android:layout_alignParentStart="true"
+            android:layout_row="0"
+            android:height="40sp"
+            android:layout_marginRight="60sp"
+            android:hint="Used"
+            android:gravity="center"
+            android:textIsSelectable="false"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+
+</LinearLayout>
