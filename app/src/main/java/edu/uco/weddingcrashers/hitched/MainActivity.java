@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.ParseAnalytics;
+
 public class MainActivity extends Activity {
     private Button venue,dress,cake,honeymoon,party,vendor,picture;
     private Button invites,registry,budget,assignseats;
@@ -17,6 +19,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
         dress = (Button)findViewById(R.id.dress);
 //        cake = (Button)findViewById(R.id.cake);
         picture = (Button)findViewById(R.id.picture);

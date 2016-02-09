@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
@@ -32,8 +34,6 @@ public class BudgetActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
-
-
 
         //replaced with database population
         budget = 10000;
