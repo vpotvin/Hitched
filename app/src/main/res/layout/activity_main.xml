@@ -31,14 +31,6 @@
                 android:typeface="serif"
                 android:layout_gravity="center_vertical" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView"
-                android:layout_column="1"
-                android:src="@mipmap/mainicon"
-                android:layout_gravity="center_vertical" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
