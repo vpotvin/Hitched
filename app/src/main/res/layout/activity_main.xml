@@ -28,226 +28,235 @@
                 android:id="@+id/you"
                 android:layout_column="0"
                 android:textSize="26sp"
-                android:typeface="serif"
+                android:typeface="normal"
                 android:layout_gravity="center_vertical" />
 
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your"
-                android:id="@+id/your"
-                android:layout_column="2"
-                android:textSize="26sp"
-                android:typeface="serif"
-                android:layout_gravity="center_vertical"
-                android:layout_span="1" />
+                android:id="@+id/imageView"
+                android:layout_column="1"
+                android:layout_gravity="center_vertical" />
+                <!--android:src="@drawable/mm_ring"-->
 
-        </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your"
+            android:id="@+id/your"
+            android:layout_column="2"
+            android:textSize="26sp"
+            android:typeface="normal"
+            android:layout_gravity="center_vertical"
+            android:layout_span="1" />
 
-        </TableRow>
+    </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </TableRow>
-    </TableLayout>
-
-    <FrameLayout
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="230sp"
-        android:id="@+id/frameLayout"
-        android:layout_below="@+id/mainmenutablelayout"
-        android:layout_alignParentStart="true">
+        android:layout_height="match_parent">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Venue"
-            android:id="@+id/venue"
-            android:layout_gravity="left|top"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
+    </TableRow>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dress"
-            android:id="@+id/dress"
-            android:layout_gravity="center_horizontal|top"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cake"
-            android:id="@+id/cake"
-            android:layout_gravity="right|top"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Party"
-            android:id="@+id/party"
-            android:layout_gravity="center"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vendor"
-            android:id="@+id/vendor"
-            android:layout_gravity="right|center_vertical"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:onClick="launchActivity"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Invites"
-            android:id="@+id/invites"
-            android:layout_gravity="left|bottom"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registry"
-            android:id="@+id/registry"
-            android:layout_gravity="center_horizontal|bottom"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Budget"
-            android:id="@+id/budget"
-            android:layout_gravity="right|bottom"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Honeymoon"
-            android:id="@+id/honeymoon"
-            android:layout_gravity="left|center_vertical"
-            android:height="70dp"
-            android:width="100dp"
-            android:background="#88CDE6"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
-    </FrameLayout>
-
-    <FrameLayout
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_below="@+id/frameLayout"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="false"
-        android:paddingTop="10sp"
-        android:paddingBottom="15sp">
+        android:layout_height="match_parent">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tasks"
-            android:id="@+id/tasks"
-            android:layout_gravity="left|bottom"
-            android:background="#DABCD2"
-            android:textColor="#000000"
-            android:width="100dp" />
+    </TableRow>
+</TableLayout>
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contacts"
-            android:id="@+id/contacts"
-            android:layout_gravity="center_horizontal|bottom"
-            android:background="#DABCD2"
-            android:textColor="#000000"
-            android:width="100dp" />
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="230sp"
+    android:id="@+id/frameLayout"
+    android:layout_below="@+id/mainmenutablelayout"
+    android:layout_alignParentStart="true">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Update Account"
-            android:id="@+id/update"
-            android:layout_gravity="right|bottom"
-            android:background="#DABCD2"
-            android:textColor="#000000"
-            android:width="100dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Venue"
+        android:id="@+id/venue"
+        android:layout_gravity="left|top"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Assign Seats"
-            android:id="@+id/assignseats"
-            android:layout_gravity="left|top"
-            android:background="#DABCD2"
-            android:textColor="#000000"
-            android:width="100dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dress"
+        android:id="@+id/dress"
+        android:layout_gravity="center_horizontal|top"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Guest List"
-            android:id="@+id/guestlist"
-            android:layout_gravity="center_horizontal|top"
-            android:background="#DABCD2"
-            android:textColor="#000000"
-            android:width="100dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cake"
+        android:id="@+id/cake"
+        android:layout_gravity="right|top"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Itinerary"
-            android:id="@+id/itinerary"
-            android:layout_gravity="right|top"
-            android:background="#DABCD2"
-            android:textColor="#000000"
-            android:width="100dp" />
-    </FrameLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Party"
+        android:id="@+id/party"
+        android:layout_gravity="center"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vendor"
+        android:id="@+id/vendor"
+        android:layout_gravity="right|center_vertical"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:onClick="launchActivity"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invites"
+        android:id="@+id/invites"
+        android:layout_gravity="left|bottom"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registry"
+        android:id="@+id/registry"
+        android:layout_gravity="center_horizontal|bottom"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Budget"
+        android:id="@+id/budget"
+        android:layout_gravity="right|bottom"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Honeymoon"
+        android:id="@+id/honeymoon"
+        android:layout_gravity="left|center_vertical"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+</FrameLayout>
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_below="@+id/frameLayout"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentEnd="false"
+    android:paddingTop="10sp"
+    android:paddingBottom="15sp">
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tasks"
+        android:id="@+id/tasks"
+        android:layout_gravity="left|bottom"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contacts"
+        android:id="@+id/contacts"
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Account"
+        android:id="@+id/update"
+        android:layout_gravity="right|bottom"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assign Seats"
+        android:id="@+id/assignseats"
+        android:layout_gravity="left|top"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guest List"
+        android:id="@+id/guestlist"
+        android:layout_gravity="center_horizontal|top"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Itinerary"
+        android:id="@+id/itinerary"
+        android:layout_gravity="right|top"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+</FrameLayout>
 
 </RelativeLayout>
