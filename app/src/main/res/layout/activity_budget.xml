@@ -24,6 +24,14 @@
         android:background="#DE84B5"
         android:onClick="launchUpdateDialog"/>
 
+    <!--Button needed to add Item to list -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addBudgetItem"
+        android:onClick="launchNewItemDialog"
+        android:text="+"/>
+
     <!--TextView to update budget used value -->
 
     <!--ListView for viewing and updating individual Budget items-->
@@ -33,7 +41,8 @@
         android:layout_height="320dp"
         android:id="@+id/itemizedBudgetList"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:longClickable="true"/>
 
     <FrameLayout
         android:layout_width="match_parent"
