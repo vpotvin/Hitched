@@ -17,6 +17,7 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/parse_client_key" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -43,7 +44,13 @@
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"
-            android:label="@string/title_activity_pictures_web"></activity>
+            android:label="@string/title_activity_pictures_web" />
+        <activity
+            android:name=".WeddingDressActivity"
+            android:label="@string/title_activity_wedding_dress_activity" />
+        <activity
+            android:name=".VenueActivity"
+            android:label="@string/title_activity_venue"></activity>
     </application>
 
 </manifest>
