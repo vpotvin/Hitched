@@ -1,16 +1,14 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -31,7 +29,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_wedding_list);
 
-        addButton = (Button) findViewById(R.id.addTaskButton);
+       // addButton = (Button) findViewById(R.id.addTaskButton);// Rehana Moved this button to toolbar
 
         recyclerView = (RecyclerView) findViewById(R.id.masterListRecView);
         recyclerView.setHasFixedSize(true);
@@ -60,12 +58,12 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         masterListAdapter.notifyDataSetChanged();
 
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                DialogFragment newFragment = new MasterListNewItemInput();
-                newFragment.show(getFragmentManager(), "New Entry");
-            }
-        });
+//        addButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                DialogFragment newFragment = new MasterListNewItemInput();
+//                newFragment.show(getFragmentManager(), "New Entry");
+//            }
+//        }); // Rehana Moved this button to toolbar
 
     }
     public void showNoticeDialog() {
@@ -101,7 +99,31 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
 
     private void addTask(String Title, String Notes, Date dueDate)
     {
-        theList.add(new MasterListItem(Title,dueDate, null, Notes, false));
+        theList.add(new MasterListItem(Title, dueDate, null, Notes, false));
         masterListAdapter.notifyDataSetChanged();
+    }
+    ///Rehana Added Toolbar from here
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.master_wedding_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if(id==R.id.action_add){
+            DialogFragment newFragment = new MasterListNewItemInput();
+            newFragment.show(getFragmentManager(), "New Entry");
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
