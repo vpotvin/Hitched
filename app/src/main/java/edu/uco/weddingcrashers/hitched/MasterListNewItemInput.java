@@ -96,5 +96,5 @@ public class MasterListNewItemInput extends DialogFragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    
+
 }
