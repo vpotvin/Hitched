@@ -4,15 +4,19 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.View;;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 
 public class WeddingDressActivity extends Activity {
 
     private Button dressSearch;
-    private EditText myDressEditText;
-    private String dressText;
+    private EditText stateText;
+    private EditText cityText;
+    private String theState;
+    private String theCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +24,23 @@ public class WeddingDressActivity extends Activity {
         setContentView(R.layout.activity_wedding_dress);
 
         dressSearch = (Button) findViewById(R.id.dressSearchButton);
-        myDressEditText = (EditText) findViewById(R.id.dressEditText);
+        stateText = (EditText) findViewById(R.id.myStateText);
+        cityText = (EditText) findViewById(R.id.myCityText);
 
-        myDressEditText.setOnClickListener(new View.OnClickListener() {
+        stateText.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(myDressEditText.getText().toString().equals("Search for the Perfect Dress")){
-                    myDressEditText.setText("");
+                if(stateText.getText().toString().equals("Enter State (Two Letter Abbreviation)")){
+                    stateText.setText("");
+                }
+            }
+        });
+
+        cityText.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if(cityText.getText().toString().equals("Enter City")){
+                    cityText.setText("");
                 }
             }
         });
@@ -34,9 +48,18 @@ public class WeddingDressActivity extends Activity {
         dressSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dressText = myDressEditText.getText().toString();
-                Intent web = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + dressText));
-                startActivity(web);
+                theCity = cityText.getText().toString();
+                theState = stateText.getText().toString();
+                if(theState.length() == 2)
+                  {
+                      Intent web = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.theknot.com/fashion/" ));
+                      startActivity(web);
+                  }
+                else
+                  {
+                      Toast.makeText(getBaseContext(), "Enter Two Letter State Abbreviation",
+                              Toast.LENGTH_LONG).show();
+                  }
             }
         });
     }

@@ -8,26 +8,68 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity {
+import com.parse.ParseAnalytics;
 
-    private final int RETURN = 1;
-    private Button weddingDress;
+public class MainActivity extends Activity {
+    private Button venue,dress,cake,honeymoon,party,vendor,picture;
+    private Button invites,registry,budget,assignseats;
+    private Button itinerary,guestlist,tasks,contacts,update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        weddingDress = (Button) findViewById(R.id.weddingDress);
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
-        weddingDress.setOnClickListener(new View.OnClickListener() {
-            @Override
+        dress = (Button)findViewById(R.id.dress);
+        venue = (Button)findViewById(R.id.venue);
+//        cake = (Button)findViewById(R.id.cake);
+        picture = (Button)findViewById(R.id.picture);
+        honeymoon = (Button)findViewById(R.id.honeymoon);
+        party = (Button)findViewById(R.id.party);
+        vendor = (Button)findViewById(R.id.vendor);
+        invites = (Button)findViewById(R.id.invites);
+        registry = (Button)findViewById(R.id.registry);
+        budget = (Button)findViewById(R.id.budget);
+        assignseats = (Button)findViewById(R.id.assignseats);
+        itinerary = (Button)findViewById(R.id.itinerary);
+        guestlist = (Button)findViewById(R.id.guestlist);
+        tasks = (Button)findViewById(R.id.tasks);
+        contacts = (Button)findViewById(R.id.contacts);
+        update = (Button)findViewById(R.id.update);
+
+        budget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myweddingDressActivity = new Intent(MainActivity.this, WeddingDressActivity.class);
-
-                startActivityForResult(myweddingDressActivity, RETURN);
+                Intent budget = new Intent(MainActivity.this, BudgetActivity.class);
+                startActivity(budget);
             }
         });
+
+        tasks.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent taskList = new Intent(MainActivity.this, MasterWeddingList.class);
+                startActivity(taskList);
+            }
+        });
+
+         dress.setOnClickListener(new View.OnClickListener() {
+             public void onClick(View v) {
+                 Intent dress = new Intent(MainActivity.this, WeddingDressActivity.class);
+                 startActivity(dress);
+             }
+         });
+
+        venue.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent venue = new Intent(MainActivity.this, VenueActivity.class);
+                startActivity(venue);
+            }
+        });
+
+
+
+//rehana
     }
 
     @Override
@@ -51,4 +93,21 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+     public void launchActivity(View view){
+         Intent i = new Intent(this,DetailActivity.class);
+         startActivity(i);
+     }
+
+    public void launchBudgetActivity(View view) {
+        Intent i = new Intent(this, BudgetActivity.class);
+        startActivity(i);
+    }
+
+    public void pictureActivity(View view){
+        Intent intent = new Intent(MainActivity.this, Pictures.class);
+        startActivity(intent);
+    }
+
+
+
 }
