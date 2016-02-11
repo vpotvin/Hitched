@@ -1,6 +1,7 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -8,15 +9,12 @@ import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-//import android.support.v7.app.AlertDialog;
-import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 
-public class MasterListNewItemInput extends DialogFragment {
+public class GuestListNewItem extends DialogFragment {
 
     public interface NoticeDialogListener {
         public void onDialogPositiveClick(DialogFragment dialog);
@@ -35,17 +33,17 @@ public class MasterListNewItemInput extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.master_list_new_item_input, null))
+        builder.setView(inflater.inflate(R.layout.fragment_guest_list_new_item, null))
                 // Add action buttons
                 .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        mListener.onDialogPositiveClick(MasterListNewItemInput.this);
+                        mListener.onDialogPositiveClick(GuestListNewItem.this);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        mListener.onDialogNegativeClick(MasterListNewItemInput.this);
+                        mListener.onDialogNegativeClick(GuestListNewItem.this);
                     }
                 });
         return builder.create();
