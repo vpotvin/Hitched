@@ -3,7 +3,6 @@ package edu.uco.weddingcrashers.hitched;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,17 +14,16 @@ public class MainActivity extends Activity {
     private Button venue,dress,cake,honeymoon,party,vendor,picture;
     private Button invites,registry,budget,assignseats;
     private Button itinerary,guestlist,tasks,contacts,update;
-    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
         dress = (Button)findViewById(R.id.dress);
+//        cake = (Button)findViewById(R.id.cake);
         picture = (Button)findViewById(R.id.picture);
         honeymoon = (Button)findViewById(R.id.honeymoon);
         party = (Button)findViewById(R.id.party);
@@ -54,13 +52,14 @@ public class MainActivity extends Activity {
             }
         });
 
-        dress.setOnClickListener(new View.OnClickListener() {
+        guestlist.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent taskList = new Intent(MainActivity.this, WeddingDressActivity.class);
+                Intent taskList = new Intent(MainActivity.this, GuestListActivity.class);
                 startActivity(taskList);
             }
         });
 
+//rehana
     }
 
     @Override

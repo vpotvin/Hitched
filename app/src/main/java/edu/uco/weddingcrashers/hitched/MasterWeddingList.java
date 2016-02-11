@@ -22,7 +22,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private ArrayList<MasterListItem> theList;
-    private RecViewAdapter masterListAdapter;
+    private MasterListRecViewAdapter masterListAdapter;
     private Button addButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +52,10 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         theList.add(new MasterListItem("Test Item9",new Date(),new Date(),"here are some notes",false));
         theList.add(new MasterListItem("Test Item10",new Date(),new Date(),"here are some notes",false));
 
-        masterListAdapter = new RecViewAdapter(theList);
+        masterListAdapter = new MasterListRecViewAdapter(theList);
         recyclerView.setAdapter(masterListAdapter);
 
-        masterListAdapter.notifyDataSetChanged();
+        //masterListAdapter.notifyDataSetChanged();
 
 
 //        addButton.setOnClickListener(new View.OnClickListener() {

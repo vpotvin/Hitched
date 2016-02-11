@@ -10,7 +10,7 @@
     card_view:cardCornerRadius="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     app:cardUseCompatPadding="true"
-    android:background="#F6ECEB"
+    android:background="#DABCD2"
     xmlns:app="http://schemas.android.com/tools">
 
 
@@ -24,18 +24,14 @@
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical" android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F6ECEB">
+            android:background="#DABCD2">
 
 
             <TextView
                 android:id="@+id/masterListTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="test title"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#DE84B5"
-                android:typeface="sans" />
+                android:text="test title" />
             <TextView
                 android:id="@+id/masterListDueDate"
                 android:layout_width="match_parent"

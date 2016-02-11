@@ -22,13 +22,25 @@ public class VendorList {
 
     private VendorList(Context context){
         mVendors = new ArrayList<>();
-        for(int i = 0;i<10;i++){
-            Vendor vendor = new Vendor();
-            vendor.setVendorName("Vendor "+i);
-            vendor.setVendorContact("None");
-            vendor.setVendorWebsite("None");
-            mVendors.add(vendor);
-        }
+        mVendors.add(new Vendor("Band"));
+        mVendors.add(new Vendor("Beauty & Health"));
+        mVendors.add(new Vendor("Catering"));
+        mVendors.add(new Vendor("Ceremony & Reception Venue"));
+        mVendors.add(new Vendor("Ceremony Music"));
+        mVendors.add(new Vendor("DJ"));
+        mVendors.add(new Vendor("Dress & Attire"));
+        mVendors.add(new Vendor("Event Rentals & Photobooths"));
+        mVendors.add(new Vendor("Favors & Gift"));
+        mVendors.add(new Vendor("Flowers"));
+        mVendors.add(new Vendor("Guest Accommodations"));
+        mVendors.add(new Vendor("Invitations"));
+        mVendors.add(new Vendor("Jewelry"));
+        mVendors.add(new Vendor("Lighting & Decor"));
+        mVendors.add(new Vendor("Men's Formal Wear"));
+        mVendors.add(new Vendor("Name Change Service"));
+
+
+
     }
 
     public List<Vendor> getVendors(){
