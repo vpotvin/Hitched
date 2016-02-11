@@ -7,16 +7,24 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#F6ECEB"
+    android:background="#88CDE6"
     tools:context="edu.uco.weddingcrashers.hitched.MasterWeddingList">
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/addTaskButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:id="@+id/masterListRecView"
-        android:focusableInTouchMode="false">
+        android:background="#88CDE6">
 
 
 
