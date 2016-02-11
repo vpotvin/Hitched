@@ -62,7 +62,7 @@ public class DetailsFragment extends Fragment {
         @Override
         public VendorHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(android.R.layout.simple_list_item_1,viewGroup,false);
+            View view = layoutInflater.inflate(R.layout.list_vendor_details,viewGroup,false);
             return new VendorHolder(view);
         }
 
