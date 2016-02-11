@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.uco.weddingcrashers.hitched">
+<manifest package="edu.uco.weddingcrashers.hitched"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:name=".ParseDatabase"
@@ -13,40 +20,55 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.parse.APPLICATION_ID"
-            android:value="@string/parse_app_id" />
+            android:value="@string/parse_app_id"/>
         <meta-data
             android:name="com.parse.CLIENT_KEY"
-            android:value="@string/parse_client_key" />
+            android:value="@string/parse_client_key"/>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".BudgetActivity"
-            android:label="@string/title_activity_budget" />
+            android:label="@string/title_activity_budget"/>
         <activity
             android:name=".MasterWeddingList"
-            android:label="@string/title_activity_checklist" />
+            android:label="@string/title_activity_checklist"/>
         <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.Light"/>
         <activity
             android:name=".VendorActivity"
             android:label="@string/title_activity_vendor"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity android:name=".Pictures" />
+            android:theme="@style/Theme.AppCompat.Light"/>
+        <activity
+            android:name=".VendorsDetailActivity"
+            android:label="VendorsDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light"/>
+        <activity android:name=".Pictures"/>
         <activity
             android:name=".PicturesWeb"
-            android:label="@string/title_activity_pictures_web" />
-        <activity
-            android:name=".GuestListActivity"
-            android:label="@string/title_activity_wedding_list"></activity>
+            android:label="@string/title_activity_pictures_web"/>
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+
     </application>
 
 </manifest>
