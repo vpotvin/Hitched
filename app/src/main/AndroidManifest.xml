@@ -35,7 +35,10 @@
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"
-            android:label="@string/title_activity_pictures_web"></activity>
+            android:label="@string/title_activity_pictures_web" />
+        <activity
+            android:name=".GuestListActivity"
+            android:label="@string/title_activity_wedding_list"></activity>
     </application>
 
 </manifest>

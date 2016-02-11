@@ -47,6 +47,13 @@ public class MainActivity extends Activity {
             }
         });
 
+        guestlist.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent taskList = new Intent(MainActivity.this, GuestListActivity.class);
+                startActivity(taskList);
+            }
+        });
+
 //rehana
     }
 

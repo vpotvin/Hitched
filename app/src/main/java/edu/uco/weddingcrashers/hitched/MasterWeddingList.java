@@ -1,10 +1,7 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -24,7 +21,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private ArrayList<MasterListItem> theList;
-    private RecViewAdapter masterListAdapter;
+    private MasterListRecViewAdapter masterListAdapter;
     private Button addButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +51,10 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         theList.add(new MasterListItem("Test Item9",new Date(),new Date(),"here are some notes",false));
         theList.add(new MasterListItem("Test Item10",new Date(),new Date(),"here are some notes",false));
 
-        masterListAdapter = new RecViewAdapter(theList);
+        masterListAdapter = new MasterListRecViewAdapter(theList);
         recyclerView.setAdapter(masterListAdapter);
 
-        masterListAdapter.notifyDataSetChanged();
+        //masterListAdapter.notifyDataSetChanged();
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
