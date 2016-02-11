@@ -16,6 +16,6 @@
     <string name="title_activity_pictures_web">PicturesWeb</string>
     <string name="bu_dialog_delete">Delete</string>
 
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
