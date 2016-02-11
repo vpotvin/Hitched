@@ -2,47 +2,70 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
    tools:context=".MainActivity"
-    android:background="#F6ECEB">
+    android:background="#F6ECEB"
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="120sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:orientation="horizontal"
-        android:id="@+id/mainmenutablelayout"
-        android:layout_alignParentEnd="true">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_centerHorizontal="true"
+        android:padding="2sp"
+        android:outlineProvider="paddedBounds">
 
-        <TableRow
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:gravity="center">
+            android:id="@+id/imageView"
+            android:layout_column="1"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center_horizontal|top" />
 
-            <!--android:src="@drawable/mm_ring"-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Are Getting Hitched On"
+            android:id="@+id/simpletext"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:gravity="center" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="WEDDING DATE"
+            android:id="@+id/simpletext2"
+            android:layout_column="1"
+            android:layout_gravity="center_horizontal|bottom" />
 
-        </TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Your"
+            android:id="@+id/your"
+            android:layout_column="3"
+            android:layout_gravity="top|right" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="You"
+            android:id="@+id/you"
+            android:layout_column="0"
+            android:layout_gravity="top|left"
+            android:gravity="center" />
+    </FrameLayout>
 
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </TableRow>
-</TableLayout>
-
-<FrameLayout
+    <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="230sp"
     android:id="@+id/frameLayout"
-    android:layout_below="@+id/mainmenutablelayout"
-    android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true">
 
     <Button
         android:layout_width="wrap_content"
@@ -153,7 +176,8 @@
         android:background="#88CDE6"
         android:textColor="#ffffff"
         android:textStyle="bold" />
-</FrameLayout>
+
+    </FrameLayout>
 
 <FrameLayout
     android:layout_width="match_parent"
