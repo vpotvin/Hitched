@@ -1,0 +1,168 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="edu.uco.weddingcrashers.hitched.GuestListNewItem">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:rowCount="1"
+        android:columnCount="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Name"
+            android:id="@+id/GuestListNameInputView" />
+
+        <EditText
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/GuestListNameInputEdit"
+            android:layout_gravity="center_horizontal"
+            />
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:rowCount="1"
+        android:columnCount="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Phone Number"
+            android:id="@+id/GuestListPhoneNumberInputView" />
+
+        <EditText
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/GuestListPhoneNumberInputEdit"
+            android:layout_gravity="center_horizontal"
+            />
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:rowCount="1"
+        android:columnCount="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Address"
+            android:id="@+id/GuestListAddressInputView" />
+
+        <EditText
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/GuestListAddressInputEdit"
+            android:layout_gravity="center_horizontal"
+            />
+    </GridLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:rowCount="1"
+        android:columnCount="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="City"
+            android:id="@+id/GuestListCityInputView" />
+
+        <EditText
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/GuestListCityInputEdit"
+            android:layout_gravity="center_horizontal"
+            />
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:rowCount="1"
+        android:columnCount="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="State"
+            android:id="@+id/GuestListStateInputView" />
+
+        <EditText
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/GuestListStateInputEdit"
+            android:layout_gravity="center_horizontal"
+            />
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:rowCount="1"
+        android:columnCount="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Zipcode"
+            android:id="@+id/GuestListZipcodeInputView" />
+
+        <EditText
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/GuestListZipcodeInputEdit"
+            android:layout_gravity="center_horizontal"
+            />
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:rowCount="1"
+        android:columnCount="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Role"
+            android:id="@+id/GuestListRoleInputView" />
+
+        <EditText
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/GuestListRoleInputEdit"
+            android:layout_gravity="center_horizontal"
+            />
+    </GridLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wedding Party"
+        android:id="@+id/GuestListWeddingPartuInputCheckBox"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
