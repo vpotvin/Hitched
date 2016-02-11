@@ -1,27 +1,31 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
  * Created by drenf on 2/2/2016.
  */
-public class RecViewAdapter extends RecyclerView.Adapter {
-
+public class MasterListRecViewAdapter extends RecyclerView.Adapter<MasterListRecViewAdapter.MyViewHolder> {
+    TextView title;
+    TextView dueDate;
+    TextView completedDate;
+    TextView notes;
+    CheckBox completed;
     private ArrayList<MasterListItem> theList;
+    //private LayoutInflater inflater;
 
-
-    public RecViewAdapter(ArrayList<MasterListItem> theList) {
+    public MasterListRecViewAdapter(ArrayList<MasterListItem> theList) {
         this.theList = theList;
+        //inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -33,24 +37,48 @@ public class RecViewAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder holder1 = (MyViewHolder) holder;
-        TextView title = holder1.title;
-        TextView dueDate = holder1.dueDate;
-        TextView completedDate = holder1.completedDate;
-        TextView notes = holder1.notes;
-        CheckBox completed = holder1.completed;
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        /*
+        title = holder.title;
+        dueDate = holder.dueDate;
+        completedDate = holder.completedDate;
+        notes = holder.notes;
+        completed = holder.completed;
 
         title.setText(theList.get(position).getTitle());
         dueDate.setText(theList.get(position).getDueDate().toString());
         completedDate.setText(theList.get(position).getCompletedDate().toString());
         notes.setText(theList.get(position).getNotes());
         completed.setChecked(theList.get(position).isCompleted());
+        */
+        holder.title.setText(theList.get(position).getTitle());
+        if(theList.get(position).getDueDate() != null)
+        {
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            String reportDate = df.format(theList.get(position).getDueDate());
+            holder.dueDate.setText(reportDate);
+        }
+        if(theList.get(position).getCompletedDate() != null)
+        {
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            String reportDate = df.format(theList.get(position).getCompletedDate());
+            holder.completedDate.setText(reportDate);
+        }
+
+        holder.notes.setText(theList.get(position).getNotes());
+        holder.completed.setChecked(theList.get(position).isCompleted());
     }
+
+
 
     @Override
     public int getItemCount() {
-        return 0;
+        return theList.size();
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
     }
 
 
