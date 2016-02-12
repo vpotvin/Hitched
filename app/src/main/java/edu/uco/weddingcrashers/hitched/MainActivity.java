@@ -1,16 +1,59 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import com.parse.ParseAnalytics;
 
 public class MainActivity extends Activity {
+    private Button venue,dress,cake,honeymoon,party,vendor,picture;
+    private Button invites,registry,budget,assignseats;
+    private Button itinerary,guestlist,tasks,contacts,update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
+        dress = (Button)findViewById(R.id.dress);
+        venue = (Button)findViewById(R.id.venue);
+//        cake = (Button)findViewById(R.id.cake);
+        picture = (Button)findViewById(R.id.picture);
+        honeymoon = (Button)findViewById(R.id.honeymoon);
+        party = (Button)findViewById(R.id.party);
+        vendor = (Button)findViewById(R.id.vendor);
+        invites = (Button)findViewById(R.id.invites);
+        registry = (Button)findViewById(R.id.registry);
+        budget = (Button)findViewById(R.id.budget);
+        assignseats = (Button)findViewById(R.id.assignseats);
+        itinerary = (Button)findViewById(R.id.itinerary);
+        guestlist = (Button)findViewById(R.id.guestlist);
+        tasks = (Button)findViewById(R.id.tasks);
+        contacts = (Button)findViewById(R.id.contacts);
+        update = (Button)findViewById(R.id.update);
+
+        budget.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent budget = new Intent(MainActivity.this, BudgetActivity.class);
+                startActivity(budget);
+            }
+        });
+
+        tasks.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent taskList = new Intent(MainActivity.this, MasterWeddingList.class);
+                startActivity(taskList);
+            }
+        });
+
+//rehana
     }
 
     @Override
@@ -34,4 +77,21 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+     public void launchActivity(View view){
+         Intent i = new Intent(this,DetailActivity.class);
+         startActivity(i);
+     }
+
+    public void launchBudgetActivity(View view) {
+        Intent i = new Intent(this, BudgetActivity.class);
+        startActivity(i);
+    }
+
+    public void pictureActivity(View view){
+        Intent intent = new Intent(MainActivity.this, Pictures.class);
+        startActivity(intent);
+    }
+
+
+
 }

@@ -1,11 +1,259 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+   tools:context=".MainActivity"
+    android:background="#F6ECEB"
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_centerHorizontal="true"
+        android:padding="2sp"
+        android:outlineProvider="paddedBounds"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_column="1"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center_horizontal|top" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Are Getting Hitched On"
+            android:id="@+id/simpletext"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="WEDDING DATE"
+            android:id="@+id/simpletext2"
+            android:layout_column="1"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Your"
+            android:id="@+id/your"
+            android:layout_column="3"
+            android:layout_gravity="top|right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="You"
+            android:id="@+id/you"
+            android:layout_column="0"
+            android:layout_gravity="top|left"
+            android:gravity="center" />
+    </FrameLayout>
+
+    <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="230sp"
+    android:id="@+id/frameLayout"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Venue"
+        android:id="@+id/venue"
+        android:layout_gravity="left|top"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dress"
+        android:id="@+id/dress"
+        android:layout_gravity="center_horizontal|top"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Picture"
+        android:id="@+id/picture"
+        android:layout_gravity="right|top"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:onClick="pictureActivity"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Party"
+        android:id="@+id/party"
+        android:layout_gravity="center"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vendor"
+        android:id="@+id/vendor"
+        android:layout_gravity="right|center_vertical"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:onClick="launchActivity"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invites"
+        android:id="@+id/invites"
+        android:layout_gravity="left|bottom"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registry"
+        android:id="@+id/registry"
+        android:layout_gravity="center_horizontal|bottom"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Budget"
+        android:id="@+id/budget"
+        android:layout_gravity="right|bottom"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Honeymoon"
+        android:id="@+id/honeymoon"
+        android:layout_gravity="left|center_vertical"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    </FrameLayout>
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_below="@+id/frameLayout"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentEnd="false"
+    android:paddingTop="10sp"
+    android:paddingBottom="15sp">
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tasks"
+        android:id="@+id/tasks"
+        android:layout_gravity="left|bottom"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contacts"
+        android:id="@+id/contacts"
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Account"
+        android:id="@+id/update"
+        android:layout_gravity="right|bottom"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assign Seats"
+        android:id="@+id/assignseats"
+        android:layout_gravity="left|top"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guest List"
+        android:id="@+id/guestlist"
+        android:layout_gravity="center_horizontal|top"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Itinerary"
+        android:id="@+id/itinerary"
+        android:layout_gravity="right|top"
+        android:background="#DABCD2"
+        android:textColor="#000000"
+        android:width="100dp" />
+</FrameLayout>
 
 </RelativeLayout>
