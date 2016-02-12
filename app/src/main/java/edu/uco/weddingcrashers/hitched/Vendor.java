@@ -13,7 +13,8 @@ public class Vendor {
 
     public Vendor(){}
 
-    public Vendor(String Name) {
+    public Vendor(String Name, String URL) {
+        mVendorWebsite = URL;
         mVendorName = Name;
         mVendorID = UUID.randomUUID();
     }
