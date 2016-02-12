@@ -158,6 +158,13 @@ public class BudgetActivity extends Activity implements
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_addbudgettoolbar) { //Rehana Added this 2/11/15
+
+        }
+        if (id == R.id.action_updatebudgettool) { //Rehana Added this 2/11/15
+
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
