@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
         dress = (Button)findViewById(R.id.dress);
+        venue = (Button)findViewById(R.id.venue);
 //        cake = (Button)findViewById(R.id.cake);
         picture = (Button)findViewById(R.id.picture);
         honeymoon = (Button)findViewById(R.id.honeymoon);
@@ -48,13 +49,6 @@ public class MainActivity extends Activity {
         tasks.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent taskList = new Intent(MainActivity.this, MasterWeddingList.class);
-                startActivity(taskList);
-            }
-        });
-
-        guestlist.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent taskList = new Intent(MainActivity.this, GuestListActivity.class);
                 startActivity(taskList);
             }
         });

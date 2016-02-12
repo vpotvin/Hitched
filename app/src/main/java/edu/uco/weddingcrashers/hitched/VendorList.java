@@ -38,7 +38,7 @@ public class VendorList {
         mVendors.add(new Vendor("Lighting & Decor"));
         mVendors.add(new Vendor("Men's Formal Wear"));
         mVendors.add(new Vendor("Name Change Service"));
-        mVendors.add(new Vendor("Officiant"));
+
 
 
     }
