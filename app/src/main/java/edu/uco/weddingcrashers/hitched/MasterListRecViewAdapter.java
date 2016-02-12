@@ -1,22 +1,20 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
  * Created by drenf on 2/2/2016.
  */
-public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.MyViewHolder> {
+public class MasterListRecViewAdapter extends RecyclerView.Adapter<MasterListRecViewAdapter.MyViewHolder> {
     TextView title;
     TextView dueDate;
     TextView completedDate;
@@ -25,7 +23,7 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.MyViewHo
     private ArrayList<MasterListItem> theList;
     //private LayoutInflater inflater;
 
-    public RecViewAdapter(ArrayList<MasterListItem> theList) {
+    public MasterListRecViewAdapter(ArrayList<MasterListItem> theList) {
         this.theList = theList;
         //inflater = LayoutInflater.from(context);
     }
@@ -56,11 +54,15 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.MyViewHo
         holder.title.setText(theList.get(position).getTitle());
         if(theList.get(position).getDueDate() != null)
         {
-            holder.dueDate.setText(theList.get(position).getDueDate().toString());
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            String reportDate = df.format(theList.get(position).getDueDate());
+            holder.dueDate.setText(reportDate);
         }
         if(theList.get(position).getCompletedDate() != null)
         {
-            holder.completedDate.setText(theList.get(position).getCompletedDate().toString());
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            String reportDate = df.format(theList.get(position).getCompletedDate());
+            holder.completedDate.setText(reportDate);
         }
 
         holder.notes.setText(theList.get(position).getNotes());

@@ -11,7 +11,10 @@ public class Vendor {
     private String mVendorContact;
     private String mVendorWebsite;
 
-    public Vendor() {
+    public Vendor(){}
+
+    public Vendor(String Name) {
+        mVendorName = Name;
         mVendorID = UUID.randomUUID();
     }
 
