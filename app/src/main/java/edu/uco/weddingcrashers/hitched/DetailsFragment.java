@@ -60,7 +60,7 @@ public class DetailsFragment extends Fragment {
         public void bindVendor(Vendor vendor){
             mVendor = vendor;
             mTextView.setText(mVendor.getVendorName());
-            mImageView.setImageResource(R.drawable.a);
+           // mImageView.setImageResource(R.drawable.a);
         }
 
         @Override
