@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -66,8 +65,7 @@ public class DetailsFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(getActivity(),mVendor.getVendorName() + "Clicked",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getActivity(),VendorsDetailActivity.class);
+            Intent intent = VendorsDetailActivity.newIntent(getActivity(),mVendor.getVendorID());
             startActivity(intent);
         }
     }
