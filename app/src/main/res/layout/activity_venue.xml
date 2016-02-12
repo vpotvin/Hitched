@@ -7,38 +7,25 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.uco.weddingcrashers.hitched.WeddingDressActivity">
+    tools:context="edu.uco.weddingcrashers.hitched.VenueActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/venuLocation"
+        android:layout_alignParentTop="true"
+        android:text="Enter Venue, City, or State"
+        android:gravity="center"
+        android:inputType="textCapSentences"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search!"
-        android:id="@+id/dressSearchButton"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/myCityText"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/myCityText"
-        android:text="Enter City"
-        android:gravity="center"
-        android:inputType="textCapSentences"
-        android:layout_alignParentTop="true"
+        android:text="Find My Venue!"
+        android:id="@+id/venueSearchButton"
+        android:layout_below="@+id/venuLocation"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/myStateText"
-        android:layout_below="@+id/myCityText"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/myCityText"
-        android:text="Enter State (Two Letter Abbreviation)"
-        android:gravity="center"
-        android:inputType="textCapCharacters"/>
-
+        android:layout_alignEnd="@+id/venuLocation" />
 </RelativeLayout>
