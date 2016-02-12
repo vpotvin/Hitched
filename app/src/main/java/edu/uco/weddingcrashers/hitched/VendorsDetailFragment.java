@@ -1,6 +1,5 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,16 +9,19 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.UUID;
+
 /**
  * Created by PC User on 2/11/2016.
  */
 public class VendorsDetailFragment extends Fragment {
-    private static final String ARG_URI = "https://www.google.com/search?q=catering+wedding+vendor&oq=catering+wedding+vendor&aqs=chrome..69i57.5396j0j4&sourceid=chrome-mobile&ie=UTF-8#q=catering+wedding+vendor+in+okc&istate=lrl:xpd";
-    private Uri mUri;
     private WebView mWebView;
+    private Vendor mVendor;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UUID vendorID = (UUID)getActivity().getIntent().getSerializableExtra(VendorsDetailActivity.EXTRA_VENDOR_ID);
+        mVendor = VendorList.get(getActivity()).getVendor(vendorID);
     }
 
     @Nullable
@@ -33,7 +35,7 @@ public class VendorsDetailFragment extends Fragment {
                 return false;
             }
         });
-        mWebView.loadUrl(ARG_URI.toString());
+        mWebView.loadUrl(mVendor.getVendorWebsite());
         return view;
     }
 }
