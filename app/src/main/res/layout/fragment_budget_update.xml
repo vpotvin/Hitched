@@ -12,7 +12,20 @@
         android:layout_height="wrap_content">
 
 
+    <!--Label for Title Edit Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleBULabel"
+            android:visibility="gone"
+            android:text="@string/title_label"/>
 
+        <!--EditText for Title -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleBUEdit"
+            android:visibility="gone"/>
     <!-- Label for Budget Edit Text -->
     <TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,6 +59,12 @@
             android:layout_height="wrap_content"
             android:text="@string/bu_dialog_btn_label"
             android:id="@+id/updateBudgetBtnDialog"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bu_dialog_delete"
+            android:id="@+id/updateBudgetBtnDialogDelete"
+            android:visibility="gone"/>
     </LinearLayout>
 
 
