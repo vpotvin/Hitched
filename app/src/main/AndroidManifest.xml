@@ -48,15 +48,10 @@
             android:name=".VendorActivity"
             android:label="@string/title_activity_vendor"
             android:theme="@style/Theme.AppCompat.Light"/>
-        <activity
-            android:name=".VendorsDetailActivity"
-            android:label="VendorsDetailActivity"
-            android:theme="@style/Theme.AppCompat.Light"/>
         <activity android:name=".Pictures"/>
         <activity
             android:name=".PicturesWeb"
             android:label="@string/title_activity_pictures_web"/>
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
