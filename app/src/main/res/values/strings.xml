@@ -14,6 +14,8 @@
     <string name="bu_dialog_btn_label">Update</string>
     <string name="title_activity_checklist">Wedding Tasks</string>
     <string name="title_activity_pictures_web">PicturesWeb</string>
+    <string name="title_activity_venue">Venue</string>
+    <string name="title_activity_wedding_dress_activity"></string>
     <string name="bu_dialog_delete">Delete</string>
 
 
