@@ -31,22 +31,77 @@
                 android:id="@+id/masterListTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="test title" />
-            <TextView
-                android:id="@+id/masterListDueDate"
+                android:layout_gravity="center_horizontal"
+                android:text="" />
+
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="test title" />
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:rowCount="1"
+                android:columnCount="3">
+
             <TextView
-                android:id="@+id/masterListCompletedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Due Date"
+                android:id="@+id/MasterDueDateView" />
+
+                <TextView
+                    android:id="@+id/masterListDueDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="" />
+
+            </GridLayout>
+
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="test title" />
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:rowCount="1"
+                android:columnCount="3">
+
             <TextView
-                android:id="@+id/masterListNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Completed Date"
+                android:id="@+id/MasterCompleterDateView" />
+
+                <TextView
+                    android:id="@+id/masterListCompletedDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="" />
+
+            </GridLayout>
+
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="test title" />
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:rowCount="1"
+                android:columnCount="3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Notes"
+                    android:id="@+id/MasterNotesView" />
+
+
+                <TextView
+                    android:id="@+id/masterListNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="" />
+
+            </GridLayout>
+
+
             <CheckBox
                 android:id="@+id/masterListCompleted"
                 android:layout_width="wrap_content"
