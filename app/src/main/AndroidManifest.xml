@@ -50,6 +50,9 @@
         <activity
             android:name=".VenueActivity"
             android:label="@string/title_activity_venue"></activity>
+        <activity
+            android:name=".GuestListActivity"
+            android:label="@string/title_activity_wedding_list"></activity>
     </application>
 
 </manifest>
