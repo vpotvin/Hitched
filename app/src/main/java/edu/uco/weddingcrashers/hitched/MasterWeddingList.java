@@ -93,7 +93,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-        // User touched the dialog's negative button
+        dialog.dismiss();
 
     }
 
