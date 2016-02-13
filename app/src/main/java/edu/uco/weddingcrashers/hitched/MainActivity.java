@@ -46,12 +46,36 @@ public class MainActivity extends Activity {
             }
         });
 
+        dress.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent dress = new Intent(MainActivity.this, WeddingDressActivity.class);
+                startActivity(dress);
+            }
+        });
+
+        venue.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent venue = new Intent(MainActivity.this, VenueActivity.class);
+                startActivity(venue);
+            }
+        });
+
+
         tasks.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent taskList = new Intent(MainActivity.this, MasterWeddingList.class);
                 startActivity(taskList);
             }
         });
+
+        guestlist.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent taskList = new Intent(MainActivity.this, GuestListActivity.class);
+                startActivity(taskList);
+            }
+        });
+
+
 
 //rehana
     }
