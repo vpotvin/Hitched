@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -47,12 +49,14 @@ public class GuestListActivity extends FragmentActivity implements GuestListNewI
         guestListAdapter = new GuestListRecViewAdapter(theList);
         recyclerView.setAdapter(guestListAdapter);
 
+        /* moved to menu bar
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 DialogFragment newFragment = new GuestListNewItem();
                 newFragment.show(getFragmentManager(), "New Entry");
             }
         });
+        */
 
     }
 
@@ -82,6 +86,29 @@ public class GuestListActivity extends FragmentActivity implements GuestListNewI
     {
         theList.add(new GuestListItem(name, address, city,state,zip,role,phone,wp));
         guestListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.guest_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if(id==R.id.action_add){
+            DialogFragment newFragment = new GuestListNewItem();
+            newFragment.show(getFragmentManager(), "New Entry");
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }
