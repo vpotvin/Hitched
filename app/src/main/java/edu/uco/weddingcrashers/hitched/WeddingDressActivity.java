@@ -52,7 +52,7 @@ public class WeddingDressActivity extends Activity {
                 theState = stateText.getText().toString();
                 if(theState.length() == 2)
                   {
-                      Intent web = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.theknot.com/fashion/" ));
+                      Intent web = new Intent(Intent.ACTION_VIEW, Uri.parse("http://locations.alfredangelo.com/" + theState + "/" + theCity + "/" ));
                       startActivity(web);
                   }
                 else
