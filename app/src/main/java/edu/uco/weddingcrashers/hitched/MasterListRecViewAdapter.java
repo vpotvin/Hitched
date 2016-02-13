@@ -64,6 +64,10 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<MasterListRec
             String reportDate = df.format(theList.get(position).getCompletedDate());
             holder.completedDate.setText(reportDate);
         }
+        else
+        {
+            holder.completedDate.setText("");
+        }
 
         holder.notes.setText(theList.get(position).getNotes());
         holder.completed.setChecked(theList.get(position).isCompleted());

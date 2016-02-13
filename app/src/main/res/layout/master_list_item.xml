@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Due Date"
+                android:text="Due Date: "
                 android:id="@+id/MasterDueDateView" />
 
                 <TextView
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Completed Date"
+                android:text="Completed Date: "
                 android:id="@+id/MasterCompleterDateView" />
 
                 <TextView
@@ -89,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Notes"
+                    android:text="Notes: "
                     android:id="@+id/MasterNotesView" />
 
 
