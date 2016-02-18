@@ -39,12 +39,21 @@ public class DetailsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI(){
         VendorList vendorList = VendorList.get(getActivity());
         List<Vendor> vendors = vendorList.getVendors();
-
-        mAdapter = new VendorAdapter(vendors);
-        mVendorRecycleView.setAdapter(mAdapter);
+        if(mAdapter == null) {
+            mAdapter = new VendorAdapter(vendors);
+            mVendorRecycleView.setAdapter(mAdapter);
+        }else{
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private class VendorHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

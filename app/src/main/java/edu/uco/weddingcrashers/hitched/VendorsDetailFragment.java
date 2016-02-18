@@ -15,14 +15,25 @@ import java.util.UUID;
  * Created by PC User on 2/11/2016.
  */
 public class VendorsDetailFragment extends Fragment {
+    private static final String ARG_VENDOR_ID = "vendorID";
     private WebView mWebView;
     private Vendor mVendor;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID vendorID = (UUID)getActivity().getIntent().getSerializableExtra(VendorsDetailActivity.EXTRA_VENDOR_ID);
+        UUID vendorID = (UUID)getArguments().getSerializable(ARG_VENDOR_ID);
         mVendor = VendorList.get(getActivity()).getVendor(vendorID);
     }
+
+    public static VendorsDetailFragment newInstance(UUID vendorID){
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_VENDOR_ID,vendorID);
+
+        VendorsDetailFragment fragment = new VendorsDetailFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Nullable
     @Override
