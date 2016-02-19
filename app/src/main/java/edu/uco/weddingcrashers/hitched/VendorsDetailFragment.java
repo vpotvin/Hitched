@@ -72,6 +72,6 @@ public class VendorsDetailFragment extends Fragment {
                 return true;
             default:return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
     }
 }
