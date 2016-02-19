@@ -27,6 +27,7 @@ public class DetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mVendor = new Vendor();
+
     }
 
     @Nullable
@@ -74,7 +75,7 @@ public class DetailsFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = VendorsDetailActivity.newIntent(getActivity(),mVendor.getVendorID());
+            Intent intent = VendorDetailsPagerActivity.newIntent(getActivity(),mVendor.getVendorID());
             startActivity(intent);
         }
     }
@@ -106,5 +107,6 @@ public class DetailsFragment extends Fragment {
         }
 
     }
+
 
 }

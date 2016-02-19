@@ -1,9 +1,13 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -21,6 +25,7 @@ public class VendorsDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         UUID vendorID = (UUID)getArguments().getSerializable(ARG_VENDOR_ID);
         mVendor = VendorList.get(getActivity()).getVendor(vendorID);
     }
@@ -48,5 +53,25 @@ public class VendorsDetailFragment extends Fragment {
         });
         mWebView.loadUrl(mVendor.getVendorWebsite());
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_vendors_detail,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_item_new_vendor:
+                Vendor vendor = new Vendor();
+                VendorList.get(getActivity()).addVendor(vendor);
+                Intent intent = VendorDetailsPagerActivity.newIntent(getActivity(),vendor.getVendorID());
+                startActivity(intent);
+                return true;
+            default:return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

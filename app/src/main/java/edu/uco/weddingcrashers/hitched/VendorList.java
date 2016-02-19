@@ -54,5 +54,9 @@ public class VendorList {
         return null;
     }
 
+    public void addVendor(Vendor vendor){
+        mVendors.add(vendor);
+    }
+
 
 }
