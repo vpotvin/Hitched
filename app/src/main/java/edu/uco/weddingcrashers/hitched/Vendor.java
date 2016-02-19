@@ -11,11 +11,23 @@ public class Vendor {
     private String mVendorContact;
     private String mVendorWebsite;
 
+    public String getQuery() {
+        return mQuery;
+    }
+
+    public void setQuery(String query) {
+        mQuery = query;
+    }
+
+    private String mQuery;
+
+
     public Vendor(){}
 
-    public Vendor(String Name, String URL) {
+    public Vendor(String Name, String URL,String Query) {
         mVendorWebsite = URL;
         mVendorName = Name;
+        mQuery = Query;
         mVendorID = UUID.randomUUID();
     }
 

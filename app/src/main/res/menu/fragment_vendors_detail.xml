@@ -5,7 +5,7 @@
     <item
         android:id="@+id/menu_item_new_vendor"
         android:icon="@drawable/ic_action_save"
-        android:title="@string/new_vendor"
+        android:title="Save to favorite list"
         app:showAsAction="ifRoom|withText"
         />
     <item
