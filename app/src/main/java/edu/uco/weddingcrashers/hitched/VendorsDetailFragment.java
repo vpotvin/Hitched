@@ -95,7 +95,7 @@ public class VendorsDetailFragment extends Fragment {
 
         @Override
         protected List<VendorPlace> doInBackground(Void... voids) {
-            return new PlaceFetchr().fetchItems(mVendor.getVendorName()+"+in+oklahoma");
+            return new PlaceFetchr().fetchItems(mVendor.getQuery());
 
         }
 

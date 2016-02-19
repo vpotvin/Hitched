@@ -54,7 +54,7 @@ public class PlaceFetchr {
                     .appendQueryParameter("query", querySearch)
                     .appendQueryParameter("key", API_KEY).build().toString();
             String jsonString = getURLString(url);
-           // Log.i(TAG, "Received JSON: " + jsonString);
+            Log.i(TAG, "Received JSON: " + jsonString);
             JSONObject jsonBody = new JSONObject(jsonString);
             parseItems(items,jsonBody);
         }catch (JSONException je){
