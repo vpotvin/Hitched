@@ -17,5 +17,5 @@ public class ItineraryItem extends ParseObject {
         put("title", title);
     }
 
-    //Testcomment
+    //Test
 }
