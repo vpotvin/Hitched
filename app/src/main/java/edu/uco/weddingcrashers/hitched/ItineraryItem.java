@@ -5,6 +5,7 @@ import com.parse.ParseObject;
 
 /**
  * Created by vdpotvin on 2/18/16.
+ *
  */
 
 @ParseClassName("ItineraryItem")
@@ -17,5 +18,12 @@ public class ItineraryItem extends ParseObject {
         put("title", title);
     }
 
-    //Test
+
+    public String getAssigned(){
+        return getString("assigned");
+    }
+
+    public void setAssigned(String assigned) {
+        put("assigned", assigned);
+    }
 }
