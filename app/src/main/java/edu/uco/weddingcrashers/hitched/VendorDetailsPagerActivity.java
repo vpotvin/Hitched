@@ -35,6 +35,7 @@ public class VendorDetailsPagerActivity extends AppCompatActivity {
         UUID vendorID = (UUID)getIntent().getSerializableExtra(EXTRA_VENDOR_ID);
 
         mViewPager = (ViewPager) findViewById(R.id.activity_vendor_details_pager_view_pager);
+        mVendors = VendorList.get(this).getVendors();
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override

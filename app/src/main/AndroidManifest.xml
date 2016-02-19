@@ -49,6 +49,11 @@
             android:label="@string/title_activity_vendor"
             android:theme="@style/Theme.AppCompat.Light"
             android:parentActivityName=".DetailActivity"/>
+        <activity
+            android:name=".SavedVendorListActivity"
+            android:label="SavedVendorListActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:parentActivityName=".VendorDetailsPagerActivity"/>
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"

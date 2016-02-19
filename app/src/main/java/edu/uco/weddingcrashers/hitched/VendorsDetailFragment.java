@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +21,7 @@ import java.util.UUID;
  */
 public class VendorsDetailFragment extends Fragment {
     private static final String ARG_VENDOR_ID = "vendorID";
+    private static final String DIALOG_SAVE_VENDOR = "DialogSaveVendor";
     private WebView mWebView;
     private Vendor mVendor;
     @Override
@@ -65,11 +67,14 @@ public class VendorsDetailFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_item_new_vendor:
-                Vendor vendor = new Vendor();
-                VendorList.get(getActivity()).addVendor(vendor);
-                Intent intent = VendorDetailsPagerActivity.newIntent(getActivity(),vendor.getVendorID());
-                startActivity(intent);
+                FragmentManager fragmentManager = getFragmentManager();
+                SaveVendorFragment dialog = new SaveVendorFragment();
+                dialog.show(fragmentManager,DIALOG_SAVE_VENDOR);
                 return true;
+            case R.id.menu_item_favorite:
+                Intent i = new Intent(getActivity(),SavedVendorListActivity.class);
+                startActivity(i);
+
             default:return super.onOptionsItemSelected(item);
         }
 
