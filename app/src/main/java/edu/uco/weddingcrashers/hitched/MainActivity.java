@@ -44,8 +44,7 @@ public class MainActivity extends Activity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
-        you = (TextView)findViewById(R.id.you);
-        your = (TextView)findViewById(R.id.your);
+
 
         budget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
