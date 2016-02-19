@@ -75,6 +75,13 @@ public class MainActivity extends Activity {
             }
         });
 
+        itinerary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ItineraryActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 //rehana

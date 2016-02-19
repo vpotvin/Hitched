@@ -17,8 +17,8 @@
     <string name="title_activity_venue">Venue</string>
     <string name="title_activity_wedding_dress_activity"></string>
     <string name="bu_dialog_delete">Delete</string>
-
-
+    <string name="bu_itin_add">Add</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_wedding_list">WeddingListActivity</string>
+    <string name="title_activity_itinerary">ItineraryActivity</string>
 </resources>
