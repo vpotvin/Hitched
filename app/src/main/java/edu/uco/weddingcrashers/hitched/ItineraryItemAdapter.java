@@ -28,7 +28,7 @@ public class ItineraryItemAdapter extends ArrayAdapter<ItineraryItem> {
         }
 
         TextView titleText = (TextView) convertView.findViewById(R.id.itinerary_item_title);
-        TextView assignedText = (TextView) convertView.findViewById(R.id.itinerary_item_title);
+        TextView assignedText = (TextView) convertView.findViewById(R.id.itinerary_item_assigned);
 
         titleText.setText(item.getTitle());
         assignedText.setText(item.getAssigned());
