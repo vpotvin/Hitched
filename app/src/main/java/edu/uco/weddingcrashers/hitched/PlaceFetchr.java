@@ -19,8 +19,9 @@ import java.util.List;
  * Created by PC User on 2/19/2016.
  */
 public class PlaceFetchr {
+
     private static final String TAG="PlaceFetchr";
-    private static final String API_KEY="AIzaSyBRu-KJvYrtEFvz-yq5EGb8XawJEBcBHQY";
+    private static final String API_KEY="AIzaSyCDKd67CHYPX2PvtpHjCuIiJxA7Yuw5c54";
     public byte[] getURLBytes(String urlSpec) throws IOException{
         URL url = new URL(urlSpec);
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();

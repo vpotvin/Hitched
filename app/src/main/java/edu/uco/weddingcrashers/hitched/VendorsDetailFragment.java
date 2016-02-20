@@ -128,7 +128,8 @@ public class VendorsDetailFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-           //do nothing yet
+           Intent intent = new Intent(getActivity(),VendorActivity.class);
+            startActivity(intent);
         }
     }
 
