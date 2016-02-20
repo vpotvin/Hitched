@@ -40,17 +40,18 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vendor,container,false);
         mTextView = (TextView) view.findViewById(R.id.place_text_view);
-        getPlace();
-        return view;
-
-    }
-    public void getPlace(){
-
         mGoogleApiClient = new GoogleApiClient
                 .Builder(getActivity())
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
                 .build();
+        getPlace();
+        mTextView.setText("Place : "+mPlace);
+        return view;
+
+    }
+    public void getPlace(){
+        mGoogleApiClient.connect();
 
         Places.GeoDataApi.getPlaceById(mGoogleApiClient,"ChIJl0i7rChosocRBl0nZ3IcVyw")
                 .setResultCallback(new ResultCallback<PlaceBuffer>() {
@@ -58,7 +59,10 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
                     public void onResult(PlaceBuffer places) {
                         if(places.getStatus().isSuccess()&&places.getCount()>0) {
                             mPlace = places.get(0);
-                            mTextView.setText(mPlace.getName());
+                            mTextView.setText("Name: " + mPlace.getName() +
+                                              "Phone: " + mPlace.getPhoneNumber()+
+                                              "Address: " + mPlace.getAddress()
+                                            + "Rating: " + mPlace.getRating());
                             Toast.makeText(getActivity(),mPlace.getName(),Toast.LENGTH_LONG).show();
                             Log.i(TAG,"Place found: " + mPlace.getName());
                         }
