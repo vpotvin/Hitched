@@ -29,7 +29,7 @@ import com.squareup.picasso.Picasso;
  * Created by PC User on 2/4/2016.
  */
 public class VendorFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
-    private static final String API_KEY="AIzaSyBRu-KJvYrtEFvz-yq5EGb8XawJEBcBHQY";
+    private static final String API_KEY="AIzaSyCIfbPXJZ4l_JQof-zQvJNwITN6TmUGNMk";
     private static final String ARG_PLACE_ID = "placeID";
     private static final String ARG_ICON_URL = "iconURL";
     private static final String TAG = "PlaceAPI";
@@ -96,6 +96,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
                     public void onResult(PlaceBuffer places) {
                         if (places.getStatus().isSuccess() && places.getCount() > 0) {
                             mPlace = places.get(0);
+
                             mName.setText(mPlace.getName());
                             mAddress.setText(mPlace.getAddress());
                             mPhone.setText(mPlace.getPhoneNumber());
@@ -140,13 +141,20 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
         switch (item.getItemId()){
             case R.id.menu_item_save_vendor:
                 SavedVendor savedVendor = new SavedVendor();
+                savedVendor.setId(placeID);
                 savedVendor.setName(mName.getText().toString());
                 savedVendor.setAddress(mAddress.getText().toString());
                 savedVendor.setPhone(mPhone.getText().toString());
-                savedVendor.setRating(mRatingBar.getRating());
+                savedVendor.setRating(String.valueOf(mRatingBar.getRating()));
                 savedVendor.setWebsite(mWeb.getText().toString());
-                SavedVendorList.get(getActivity()).addSavedVendor(savedVendor);
-                Toast.makeText(getActivity(),"Saved Successfully",Toast.LENGTH_SHORT).show();
+                if(iconURL == null)
+                    iconURL="Unknown";
+                savedVendor.setImgURL(iconURL);
+                boolean flag = SavedVendorList.get(getActivity()).addSavedVendor(savedVendor);
+                if(flag == true)
+                    Toast.makeText(getActivity(),"Saved Successfully",Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getActivity(),"This vendor is already on the list",Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.menu_item_favorite:
                 Intent i = new Intent(getActivity(),SavedVendorListActivity.class);
