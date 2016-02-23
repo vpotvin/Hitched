@@ -99,9 +99,8 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
                             mName.setText(mPlace.getName());
                             mAddress.setText(mPlace.getAddress());
                             mPhone.setText(mPlace.getPhoneNumber());
-                            mWeb.setText(mPlace.getWebsiteUri().toString());
-                            mRatingBar.setIsIndicator(true);
-                            mRatingBar.setMax(5);
+                            if(mPlace.getWebsiteUri() != null)
+                                mWeb.setText(mPlace.getWebsiteUri().toString());
                             mRatingBar.setRating(mPlace.getRating());
                             String url = Uri.parse("https://maps.googleapis.com/maps/api/place/photo")
                                     .buildUpon()
@@ -110,8 +109,9 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
                                     .appendQueryParameter("key", API_KEY).build().toString();
                             Picasso.with(getActivity())
                                     .load(url)
+                                    .centerCrop()
+                                    .resize(600,400)
                                     .into(mImageView);
-                            Toast.makeText(getActivity(), mPlace.getName() + "String Query " + url, Toast.LENGTH_LONG).show();
                             Log.i(TAG, "Place found: " + mPlace.getName());
                             Log.i(TAG,"URL request: " + url);
                         } else {
