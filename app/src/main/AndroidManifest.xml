@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:name=".ParseDatabase"
@@ -71,6 +72,9 @@
         <activity
             android:name=".ItineraryActivity"
             android:label="@string/title_activity_itinerary"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
     </application>
 
 </manifest>

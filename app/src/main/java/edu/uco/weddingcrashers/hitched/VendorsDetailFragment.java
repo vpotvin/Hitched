@@ -34,7 +34,7 @@ public class VendorsDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new FetchItemsTask().execute();
-        setHasOptionsMenu(true);
+
         UUID vendorID = (UUID)getArguments().getSerializable(ARG_VENDOR_ID);
         mVendor = VendorList.get(getActivity()).getVendor(vendorID);
     }
@@ -69,28 +69,7 @@ public class VendorsDetailFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_vendors_detail,menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu_item_new_vendor:
-                FragmentManager fragmentManager = getFragmentManager();
-                SaveVendorFragment dialog = new SaveVendorFragment();
-                dialog.show(fragmentManager,DIALOG_SAVE_VENDOR);
-                return true;
-            case R.id.menu_item_favorite:
-                Intent i = new Intent(getActivity(),SavedVendorListActivity.class);
-                startActivity(i);
-
-            default:return super.onOptionsItemSelected(item);
-        }
-
-    }
     private class FetchItemsTask extends AsyncTask<Void,Void,List<VendorPlace>>{
 
         @Override
@@ -123,12 +102,14 @@ public class VendorsDetailFragment extends Fragment {
             mAddressTextView.setText(mVendor.getAddress());
             mPriveLevelTextView.setText(mVendor.getPriceLevel());
             mRatingTextView.setText(mVendor.getRating());
+
             // mImageView.setImageResource(R.drawable.a);
         }
 
         @Override
         public void onClick(View view) {
-           //do nothing yet
+           Intent intent = VendorActivity.newIntent(getActivity(),mVendor.getID(),mVendor.getIconURL());
+            startActivity(intent);
         }
     }
 

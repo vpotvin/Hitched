@@ -127,6 +127,7 @@
     <orderEntry type="library" exported="" name="play-services-base-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-location-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-identity-8.1.0" level="project" />
+    <orderEntry type="library" exported="" name="picasso-2.3.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-vision-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="bolts-tasks-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.1.1" level="project" />
