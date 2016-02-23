@@ -20,33 +20,35 @@ import java.util.List;
  */
 public class PlaceFetchr {
 
-    private static final String TAG="PlaceFetchr";
-    private static final String API_KEY="AIzaSyCDKd67CHYPX2PvtpHjCuIiJxA7Yuw5c54";
-    public byte[] getURLBytes(String urlSpec) throws IOException{
+    private static final String TAG = "PlaceFetchr";
+    private static final String API_KEY = "AIzaSyBRu-KJvYrtEFvz-yq5EGb8XawJEBcBHQY";
+
+    public byte[] getURLBytes(String urlSpec) throws IOException {
         URL url = new URL(urlSpec);
-        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-        try{
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        try {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             InputStream in = connection.getInputStream();
-            if(connection.getResponseCode()!= HttpURLConnection.HTTP_OK){
-                throw new IOException(connection.getResponseMessage()+":with"+urlSpec);
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                throw new IOException(connection.getResponseMessage() + ":with" + urlSpec);
             }
             int bytesRead = 0;
             byte[] buffer = new byte[1024];
-            while((bytesRead=in.read(buffer))>0){
-                out.write(buffer,0,bytesRead);
+            while ((bytesRead = in.read(buffer)) > 0) {
+                out.write(buffer, 0, bytesRead);
             }
             out.close();
             return out.toByteArray();
-        }finally {
+        } finally {
             connection.disconnect();
         }
     }
-    String getURLString(String urlSpec) throws IOException{
+
+    String getURLString(String urlSpec) throws IOException {
         return new String(getURLBytes(urlSpec));
     }
 
-    public List<VendorPlace> fetchItems(String querySearch){
+    public List<VendorPlace> fetchItems(String querySearch) {
         List<VendorPlace> items = new ArrayList<>();
 
         try {
@@ -57,23 +59,35 @@ public class PlaceFetchr {
             String jsonString = getURLString(url);
             Log.i(TAG, "Received JSON: " + jsonString);
             JSONObject jsonBody = new JSONObject(jsonString);
-            parseItems(items,jsonBody);
-        }catch (JSONException je){
-            Log.e(TAG,"Failed to parse JSON",je);
-        }catch (IOException ioe){
-            Log.e(TAG,"Failed to fetch items",ioe);
+            parseItems(items, jsonBody);
+        } catch (JSONException je) {
+            Log.e(TAG, "Failed to parse JSON", je);
+        } catch (IOException ioe) {
+            Log.e(TAG, "Failed to fetch items", ioe);
         }
         return items;
     }
 
-    private void parseItems(List<VendorPlace> items,JSONObject jsonBody) throws IOException,JSONException{
+    private void parseItems(List<VendorPlace> items, JSONObject jsonBody) throws IOException, JSONException {
         JSONArray resultJsonArray = jsonBody.getJSONArray("results");
-        for(int i =0;i<resultJsonArray.length();i++){
-            JSONObject resultJsonObject = resultJsonArray.getJSONObject(i);
+
+        for (int i = 0; i < resultJsonArray.length(); i++) {
             VendorPlace item = new VendorPlace();
+            JSONObject resultJsonObject = resultJsonArray.getJSONObject(i);
+            if (resultJsonObject.has("photos")) {
+                JSONArray photoJsonArray = resultJsonObject.getJSONArray("photos");
+                if (photoJsonArray.length() > 0) {
+                    for (int j = 0; j < photoJsonArray.length(); j++) {
+                        JSONObject photoJsonObject = photoJsonArray.getJSONObject(j);
+                        item.setIconURL(photoJsonObject.getString("photo_reference"));
+                    }
+                }
+            }
             item.setAddress(resultJsonObject.getString("formatted_address"));
             item.setName(resultJsonObject.getString("name"));
-           // item.setPriceLevel(resultJsonObject.getString("price_level"));
+            item.setID(resultJsonObject.getString("place_id"));
+
+            // item.setPriceLevel(resultJsonObject.getString("price_level"));
             //item.setRating(resultJsonObject.getString("rating"));
             items.add(item);
         }

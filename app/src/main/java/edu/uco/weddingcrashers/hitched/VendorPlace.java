@@ -8,6 +8,25 @@ public class VendorPlace {
     private String mName;
     private String mRating;
     private String mPriceLevel;
+    private String mID;
+    private String iconURL;
+
+    public String getIconURL() {
+        return iconURL;
+    }
+
+    public void setIconURL(String iconURL) {
+        this.iconURL = iconURL;
+    }
+
+    public String getID() {
+        return mID;
+    }
+
+    public void setID(String ID) {
+        mID = ID;
+    }
+
 
     public String getAddress() {
         return mAddress;

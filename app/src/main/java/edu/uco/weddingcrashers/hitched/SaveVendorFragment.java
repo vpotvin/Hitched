@@ -39,7 +39,6 @@ public class SaveVendorFragment extends DialogFragment {
                         SavedVendor savedVendor = new SavedVendor();
                         savedVendor.setName(name.getText().toString());
                         savedVendor.setAddress(address.getText().toString());
-                        savedVendor.setEmail(email.getText().toString());
                         savedVendor.setPhone(phone.getText().toString());
                         savedVendor.setComment(review.getText().toString());
                         savedVendor.setRating(mRatingBar.getRating());

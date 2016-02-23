@@ -1,12 +1,19 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,58 +23,99 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by PC User on 2/4/2016.
  */
 public class VendorFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
-    private static final String TAG="PlaceAPI";
+    private static final String API_KEY="AIzaSyBRu-KJvYrtEFvz-yq5EGb8XawJEBcBHQY";
+    private static final String ARG_PLACE_ID = "placeID";
+    private static final String ARG_ICON_URL = "iconURL";
+    private static final String TAG = "PlaceAPI";
     private GoogleApiClient mGoogleApiClient;
     private Place mPlace;
-    TextView mTextView;
+    private String placeID, iconURL;
+    TextView mName, mAddress, mPhone, mWeb, mReview;
+    ImageView mImageView;
+    RatingBar mRatingBar;
+
+    public static VendorFragment newInstance(String placeID, String iconURL) {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_PLACE_ID, placeID);
+        args.putSerializable(ARG_ICON_URL, iconURL);
+
+        VendorFragment fragment = new VendorFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+        placeID = (String) getArguments().getSerializable(ARG_PLACE_ID);
+        iconURL = (String) getArguments().getSerializable(ARG_ICON_URL);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_vendor,container,false);
-        mTextView = (TextView) view.findViewById(R.id.place_text_view);
+        View view = inflater.inflate(R.layout.fragment_vendor, container, false);
+        mName = (TextView) view.findViewById(R.id.place_text_view_name);
+        mAddress = (TextView) view.findViewById(R.id.place_text_view_address);
+        mPhone = (TextView) view.findViewById(R.id.place_text_view_phone);
+        mReview = (TextView) view.findViewById(R.id.place_text_view_comment);
+        mWeb = (TextView) view.findViewById(R.id.place_text_view_website);
+        mImageView = (ImageView) view.findViewById(R.id.place_web_view_image);
+        mRatingBar = (RatingBar) view.findViewById(R.id.place_rating);
+
         mGoogleApiClient = new GoogleApiClient
                 .Builder(getActivity())
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
                 .build();
         getPlace();
-        mTextView.setText("Place : "+mPlace);
         return view;
 
     }
-    public void getPlace(){
+
+    public void getPlace() {
         mGoogleApiClient.connect();
 
-        Places.GeoDataApi.getPlaceById(mGoogleApiClient,"ChIJl0i7rChosocRBl0nZ3IcVyw")
+        Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeID)
                 .setResultCallback(new ResultCallback<PlaceBuffer>() {
                     @Override
                     public void onResult(PlaceBuffer places) {
-                        if(places.getStatus().isSuccess()&&places.getCount()>0) {
+                        if (places.getStatus().isSuccess() && places.getCount() > 0) {
                             mPlace = places.get(0);
-                            mTextView.setText("Name: " + mPlace.getName() +
-                                              "Phone: " + mPlace.getPhoneNumber()+
-                                              "Address: " + mPlace.getAddress()
-                                            + "Rating: " + mPlace.getRating());
-                            Toast.makeText(getActivity(),mPlace.getName(),Toast.LENGTH_LONG).show();
-                            Log.i(TAG,"Place found: " + mPlace.getName());
-                        }
-                        else {
-                            Log.e(TAG,"Error");
+                            mName.setText(mPlace.getName());
+                            mAddress.setText(mPlace.getAddress());
+                            mPhone.setText(mPlace.getPhoneNumber());
+                            mWeb.setText(mPlace.getWebsiteUri().toString());
+                            mRatingBar.setIsIndicator(true);
+                            mRatingBar.setMax(5);
+                            mRatingBar.setRating(mPlace.getRating());
+                            String url = Uri.parse("https://maps.googleapis.com/maps/api/place/photo")
+                                    .buildUpon()
+                                    .appendQueryParameter("maxwidth","600")
+                                    .appendQueryParameter("photoreference", iconURL)
+                                    .appendQueryParameter("key", API_KEY).build().toString();
+                            Picasso.with(getActivity())
+                                    .load(url)
+                                    .into(mImageView);
+                            Toast.makeText(getActivity(), mPlace.getName() + "String Query " + url, Toast.LENGTH_LONG).show();
+                            Log.i(TAG, "Place found: " + mPlace.getName());
+                            Log.i(TAG,"URL request: " + url);
+                        } else {
+                            Log.e(TAG, "Error");
                         }
                         places.release();
                     }
@@ -77,7 +125,43 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        Toast.makeText(getActivity(),"Error",Toast.LENGTH_LONG).show();
-        Log.e(TAG,"error when connect");
+        Toast.makeText(getActivity(), "Error", Toast.LENGTH_LONG).show();
+        Log.e(TAG, "error when connect");
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_vendors_detail,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_item_save_vendor:
+                SavedVendor savedVendor = new SavedVendor();
+                savedVendor.setName(mName.getText().toString());
+                savedVendor.setAddress(mAddress.getText().toString());
+                savedVendor.setPhone(mPhone.getText().toString());
+                savedVendor.setRating(mRatingBar.getRating());
+                savedVendor.setWebsite(mWeb.getText().toString());
+                SavedVendorList.get(getActivity()).addSavedVendor(savedVendor);
+                Toast.makeText(getActivity(),"Saved Successfully",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menu_item_favorite:
+                Intent i = new Intent(getActivity(),SavedVendorListActivity.class);
+                startActivity(i);
+                return true;
+            case R.id.menu_item_web:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mWeb.getText().toString()));
+                startActivity(browserIntent);
+                return true;
+            case R.id.menu_item_call:
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel: "+mPhone.getText().toString()));
+                startActivity(intent);
+                return true;
+            default:return super.onOptionsItemSelected(item);
+        }
+
     }
 }

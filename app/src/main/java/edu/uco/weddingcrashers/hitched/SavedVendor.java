@@ -1,16 +1,13 @@
 package edu.uco.weddingcrashers.hitched;
 
-import java.util.UUID;
-
 /**
  * Created by PC User on 2/18/2016.
  */
 public class SavedVendor {
     private String name;
-    private UUID id;
+    private String id;
     private String website;
     private String phone;
-    private String email;
     private float rating;
     private String comment;
     private String address;
@@ -24,10 +21,10 @@ public class SavedVendor {
     }
 
     public SavedVendor() {
-        id = UUID.randomUUID();
+
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
     public String getName() {
@@ -54,13 +51,6 @@ public class SavedVendor {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getComment() {
         return comment;

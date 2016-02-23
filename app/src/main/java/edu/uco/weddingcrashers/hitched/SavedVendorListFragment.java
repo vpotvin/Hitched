@@ -67,7 +67,10 @@ public class SavedVendorListFragment extends Fragment {
         }
         public void bindVendor(SavedVendor vendor){
             mVendor = vendor;
-            mTextView.setText(mVendor.getName());
+            mTextView.setText("Name: " + mVendor.getName()
+                    + "\n Address" + mVendor.getAddress()
+                    + "\n Phone: " + mVendor.getPhone()
+                    +"\n Website: "+ mVendor.getWebsite());
             // mImageView.setImageResource(R.drawable.a);
         }
 
