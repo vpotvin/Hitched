@@ -8,9 +8,18 @@ public class SavedVendor {
     private String id;
     private String website;
     private String phone;
-    private float rating;
+    private String rating;
     private String comment;
     private String address;
+    private String imgURL;
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
 
     public String getAddress() {
         return address;
@@ -27,6 +36,7 @@ public class SavedVendor {
     public String getId() {
         return id;
     }
+    public void setId(String id){this.id = id;}
     public String getName() {
         return name;
     }
@@ -60,11 +70,11 @@ public class SavedVendor {
         this.comment = comment;
     }
 
-    public float getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 }

@@ -21,7 +21,7 @@ import java.util.List;
 public class PlaceFetchr {
 
     private static final String TAG = "PlaceFetchr";
-    private static final String API_KEY = "AIzaSyBRu-KJvYrtEFvz-yq5EGb8XawJEBcBHQY";
+    private static final String API_KEY = "AIzaSyCIfbPXJZ4l_JQof-zQvJNwITN6TmUGNMk";
 
     public byte[] getURLBytes(String urlSpec) throws IOException {
         URL url = new URL(urlSpec);

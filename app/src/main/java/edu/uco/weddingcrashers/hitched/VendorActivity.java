@@ -22,4 +22,5 @@ public class VendorActivity extends SingleFragmentActivity{
     }
 
 
+
 }

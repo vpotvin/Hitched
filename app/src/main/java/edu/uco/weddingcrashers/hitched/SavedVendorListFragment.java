@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+
 import java.util.List;
 
 /**
@@ -18,13 +20,14 @@ import java.util.List;
  */
 public class SavedVendorListFragment extends Fragment {
     private RecyclerView mVendorRecycleView;
-    private SavedVendor mVendor;
     private VendorAdapter mAdapter;
+    private ParseObject mFavoriteVendor;
+    private List<SavedVendor> mVendors;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mVendor = new SavedVendor();
 
     }
 
@@ -82,7 +85,7 @@ public class SavedVendorListFragment extends Fragment {
     }
 
     private class VendorAdapter extends RecyclerView.Adapter<VendorHolder>{
-        private List<SavedVendor> mVendors;
+
 
         public VendorAdapter(List<SavedVendor> vendors){
             mVendors = vendors;
@@ -98,8 +101,8 @@ public class SavedVendorListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(VendorHolder vendorHolder, int i) {
-            SavedVendor vendor = mVendors.get(i);
-            vendorHolder.bindVendor(vendor);
+            SavedVendor mSaveVendor = mVendors.get(i);
+            vendorHolder.bindVendor(mSaveVendor);
         }
 
         @Override
@@ -108,4 +111,26 @@ public class SavedVendorListFragment extends Fragment {
         }
 
     }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        SavedVendorList vendorList = SavedVendorList.get(getActivity());
+
+        for(int i = 0;i<mVendors.size();i++){
+            mFavoriteVendor = new ParseObject("FavoriteVendors");
+            SavedVendor mSaveVendor = mVendors.get(i);
+            mFavoriteVendor.put("vendorID",mSaveVendor.getId());
+            mFavoriteVendor.put("name",mSaveVendor.getName());
+            mFavoriteVendor.put("address",mSaveVendor.getAddress());
+            mFavoriteVendor.put("phone",mSaveVendor.getPhone());
+            mFavoriteVendor.put("rating",String.valueOf(mSaveVendor.getRating()));
+            mFavoriteVendor.put("website",mSaveVendor.getWebsite());
+            mFavoriteVendor.put("imgURL",mSaveVendor.getImgURL());
+        }
+        mFavoriteVendor.saveInBackground();
+    }
+
+
 }

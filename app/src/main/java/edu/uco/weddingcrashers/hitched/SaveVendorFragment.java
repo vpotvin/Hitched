@@ -41,7 +41,7 @@ public class SaveVendorFragment extends DialogFragment {
                         savedVendor.setAddress(address.getText().toString());
                         savedVendor.setPhone(phone.getText().toString());
                         savedVendor.setComment(review.getText().toString());
-                        savedVendor.setRating(mRatingBar.getRating());
+                        savedVendor.setRating(String.valueOf(mRatingBar.getRating()));
                         SavedVendorList.get(getActivity()).addSavedVendor(savedVendor);
                         Toast.makeText(getActivity(),"Saved Successfully",Toast.LENGTH_SHORT).show();
                     }
