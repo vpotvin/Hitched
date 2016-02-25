@@ -125,7 +125,7 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
                         emails[i] = objects.get(i).getEmail();
                     }
                     //TODO troubleshoot email
-//                    sendEmail(pos, emails);
+                    sendEmail(pos, emails);
                 }
             }
         });
@@ -161,8 +161,8 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
 
         String emailBody = "Hey, " + item.getAssigned() + "! I have assigned you the " +
-                "following task on my wedding day: " + item.getTitle() + ". It will need to happen" +
-                "at " + simpleDateFormat.format(item.getTime()) + ".";
+                "following task on my wedding day: " + item.getTitle() + ". It will need to happen "
+                + "at " + simpleDateFormat.format(item.getTime()) + ".";
         double tip = item.getTip();
         if(tip != 0) emailBody = emailBody + "Please tip " +
                 NumberFormat.getCurrencyInstance().format(tip);

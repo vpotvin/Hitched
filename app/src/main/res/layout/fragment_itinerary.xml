@@ -68,14 +68,14 @@
             android:id="@+id/tipEdit" />
     </LinearLayout>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/bu_dialog_btn_label"
         android:id="@+id/bu_itin_update"
         />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/bu_dialog_delete"
         android:id="@+id/bu_itin_delete"
