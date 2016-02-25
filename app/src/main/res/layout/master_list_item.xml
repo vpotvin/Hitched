@@ -10,7 +10,7 @@
     card_view:cardCornerRadius="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     app:cardUseCompatPadding="true"
-    android:background="#DABCD2"
+    android:background="#F6ECEB"
     xmlns:app="http://schemas.android.com/tools">
 
 
@@ -21,98 +21,47 @@
     -->
 
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical" android:layout_width="match_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F6ECEB">
+
+
+        <TextView
+            android:id="@+id/masterListTitle"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#DABCD2">
+            android:text="test title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#DE84B5"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/masterListDueDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="test title" />
+        <TextView
+            android:id="@+id/masterListCompletedDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="test title" />
+        <TextView
+            android:id="@+id/masterListNotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="test title" />
+        <CheckBox
+            android:id="@+id/masterListCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:editable="false"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/masterListTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:text="" />
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:rowCount="1"
-                android:columnCount="3">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Due Date: "
-                android:id="@+id/MasterDueDateView" />
-
-                <TextView
-                    android:id="@+id/masterListDueDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="" />
-
-            </GridLayout>
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:rowCount="1"
-                android:columnCount="3">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Completed Date: "
-                android:id="@+id/MasterCompleterDateView" />
-
-                <TextView
-                    android:id="@+id/masterListCompletedDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="" />
-
-            </GridLayout>
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:rowCount="1"
-                android:columnCount="3">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Notes: "
-                    android:id="@+id/MasterNotesView" />
-
-
-                <TextView
-                    android:id="@+id/masterListNotes"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="" />
-
-            </GridLayout>
-
-
-            <CheckBox
-                android:id="@+id/masterListCompleted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Completed"
-                android:editable="false"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
-
-
-    </android.support.v7.widget.CardView>
+</android.support.v7.widget.CardView>
 
 
 

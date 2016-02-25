@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:name=".ParseDatabase"
@@ -20,7 +19,7 @@
             android:value="@string/parse_client_key" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="Main Menu" />
         <activity
             android:name=".BudgetActivity"
             android:label="@string/title_activity_budget" />
@@ -75,6 +77,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"/>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up"></activity>
     </application>
 
 </manifest>
