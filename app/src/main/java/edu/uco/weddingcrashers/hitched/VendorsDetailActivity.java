@@ -10,7 +10,7 @@ import java.util.UUID;
  * Created by PC User on 2/11/2016.
  */
 public class VendorsDetailActivity extends SingleFragmentActivity{
-    public static final String EXTRA_VENDOR_ID = "edu.uco.weddingcrashers.hitched.vendor_id";
+    private static final String EXTRA_VENDOR_ID = "edu.uco.weddingcrashers.hitched.vendor_id";
     public static Intent newIntent(Context packageContext, UUID vendorID){
         Intent intent = new Intent(packageContext,VendorsDetailActivity.class);
         intent.putExtra(EXTRA_VENDOR_ID,vendorID);
@@ -18,6 +18,7 @@ public class VendorsDetailActivity extends SingleFragmentActivity{
     }
     @Override
     protected Fragment createFragment() {
-        return new VendorsDetailFragment();
+        UUID vendorID = (UUID) getIntent().getSerializableExtra(EXTRA_VENDOR_ID);
+        return VendorsDetailFragment.newInstance(vendorID);
     }
 }
