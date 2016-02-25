@@ -16,7 +16,7 @@ import com.parse.ParseUser;
 
 public class Login extends Activity {
 
-    private Button loginbutton;
+    private Button loginbutton,testbutton;
     private EditText user,password;
     private TextView signUpTextView;
 
@@ -30,6 +30,7 @@ public class Login extends Activity {
         password = (EditText)findViewById(R.id.password);
         loginbutton = (Button)findViewById(R.id.loginbutton);
         signUpTextView = (TextView)findViewById(R.id.signupButton);
+        testbutton = (Button)findViewById(R.id.testbutton);
 
         signUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +39,14 @@ public class Login extends Activity {
                 startActivity(intent3);
             }
         });
+        testbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setText("hitched");
+                password.setText("pass");
+            }
+        });
+
         loginbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

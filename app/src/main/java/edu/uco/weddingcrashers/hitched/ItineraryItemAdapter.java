@@ -39,8 +39,10 @@ public class ItineraryItemAdapter extends ArrayAdapter<ItineraryItem> {
 
         tipText.setText(NumberFormat.getCurrencyInstance().format(item.getTip()));
 
-        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
-        timeText.setText(timeFormat.format(item.getTime()));
+        if(item.getTime() != null) {
+            SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+            timeText.setText(timeFormat.format(item.getTime()));
+        } else timeText.setText("Any Time");
 
         return convertView;
     }
