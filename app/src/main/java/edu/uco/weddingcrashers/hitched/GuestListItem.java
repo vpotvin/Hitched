@@ -1,90 +1,100 @@
 package edu.uco.weddingcrashers.hitched;
 
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+
 /**
  * Created by drenf on 2/10/2016.
  */
-public class GuestListItem {
-    private String name;
-    private String address;
-    private String city;
-    private String state;
-    private String zipcode;
-    private String phoneNumber;
-    private String role;
-    private boolean weddingParty;
 
-    public GuestListItem(String name, String address, String city, String state, String zipcode, String role, String phoneNumber, boolean weddingParty) {
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
-        this.role = role;
-        this.phoneNumber = phoneNumber;
-        this.weddingParty = weddingParty;
+@ParseClassName("GuestListItem")
+public class GuestListItem extends ParseObject {
+
+    public GuestListItem(){}
+
+    public GuestListItem(String name, String address, String city, String state, String zipcode,
+                         String role, String phoneNumber, boolean weddingParty, String email) {
+        this();
+        this.setName(name);
+        this.setAddress(address);
+        this.setCity(city);
+        this.setState(state);
+        this.setZipcode(zipcode);
+        this.setRole(role);
+        this.setPhoneNumber(phoneNumber);
+        this.setWeddingParty(weddingParty);
+        this.setEmail(email);
     }
 
     public String getName() {
-        return name;
+        return getString("name");
     }
 
     public void setName(String name) {
-        this.name = name;
+        put("name", name);
     }
 
     public String getAddress() {
-        return address;
+        return getString("address");
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        put("address", address);
     }
 
     public String getCity() {
-        return city;
+        return getString("city");
     }
 
     public void setCity(String city) {
-        this.city = city;
+        put("city", city);
     }
 
     public String getState() {
-        return state;
+        return getString("state");
     }
 
     public void setState(String state) {
-        this.state = state;
+        put("state", state);
     }
 
     public String getZipcode() {
-        return zipcode;
+        return getString("zipcode");
     }
 
     public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+        put("zipcode", zipcode);
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return getString("phone_number");
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        put("phone_number", phoneNumber);
     }
 
     public String getRole() {
-        return role;
+        return getString("role");
     }
 
     public void setRole(String role) {
-        this.role = role;
+        put("role", role);
     }
 
     public boolean isWeddingParty() {
-        return weddingParty;
+        return getBoolean("wedding_party");
     }
 
     public void setWeddingParty(boolean weddingParty) {
-        this.weddingParty = weddingParty;
+        put("wedding_party", weddingParty);
+    }
+
+    public String getEmail(){
+        return getString("email");
+    }
+
+    public void setEmail(String email){
+        put("email", email);
     }
 }
