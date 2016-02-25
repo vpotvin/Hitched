@@ -38,8 +38,17 @@ public class GuestListActivity extends FragmentActivity implements GuestListNewI
 
         theList = new ArrayList<GuestListItem>();
 
-        theList.add(new GuestListItem("Derek Renfro", "6816 Bear Canyon", "Oklahoma City", "OK", "73162", "Groom", "405-517-7375", true));
-        theList.add(new GuestListItem("Derek Renfro", "6816 Bear Canyon", "Oklahoma City", "OK", "73162", "Groom", "405-517-7375", true));
+        GuestListItem item = new GuestListItem("Derek Renfro", "6816 Bear Canyon", "Oklahoma City",
+                "OK", "73162", "Groom", "405-517-7375", true, "hitchedtestemail@gmail.com");
+        item.saveInBackground();
+
+        theList.add(item);
+
+        item = new GuestListItem("Hannah Helper", "1234 Somewhere Ln", "Oklahoma City", "OK",
+                "73209", "Bridesmaid", "505-222-3333", true, "hitchedtestemail@gmail.com");
+        item.saveInBackground();
+
+        theList.add(item);
 
         guestListAdapter = new GuestListRecViewAdapter(theList);
         recyclerView.setAdapter(guestListAdapter);
@@ -79,7 +88,7 @@ public class GuestListActivity extends FragmentActivity implements GuestListNewI
 
     private void addTask(String name, String address, String city, String state, String zip, String role,String phone, boolean wp)
     {
-        theList.add(new GuestListItem(name, address, city,state,zip,role,phone,wp));
+        theList.add(new GuestListItem(name, address, city,state,zip,role,phone,wp, null));
         guestListAdapter.notifyDataSetChanged();
     }
 

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -29,9 +31,16 @@ public class ItineraryItemAdapter extends ArrayAdapter<ItineraryItem> {
 
         TextView titleText = (TextView) convertView.findViewById(R.id.itinerary_item_title);
         TextView assignedText = (TextView) convertView.findViewById(R.id.itinerary_item_assigned);
+        TextView timeText = (TextView) convertView.findViewById(R.id.itinerary_item_time);
+        TextView tipText = (TextView) convertView.findViewById(R.id.itinerary_item_tip);
 
         titleText.setText(item.getTitle());
         assignedText.setText(item.getAssigned());
+
+        tipText.setText(NumberFormat.getCurrencyInstance().format(item.getTip()));
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+        timeText.setText(timeFormat.format(item.getTime()));
 
         return convertView;
     }

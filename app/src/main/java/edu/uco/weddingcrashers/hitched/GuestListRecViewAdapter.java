@@ -7,14 +7,13 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
  * Created by drenf on 2/10/2016.
  */
-public class GuestListRecViewAdapter extends RecyclerView.Adapter<GuestListRecViewAdapter.MyViewHolder> {
+public class GuestListRecViewAdapter extends
+        RecyclerView.Adapter<GuestListRecViewAdapter.MyViewHolder> {
 
     private ArrayList<GuestListItem> theList;
     //private LayoutInflater inflater;
