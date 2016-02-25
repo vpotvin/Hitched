@@ -124,8 +124,8 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
                     for(int i = 0; i < objects.size(); i++) {
                         emails[i] = objects.get(i).getEmail();
                     }
-
-                    sendEmail(pos, emails);
+                    //TODO troubleshoot email
+//                    sendEmail(pos, emails);
                 }
             }
         });
