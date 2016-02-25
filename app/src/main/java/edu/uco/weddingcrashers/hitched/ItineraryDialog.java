@@ -24,7 +24,8 @@ public class ItineraryDialog extends DialogFragment {
     EditText assignedEdit;
 
     public interface ItineraryUpdateListener {
-        void updateItinerary(String title, String assigned, int position, boolean isNew);
+        void updateItinerary(String title, String assigned, int position);
+        void deleteItineraryItem(int position);
     }
 
     public static ItineraryDialog newInstance(String title, String assigned, int position) {
@@ -47,7 +48,7 @@ public class ItineraryDialog extends DialogFragment {
             assigned = getArguments().getString(ASSIGNED_PARAM);
             position = getArguments().getInt(POSITION_PARAM);
 
-            if(title == null) title = "Budget";
+            if(title == null) title = "Title";
             if(assigned == null) assigned = "Assigned";
         }
     }
@@ -63,11 +64,24 @@ public class ItineraryDialog extends DialogFragment {
         titleEdit.setText(title);
         assignedEdit.setText(assigned);
 
+        if(position >= 0) {
+            (v.findViewById(R.id.bu_itin_delete)).setVisibility(View.VISIBLE);
+            (v.findViewById(R.id.bu_itin_delete)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((ItineraryActivity) getActivity()).deleteItineraryItem(position);
+                }
+
+            });
+        }
+
+
+
         (v.findViewById(R.id.bu_itin_update)).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                ((ItineraryActivity) getActivity()).updateItinerary(titleEdit.getText().toString(),
-                        assignedEdit.getText().toString(), -1, true);
+            public void onClick(View v) { ((ItineraryActivity)
+                        getActivity()).updateItinerary(titleEdit.getText().toString(),
+                        assignedEdit.getText().toString(), position);
             }
         });
 
