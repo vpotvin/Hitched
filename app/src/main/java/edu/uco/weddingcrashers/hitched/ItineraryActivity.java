@@ -87,27 +87,27 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
             newFragment = ItineraryDialog.newInstance("", "", -1);
         else if(type == UPDATE_TYPE) {
             ItineraryItem item = items.get(position);
-            newFragment = ItineraryDialog.newInstance(item.getTitle(), item.getAssigned(), position);
+            newFragment = ItineraryDialog.newInstance(item.getTitle(), item.getAssigned(),
+                    position);
         }
 
         newFragment.show(ft, "dialog");
     }
 
-    public void updateItinerary(String title, String assigned, int position) {
+    public void updateItinerary(String title, String assigned, int position, double tip, Date time){
+        ItineraryItem item;
         if(position < 0) {
-            ItineraryItem item = new ItineraryItem();
-            item.setTitle(title);
+            item = new ItineraryItem();
 
-            //TODO: pull email address for assigned and send automated email;
-            item.setAssigned(assigned);
-            item.saveInBackground();
-            items.add(item);
-        } else {
-            ItineraryItem item = items.get(position);
-            item.setTitle(title);
-            item.setAssigned(assigned);
-            item.saveInBackground();
-        }
+        } else item = items.get(position);
+        item.setTitle(title);
+        item.setAssigned(assigned);
+        item.setTip(tip);
+        item.setTime(time);
+        item.saveInBackground();
+
+        if(position < 0) items.add(item);
+
         updateView();
         removeDialog();
 
