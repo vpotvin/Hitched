@@ -50,7 +50,7 @@ public class Login extends Activity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+//hey
                         String useraddress = user.getText().toString();
                         String pass = password.getText().toString();
 
