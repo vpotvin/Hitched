@@ -1,6 +1,5 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,21 +11,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+
 import java.util.List;
 
 /**
- * Created by Tung Nguyen on 2/4/2016.
+ * Created by PC User on 2/19/2016.
  */
-public class DetailsFragment extends Fragment {
-
+public class SavedVendorListFragment extends Fragment {
     private RecyclerView mVendorRecycleView;
-    private Vendor mVendor;
     private VendorAdapter mAdapter;
+    private ParseObject mFavoriteVendor;
+    private List<SavedVendor> mVendors;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mVendor = new Vendor();
 
     }
 
@@ -47,8 +48,8 @@ public class DetailsFragment extends Fragment {
     }
 
     private void updateUI(){
-        VendorList vendorList = VendorList.get(getActivity());
-        List<Vendor> vendors = vendorList.getVendors();
+        SavedVendorList vendorList = SavedVendorList.get(getActivity());
+        List<SavedVendor> vendors = vendorList.getSavedVendors();
         if(mAdapter == null) {
             mAdapter = new VendorAdapter(vendors);
             mVendorRecycleView.setAdapter(mAdapter);
@@ -58,7 +59,7 @@ public class DetailsFragment extends Fragment {
     }
 
     private class VendorHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private Vendor mVendor;
+        private SavedVendor mVendor;
         public TextView mTextView;
         public ImageView mImageView;
         public VendorHolder(View itemView) {
@@ -67,23 +68,26 @@ public class DetailsFragment extends Fragment {
             mTextView = (TextView)itemView.findViewById(R.id.list_item_vendor_name_text_view);
             mImageView = (ImageView)itemView.findViewById(R.id.vendorListImageView);
         }
-        public void bindVendor(Vendor vendor){
+        public void bindVendor(SavedVendor vendor){
             mVendor = vendor;
-            mTextView.setText(mVendor.getVendorName());
-           // mImageView.setImageResource(R.drawable.a);
+            mTextView.setText("Name: " + mVendor.getName()
+                    + "\n Address" + mVendor.getAddress()
+                    + "\n Phone: " + mVendor.getPhone()
+                    +"\n Website: "+ mVendor.getWebsite());
+            // mImageView.setImageResource(R.drawable.a);
         }
 
         @Override
         public void onClick(View view) {
-            Intent intent = VendorDetailsPagerActivity.newIntent(getActivity(),mVendor.getVendorID());
-            startActivity(intent);
+//            Intent intent = VendorDetailsPagerActivity.newIntent(getActivity(),mVendor.getVendorID());
+//            startActivity(intent);
         }
     }
 
     private class VendorAdapter extends RecyclerView.Adapter<VendorHolder>{
-        private List<Vendor> mVendors;
 
-        public VendorAdapter(List<Vendor> vendors){
+
+        public VendorAdapter(List<SavedVendor> vendors){
             mVendors = vendors;
         }
 
@@ -97,8 +101,8 @@ public class DetailsFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(VendorHolder vendorHolder, int i) {
-            Vendor vendor = mVendors.get(i);
-            vendorHolder.bindVendor(vendor);
+            SavedVendor mSaveVendor = mVendors.get(i);
+            vendorHolder.bindVendor(mSaveVendor);
         }
 
         @Override
@@ -106,6 +110,26 @@ public class DetailsFragment extends Fragment {
             return mVendors.size();
         }
 
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        SavedVendorList vendorList = SavedVendorList.get(getActivity());
+
+        for(int i = 0;i<mVendors.size();i++){
+            mFavoriteVendor = new ParseObject("FavoriteVendors");
+            SavedVendor mSaveVendor = mVendors.get(i);
+            mFavoriteVendor.put("vendorID",mSaveVendor.getId());
+            mFavoriteVendor.put("name",mSaveVendor.getName());
+            mFavoriteVendor.put("address",mSaveVendor.getAddress());
+            mFavoriteVendor.put("phone",mSaveVendor.getPhone());
+            mFavoriteVendor.put("rating",String.valueOf(mSaveVendor.getRating()));
+            mFavoriteVendor.put("website",mSaveVendor.getWebsite());
+            mFavoriteVendor.put("imgURL",mSaveVendor.getImgURL());
+        }
+        mFavoriteVendor.saveInBackground();
     }
 
 
