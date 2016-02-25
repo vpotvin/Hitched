@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +16,8 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,7 +39,7 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
         setContentView(R.layout.activity_itinerary);
 
         //Populate test data if needed.
-//        populateData();
+        //populateData();
 
         items = new ArrayList<>();
 
@@ -46,7 +49,7 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
             @Override
             public void done(List<ItineraryItem> objects, ParseException e) {
                 items = new ArrayList<ItineraryItem>(objects);
-                if(items.isEmpty()) {
+                if (items.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "There was no data found",
                             Toast.LENGTH_SHORT);
                 }
@@ -64,9 +67,6 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
                 });
             }
         });
-
-
-
 
     }
 
@@ -94,17 +94,41 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
         newFragment.show(ft, "dialog");
     }
 
-    public void updateItinerary(String title, String assigned, int position, double tip, Date time){
+    public void updateItinerary( String title, String assigned, int position, double tip, Date time){
         ItineraryItem item;
+        final int pos;
         if(position < 0) {
             item = new ItineraryItem();
-
-        } else item = items.get(position);
+            pos = items.size() - 1;
+        } else {
+            item = items.get(position);
+            pos = position;
+        }
         item.setTitle(title);
         item.setAssigned(assigned);
         item.setTip(tip);
-        item.setTime(time);
+        if(time != null) item.setTime(time);
         item.saveInBackground();
+
+        ParseQuery<GuestListItem> query = ParseQuery.getQuery(GuestListItem.class);
+        query.whereEqualTo("wedding_party", true);
+        query.whereEqualTo("name", assigned);
+
+
+
+        query.findInBackground(new FindCallback<GuestListItem>() {
+            @Override
+            public void done(List<GuestListItem> objects, ParseException e) {
+                if(objects != null && !objects.isEmpty()) {
+                    String[] emails = new String[objects.size()];
+                    for(int i = 0; i < objects.size(); i++) {
+                        emails[i] = objects.get(i).getEmail();
+                    }
+
+                    sendEmail(pos, emails);
+                }
+            }
+        });
 
         if(position < 0) items.add(item);
 
@@ -129,6 +153,33 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
 
     private void updateView() {
         itineraryAdapter.notifyDataSetChanged();
+    }
+
+    private void sendEmail(int position, String[] emails) {
+
+        ItineraryItem item = items.get(position);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
+
+        String emailBody = "Hey, " + item.getAssigned() + "! I have assigned you the " +
+                "following task on my wedding day: " + item.getTitle() + ". It will need to happen" +
+                "at " + simpleDateFormat.format(item.getTime()) + ".";
+        double tip = item.getTip();
+        if(tip != 0) emailBody = emailBody + "Please tip " +
+                NumberFormat.getCurrencyInstance().format(tip);
+
+        Intent i = new Intent();
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL, emails);
+        i.putExtra(Intent.EXTRA_SUBJECT, "Wedding Assignment");
+        i.putExtra(Intent.EXTRA_TEXT, emailBody);
+
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(ItineraryActivity.this, "There are no email clients installed.",
+                    Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     //Only used for debugging purposes to repopulate Database table

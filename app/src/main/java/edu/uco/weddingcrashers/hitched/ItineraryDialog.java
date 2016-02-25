@@ -106,7 +106,6 @@ public class ItineraryDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                //TODO: time picker
                 final Calendar currentTime = Calendar.getInstance();
                 time = currentTime.getTime();
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
