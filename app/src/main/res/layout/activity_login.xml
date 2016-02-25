@@ -55,4 +55,14 @@
         android:layout_below="@+id/frameLayout2"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        android:id="@+id/testbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/signupButton"
+        android:background="#ffffff"
+        android:textColor="#c403f9" />
+
 </RelativeLayout>
