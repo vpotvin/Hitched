@@ -1,9 +1,13 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.app.Fragment;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -90,7 +94,7 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
     }
 
     private void configureListItem(ListItem holder, int position) {
-        MasterListItem currentItem = (MasterListItem) theList.get(position);
+        final MasterListItem currentItem = (MasterListItem) theList.get(position);
         holder.title.setText(currentItem.getTitle());
         if(currentItem.getDueDate() != null)
         {
@@ -111,6 +115,14 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
 
         holder.notes.setText(currentItem.getNotes());
         holder.completed.setChecked(currentItem.isCompleted());
+
+        holder.guests.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("task",currentItem);
+            }
+        });
     }
 
 
@@ -131,6 +143,7 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
         private TextView completedDate;
         private TextView notes;
         private CheckBox completed;
+        private Button guests;
         public ListItem(View itemView){
             super(itemView);
             this.title = (TextView) itemView.findViewById(R.id.masterListTitle);
@@ -138,6 +151,8 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
             this.completedDate = (TextView) itemView.findViewById(R.id.masterListCompletedDate);
             this.notes = (TextView) itemView.findViewById(R.id.masterListNotes);
             this.completed = (CheckBox) itemView.findViewById(R.id.masterListCompleted);
+            this.guests = (Button) itemView.findViewById(R.id.assignementsButton);
+
         }
     }
 
