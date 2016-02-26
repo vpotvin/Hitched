@@ -53,7 +53,7 @@ public class SignUpActivity extends Activity {
                 else {
                     setProgressBarIndeterminateVisibility(true);
 
-                    ParseUser newUser = new ParseUser();
+                    final ParseUser newUser = new ParseUser();
                     newUser.setUsername(username);
                     newUser.setPassword(password);
                     newUser.setEmail(email);
@@ -64,6 +64,11 @@ public class SignUpActivity extends Activity {
 
                             if (e == null) {
                                 // Success!
+
+                                ParseDatabase.USER_ID = newUser.getObjectId().toString();
+                                ParseDatabase.USER_NAME = newUser.getUsername();
+                                ParseDatabase.COMBINED_USERNAME = ParseDatabase.USER_ID + ParseDatabase.USER_NAME;
+
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

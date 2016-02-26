@@ -82,7 +82,16 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" />
-        <activity android:name=".MasterListAssignementActivity"></activity>
+        <activity android:name=".MasterListAssignementActivity" />
+        android:label="@string/title_activity_sign_up" />
+        <activity
+            android:name=".EditVenueActivity"
+            android:label="@string/title_activity_edit_venue"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ShareActivity"
+            android:label="@string/title_activity_share"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

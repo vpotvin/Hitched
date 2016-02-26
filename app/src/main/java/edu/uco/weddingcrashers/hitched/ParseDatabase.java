@@ -10,6 +10,10 @@ import com.parse.ParseUser;
 
 public class ParseDatabase extends Application {
 
+    public static String USER_ID;
+    public static String USER_NAME;
+    public static String COMBINED_USERNAME;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -26,8 +30,10 @@ public class ParseDatabase extends Application {
 
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
+
         // Optionally enable public read access.
-        // defaultACL.setPublicReadAccess(true);
+        defaultACL.setPublicReadAccess(true);
+        defaultACL.setPublicWriteAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
     }
 }
