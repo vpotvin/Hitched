@@ -8,6 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
+
 
 public class ShareActivity extends Activity {
 
@@ -37,12 +44,30 @@ public class ShareActivity extends Activity {
 
                 String sharedUser = shareWith.getText().toString();
 
-                Toast.makeText(getApplicationContext(), "Your list has been shared with " + sharedUser,
-                        Toast.LENGTH_LONG).show();
+                ParseQuery<ParseUser> query = ParseUser.getQuery();
+                query.whereEqualTo("username", sharedUser);
+                query.findInBackground(new FindCallback<ParseUser>() {
+                    public void done(List<ParseUser> objects, ParseException e) {
+                        if (e == null) {
 
-                Intent data = new Intent();
-                setResult(RESULT_OK, data);
-                ShareActivity.this.finish();
+                            String getUser = shareWith.getText().toString();
+
+                            Toast.makeText(getApplicationContext(), "Your list has been shared with " + getUser,
+                                    Toast.LENGTH_LONG).show();
+
+                            Intent data = new Intent();
+                            setResult(RESULT_OK, data);
+                            ShareActivity.this.finish();
+
+                        } else {
+
+                            Toast.makeText(getApplicationContext(), "User does not exist. Enter a valid username.",
+                                    Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
+
             }
         });
 
