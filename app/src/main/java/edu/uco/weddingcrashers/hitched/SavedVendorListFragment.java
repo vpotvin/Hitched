@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -62,6 +63,7 @@ public class SavedVendorListFragment extends Fragment {
         private SavedVendor mVendor;
         public TextView mTextView;
         public ImageView mImageView;
+        public Button mButton;
         public VendorHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -116,8 +118,7 @@ public class SavedVendorListFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        SavedVendorList vendorList = SavedVendorList.get(getActivity());
-
+        SavedVendorList.get(getActivity()).deleteDataFromDatabase("FavoriteVendors");
         for(int i = 0;i<mVendors.size();i++){
             mFavoriteVendor = new ParseObject("FavoriteVendors");
             SavedVendor mSaveVendor = mVendors.get(i);
@@ -128,8 +129,9 @@ public class SavedVendorListFragment extends Fragment {
             mFavoriteVendor.put("rating",String.valueOf(mSaveVendor.getRating()));
             mFavoriteVendor.put("website",mSaveVendor.getWebsite());
             mFavoriteVendor.put("imgURL",mSaveVendor.getImgURL());
+            mFavoriteVendor.saveInBackground();
         }
-        mFavoriteVendor.saveInBackground();
+
     }
 
 
