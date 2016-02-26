@@ -43,7 +43,7 @@ public class ShareActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                String sharedUser = shareWith.getText().toString();
+                final String sharedUser = shareWith.getText().toString().trim();
 
                 Log.d("WHAT", sharedUser);
 
@@ -53,7 +53,7 @@ public class ShareActivity extends Activity {
                     public void done(List<ParseUser> objects, ParseException e) {
                         if (e == null) {
 
-                            String getUser = shareWith.getText().toString();
+                            String getUser = shareWith.getText().toString().trim();
 
                             Log.d("WHAT", "QUERY: " + getUser);
 
