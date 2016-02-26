@@ -1,5 +1,6 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 /**
@@ -10,4 +11,14 @@ public class SavedVendorListActivity extends SingleFragmentActivity {
     protected Fragment createFragment() {
         return new SavedVendorListFragment();
     }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       // if(SavedVendorList.get(this).getSavedVendors() == null)
+             SavedVendorList.get(this).setFavoriteList();
+    }
+
+
 }

@@ -3,6 +3,7 @@ package edu.uco.weddingcrashers.hitched;
 import android.content.Context;
 import android.util.Log;
 
+import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -26,8 +27,7 @@ public class SavedVendorList {
         return sSavedVendorList;
     }
 
-    private SavedVendorList(Context context){
-        mSavedVendors = new ArrayList<>();
+    public void setFavoriteList(){
         ParseQuery query = new ParseQuery("FavoriteVendors");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> vendorList, ParseException e) {
@@ -50,6 +50,35 @@ public class SavedVendorList {
             }
         });
 
+
+    }
+
+    public void deleteDataFromDatabase(String tableName){
+        ParseQuery query = new ParseQuery(tableName);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> vendorList, ParseException e) {
+                if (e == null) {
+                    Log.d("FavoriteVendor", "Retrieved " + vendorList.size() + " vendors");
+                    for(int i = 0;i<vendorList.size();i++){
+                       vendorList.get(i).deleteInBackground(new DeleteCallback() {
+                           @Override
+                           public void done(ParseException e) {
+                               Log.i("FavoriteVendor","Delete Successfully");
+                           }
+                       });
+                    }
+                } else {
+                    Log.d("FavoriteVendor", "Error: " + e.getMessage());
+                }
+            }
+        });
+
+    }
+
+    private SavedVendorList(Context context){
+        mSavedVendors = new ArrayList<>();
+
+
     }
 
     public List<SavedVendor> getSavedVendors(){
@@ -65,6 +94,11 @@ public class SavedVendorList {
         return null;
     }
 
+    public boolean checkForItemExist(SavedVendor savedVendor){
+        if(getSavedVendor(savedVendor.getId()) == null)
+            return true;
+        return false;
+    }
     public boolean addSavedVendor(SavedVendor savedVendor){
         if(getSavedVendor(savedVendor.getId())==null) {
             mSavedVendors.add(savedVendor);

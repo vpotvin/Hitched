@@ -35,5 +35,7 @@ public class ParseDatabase extends Application {
         defaultACL.setPublicReadAccess(true);
         defaultACL.setPublicWriteAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
+
+
     }
 }
