@@ -6,46 +6,105 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SignUpActivity" >
+    tools:context=".SignUpActivity"
+    android:background="#F6ECEB">
 
     <EditText
         android:id="@+id/usernameField"
-        android:layout_width="match_parent"
+        android:layout_width="300sp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:ems="10"
-        android:hint="@string/username_hint" >
+        android:hint="@string/username_hint"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true">
 
         <requestFocus />
     </EditText>
 
     <EditText
         android:id="@+id/passwordField"
-        android:layout_width="match_parent"
+        android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/usernameField"
         android:layout_below="@+id/usernameField"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="@string/password_hint" />
+        android:hint="@string/password_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="false" />
 
     <EditText
         android:id="@+id/emailField"
-        android:layout_width="match_parent"
+        android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/passwordField"
         android:layout_below="@+id/passwordField"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="@string/email_hint" />
+        android:hint="@string/email_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="false" />
 
     <Button
         android:id="@+id/signupButton"
-        android:layout_width="match_parent"
+        android:layout_width="300sp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/emailField"
+        android:text="Sign Up!"
+        android:background="#DE84B5"
+        android:textColor="#F6ECEB"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/bridename"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Bride Name"
         android:layout_below="@+id/emailField"
-        android:text="Sign Up!" />
+        android:layout_alignStart="@+id/emailField"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/groomname"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/groomname"
+        android:layout_below="@+id/bridename"
+        android:layout_centerHorizontal="true" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes, I have a wedding Date"
+        android:id="@+id/checkBox"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/groomname"
+        android:checked="false" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="150sp"
+        android:id="@+id/datePicker"
+        style="@android:style/Widget.DatePicker"
+        android:calendarTextColor="#88CDE6"
+        android:layout_below="@+id/checkBox"
+        android:layout_alignStart="@+id/datePicker"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:text="message"
+        android:id="@+id/message"
+        android:layout_above="@+id/signupButton"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textColor="#f90606"
+        android:textSize="14sp"
+        android:visibility="invisible" />
 
 </RelativeLayout>
