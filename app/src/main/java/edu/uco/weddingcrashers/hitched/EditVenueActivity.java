@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -20,10 +21,9 @@ public class EditVenueActivity extends Activity {
 
     private Button saveVenue;
     private EditText venueName;
-    private EditText venueLocation;
     private String name;
-    private String location;
-    ParseObject venueTable = new ParseObject(ParseDatabase.USER_NAME + "_venues");
+    //private String n1;
+    ParseObject venueTable = new ParseObject("Bill_venues");
     private String someList = "";
 
     @Override
@@ -33,48 +33,87 @@ public class EditVenueActivity extends Activity {
 
         saveVenue = (Button) findViewById(R.id.saveVenueButton);
         venueName = (EditText) findViewById(R.id.venueEditText);
-        venueLocation = (EditText) findViewById(R.id.vlocationEditText);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            final String n1 = extras.getString("vname");
+            String n2 = extras.getString("myvalue");
+
+            if(n2.equals("yes")){
+
+                 venueName.setText(n1);
+
+                saveVenue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
 
-        ArrayList<String> n1 = (ArrayList<String>) getIntent().getSerializableExtra("vname");
-        String formattedString1 = n1.toString().replace("[", "").replace("]","").replace(",", "").replace(" ", "");
-        venueName.setText(formattedString1);
+                        ParseQuery<ParseObject> query = ParseQuery.getQuery("Bill_venues");
+                        query.whereEqualTo("Name", n1);
+                        query.getFirstInBackground(new GetCallback<ParseObject>() {
+                            public void done(ParseObject object, ParseException e) {
+                                if (object == null) {
+
+                                    Log.d("WHAT", "The getFirst request failed.");
+
+                                } else {
+
+                                    final String objectID = object.getObjectId();
+                                    Log.d("WHAT", "Error: " + objectID);
+
+                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Bill_venues");
+                                    query.getInBackground(objectID, new GetCallback<ParseObject>() {
+                                        public void done(ParseObject newVenue, ParseException e) {
+                                            if (e == null) {
+                                                String myNewVenue = venueName.getText().toString();
+                                                newVenue.put("Name", myNewVenue);
+                                                newVenue.saveInBackground();
+                                            } else {
+                                                Log.d("WHAT", "Error: " + e.getMessage());
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
+
+                        Intent editVenue = new Intent(EditVenueActivity.this, VenueActivity.class);
+                        startActivity(editVenue);
+                    }
+                });
 
 
+            } else {
 
+                venueName.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
 
-        venueName.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                        if (venueName.getText().toString().equals("Enter Venue Name")) {
+                            venueName.setText("");
+                        }
+                    }
+                });
 
-                if (venueName.getText().toString().equals("Enter Venue Name")) {
-                    venueName.setText("");
-                }
+                saveVenue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        name = venueName.getText().toString();
+
+                        venueTable.put("Name", name);
+                        venueTable.saveInBackground();
+
+                        Intent editVenue = new Intent(EditVenueActivity.this, VenueActivity.class);
+                        startActivity(editVenue);
+                    }
+                });
+
             }
-        });
 
-        venueLocation.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        }
 
-                if (venueLocation.getText().toString().equals("Enter Venue Address")) {
-                    venueLocation.setText("");
-                }
-            }
-        });
 
-        saveVenue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = venueName.getText().toString();
-                location = venueLocation.getText().toString();
 
-                venueTable.put("Name", name);
-                venueTable.put("Location", location);
-                venueTable.saveInBackground();
 
-                Intent editVenue = new Intent(EditVenueActivity.this, VenueActivity.class);
-                editVenue.putExtra("vname", name);
-                startActivity(editVenue);
-            }
-        });
+
     }
 }

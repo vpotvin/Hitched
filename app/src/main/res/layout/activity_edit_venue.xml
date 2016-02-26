@@ -15,20 +15,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/venueEditText"
         android:text="Enter Venue Name"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/vlocationEditText"
-        android:text="Enter Venue Address"
-        android:layout_below="@+id/venueEditText"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="56dp" />
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,6 +38,6 @@
         android:textIsSelectable="false"
         android:textSize="20sp"
         android:text="Save!"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/venueEditText"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

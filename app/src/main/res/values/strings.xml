@@ -38,4 +38,5 @@
         AIzaSyA_tCDAzglMY71KW_YnX3hKIMSNN-K2lmE
     </string>
     <string name="title_activity_edit_venue">EditVenueActivity</string>
+    <string name="title_activity_share">ShareActivity</string>
 </resources>

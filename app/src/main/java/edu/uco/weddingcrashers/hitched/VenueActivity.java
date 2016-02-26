@@ -36,6 +36,7 @@ public class VenueActivity extends Activity {
     ArrayAdapter<String> adapter;
     private String someList = "";
     private String whichList;
+    private String thevalue;
     private final int RETURN = 1;
 
 
@@ -54,6 +55,8 @@ public class VenueActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent editVenue = new Intent(VenueActivity.this, EditVenueActivity.class);
+                thevalue = "no";
+                editVenue.putExtra("myvalue", thevalue);
                 startActivity(editVenue);
             }
         });
@@ -62,8 +65,8 @@ public class VenueActivity extends Activity {
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent editVenue = new Intent(VenueActivity.this, EditVenueActivity.class);
-                startActivity(editVenue);
+                Intent shareActivity = new Intent(VenueActivity.this, ShareActivity.class);
+                startActivity(shareActivity);
             }
         });
 
@@ -73,7 +76,7 @@ public class VenueActivity extends Activity {
 
         if (ParseDatabase.USER_NAME.equals("Bill")) {
 
-            ParseQuery<ParseObject> query = ParseQuery.getQuery(ParseDatabase.USER_NAME + "_venues");
+            final ParseQuery<ParseObject> query = ParseQuery.getQuery(ParseDatabase.USER_NAME + "_venues");
             query.whereExists("Name");
             query.findInBackground(new FindCallback<ParseObject>() {
                 public void done(List<ParseObject> object, ParseException e) {
@@ -89,11 +92,11 @@ public class VenueActivity extends Activity {
                         Log.i("WHAT", arrayList.toString());
                         adapter.notifyDataSetChanged();
                     } else {
-                        Log.d("score", "Error: " + e.getMessage());
-                    }
+                        Log.d("WHAT", "Error: " + e.getMessage());
+                }
                 }
             });
-        } else if(ParseDatabase.USER_NAME.equals("John")) {
+        } else if(ParseDatabase.USER_NAME.equals("Sarah")) {
 
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Bill_venues");
             query.whereExists("Name");
@@ -111,7 +114,7 @@ public class VenueActivity extends Activity {
                         Log.i("WHAT", arrayList.toString());
                         adapter.notifyDataSetChanged();
                     } else {
-                        Log.d("score", "Error: " + e.getMessage());
+                        Log.d("WHAT", "Error: " + e.getMessage());
                     }
                 }
             });
@@ -127,9 +130,10 @@ public class VenueActivity extends Activity {
                 whichList = venues.getItemAtPosition(position).toString();
                 Log.i("WHAT", whichList);
 
+                thevalue = "yes";
                 editVenue.putExtra("vname", whichList);
-                editVenue.putExtra("value", "true");
-                startActivityForResult(editVenue, RETURN);
+                editVenue.putExtra("myvalue", thevalue);
+                startActivity(editVenue);
             }
         });
 
@@ -138,7 +142,7 @@ public class VenueActivity extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 final String what = parent.getItemAtPosition(position).toString();
 
-                ParseQuery<ParseObject> query2 = ParseQuery.getQuery(ParseDatabase.USER_NAME + "_venues");
+                ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Bill_venues");
                 query2.whereEqualTo("Name", what);
                 query2.findInBackground(new FindCallback<ParseObject>() {
                     public void done(List<ParseObject> object, ParseException e) {
