@@ -82,6 +82,8 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" />
+        <activity android:name=".MasterListAssignementActivity"></activity>
+            android:label="@string/title_activity_sign_up" />
         <activity
             android:name=".EditVenueActivity"
             android:label="@string/title_activity_edit_venue"

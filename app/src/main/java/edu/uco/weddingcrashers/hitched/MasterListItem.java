@@ -1,17 +1,22 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by drenf on 2/2/2016.
  */
-public class MasterListItem {
+public class MasterListItem implements Serializable {
 
     private String title;
     private Date dueDate;
     private Date completedDate;
     private String notes;
     private boolean completed;
+    private ArrayList<GuestListItem> assignedTo;
 
     public MasterListItem(String title, Date dueDate, Date completedDate,String notes,boolean completed) {
         this.title = title;
@@ -19,6 +24,25 @@ public class MasterListItem {
         this.completedDate = completedDate;
         this.notes = notes;
         this.completed = completed;
+        assignedTo = new ArrayList<>();
+    }
+
+    public void addToAssignedTo(GuestListItem guest)
+    {
+        assignedTo.add(guest);
+    }
+
+    public void removeFromAssignedTo(int position)
+    {
+        assignedTo.remove(position);
+    }
+
+    public ArrayList<GuestListItem> getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(ArrayList<GuestListItem> assignedTo) {
+        this.assignedTo = assignedTo;
     }
 
     public String getTitle() {

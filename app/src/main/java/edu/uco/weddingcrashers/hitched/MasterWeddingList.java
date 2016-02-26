@@ -13,15 +13,19 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.parse.ParseObject;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class MasterWeddingList extends FragmentActivity implements MasterListNewItemInput.NoticeDialogListener{
 
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private ArrayList<MasterListItem> theList;
+    private ArrayList<Object> theList;
     private MasterListRecViewAdapter masterListAdapter;
     private Button addButton;
     @Override
@@ -39,19 +43,57 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        theList = new ArrayList<MasterListItem>();
+        theList = new ArrayList<Object>();
 
-        theList.add(new MasterListItem("Test Item1",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item2",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item3",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item4",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item5",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item6",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item7",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item8",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item9",new Date(),new Date(),"here are some notes",false));
-        theList.add(new MasterListItem("Test Item10",new Date(),new Date(),"here are some notes",false));
+        buildParse();
 
+        int day = 1;
+        boolean com = false;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2015,9,1);
+        for(int x = 0; x < 30 ; x++)
+        {
+
+
+            theList.add(new MasterListItem("Test Item"+ x,calendar.getTime(), new Date(), "here are some notes", com));
+            calendar.add(Calendar.DAY_OF_MONTH, 10);
+            if(com == false)
+            {
+                com = true;
+            }
+            else
+            {
+                com = false;
+            }
+        }
+        calendar.set(2015,1,1);
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.set(2015,8,1);
+        theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "Sixteen to Nine Months Before "));
+        calendar.add(Calendar.MONTH, 7);
+        calendar2.add(Calendar.MONTH, 1);
+        theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "Eight Months Before "));
+        calendar.add(Calendar.MONTH, 1);
+        calendar2.add(Calendar.MONTH, 2);
+        theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "Seven to Six Months Before "));
+        calendar.add(Calendar.MONTH, 2);
+        calendar2.add(Calendar.MONTH, 2);
+        theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "Five to Four Months Before "));
+        calendar.add(Calendar.MONTH, 2);
+        calendar2.add(Calendar.MONTH, 2);
+        theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "Three Months Before "));
+        calendar.add(Calendar.MONTH, 2);
+        calendar2.add(Calendar.MONTH, 1);
+        theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "Two Months Before "));
+        calendar.add(Calendar.MONTH, 1);
+        calendar2.add(Calendar.MONTH, 1);
+        theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "One Months Before "));
+        calendar.add(Calendar.MONTH, 1);
+        calendar2.add(Calendar.WEEK_OF_MONTH, 3);
+        theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "Week Of Wedding "));
+
+
+        Collections.sort(theList, new theListComparator());
         masterListAdapter = new MasterListRecViewAdapter(theList);
         recyclerView.setAdapter(masterListAdapter);
 
@@ -66,6 +108,11 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
 //        }); // Rehana Moved this button to toolbar
 
     }
+
+    private void buildParse() {
+        ParseObject masterListItem = new ParseObject("MasterListItem");
+    }
+
     public void showNoticeDialog() {
         // Create an instance of the dialog fragment and show it
         //FragmentManager fragmentManager = getActivity().getFragmentManager();
@@ -100,6 +147,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
     private void addTask(String Title, String Notes, Date dueDate)
     {
         theList.add(new MasterListItem(Title, dueDate, null, Notes, false));
+        Collections.sort(theList, new theListComparator());
         masterListAdapter.notifyDataSetChanged();
     }
     ///Rehana Added Toolbar from here
@@ -125,5 +173,80 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    static class theListComparator implements Comparator<Object>
+    {
+        public int compare(Object c1, Object c2)
+        {
+            if(c1 instanceof  MasterListItem && c2 instanceof  MasterListItem)
+            {
+                if(((MasterListItem) c1).getDueDate().before(((MasterListItem) c2).getDueDate()))
+                {
+                    return -1;
+                }
+                else if(((MasterListItem) c1).getDueDate().after(((MasterListItem) c2).getDueDate()))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else if(c1 instanceof MasterListItem && c2 instanceof DateLabel)
+            {
+                if( ((MasterListItem) c1).getDueDate().after(((DateLabel) c2).getStartDate()) && ((MasterListItem) c1).getDueDate().before(((DateLabel) c2).getEndDate()) )
+                {
+                    return 1;
+                }
+                else if(((MasterListItem) c1).getDueDate().after(((DateLabel) c2).getEndDate()))
+                {
+                    return 1;
+                }
+                else if(((MasterListItem) c1).getDueDate().before(((DateLabel) c2).getStartDate()))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else if(c1 instanceof  DateLabel && c2 instanceof  MasterListItem)
+            {
+                if(((DateLabel) c1).getStartDate().before(((MasterListItem) c2).getDueDate()) && ((DateLabel) c1).getEndDate().after(((MasterListItem) c2).getDueDate()))
+                {
+                    return 1;
+                }
+                else if(((DateLabel) c1).getStartDate().after(((MasterListItem) c2).getDueDate()))
+                {
+                    return 1;
+                }
+                else if(((DateLabel) c1).getEndDate().before(((MasterListItem) c2).getDueDate()))
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else
+            {
+                if(((DateLabel) c1).getStartDate().before(((DateLabel) c2).getStartDate()))
+                {
+                    return -1;
+                }
+                else if(((DateLabel) c1).getStartDate().after(((DateLabel) c2).getStartDate()))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
