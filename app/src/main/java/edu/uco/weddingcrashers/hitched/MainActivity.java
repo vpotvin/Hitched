@@ -7,20 +7,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.parse.ParseAnalytics;
-
+//This activity was created by Rehana Jahan
+// Last Edited 2-19-16 12:30AM
 public class MainActivity extends Activity {
     private Button venue,dress,cake,honeymoon,party,vendor,picture;
     private Button invites,registry,budget,assignseats;
     private Button itinerary,guestlist,tasks,contacts,update;
+    private TextView you, your;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
+
 
         dress = (Button)findViewById(R.id.dress);
         venue = (Button)findViewById(R.id.venue);
@@ -38,6 +44,7 @@ public class MainActivity extends Activity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
+
 
         budget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -75,6 +82,13 @@ public class MainActivity extends Activity {
             }
         });
 
+        itinerary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ItineraryActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 //rehana

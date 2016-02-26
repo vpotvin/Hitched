@@ -27,6 +27,7 @@ public class DetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mVendor = new Vendor();
+
     }
 
     @Nullable
@@ -39,12 +40,21 @@ public class DetailsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI(){
         VendorList vendorList = VendorList.get(getActivity());
         List<Vendor> vendors = vendorList.getVendors();
-
-        mAdapter = new VendorAdapter(vendors);
-        mVendorRecycleView.setAdapter(mAdapter);
+        if(mAdapter == null) {
+            mAdapter = new VendorAdapter(vendors);
+            mVendorRecycleView.setAdapter(mAdapter);
+        }else{
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private class VendorHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -65,7 +75,7 @@ public class DetailsFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = VendorsDetailActivity.newIntent(getActivity(),mVendor.getVendorID());
+            Intent intent = VendorDetailsPagerActivity.newIntent(getActivity(),mVendor.getVendorID());
             startActivity(intent);
         }
     }
@@ -97,5 +107,6 @@ public class DetailsFragment extends Fragment {
         }
 
     }
+
 
 }

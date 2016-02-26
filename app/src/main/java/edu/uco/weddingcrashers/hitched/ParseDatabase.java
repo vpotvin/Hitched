@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 
@@ -13,6 +14,10 @@ public class ParseDatabase extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        //RegisterItineraryItemSubclass
+        ParseObject.registerSubclass(ItineraryItem.class);
+        ParseObject.registerSubclass(GuestListItem.class);
 
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
