@@ -10,6 +10,9 @@ import com.parse.ParseUser;
 
 public class ParseDatabase extends Application {
 
+    public static String USER_ID;
+    public static String USER_NAME;
+    public static String COMBINED_USERNAME;
 
     @Override
     public void onCreate() {

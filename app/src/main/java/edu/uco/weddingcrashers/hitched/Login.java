@@ -75,6 +75,11 @@ public class Login extends Activity {
 
                                     if (e == null) {
                                         // Success!
+
+                                        ParseDatabase.USER_ID = user.getObjectId().toString();
+                                        ParseDatabase.USER_NAME = user.getUsername();
+                                        ParseDatabase.COMBINED_USERNAME = ParseDatabase.USER_ID + ParseDatabase.USER_NAME;
+
                                         Intent intent = new Intent(Login.this, MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

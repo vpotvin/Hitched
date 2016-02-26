@@ -37,4 +37,5 @@
      <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
         AIzaSyA_tCDAzglMY71KW_YnX3hKIMSNN-K2lmE
     </string>
+    <string name="title_activity_edit_venue">EditVenueActivity</string>
 </resources>
