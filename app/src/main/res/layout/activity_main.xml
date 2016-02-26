@@ -108,7 +108,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Party"
+        android:text="Cake"
         android:id="@+id/party"
         android:layout_gravity="center"
         android:height="70dp"
