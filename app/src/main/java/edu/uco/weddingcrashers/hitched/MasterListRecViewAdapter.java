@@ -1,6 +1,7 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +27,7 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
     CheckBox completed;
     private List<Object> theList;
     private final int TASK = 0, LABEL = 1;
+    private Context context;
     //private LayoutInflater inflater;
 
     public MasterListRecViewAdapter(List<Object> theList) {
@@ -93,7 +95,7 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
         holder.dateLabel.setText(label.getTitle());
     }
 
-    private void configureListItem(ListItem holder, int position) {
+    private void configureListItem(ListItem holder, final int position) {
         final MasterListItem currentItem = (MasterListItem) theList.get(position);
         holder.title.setText(currentItem.getTitle());
         if(currentItem.getDueDate() != null)
@@ -116,11 +118,20 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
         holder.notes.setText(currentItem.getNotes());
         holder.completed.setChecked(currentItem.isCompleted());
 
-        holder.guests.setOnClickListener(new View.OnClickListener(){
+        holder.guests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("task",currentItem);
+                Intent intent = new Intent(context, MasterListAssignementActivity.class);
+                intent.putExtra("task", currentItem);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.delete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                theList.remove(position);
+                notifyDataSetChanged();
             }
         });
     }
@@ -144,6 +155,8 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
         private TextView notes;
         private CheckBox completed;
         private Button guests;
+        private Button delete;
+
         public ListItem(View itemView){
             super(itemView);
             this.title = (TextView) itemView.findViewById(R.id.masterListTitle);
@@ -152,6 +165,9 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
             this.notes = (TextView) itemView.findViewById(R.id.masterListNotes);
             this.completed = (CheckBox) itemView.findViewById(R.id.masterListCompleted);
             this.guests = (Button) itemView.findViewById(R.id.assignementsButton);
+            this.delete = (Button) itemView.findViewById(R.id.masterListDeleteButton);
+            context = itemView.getContext();
+
 
         }
     }

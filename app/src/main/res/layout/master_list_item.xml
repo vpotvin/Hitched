@@ -66,6 +66,14 @@
             android:text="Completed"
             android:editable="false"
             android:layout_gravity="center_horizontal" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:id="@+id/masterListDeleteButton"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 

@@ -54,18 +54,25 @@ public class MasterListAssignementActivity extends AppCompatActivity {
                 guestListView = (ListView) findViewById(R.id.masterListGuestListView);
                 guestArrayAdapter = new MasterListAssignementAdapter(MasterListAssignementActivity.this, guestTo);
                 guestListView.setAdapter(guestArrayAdapter);
+                UtilityFunctions.setListViewHeightBasedOnChildren(guestListView);
 
-                guestListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-                        return false;
+                guestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                        assignedTo.add(guestTo.get(position));
+                        guestTo.remove(position);
+                        guestArrayAdapter.notifyDataSetChanged();
+                        assArrayAdapter.notifyDataSetChanged();
+                        UtilityFunctions.setListViewHeightBasedOnChildren(assListView);
+                        UtilityFunctions.setListViewHeightBasedOnChildren(guestListView);
                     }
                 });
             }
         });
 
+        assArrayAdapter = new MasterListAssignementAdapter(MasterListAssignementActivity.this, assignedTo);
+        assListView.setAdapter(assArrayAdapter);
+
+        /*
         for (int x = 0; x < assignedTo.size(); x++) {
             assigned.add(x, assignedTo.get(x).getName());
         }
@@ -77,17 +84,19 @@ public class MasterListAssignementActivity extends AppCompatActivity {
 
 
         assListView.setAdapter(assArrayAdapter);
-
+        */
 
         UtilityFunctions.setListViewHeightBasedOnChildren(assListView);
-        UtilityFunctions.setListViewHeightBasedOnChildren(guestListView);
-
-        assListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                return false;
+        assListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                guestTo.add(assignedTo.get(position));
+                assignedTo.remove(position);
+                guestArrayAdapter.notifyDataSetChanged();
+                assArrayAdapter.notifyDataSetChanged();
+                UtilityFunctions.setListViewHeightBasedOnChildren(assListView);
+                UtilityFunctions.setListViewHeightBasedOnChildren(guestListView);
             }
         });
     }
