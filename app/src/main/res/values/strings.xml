@@ -39,4 +39,5 @@
     </string>
     <string name="title_activity_edit_venue">EditVenueActivity</string>
     <string name="title_activity_share">ShareActivity</string>
+    <string name="groomname">Groom Name</string>
 </resources>
