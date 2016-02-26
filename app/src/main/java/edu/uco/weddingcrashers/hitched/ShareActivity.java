@@ -3,6 +3,7 @@ package edu.uco.weddingcrashers.hitched;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +45,8 @@ public class ShareActivity extends Activity {
 
                 String sharedUser = shareWith.getText().toString();
 
+                Log.d("WHAT", sharedUser);
+
                 ParseQuery<ParseUser> query = ParseUser.getQuery();
                 query.whereEqualTo("username", sharedUser);
                 query.findInBackground(new FindCallback<ParseUser>() {
@@ -51,6 +54,8 @@ public class ShareActivity extends Activity {
                         if (e == null) {
 
                             String getUser = shareWith.getText().toString();
+
+                            Log.d("WHAT", "QUERY: " + getUser);
 
                             Toast.makeText(getApplicationContext(), "Your list has been shared with " + getUser,
                                     Toast.LENGTH_LONG).show();
