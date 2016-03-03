@@ -1,40 +1,41 @@
 package edu.uco.weddingcrashers.hitched;
 
+import com.parse.ParseObject;
+
 /**
  * Created by vdpotvin on 2/2/16.
  */
-public class BudgetItem {
-    private String title;
-    private double value;
-    private double used;
+public class BudgetItem extends ParseObject {
+
+    public BudgetItem(){}
 
     public BudgetItem(String title, double value, double used) {
-        this.title = title;
-        this.value = value;
-        this.used = used;
+        setTitle(title);
+        setValue(value);
+        setUsed(used);
     }
 
     public String getTitle() {
-        return title;
+        return getString("title");
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        put("title", title);
     }
 
     public double getValue() {
-        return value;
+        return getDouble("value");
     }
 
     public void setValue(double value) {
-        this.value = value;
+         put("value", value);
     }
 
     public double getUsed() {
-        return used;
+        return getDouble("used");
     }
 
     public void setUsed(double used) {
-        this.used = used;
+        put("used", used);
     }
 }
