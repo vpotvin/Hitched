@@ -173,6 +173,17 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel: "+mPhone.getText().toString()));
                 startActivity(intent);
                 return true;
+            case R.id.menu_item_review:
+                Intent reviewIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mReviewList.get(0).getUrl()));
+                reviewIntent.setPackage("com.google.android.apps.maps");
+                if (reviewIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(reviewIntent);
+                }
+
+//                FragmentManager manager = getActivity().getSupportFragmentManager();
+//                SaveVendorFragment dialog = SaveVendorFragment.newInstance(mReviewList.get(0).getUrl());
+//                dialog.show(manager,"DIALOG_RATE");
+
             default:return super.onOptionsItemSelected(item);
         }
 
@@ -190,7 +201,12 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
         protected void onPostExecute(List<Review> reviewList) {
             mReviewList = reviewList;
             for(int i = 0;i<reviewList.size();i++){
-                mReview.append(reviewList.get(i).getAuthorName());
+                mReview.append("\n");
+                mReview.append((i+1)+". Name: " +reviewList.get(i).getAuthorName());
+                mReview.append("\n");
+                mReview.append("Rating: "+reviewList.get(i).getRating());
+                mReview.append("\n");
+                mReview.append("Time: "+reviewList.get(i).getTime());
                 mReview.append("\n");
                 mReview.append(reviewList.get(i).getText());
                 mReview.append("\n");

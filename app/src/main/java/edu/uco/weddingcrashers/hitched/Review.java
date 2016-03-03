@@ -8,6 +8,15 @@ public class Review {
     private String rating;
     private String text;
     private String time;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getAuthorName() {
         return authorName;

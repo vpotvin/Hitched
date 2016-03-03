@@ -14,7 +14,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * Created by PC User on 2/19/2016.
@@ -92,13 +91,13 @@ public class PlaceFetchr {
         JSONArray reviewJsonArray = resultJsonObject.getJSONArray("reviews");
         for(int i = 0;i<reviewJsonArray.length();i++){
             Review mReview = new Review();
-            Vector<String> reviews = new Vector<>();
             JSONObject reviewJsonObject = reviewJsonArray.getJSONObject(i);
             Log.i("TAG","review found:" + reviewJsonObject.getString("text"));
             mReview.setAuthorName(reviewJsonObject.getString("author_name"));
-            mReview.setRating(resultJsonObject.getString("rating"));
-            mReview.setText(resultJsonObject.getString("text"));
-            mReview.setTime(resultJsonObject.getString("time"));
+            mReview.setRating(reviewJsonObject.getString("rating"));
+            mReview.setText(reviewJsonObject.getString("text"));
+            mReview.setTime(reviewJsonObject.getString("time"));
+            mReview.setUrl(resultJsonObject.getString("url"));
             items.add(mReview);
 //            reviews.add(reviewJasonObject.getString("author_name"));
 //            reviews.add(reviewJasonObject.getString("rating"));
