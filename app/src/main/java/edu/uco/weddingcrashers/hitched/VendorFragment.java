@@ -2,6 +2,7 @@ package edu.uco.weddingcrashers.hitched;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,8 @@ import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 /**
  * Created by PC User on 2/4/2016.
  */
@@ -39,6 +42,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     TextView mName, mAddress, mPhone, mWeb, mReview;
     ImageView mImageView;
     RatingBar mRatingBar;
+    List<Review> mReviewList;
 
     public static VendorFragment newInstance(String placeID, String iconURL) {
         Bundle args = new Bundle();
@@ -53,6 +57,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new FetchReviewTask().execute();
         setHasOptionsMenu(true);
         placeID = (String) getArguments().getSerializable(ARG_PLACE_ID);
         iconURL = (String) getArguments().getSerializable(ARG_ICON_URL);
@@ -172,4 +177,25 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
         }
 
     }
+
+    private class FetchReviewTask extends AsyncTask<Void,Void,List<Review>> {
+
+        @Override
+        protected List<Review> doInBackground(Void... voids) {
+            return new PlaceFetchr().fetchVendorReview(placeID);
+
+        }
+
+        @Override
+        protected void onPostExecute(List<Review> reviewList) {
+            mReviewList = reviewList;
+            for(int i = 0;i<reviewList.size();i++){
+                mReview.append(reviewList.get(i).getAuthorName());
+                mReview.append("\n");
+                mReview.append(reviewList.get(i).getText());
+                mReview.append("\n");
+            }
+        }
+    }
+
 }

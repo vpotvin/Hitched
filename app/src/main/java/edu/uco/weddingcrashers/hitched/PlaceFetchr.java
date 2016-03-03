@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by PC User on 2/19/2016.
@@ -48,6 +49,24 @@ public class PlaceFetchr {
         return new String(getURLBytes(urlSpec));
     }
 
+    public List<Review> fetchVendorReview(String placeid){
+        List<Review> reviewList = new ArrayList<>();
+        try{
+            String url = Uri.parse("https://maps.googleapis.com/maps/api/place/details/json")
+                    .buildUpon()
+                    .appendQueryParameter("placeid",placeid)
+                    .appendQueryParameter("key",API_KEY).build().toString();
+            String jsonString = getURLString(url);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            parseReview(reviewList,jsonBody);
+        }catch (JSONException je){
+            Log.e("VendorReview","Failed to parseJSON",je);
+        }catch (IOException ioe){
+            Log.e("VendorReview","Failed to fetch rating",ioe);
+        }
+        return reviewList;
+    }
+
     public List<VendorPlace> fetchItems(String querySearch) {
         List<VendorPlace> items = new ArrayList<>();
 
@@ -68,6 +87,24 @@ public class PlaceFetchr {
         return items;
     }
 
+    private void parseReview(List<Review> items,JSONObject jsonBody) throws IOException,JSONException{
+        JSONObject resultJsonObject = jsonBody.getJSONObject("result");
+        JSONArray reviewJsonArray = resultJsonObject.getJSONArray("reviews");
+        for(int i = 0;i<reviewJsonArray.length();i++){
+            Review mReview = new Review();
+            Vector<String> reviews = new Vector<>();
+            JSONObject reviewJsonObject = reviewJsonArray.getJSONObject(i);
+            Log.i("TAG","review found:" + reviewJsonObject.getString("text"));
+            mReview.setAuthorName(reviewJsonObject.getString("author_name"));
+            mReview.setRating(resultJsonObject.getString("rating"));
+            mReview.setText(resultJsonObject.getString("text"));
+            mReview.setTime(resultJsonObject.getString("time"));
+            items.add(mReview);
+//            reviews.add(reviewJasonObject.getString("author_name"));
+//            reviews.add(reviewJasonObject.getString("rating"));
+//            reviews.add(reviewJasonObject.getString("text"));
+        }
+    }
     private void parseItems(List<VendorPlace> items, JSONObject jsonBody) throws IOException, JSONException {
         JSONArray resultJsonArray = jsonBody.getJSONArray("results");
 
