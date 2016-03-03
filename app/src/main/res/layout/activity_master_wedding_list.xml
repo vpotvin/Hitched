@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#88CDE6"
     tools:context="edu.uco.weddingcrashers.hitched.MasterWeddingList">
-//Comment
+
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"

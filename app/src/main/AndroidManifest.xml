@@ -52,13 +52,13 @@
         <activity
             android:name=".VendorDetailsPagerActivity"
             android:label="@string/title_activity_vendor"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:parentActivityName=".DetailActivity"/>
+            android:parentActivityName=".DetailActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".SavedVendorListActivity"
             android:label="SavedVendorListActivity"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:parentActivityName=".VendorDetailsPagerActivity"/>
+            android:parentActivityName=".VendorDetailsPagerActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"
@@ -74,13 +74,25 @@
             android:label="@string/title_activity_wedding_list" />
         <activity
             android:name=".ItineraryActivity"
-            android:label="@string/title_activity_itinerary"></activity>
+            android:label="@string/title_activity_itinerary" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_maps_key" />
+
         <activity
             android:name=".SignUpActivity"
-            android:label="@string/title_activity_sign_up"></activity>
+            android:label="@string/title_activity_sign_up" />
+        <activity android:name=".MasterListAssignementActivity" />
+        android:label="@string/title_activity_sign_up" />
+        <activity
+            android:name=".EditVenueActivity"
+            android:label="@string/title_activity_edit_venue"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ShareActivity"
+            android:label="@string/title_activity_share"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
