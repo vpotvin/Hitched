@@ -98,7 +98,9 @@ public class SignUpActivity extends Activity {
                     newUser.setUsername(username);
                     newUser.setPassword(password);
                     newUser.setEmail(email);
-
+                    newUser.put("groom", groom);
+                    newUser.put("bride", bride);
+                   // newUser.put("date", date);
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {

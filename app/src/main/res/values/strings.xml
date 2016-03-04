@@ -40,4 +40,6 @@
     <string name="title_activity_edit_venue">EditVenueActivity</string>
     <string name="title_activity_share">ShareActivity</string>
     <string name="groomname">Groom Name</string>
+    <string name="hitched">HITCHED</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
 </resources>

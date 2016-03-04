@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.ParseAnalytics;
+import com.parse.ParseUser;
+
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends Activity {
@@ -27,12 +29,21 @@ public class MainActivity extends Activity {
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
 
-
-        dress = (Button)findViewById(R.id.dress);
-        venue = (Button)findViewById(R.id.venue);
+        you = (TextView)findViewById(R.id.you);
+        your = (TextView)findViewById(R.id.your);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            you.setText(currentUser.getString("bride"));
+            your.setText(currentUser.getString("groom"));
+        }else {
+            you.setText("");
+            your.setText("");
+        }
+        dress = (Button) findViewById(R.id.dress);
+        venue = (Button) findViewById(R.id.venue);
 //        cake = (Button)findViewById(R.id.cake);
-        picture = (Button)findViewById(R.id.picture);
-        honeymoon = (Button)findViewById(R.id.honeymoon);
+        picture = (Button) findViewById(R.id.picture);
+        honeymoon = (Button) findViewById(R.id.honeymoon);
         party = (Button)findViewById(R.id.party);
         vendor = (Button)findViewById(R.id.vendor);
         invites = (Button)findViewById(R.id.invites);

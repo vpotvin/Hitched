@@ -16,7 +16,7 @@ import com.parse.ParseUser;
 
 public class Login extends Activity {
 
-    private Button loginbutton,testbutton,signupbutton;
+    private Button loginbutton,testbutton,signupbutton,forgot;
     private EditText user,password;
     private TextView signUpTextView;
 
@@ -32,6 +32,17 @@ public class Login extends Activity {
         //signUpTextView = (TextView)findViewById(R.id.signupButton);
         signupbutton = (Button)findViewById(R.id.signupButton);
         testbutton = (Button)findViewById(R.id.testbutton);
+        forgot = (Button)findViewById(R.id.forgot);
+
+
+
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgotpass= new Intent(Login.this, ForgotPassword.class);
+                startActivity(forgotpass);
+            }
+        });
 
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
