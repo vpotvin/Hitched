@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.ParseAnalytics;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends Activity {
@@ -25,7 +30,12 @@ public class MainActivity extends Activity {
 
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
+        ParseAnalytics.trackAppOpened(getIntent());
 
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        installation.put("user", ParseUser.getCurrentUser());
+        installation.put("myusername", ParseDatabase.USER_NAME);
+        installation.saveInBackground();
 
 
         dress = (Button)findViewById(R.id.dress);

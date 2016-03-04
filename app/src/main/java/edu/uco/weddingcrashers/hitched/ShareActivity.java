@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -54,6 +56,16 @@ public class ShareActivity extends Activity {
                         if (e == null) {
 
                             String getUser = shareWith.getText().toString().trim();
+
+                            ParseQuery pushQuery = ParseInstallation.getQuery();
+                            pushQuery.whereEqualTo("myusername", getUser);
+
+                            // Send push notification to query
+                            ParsePush push = new ParsePush();
+                            push.setQuery(pushQuery); // Set our Installation query
+                            push.setMessage(ParseDatabase.USER_NAME + " shared a list with you");
+                            push.sendInBackground();
+
 
                             Log.d("WHAT", "QUERY: " + getUser);
 

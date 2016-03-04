@@ -21,7 +21,9 @@ import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
+import com.parse.SendCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,7 @@ public class VenueActivity extends Activity {
         share = (Button) findViewById(R.id.vsharebutton);
         venues = (ListView) findViewById(R.id.vListView);
 
+        ParsePush.subscribeInBackground("Venues");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
