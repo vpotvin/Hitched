@@ -30,12 +30,7 @@ public class MainActivity extends Activity {
 
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-        ParseAnalytics.trackAppOpened(getIntent());
-
-        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        installation.put("user", ParseUser.getCurrentUser());
-        installation.put("myusername", ParseDatabase.USER_NAME);
-        installation.saveInBackground();
+        ParseAnalytics.trackAppOpened(getIntent());;
 
 
         dress = (Button)findViewById(R.id.dress);

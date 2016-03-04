@@ -10,8 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
+import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -49,11 +51,16 @@ public class ShareActivity extends Activity {
 
                 Log.d("WHAT", sharedUser);
 
-                ParseQuery<ParseUser> query = ParseUser.getQuery();
-                query.whereEqualTo("username", sharedUser);
-                query.findInBackground(new FindCallback<ParseUser>() {
-                    public void done(List<ParseUser> objects, ParseException e) {
-                        if (e == null) {
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("My_Users");
+                query.whereEqualTo("My_Username", shareWith.getText().toString().trim());
+                query.getFirstInBackground(new GetCallback<ParseObject>() {
+                    public void done(ParseObject object, ParseException e) {
+                        if (object == null) {
+
+                            Toast.makeText(getApplicationContext(), "User does not exist. Please Enter a valid username.",
+                                    Toast.LENGTH_LONG).show();
+
+                        } else {
 
                             String getUser = shareWith.getText().toString().trim();
 
@@ -76,15 +83,9 @@ public class ShareActivity extends Activity {
                             setResult(RESULT_OK, data);
                             ShareActivity.this.finish();
 
-                        } else {
-
-                            Toast.makeText(getApplicationContext(), "User does not exist. Enter a valid username.",
-                                    Toast.LENGTH_LONG).show();
-
                         }
                     }
                 });
-
             }
         });
 
