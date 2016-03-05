@@ -6,6 +6,10 @@ import com.parse.ParseObject;
  * Created by vdpotvin on 2/2/16.
  */
 public class BudgetItem extends ParseObject {
+    public static final String TITLE = "title";
+    public static final String USED = "used";
+    public static final String VALUE = "value";
+    public static final String MAIN_TITLE = "main_title";
 
     public BudgetItem(){}
 
@@ -16,26 +20,26 @@ public class BudgetItem extends ParseObject {
     }
 
     public String getTitle() {
-        return getString("title");
+        return getString(TITLE);
     }
 
     public void setTitle(String title) {
-        put("title", title);
+        put(TITLE, title);
     }
 
     public double getValue() {
-        return getDouble("value");
+        return getDouble(VALUE);
     }
 
     public void setValue(double value) {
-         put("value", value);
+         put(VALUE, value);
     }
 
     public double getUsed() {
-        return getDouble("used");
+        return getDouble(USED);
     }
 
     public void setUsed(double used) {
-        put("used", used);
+        put(USED, used);
     }
 }

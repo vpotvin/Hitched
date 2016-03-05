@@ -12,8 +12,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class BudgetActivity extends Activity implements
@@ -36,6 +41,22 @@ public class BudgetActivity extends Activity implements
         setContentView(R.layout.activity_budget);
 
         //replaced with database population
+
+        ParseQuery<BudgetItem> budgetQuery = ParseQuery.getQuery(BudgetItem.class);
+        budgetQuery.whereEqualTo(BudgetItem.TITLE, BudgetItem.MAIN_TITLE);
+        budgetQuery.findInBackground(new FindCallback<BudgetItem>() {
+            @Override
+            public void done(List<BudgetItem> objects, ParseException e) {
+                if(objects.isEmpty() || objects == null) {
+                    //TODO: custom dialog to set budget if none exists;
+                    budget = 10000;
+                    used = 2000;
+                } else {
+                    budget = objects.get(0).getValue();
+                    used = objects.get(0).getUsed();
+                }
+            }
+        });
         budget = 10000;
         used = 2000;
 
@@ -48,11 +69,17 @@ public class BudgetActivity extends Activity implements
         budgetItems = new ArrayList<>();
 
         //will be replaced with database population
-        BudgetItem budgetItem = new BudgetItem("Dress", 5000, 0);
-        BudgetItem budgetItem2 = new BudgetItem("Cake", 1000, 0);
+        ParseQuery<BudgetItem> arrayQuery = ParseQuery.getQuery(BudgetItem.class);
+        arrayQuery.whereNotEqualTo(BudgetItem.TITLE, BudgetItem.MAIN_TITLE);
 
-        budgetItems.add(budgetItem);
-        budgetItems.add(budgetItem2);
+        arrayQuery.findInBackground(new FindCallback<BudgetItem>() {
+            @Override
+            public void done(List<BudgetItem> objects, ParseException e) {
+                budgetItems = new ArrayList<BudgetItem>(objects);
+            }
+        });
+
+
 
         budgetItemAdapter = new BudgetItemAdapter(this, budgetItems);
 
@@ -92,6 +119,7 @@ public class BudgetActivity extends Activity implements
         } else {
             budgetItems.get(position).setValue(budget);
             budgetItems.get(position).setUsed(used);
+            budgetItems.get(position).saveInBackground();
         }
 
         removeDialog();
