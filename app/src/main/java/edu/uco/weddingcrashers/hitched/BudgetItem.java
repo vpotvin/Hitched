@@ -1,10 +1,12 @@
 package edu.uco.weddingcrashers.hitched;
 
+import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 /**
  * Created by vdpotvin on 2/2/16.
  */
+@ParseClassName("BudgetItem")
 public class BudgetItem extends ParseObject {
     public static final String TITLE = "title";
     public static final String USED = "used";
@@ -14,9 +16,10 @@ public class BudgetItem extends ParseObject {
     public BudgetItem(){}
 
     public BudgetItem(String title, double value, double used) {
-        setTitle(title);
-        setValue(value);
-        setUsed(used);
+        this();
+        this.setTitle(title);
+        this.setValue(value);
+        this.setUsed(used);
     }
 
     public String getTitle() {
