@@ -1,6 +1,8 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.os.Parcelable;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,21 +12,31 @@ import java.util.Date;
  * Created by drenf on 2/2/2016.
  */
 public class MasterListItem implements Serializable {
-
+// extends ParseObject
     private String title;
     private Date dueDate;
     private Date completedDate;
     private String notes;
     private boolean completed;
     private ArrayList<GuestListItem> assignedTo;
+    private String distanceFromWeddingDay;
 
-    public MasterListItem(String title, Date dueDate, Date completedDate,String notes,boolean completed) {
+    public MasterListItem(String title, Date dueDate, Date completedDate,String notes,boolean completed, String distanceFromWeddingDay) {
         this.title = title;
         this.dueDate = dueDate;
         this.completedDate = completedDate;
         this.notes = notes;
         this.completed = completed;
         assignedTo = new ArrayList<>();
+        this.distanceFromWeddingDay = distanceFromWeddingDay;
+    }
+
+    public String getDistanceFromWeddingDay() {
+        return distanceFromWeddingDay;
+    }
+
+    public void setDistanceFromWeddingDay(String distanceFromWeddingDay) {
+        this.distanceFromWeddingDay = distanceFromWeddingDay;
     }
 
     public void addToAssignedTo(GuestListItem guest)
