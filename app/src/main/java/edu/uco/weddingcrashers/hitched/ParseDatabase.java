@@ -22,6 +22,7 @@ public class ParseDatabase extends Application {
         //RegisterItineraryItemSubclass
         ParseObject.registerSubclass(ItineraryItem.class);
         ParseObject.registerSubclass(GuestListItem.class);
+        ParseObject.registerSubclass(BudgetItem.class);
 
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
@@ -34,7 +35,7 @@ public class ParseDatabase extends Application {
         ParseACL defaultACL = new ParseACL();
 
         // Optionally enable public read access.
-        defaultACL.setPublicReadAccess(true);
+        //defaultACL.setPublicReadAccess(true);
         defaultACL.setPublicWriteAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
 
