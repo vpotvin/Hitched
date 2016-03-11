@@ -7,14 +7,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.uco.weddingcrashers.hitched.Login">
+    tools:context="edu.uco.weddingcrashers.hitched.Login"
+    android:background="#F6ECEB">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="200sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="false"
-        android:id="@+id/frameLayout2">
+        android:id="@+id/frameLayout2"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true">
 
         <EditText
             android:layout_width="wrap_content"
@@ -37,33 +40,56 @@
             android:gravity="center" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="200sp"
             android:layout_height="wrap_content"
             android:text="Login"
             android:id="@+id/loginbutton"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="#DE84B5"
+            android:textColor="#ffffff" />
 
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/signupButton"
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="79dp"
-        android:text="Sign Up!"
-        android:textSize="30sp"
+        android:text="New User Registration"
+        android:id="@+id/signupButton"
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
         android:layout_below="@+id/frameLayout2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:text="Test"
         android:id="@+id/testbutton"
+        android:background="#88CDE6"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/signupButton"
-        android:background="#ffffff"
-        android:textColor="#c403f9" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/logo11"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HITCHED"
+        android:id="@+id/textView"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
