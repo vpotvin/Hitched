@@ -177,15 +177,15 @@
             android:padding="10sp" />
 
         <Button
-        android:layout_width="80sp"
-        android:layout_height="80sp"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
             android:id="@+id/registry"
-        android:layout_gravity="center_horizontal"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="@mipmap/mainregistry"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/mainregistry"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:layout_row="0"
             android:layout_column="2"
             android:padding="10sp" />
