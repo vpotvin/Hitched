@@ -12,8 +12,11 @@
       4.0.4. You may leave out this permission if you are targetting 4.0.4+.
     -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <permission android:protectionLevel="signature"
-        android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
+
+    <permission
+        android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
 
     <application
@@ -28,8 +31,9 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/parse_client_key" />
-        <meta-data android:name="com.parse.push.notification_icon"
-            android:resource="@drawable/logo3"/>
+        <meta-data
+            android:name="com.parse.push.notification_icon"
+            android:resource="@drawable/logo3" />
 
         <activity
             android:name=".Login"
@@ -100,14 +104,16 @@
         <activity
             android:name=".EditVenueActivity"
             android:label="@string/title_activity_edit_venue"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ShareActivity"
             android:label="@string/title_activity_share"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service android:name="com.parse.PushService" />
-        <receiver android:name="com.parse.ParsePushBroadcastReceiver"
+
+        <receiver
+            android:name="com.parse.ParsePushBroadcastReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -115,18 +121,26 @@
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.parse.GcmBroadcastReceiver"
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <!--
-                  IMPORTANT: Change "com.parse.starter" to match your app's package name.
-                -->
+                <!-- IMPORTANT: Change "com.parse.starter" to match your app's package name. -->
                 <category android:name="edu.uco.weddingcrashers.hitched" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".VenueSearch"
+            android:label="@string/title_activity_venue_search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VenueSearchResult"
+            android:label="@string/title_activity_venue_search_result"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
