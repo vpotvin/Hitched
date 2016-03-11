@@ -25,6 +25,7 @@ public class SignUpActivity extends Activity {
     private String date, bride, groom;
     private TextView message;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,8 +82,13 @@ public class SignUpActivity extends Activity {
                 email = email.trim();
                 bride = bride.trim();
                 groom = groom.trim();
-                date = date.trim();
-
+                    int day = datePicker.getDayOfMonth();
+                    int month = datePicker.getMonth();
+                    int year = datePicker.getYear();
+                date = "" + day + "-" + month  + "-" + year;
+                String wday= ""+day;
+                String wmonth= ""+month;
+                String wyear= ""+year;
                 if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     builder.setMessage(R.string.signup_error_message)
@@ -100,7 +106,11 @@ public class SignUpActivity extends Activity {
                     newUser.setEmail(email);
                     newUser.put("groom", groom);
                     newUser.put("bride", bride);
-                   // newUser.put("date", date);
+                    newUser.put("date", date);
+                    newUser.put("day", wday);
+                    newUser.put("month", wmonth);
+                    newUser.put("year", wyear);
+
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {

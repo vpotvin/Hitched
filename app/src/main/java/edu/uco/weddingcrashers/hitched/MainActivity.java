@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
@@ -15,36 +16,38 @@ import com.parse.ParseUser;
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends Activity {
-    private Button venue,dress,cake,honeymoon,party,vendor,picture;
+    private Button venue,dress,party,honeymoon,cake,vendor,picture;
     private Button invites,registry,budget,assignseats;
     private Button itinerary,guestlist,tasks,contacts,update;
-    private TextView you, your;
-
+    private TextView you, your, date, month, day;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-
-
         you = (TextView)findViewById(R.id.you);
         your = (TextView)findViewById(R.id.your);
+        month = (TextView)findViewById(R.id.month);
+        day = (TextView)findViewById(R.id.day);
+
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             you.setText(currentUser.getString("bride"));
             your.setText(currentUser.getString("groom"));
+            day.setText(currentUser.getString("day"));
+            month.setText(currentUser.getString("month"));
+
         }else {
             you.setText("");
             your.setText("");
         }
         dress = (Button) findViewById(R.id.dress);
         venue = (Button) findViewById(R.id.venue);
-//        cake = (Button)findViewById(R.id.cake);
+       // party = (Button)findViewById(R.id.party);
         picture = (Button) findViewById(R.id.picture);
         honeymoon = (Button) findViewById(R.id.honeymoon);
-        party = (Button)findViewById(R.id.party);
+        cake = (Button)findViewById(R.id.cake);
         vendor = (Button)findViewById(R.id.vendor);
         invites = (Button)findViewById(R.id.invites);
         registry = (Button)findViewById(R.id.registry);
