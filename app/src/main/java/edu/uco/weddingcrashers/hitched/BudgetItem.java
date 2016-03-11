@@ -11,6 +11,7 @@ public class BudgetItem extends ParseObject {
     public static final String TITLE = "title";
     public static final String USED = "used";
     public static final String VALUE = "value";
+    public static final String PAID = "paid";
     public static final String MAIN_TITLE = "main_title";
 
     public BudgetItem(){}
@@ -44,5 +45,13 @@ public class BudgetItem extends ParseObject {
 
     public void setUsed(double used) {
         put(USED, used);
+    }
+
+    public void setPaid(boolean paid) {
+        put(PAID, paid);
+    }
+
+    public boolean getPaid() {
+        return getBoolean(PAID);
     }
 }

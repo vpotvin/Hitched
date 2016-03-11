@@ -124,6 +124,7 @@ public class BudgetActivity extends Activity implements
             budgetItems.get(position).saveInBackground();
         }
 
+
         removeDialog();
     }
 
@@ -131,6 +132,7 @@ public class BudgetActivity extends Activity implements
         Fragment dialog = getFragmentManager().findFragmentByTag("dialog");
         if (dialog != null) ((DialogFragment) dialog).dismiss();
         budgetItemAdapter.notifyDataSetChanged();
+        caculateListUsed();
     }
 
     public void launchNewItemDialog(View v){
