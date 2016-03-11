@@ -36,7 +36,7 @@ public class VendorList {
         mVendors.add(new Vendor("Jewelry","https://www.google.com/search?q=jewelers&oq=jewelers&aqs=chrome..69i57.5396j0j4&sourceid=chrome-mobile&ie=UTF-8#q=jewelers+in+okc&istate=lrl:xpd","jewelers+in+okc"));
         mVendors.add(new Vendor("Lighting & Decor","https://www.google.com/search?q=lighting+storesr&oq=lighting+storesr&aqs=chrome..69i57.5396j0j4&sourceid=chrome-mobile&ie=UTF-8#q=lighting+stores+in+okc&istate=lrl:xpd","lighting+stores+in+okc"));
         mVendors.add(new Vendor("Men's Formal Wear","https://www.google.com/search?q=formal+wears&oq=formal+wears&aqs=chrome..69i57.5396j0j4&sourceid=chrome-mobile&ie=UTF-8#q=formal+wears+in+okc&istate=lrl:xpd","formal+wear+in+okc"));
-
+        mVendors.add(new Vendor("Registry","","Wedding+Registry+in+okc"));
 
 
     }
