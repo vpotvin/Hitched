@@ -103,4 +103,12 @@
         android:layout_below="@+id/frameLayout2"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HELLLO! Its me"
+        android:id="@+id/textView"
+        android:layout_below="@+id/signupButton"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

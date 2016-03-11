@@ -13,6 +13,11 @@ import android.widget.Toolbar;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends Activity {
@@ -37,6 +42,7 @@ public class MainActivity extends Activity {
             your.setText(currentUser.getString("groom"));
             day.setText(currentUser.getString("day"));
             month.setText(currentUser.getString("month"));
+        ParseAnalytics.trackAppOpened(getIntent());;
 
         }else {
             you.setText("");
