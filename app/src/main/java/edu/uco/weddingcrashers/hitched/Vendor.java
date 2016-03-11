@@ -24,8 +24,7 @@ public class Vendor {
 
     public Vendor(){}
 
-    public Vendor(String Name, String URL,String Query) {
-        mVendorWebsite = URL;
+    public Vendor(String Name,String Query) {
         mVendorName = Name;
         mQuery = Query;
         mVendorID = UUID.randomUUID();

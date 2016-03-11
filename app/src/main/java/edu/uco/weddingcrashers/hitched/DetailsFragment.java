@@ -22,10 +22,13 @@ public class DetailsFragment extends Fragment {
     private RecyclerView mVendorRecycleView;
     private Vendor mVendor;
     private VendorAdapter mAdapter;
+    private String mState;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent i = getActivity().getIntent();
+        mState = i.getStringExtra("STATE");
         mVendor = new Vendor();
 
     }

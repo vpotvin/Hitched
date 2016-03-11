@@ -6,6 +6,7 @@ import java.util.UUID;
  * Created by PC User on 3/3/2016.
  */
 public class Song {
+    private static final String API_KEY="30233dd4d3780583b8741e26f6defd82";
     private String name;
     private String singer;
 

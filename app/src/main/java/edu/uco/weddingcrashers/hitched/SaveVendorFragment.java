@@ -3,25 +3,26 @@ package edu.uco.weddingcrashers.hitched;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.net.http.SslError;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.SslErrorHandler;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
 /**
  * Created by PC User on 2/18/2016.
  */
-public class SaveVendorFragment extends DialogFragment {
+public class SaveVendorFragment extends DialogFragment implements AdapterView.OnItemSelectedListener {
     private static final String ARG_URL = "url";
-    private WebView mWebView;
-    private String mUrl;
+    private  String userState;
+    private Spinner mSpinner;
+
     public static SaveVendorFragment newInstance(String url){
         Bundle args = new Bundle();
         args.putString(ARG_URL,url);
@@ -34,30 +35,39 @@ public class SaveVendorFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_save_vendor,null);
-        mUrl = getArguments().getString(ARG_URL);
-        mWebView = (WebView) view.findViewById(R.id.ratingWebView);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.setWebViewClient(new WebViewClient(){
-            public boolean shouldOverrideUrlLoading(WebView view, String url){
-                return false;
-            }
-            @Override
-            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                handler.proceed(); // Ignore SSL certificate errors
-            }
-        });
-        mWebView.loadUrl(mUrl);
-        Toast.makeText(getActivity(),"url: " + mUrl,Toast.LENGTH_SHORT).show();
+        mSpinner = (Spinner)view.findViewById(R.id.state_spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.StateList, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        mSpinner.setAdapter(adapter);
+
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setTitle("Rate Vendor")
-                .setPositiveButton("Rate", new DialogInterface.OnClickListener() {
+                .setTitle("Choose your state")
+                .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(),"Rate Successfully",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"Marked " + userState+" as default location" ,Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(),DetailActivity.class);
+                        intent.putExtra("STATE",userState);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton("Discard",null)
                 .create();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+        userState = adapterView.getItemAtPosition(pos).toString();
+        ((ParseDatabase)this.getActivity().getApplication()).setUserState(userState);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        userState="Oklahoma";
     }
 }
