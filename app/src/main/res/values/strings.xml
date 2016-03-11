@@ -40,4 +40,7 @@
     <string name="title_activity_edit_venue">EditVenueActivity</string>
     <string name="title_activity_share">ShareActivity</string>
     <string name="groomname">Groom Name</string>
+    <string name="title_activity_venue_search">VenueSearch</string>
+    <string name="title_activity_venue_search_result">VenueSearchResult</string>
+    <string name="title_activity_venue_fragment">VenueFragment</string>
 </resources>
