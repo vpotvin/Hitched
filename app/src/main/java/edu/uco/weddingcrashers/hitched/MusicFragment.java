@@ -1,5 +1,7 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +9,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -17,7 +23,9 @@ import java.util.List;
 public class MusicFragment extends Fragment {
     private static final String ARTIST_NAME = "artistName";
     private static final String SONG_NAME = "songName";
-    private TextView musicTextView;
+    private TextView musicTextView,artistTextView;
+    private ImageView musicImageView;
+    private Button viewVideoButton;
     private String songName,artistName;
     private List<Song> mSongList;
 
@@ -45,6 +53,9 @@ public class MusicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_music,container,false);
         musicTextView = (TextView)view.findViewById(R.id.music_text_view);
+        artistTextView = (TextView)view.findViewById(R.id.artist_text_view);
+        musicImageView = (ImageView)view.findViewById(R.id.music_image_view);
+        viewVideoButton = (Button)view.findViewById(R.id.music_view_video);
 
 
         return view;
@@ -58,16 +69,21 @@ public class MusicFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(List<Song> list) {
+        protected void onPostExecute(final List<Song> list) {
             mSongList = list;
-            musicTextView.append("Track Name: "+list.get(0).getName());
-            musicTextView.append("\n");
-            musicTextView.append("Artist: "+list.get(0).getSinger());
-            musicTextView.append("\n");
-            musicTextView.append("Streaming URL: "+list.get(0).getStreamingURL());
-            musicTextView.append("\n");
-            musicTextView.append("Image URL: "+list.get(0).getImgURL());
-            musicTextView.append("\n");
+            musicTextView.append("Name: "+list.get(0).getName());
+            artistTextView.append("Artist: "+list.get(0).getSinger());
+            Picasso.with(getActivity())
+                    .load(list.get(0).getImgURL())
+                    .into(musicImageView);
+            viewVideoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(list.get(0).getStreamingURL()));
+                    startActivity(browserIntent);
+                }
+            });
+
         }
     }
 }

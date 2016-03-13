@@ -129,18 +129,20 @@ public class PlaceFetchr {
         }
     }
     private void parseSong(List<Song> items, JSONObject jsonBody) throws  IOException,JSONException{
-        JSONObject resultSongJsonObject = jsonBody.getJSONObject("results");
-        JSONObject songMatchJsonObject = resultSongJsonObject.getJSONObject("trackmatches");
-        JSONArray songJsonArray = songMatchJsonObject.getJSONArray("track");
-        Song mSong = new Song();
-        JSONObject songFoundJsonObject = songJsonArray.getJSONObject(0);
-        mSong.setName(songFoundJsonObject.getString("name"));
-        mSong.setSinger(songFoundJsonObject.getString("artist"));
-        mSong.setStreamingURL(songFoundJsonObject.getString("url"));
-        JSONArray songImageJsonArray = songFoundJsonObject.getJSONArray("image");
-        JSONObject songImageJsonObject = songImageJsonArray.getJSONObject(1);
-        mSong.setImgURL(songImageJsonObject.getString("#text"));
-        items.add(mSong);
+        if(jsonBody.has("results")) {
+            JSONObject resultSongJsonObject = jsonBody.getJSONObject("results");
+            JSONObject songMatchJsonObject = resultSongJsonObject.getJSONObject("trackmatches");
+            JSONArray songJsonArray = songMatchJsonObject.getJSONArray("track");
+            Song mSong = new Song();
+            JSONObject songFoundJsonObject = songJsonArray.getJSONObject(0);
+            mSong.setName(songFoundJsonObject.getString("name"));
+            mSong.setSinger(songFoundJsonObject.getString("artist"));
+            mSong.setStreamingURL(songFoundJsonObject.getString("url"));
+            JSONArray songImageJsonArray = songFoundJsonObject.getJSONArray("image");
+            JSONObject songImageJsonObject = songImageJsonArray.getJSONObject(3);
+            mSong.setImgURL(songImageJsonObject.getString("#text"));
+            items.add(mSong);
+        }
     }
     private void parseItems(List<VendorPlace> items, JSONObject jsonBody) throws IOException, JSONException {
         JSONArray resultJsonArray = jsonBody.getJSONArray("results");

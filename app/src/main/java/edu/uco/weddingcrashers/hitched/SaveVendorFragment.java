@@ -51,6 +51,7 @@ public class SaveVendorFragment extends DialogFragment implements AdapterView.On
                 .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        ((ParseDatabase)getActivity().getApplication()).setUserState(userState);
                         Toast.makeText(getActivity(),"Marked " + userState+" as default location" ,Toast.LENGTH_SHORT).show();
 
                     }
@@ -69,7 +70,7 @@ public class SaveVendorFragment extends DialogFragment implements AdapterView.On
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
         userState = adapterView.getItemAtPosition(pos).toString();
         Toast.makeText(getActivity(),userState,Toast.LENGTH_SHORT).show();
-        ((ParseDatabase)this.getActivity().getApplication()).setUserState(userState);
+
     }
 
     @Override
