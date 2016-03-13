@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class MusicFragment extends Fragment {
     private static final String SONG_NAME = "songName";
     private TextView musicTextView,artistTextView;
     private ImageView musicImageView;
-    private Button viewVideoButton;
+    private Button viewVideoButton,saveFavoriteMusicList;
     private String songName,artistName;
     private List<Song> mSongList;
 
@@ -56,7 +57,7 @@ public class MusicFragment extends Fragment {
         artistTextView = (TextView)view.findViewById(R.id.artist_text_view);
         musicImageView = (ImageView)view.findViewById(R.id.music_image_view);
         viewVideoButton = (Button)view.findViewById(R.id.music_view_video);
-
+        saveFavoriteMusicList = (Button)view.findViewById(R.id.save_to_music_list_button);
 
         return view;
     }
@@ -81,6 +82,16 @@ public class MusicFragment extends Fragment {
                 public void onClick(View view) {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(list.get(0).getStreamingURL()));
                     startActivity(browserIntent);
+                }
+            });
+            saveFavoriteMusicList.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ParseObject music = new ParseObject("FavoriteMusicList");
+                    music.put("Name",list.get(0).getName());
+                    music.put("Artist",list.get(0).getSinger());
+                    music.put("ImageURL",list.get(0).getImgURL());
+                    music.put("StreamingURL",list.get(0).getStreamingURL());
                 }
             });
 
