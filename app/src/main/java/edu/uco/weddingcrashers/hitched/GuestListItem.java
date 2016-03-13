@@ -97,4 +97,12 @@ public class GuestListItem extends ParseObject {
     public void setEmail(String email){
         put("email", email);
     }
+
+    public void setRSVP(boolean rsvp) {
+        put("rsvp", rsvp);
+    }
+
+    public boolean getRSVP(){
+        return getBoolean("rsvp");
+    }
 }
