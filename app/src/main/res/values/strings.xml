@@ -93,4 +93,10 @@
 
 
     </string-array>
+
+    <string name="hitched">HITCHED</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="title_activity_venue_search">VenueSearch</string>
+    <string name="title_activity_venue_search_result">VenueSearchResult</string>
+    <string name="title_activity_venue_fragment">VenueFragment</string>
 </resources>

@@ -66,6 +66,14 @@
             android:label="@string/title_activity_vendor"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
+            android:name=".MusicListActivity"
+            android:label="Music List Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".MusicActivity"
+            android:label="Music Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
             android:name=".VendorDetailsPagerActivity"
             android:label="@string/title_activity_vendor"
             android:parentActivityName=".DetailActivity"
@@ -75,6 +83,7 @@
             android:label="SavedVendorListActivity"
             android:parentActivityName=".VendorDetailsPagerActivity"
             android:theme="@style/Theme.AppCompat.Light" />
+
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"
@@ -109,6 +118,7 @@
             android:name=".ShareActivity"
             android:label="@string/title_activity_share"
             android:theme="@style/AppTheme.NoActionBar" />
+
 
         <service android:name="com.parse.PushService" />
 

@@ -3,6 +3,7 @@ package edu.uco.weddingcrashers.hitched;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,14 +14,10 @@ import android.widget.Toolbar;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
-import com.parse.ParseInstallation;
-import com.parse.ParsePush;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
-
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends Activity {
+    private static final String USER_STATE = "UserState";
     private Button venue,dress,party,honeymoon,cake,vendor,picture;
     private Button invites,registry,budget,assignseats;
     private Button itinerary,guestlist,tasks,contacts,update;
@@ -136,8 +133,10 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
      public void launchActivity(View view){
+         //Tung modified to launch different activity
          Intent i = new Intent(this,DetailActivity.class);
          startActivity(i);
+
      }
 
     public void launchBudgetActivity(View view) {

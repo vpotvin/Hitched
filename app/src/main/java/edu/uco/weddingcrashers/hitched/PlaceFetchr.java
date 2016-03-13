@@ -21,7 +21,8 @@ import java.util.List;
 public class PlaceFetchr {
 
     private static final String TAG = "PlaceFetchr";
-    private static final String API_KEY = "AIzaSyCIfbPXJZ4l_JQof-zQvJNwITN6TmUGNMk";
+    private static final String API_KEY = "AIzaSyB3Zguv8wJcA5Kqjbk-HaVbmycjB4IPQdA";
+    private static final String MUSIC_API_KEY="30233dd4d3780583b8741e26f6defd82";
 
     public byte[] getURLBytes(String urlSpec) throws IOException {
         URL url = new URL(urlSpec);
@@ -66,6 +67,29 @@ public class PlaceFetchr {
         return reviewList;
     }
 
+    public List<Song> fetchSearchSong(String trackName, String artist){
+        List<Song> songList = new ArrayList<>();
+        try{
+            String url = Uri.parse("http://ws.audioscrobbler.com/2.0/")
+                    .buildUpon()
+                    .appendQueryParameter("method","track.search")
+                    .appendQueryParameter("track",trackName)
+                    .appendQueryParameter("artist",artist)
+                    .appendQueryParameter("limit","1")
+                    .appendQueryParameter("api_key",MUSIC_API_KEY)
+                    .appendQueryParameter("format","json").build().toString();
+            String jsonString = getURLString(url);
+            Log.i("Song", "Received JSON: " + jsonString);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            parseSong(songList,jsonBody);
+        }catch (JSONException je){
+            Log.e("Song","Failed to parseJSON",je);
+        }catch (IOException ioe){
+            Log.e("Song","Failed to fetch rating",ioe);
+        }
+        return songList;
+    }
+
     public List<VendorPlace> fetchItems(String querySearch) {
         List<VendorPlace> items = new ArrayList<>();
 
@@ -103,6 +127,20 @@ public class PlaceFetchr {
 //            reviews.add(reviewJasonObject.getString("rating"));
 //            reviews.add(reviewJasonObject.getString("text"));
         }
+    }
+    private void parseSong(List<Song> items, JSONObject jsonBody) throws  IOException,JSONException{
+        JSONObject resultSongJsonObject = jsonBody.getJSONObject("results");
+        JSONObject songMatchJsonObject = resultSongJsonObject.getJSONObject("trackmatches");
+        JSONArray songJsonArray = songMatchJsonObject.getJSONArray("track");
+        Song mSong = new Song();
+        JSONObject songFoundJsonObject = songJsonArray.getJSONObject(0);
+        mSong.setName(songFoundJsonObject.getString("name"));
+        mSong.setSinger(songFoundJsonObject.getString("artist"));
+        mSong.setStreamingURL(songFoundJsonObject.getString("url"));
+        JSONArray songImageJsonArray = songFoundJsonObject.getJSONArray("image");
+        JSONObject songImageJsonObject = songImageJsonArray.getJSONObject(1);
+        mSong.setImgURL(songImageJsonObject.getString("#text"));
+        items.add(mSong);
     }
     private void parseItems(List<VendorPlace> items, JSONObject jsonBody) throws IOException, JSONException {
         JSONArray resultJsonArray = jsonBody.getJSONArray("results");

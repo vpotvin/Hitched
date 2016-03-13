@@ -9,6 +9,24 @@ public class Song {
     private static final String API_KEY="30233dd4d3780583b8741e26f6defd82";
     private String name;
     private String singer;
+    private String streamingURL;
+    private String imgURL;
+
+    public String getStreamingURL() {
+        return streamingURL;
+    }
+
+    public void setStreamingURL(String streamingURL) {
+        this.streamingURL = streamingURL;
+    }
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
 
     public UUID getSongID() {
         return songID;

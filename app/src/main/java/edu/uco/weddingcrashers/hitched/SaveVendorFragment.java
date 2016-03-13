@@ -43,6 +43,7 @@ public class SaveVendorFragment extends DialogFragment implements AdapterView.On
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         mSpinner.setAdapter(adapter);
+        mSpinner.setOnItemSelectedListener(this);
 
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
@@ -51,18 +52,23 @@ public class SaveVendorFragment extends DialogFragment implements AdapterView.On
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(),"Marked " + userState+" as default location" ,Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getActivity(),DetailActivity.class);
-                        intent.putExtra("STATE",userState);
+
+                    }
+                })
+                .setNegativeButton("Go to Music List", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getActivity(),MusicListActivity.class);
                         startActivity(intent);
                     }
                 })
-                .setNegativeButton("Discard",null)
                 .create();
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
         userState = adapterView.getItemAtPosition(pos).toString();
+        Toast.makeText(getActivity(),userState,Toast.LENGTH_SHORT).show();
         ((ParseDatabase)this.getActivity().getApplication()).setUserState(userState);
     }
 
@@ -70,4 +76,6 @@ public class SaveVendorFragment extends DialogFragment implements AdapterView.On
     public void onNothingSelected(AdapterView<?> adapterView) {
         userState="Oklahoma";
     }
+
+
 }

@@ -9,10 +9,6 @@
         android:id="@+id/state_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></Spinner>
-    <Button
-        android:id="@+id/submit_state_button"
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>
