@@ -48,7 +48,7 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
         query.findInBackground(new FindCallback<ItineraryItem>() {
             @Override
             public void done(List<ItineraryItem> objects, ParseException e) {
-                items = new ArrayList<ItineraryItem>(objects);
+                items = new ArrayList<>(objects);
                 if (items.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "There was no data found",
                             Toast.LENGTH_SHORT);
@@ -91,10 +91,10 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
                     position);
         }
 
-        newFragment.show(ft, "dialog");
+        if(newFragment != null) newFragment.show(ft, "dialog");
     }
 
-    public void updateItinerary( String title, String assigned, int position, double tip, Date time){
+    public void updateItinerary(String title, String assigned, int position, double tip, Date time){
         ItineraryItem item;
         final int pos;
         if(position < 0) {
