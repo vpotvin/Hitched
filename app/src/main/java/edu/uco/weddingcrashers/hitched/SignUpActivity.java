@@ -27,6 +27,7 @@ public class SignUpActivity extends Activity {
     private String date, bride, groom;
     private TextView message;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,11 +134,11 @@ public class SignUpActivity extends Activity {
                                 userTable.put("My_Username", ParseDatabase.USER_NAME);
                                 userTable.saveInBackground();
 
-                                //createMasterWeddingList();
 
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                createMasterWeddingList();
                                 startActivity(intent);
                             }
                             else {
@@ -171,7 +172,7 @@ public class SignUpActivity extends Activity {
     }
 
     public void createMasterWeddingList()
-    {/*
+    {
         MasterListItem item = new MasterListItem("Start a wedding folder or binder",null,null,"Begin leafing through bridal, lifestyle, fashion, gardening, design, and food magazines for inspiration",false,"Nine Months");
         item.saveInBackground();
         MasterListItem item1 = new MasterListItem("Work out your budget",null,null,"Determine how much you have to spend, based on your families’ contributions and your own",false,"Nine Months");
@@ -266,45 +267,53 @@ public class SignUpActivity extends Activity {
         item45.saveInBackground();
         MasterListItem item46 = new MasterListItem("Enjoy a bachelorette party",null,null,"Arranging a night out with your girlfriends generally falls to the maid of honor. But if she hasn’t mentioned one to you by now, feel free to ask—for scheduling purposes, of course!—if a celebration is in the works",false,"Two Months");
         item46.saveInBackground();
-        MasterListItem item47 = new MasterListItem("Enter RSVPs into your guest-list database",null,null,"Phone people who have not yet responded",false,"");
+        MasterListItem item47 = new MasterListItem("Enter RSVPs into your guest-list database",null,null,"Phone people who have not yet responded",false,"One Month");
         item47.saveInBackground();
-        MasterListItem item48 = new MasterListItem("Get your marriage license",null,null,"The process can take up to six days, but it’s good to give yourself some leeway. If you are changing your name, order several copies",false,"");
+        MasterListItem item48 = new MasterListItem("Get your marriage license",null,null,"The process can take up to six days, but it’s good to give yourself some leeway. If you are changing your name, order several copies",false,"One Month");
         item48.saveInBackground();
 
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
-        MasterListItem item = new MasterListItem("",null,null,"",false,"");
-        item.saveInBackground();
+        MasterListItem item49 = new MasterListItem("Mail the rehearsal-dinner invitations",null,null,"",false,"One Month");
+        item49.saveInBackground();
+        MasterListItem item50 = new MasterListItem("Visit the dressmaker for (with luck!) your last dress fitting",null,null,"For peace of mind, you may want to schedule a fitting the week of your wedding. You can always cancel the appointment if you try on the dress then and it fits perfectly",false,"One Month");
+        item50.saveInBackground();
+        MasterListItem item51 = new MasterListItem("Stock the bar",null,null,"Now that you have a firm head count you can order accordingly",false,"One Month");
+        item51.saveInBackground();
+        MasterListItem item52 = new MasterListItem("Send out as many final payments as you can",null,null,"",false,"One Month");
+        item52.saveInBackground();
+        MasterListItem item53 = new MasterListItem("Confirm times for hair and makeup and all vendors",null,null,"",false,"One Month");
+        item53.saveInBackground();
+        MasterListItem item54 = new MasterListItem("E-mail and print directions for drivers of transport vehicles",null,null,"This gives the chauffeurs ample time to navigate a route",false,"One Month");
+        item54.saveInBackground();
+        MasterListItem item55 = new MasterListItem("Assign seating",null,null,"Draw out table shapes on a layout of the room to help plan place settings. Write the names of female guests on pink sticky notes and the names of male guests on blue sticky notes so you can move people about without resketching the entire setting",false,"One Month");
+        item55.saveInBackground();
+        MasterListItem item56 = new MasterListItem("Purchase bridesmaids’ gifts",null,null,"You’ll present them at the rehearsal dinner",false,"One Month");
+        item56.saveInBackground();
+        MasterListItem item57 = new MasterListItem("Write vows, if necessary",null,null,"Get your hair cut and colored, if desired",false,"One Month");
+        item57.saveInBackground();
+        MasterListItem item58 = new MasterListItem("Reconfirm arrival times with vendors",null,null,"",false,"Week of the Wedding");
+        item58.saveInBackground();
+        MasterListItem item59 = new MasterListItem("Delegate small wedding-day tasks",null,null,"Choose someone to bustle your dress, someone to carry your things, someone to be in charge of gifts (especially the enveloped sort), someone to hand out tips, and someone to be the point person for each vendor",false,"Week of the Wedding");
+        item59.saveInBackground();
+        MasterListItem item60 = new MasterListItem("Send a timeline to the bridal party",null,null,"Include every member’s contact information, along with the point people you’ve asked to deal with the vendors, if problems arise",false,"Week of the Wedding");
+        item60.saveInBackground();
+        MasterListItem item61 = new MasterListItem("Pick up your dress",null,null,"Or make arrangements for a delivery",false,"Week of the Wedding");
+        item61.saveInBackground();
+        MasterListItem item62 = new MasterListItem("Check in one last time with the photographer",null,null,"Supply him or her with a list of moments you want captured on film",false,"Week of the Wedding");
+        item62.saveInBackground();
+        MasterListItem item63 = new MasterListItem("Set aside checks for the vendors",null,null,"And put tips in envelopes to be handed out at the event",false,"Week of the Wedding");
+        item63.saveInBackground();
+        MasterListItem item64 = new MasterListItem("Book a spa treatment",null,null,"Make an appontment for a manicure and a pedicure the day before the wedding. (You might want to get a stress-relieving massage, too.)",false,"Week of the Wedding");
+        item64.saveInBackground();
+        MasterListItem item65 = new MasterListItem("Send the final guest list to the caterer and all venues hosting your wedding-related events",null,null,"Typically, companies close their lists 72 hours in advance",false,"Week of the Wedding");
+        item65.saveInBackground();
+        MasterListItem item66 = new MasterListItem("Break in your shoes",null,null,"",false,"Week of the Wedding");
+        item66.saveInBackground();
+        MasterListItem item67 = new MasterListItem("Assemble and distribute the welcome baskets",null,null,"",false,"Week of the Wedding");
+        item67.saveInBackground();
+        MasterListItem item68 = new MasterListItem("Pack for your honeymoon",null,null,"",false,"Week of the Wedding");
+        item68.saveInBackground();
 
-*/
+
 
 
     }
