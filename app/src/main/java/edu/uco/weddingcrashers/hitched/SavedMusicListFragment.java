@@ -33,6 +33,7 @@ public class SavedMusicListFragment extends Fragment {
     private List<Song> mSongs;
     private TextView mSongNameTextView, mArtistNameTextView;
     private ActionMode mActionMode;
+    private Integer removePos;
 
 
     @Nullable
@@ -120,8 +121,8 @@ public class SavedMusicListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            ;
-            Toast.makeText(getActivity(), "Name: " + mSong.getName() + " - Singer: " + mSong.getSinger(), Toast.LENGTH_SHORT).show();
+            removePos = getLayoutPosition();
+            Toast.makeText(getActivity(), "Name: " + mSong.getName() + " - Singer: " + mSong.getSinger() +"- Item Position: "+ removePos, Toast.LENGTH_SHORT).show();
         }
         @Override
         public boolean onLongClick(View view) {
@@ -130,6 +131,7 @@ public class SavedMusicListFragment extends Fragment {
             }
             mActionMode = getActivity().startActionMode(mCallback);
             view.setSelected(true);
+
             return false;
         }
         private ActionMode.Callback mCallback = new ActionMode.Callback(){
@@ -150,8 +152,8 @@ public class SavedMusicListFragment extends Fragment {
                 switch (item.getItemId()) {
                     case R.id.menu_item_delete:
                         deleteSong(mSong);
+                        deleteItem();
                         Toast.makeText(getActivity(),"Deleted " + mSong.getName() + "from the list",Toast.LENGTH_SHORT).show();
-                        updateUI();
                         mode.finish();
                         return false;
                     default:
@@ -165,6 +167,15 @@ public class SavedMusicListFragment extends Fragment {
             }
         };
 
+
+    }
+    public void deleteItem (){
+        mSongs.remove(removePos);
+        mRecyclerView.removeViewAt(removePos);
+        mAdapter.notifyItemRemoved(removePos);
+        mAdapter.notifyItemRangeChanged(removePos,mSongs.size());
+        mAdapter.notifyDataSetChanged();
+        mRecyclerView.invalidate();
 
     }
 
@@ -193,6 +204,8 @@ public class SavedMusicListFragment extends Fragment {
             return mSongs.size();
         }
     }
+
+
 
 
 
