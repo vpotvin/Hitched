@@ -6,8 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by drenf on 2/10/2016.
@@ -18,14 +24,22 @@ public class GuestListRecViewAdapter extends
     private ArrayList<GuestListItem> theList;
     //private LayoutInflater inflater;
 
-    public GuestListRecViewAdapter(ArrayList<GuestListItem> theList) {
-        this.theList = theList;
-        //inflater = LayoutInflater.from(context);
+    public GuestListRecViewAdapter() {
+
+        ParseQuery<GuestListItem> query = ParseQuery.getQuery(GuestListItem.class);
+
+        query.findInBackground(new FindCallback<GuestListItem>() {
+            @Override
+            public void done(List<GuestListItem> objects, ParseException e) {
+                theList = new ArrayList<GuestListItem>(objects);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.guest_list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.guest_list_item, parent, false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
@@ -33,23 +47,33 @@ public class GuestListRecViewAdapter extends
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        if(theList != null)
+        {
 
-        holder.name.setText(theList.get(position).getName());
-        holder.phoneNumber.setText(theList.get(position).getPhoneNumber());
-        holder.address.setText(theList.get(position).getAddress());
-        holder.role.setText(theList.get(position).getRole());
-        holder.weddingParty.setChecked(theList.get(position).isWeddingParty());
+            holder.name.setText(theList.get(position).getName());
+            holder.phoneNumber.setText(theList.get(position).getPhoneNumber());
+            holder.address.setText(theList.get(position).getAddress());
+            holder.role.setText(theList.get(position).getRole());
+            holder.weddingParty.setChecked(theList.get(position).isWeddingParty());
 
-        String csz = theList.get(position).getAddress() + "," + theList.get(position).getState() + " " + theList.get(position).getZipcode();
+            String csz = theList.get(position).getAddress() + "," + theList.get(position).getState() + " " + theList.get(position).getZipcode();
 
-        holder.cityStateZip.setText(csz);
+            holder.cityStateZip.setText(csz);
+        }
+
     }
-
 
 
     @Override
     public int getItemCount() {
-        return theList.size();
+        if (theList != null)
+        {
+            return theList.size();
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     @Override
@@ -57,15 +81,29 @@ public class GuestListRecViewAdapter extends
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+    public void updateTheList()
+    {
+        ParseQuery<GuestListItem> query = ParseQuery.getQuery(GuestListItem.class);
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+        query.findInBackground(new FindCallback<GuestListItem>() {
+            @Override
+            public void done(List<GuestListItem> objects, ParseException e) {
+                theList = new ArrayList<GuestListItem>(objects);
+                notifyDataSetChanged();
+            }
+        });
+    }
+
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
         private TextView phoneNumber;
         private TextView address;
         private TextView cityStateZip;
         private TextView role;
         private CheckBox weddingParty;
-        public MyViewHolder(View itemView){
+
+        public MyViewHolder(View itemView) {
             super(itemView);
             this.name = (TextView) itemView.findViewById(R.id.GuestListName);
             this.phoneNumber = (TextView) itemView.findViewById(R.id.GuestListPhoneNumber);
@@ -75,7 +113,6 @@ public class GuestListRecViewAdapter extends
             this.weddingParty = (CheckBox) itemView.findViewById(R.id.GuestListWeddingParty);
         }
     }
-
 
 
 }

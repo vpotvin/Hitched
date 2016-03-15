@@ -1,6 +1,8 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.os.Parcelable;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,22 +11,33 @@ import java.util.Date;
 /**
  * Created by drenf on 2/2/2016.
  */
-public class MasterListItem implements Serializable {
+@ParseClassName("MasterListItem")
+public class MasterListItem extends ParseObject implements Serializable {
 
-    private String title;
-    private Date dueDate;
-    private Date completedDate;
-    private String notes;
-    private boolean completed;
+
     private ArrayList<GuestListItem> assignedTo;
 
-    public MasterListItem(String title, Date dueDate, Date completedDate,String notes,boolean completed) {
-        this.title = title;
-        this.dueDate = dueDate;
-        this.completedDate = completedDate;
-        this.notes = notes;
-        this.completed = completed;
+
+    public MasterListItem()
+    {}
+
+    public MasterListItem(String title, Date dueDate, Date completedDate,String notes,boolean completed, String distanceFromWeddingDay) {
+        this();
+        this.setTitle(title);
+        this.setDueDate(dueDate);
+        this.setCompletedDate(completedDate);
+        this.setNotes(notes);
+        this.setCompleted(completed);
+        this.setDistanceFromWeddingDay(distanceFromWeddingDay);
         assignedTo = new ArrayList<>();
+    }
+
+    public String getDistanceFromWeddingDay() {
+        return getString("getDistanceFromWeddingDay");
+    }
+
+    public void setDistanceFromWeddingDay(String distanceFromWeddingDay) {
+        put("distanceFromWeddingDay", distanceFromWeddingDay);
     }
 
     public void addToAssignedTo(GuestListItem guest)
@@ -46,42 +59,52 @@ public class MasterListItem implements Serializable {
     }
 
     public String getTitle() {
-        return title;
+        return getString("title");
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        put("title", title);
+
     }
 
     public Date getDueDate() {
-        return dueDate;
+       return getDate("dueDate");
     }
 
     public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
+        if(dueDate != null)
+        {
+            put("dueDate", dueDate);
+        }
+
+
     }
 
     public Date getCompletedDate() {
-        return completedDate;
+        return getDate("completedDate");
     }
 
     public void setCompletedDate(Date completedDate) {
-        this.completedDate = completedDate;
+        if(completedDate != null)
+        {
+            put("completedDate", completedDate);
+        }
+
     }
 
     public String getNotes() {
-        return notes;
+        return getString("notes");
     }
 
     public void setNotes(String notes) {
-        this.notes = notes;
+        put("notes", notes);
     }
 
     public boolean isCompleted() {
-        return completed;
+        return getBoolean("completed");
     }
 
     public void setCompleted(boolean completed) {
-        this.completed = completed;
+        put("completed", completed);
     }
 }
