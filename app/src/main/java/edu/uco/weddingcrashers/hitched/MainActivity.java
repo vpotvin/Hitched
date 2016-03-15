@@ -101,6 +101,12 @@ public class MainActivity extends Activity {
                 startActivity(taskList);
             }
         });
+       honeymoon.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent taskList = new Intent(MainActivity.this, HoneymoonActivity.class);
+                startActivity(taskList);
+            }
+        });
 
         itinerary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +153,10 @@ public class MainActivity extends Activity {
 
     public void pictureActivity(View view){
         Intent intent = new Intent(MainActivity.this, Pictures.class);
+        startActivity(intent);
+    }
+    public void honeymoonActivity(View view){
+        Intent intent = new Intent(MainActivity.this, HoneymoonActivity.class);
         startActivity(intent);
     }
 

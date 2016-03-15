@@ -7,4 +7,5 @@
     <item name="pink" type="color">#DE84B5</item>
     <item name="blue" type="color">#88CDE6</item>
     <item name = "baige" type = "color">#F6ECEB</item>
+    <color name="design">#FF4081</color>
 </resources>
