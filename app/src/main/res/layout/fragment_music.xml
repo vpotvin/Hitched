@@ -25,5 +25,10 @@
         android:text="Save to music list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/view_music_list_button"
+        android:text="View favorite music list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

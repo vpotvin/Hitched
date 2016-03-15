@@ -62,6 +62,10 @@
             android:label="@string/title_activity_vendor"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
+            android:name=".SavedMusicListActivity"
+            android:label="Save Music List Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
             android:name=".VendorsDetailActivity"
             android:label="@string/title_activity_vendor"
             android:theme="@style/Theme.AppCompat.Light" />

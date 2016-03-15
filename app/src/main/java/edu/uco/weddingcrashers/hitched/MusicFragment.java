@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseObject;
 import com.squareup.picasso.Picasso;
@@ -26,7 +27,7 @@ public class MusicFragment extends Fragment {
     private static final String SONG_NAME = "songName";
     private TextView musicTextView,artistTextView;
     private ImageView musicImageView;
-    private Button viewVideoButton,saveFavoriteMusicList;
+    private Button viewVideoButton,saveFavoriteMusicList,viewMusicList;
     private String songName,artistName;
     private List<Song> mSongList;
 
@@ -58,7 +59,14 @@ public class MusicFragment extends Fragment {
         musicImageView = (ImageView)view.findViewById(R.id.music_image_view);
         viewVideoButton = (Button)view.findViewById(R.id.music_view_video);
         saveFavoriteMusicList = (Button)view.findViewById(R.id.save_to_music_list_button);
-
+        viewMusicList = (Button)view.findViewById(R.id.view_music_list_button);
+        viewMusicList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),SavedMusicListActivity.class);
+                startActivity(i);
+            }
+        });
         return view;
     }
     private class FetchItemsTask extends AsyncTask<Void,Void,List<Song>> {
@@ -92,6 +100,8 @@ public class MusicFragment extends Fragment {
                     music.put("Artist",list.get(0).getSinger());
                     music.put("ImageURL",list.get(0).getImgURL());
                     music.put("StreamingURL",list.get(0).getStreamingURL());
+                    music.saveInBackground();
+                    Toast.makeText(getActivity(),"Add to list successfully",Toast.LENGTH_SHORT).show();
                 }
             });
 

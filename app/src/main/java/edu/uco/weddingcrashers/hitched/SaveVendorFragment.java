@@ -69,7 +69,6 @@ public class SaveVendorFragment extends DialogFragment implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
         userState = adapterView.getItemAtPosition(pos).toString();
-        Toast.makeText(getActivity(),userState,Toast.LENGTH_SHORT).show();
 
     }
 
