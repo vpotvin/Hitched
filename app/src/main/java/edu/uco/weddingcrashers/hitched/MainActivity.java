@@ -13,11 +13,6 @@ import android.widget.Toolbar;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
-import com.parse.ParseInstallation;
-import com.parse.ParsePush;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
-
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends Activity {
@@ -31,7 +26,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-<<<<<<< Temporary merge branch 1
+
         you = (TextView)findViewById(R.id.you);
         your = (TextView)findViewById(R.id.your);
         month = (TextView)findViewById(R.id.month);
@@ -66,7 +61,12 @@ public class MainActivity extends Activity {
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
 
-
+        update.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent update = new Intent(MainActivity.this, UpdateInformation.class);
+                startActivity(update);
+            }
+        });
         budget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent budget = new Intent(MainActivity.this, BudgetActivity.class);
