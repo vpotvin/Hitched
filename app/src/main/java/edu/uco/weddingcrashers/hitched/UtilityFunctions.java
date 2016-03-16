@@ -28,4 +28,9 @@ public class UtilityFunctions {
         mListView.setLayoutParams(params);
         mListView.requestLayout();
     }
+
+    public static void updateMasterListDueDates()
+    {
+
+    }
 }
