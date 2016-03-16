@@ -23,6 +23,7 @@ public class PlaceFetchr {
     private static final String TAG = "PlaceFetchr";
     private static final String API_KEY = "AIzaSyB3Zguv8wJcA5Kqjbk-HaVbmycjB4IPQdA";
     private static final String MUSIC_API_KEY="30233dd4d3780583b8741e26f6defd82";
+    private static final String DEALS_API_KEY="87w4czzpy3";
 
     public byte[] getURLBytes(String urlSpec) throws IOException {
         URL url = new URL(urlSpec);
@@ -47,6 +48,26 @@ public class PlaceFetchr {
 
     String getURLString(String urlSpec) throws IOException {
         return new String(getURLBytes(urlSpec));
+    }
+
+    public List<Coupon> fetchCoupon(String searchTerm, String state){
+        List<Coupon> couponList = new ArrayList<>();
+        try{
+            String url = Uri.parse("http://pubapi.yp.com/search-api/search/devapi/coupons")
+                    .buildUpon()
+                    .appendQueryParameter("format","json")
+                    .appendQueryParameter("key",DEALS_API_KEY)
+                    .appendQueryParameter("searchloc",state)
+                    .appendQueryParameter("term",searchTerm).build().toString();
+            String jsonString = getURLString(url);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            parseCoupon(couponList,jsonBody);
+        }catch (JSONException je){
+            Log.e("Coupon","Failed to parseJSON",je);
+        }catch (IOException ioe){
+            Log.e("Coupon","Failed to fetch rating",ioe);
+        }
+        return couponList;
     }
 
     public List<Review> fetchVendorReview(String placeid){
@@ -108,6 +129,28 @@ public class PlaceFetchr {
             Log.e(TAG, "Failed to fetch items", ioe);
         }
         return items;
+    }
+    private void parseCoupon(List<Coupon> items, JSONObject jsonBody) throws IOException,JSONException{
+        JSONObject searchJsonObject = jsonBody.getJSONObject("searchListings");
+        JSONArray searchJsonArray = searchJsonObject.getJSONArray("searchListing");
+        for(int i = 0;i<searchJsonArray.length();i++){
+            Coupon mCoupon = new Coupon();
+            JSONObject couponJsonObject = searchJsonArray.getJSONObject(i);
+            mCoupon.setBusinessName(couponJsonObject.getString("businessName"));
+            mCoupon.setCouponURL(couponJsonObject.getString("couponURL"));
+            mCoupon.setCouponPhone(couponJsonObject.getString("phone"));
+            mCoupon.setCouponAddress(couponJsonObject.getString("street" + " - " + couponJsonObject.getString("zip")));
+            JSONArray couponJsonArray = couponJsonObject.getJSONArray("coupon");
+            for(int j = 0;j<couponJsonArray.length();j++){
+                JSONObject couponElementJsonObject = couponJsonArray.getJSONObject(j);
+                mCoupon.setCouponDescription(couponElementJsonObject.getString("couponDescription"));
+                mCoupon.setCouponDisclaimer(couponElementJsonObject.getString("couponDisclaimer"));
+                mCoupon.setCouponEndDate(couponElementJsonObject.getString("couponExpirationDate"));
+                mCoupon.setCouponStartDate(couponElementJsonObject.getString("couponStartDate"));
+                mCoupon.setCouponTitle(couponElementJsonObject.getString("couponTitle"));
+            }
+            items.add(mCoupon);
+        }
     }
 
     private void parseReview(List<Review> items,JSONObject jsonBody) throws IOException,JSONException{
