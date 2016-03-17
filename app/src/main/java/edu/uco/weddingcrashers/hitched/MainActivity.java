@@ -1,9 +1,9 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +16,7 @@ import com.parse.ParseUser;
 
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
     private static final String USER_STATE = "UserState";
     private Button venue,dress,party,honeymoon,cake,vendor,picture;
     private Button invites,registry,budget,assignseats;
@@ -134,8 +134,9 @@ public class MainActivity extends Activity {
     }
      public void launchActivity(View view){
          //Tung modified to launch different activity
-         Intent i = new Intent(this,DetailActivity.class);
-         startActivity(i);
+         FragmentManager manager = getSupportFragmentManager();
+         ChooseStateFragment dialog = new ChooseStateFragment();
+         dialog.show(manager,"StateDialog");
 
      }
 
