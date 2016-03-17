@@ -74,6 +74,14 @@
             android:label="Music List Activity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
+            android:name=".VendorDealActivity"
+            android:label="Vendor Deal Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".DealDetailActivity"
+            android:label="Deal Detail Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
             android:name=".MusicActivity"
             android:label="Music Activity"
             android:theme="@style/Theme.AppCompat.Light" />

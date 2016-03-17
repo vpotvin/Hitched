@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class SaveVendorFragment extends DialogFragment implements AdapterView.On
     private static final String ARG_URL = "url";
     private  String userState;
     private Spinner mSpinner;
+    private Button mDealButton;
 
     public static SaveVendorFragment newInstance(String url){
         Bundle args = new Bundle();
@@ -36,7 +38,14 @@ public class SaveVendorFragment extends DialogFragment implements AdapterView.On
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_save_vendor,null);
         mSpinner = (Spinner)view.findViewById(R.id.state_spinner);
-
+        mDealButton = (Button)view.findViewById(R.id.deal_button);
+        mDealButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),VendorDealActivity.class);
+                startActivity(i);
+            }
+        });
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.StateList, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears

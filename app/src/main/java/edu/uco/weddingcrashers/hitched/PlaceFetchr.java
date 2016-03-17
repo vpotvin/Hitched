@@ -53,7 +53,7 @@ public class PlaceFetchr {
     public List<Coupon> fetchCoupon(String searchTerm, String state){
         List<Coupon> couponList = new ArrayList<>();
         try{
-            String url = Uri.parse("http://pubapi.yp.com/search-api/search/devapi/coupons")
+            String url = Uri.parse("http://api2.yp.com/listings/v1/coupons")
                     .buildUpon()
                     .appendQueryParameter("format","json")
                     .appendQueryParameter("key",DEALS_API_KEY)
@@ -61,6 +61,7 @@ public class PlaceFetchr {
                     .appendQueryParameter("term",searchTerm).build().toString();
             String jsonString = getURLString(url);
             JSONObject jsonBody = new JSONObject(jsonString);
+            Log.i("Coupon", "Received JSON: " + jsonString);
             parseCoupon(couponList,jsonBody);
         }catch (JSONException je){
             Log.e("Coupon","Failed to parseJSON",je);
@@ -131,7 +132,8 @@ public class PlaceFetchr {
         return items;
     }
     private void parseCoupon(List<Coupon> items, JSONObject jsonBody) throws IOException,JSONException{
-        JSONObject searchJsonObject = jsonBody.getJSONObject("searchListings");
+        JSONObject resultJsonObject = jsonBody.getJSONObject("searchResult");
+        JSONObject searchJsonObject = resultJsonObject.getJSONObject("searchListings");
         JSONArray searchJsonArray = searchJsonObject.getJSONArray("searchListing");
         for(int i = 0;i<searchJsonArray.length();i++){
             Coupon mCoupon = new Coupon();
@@ -139,14 +141,15 @@ public class PlaceFetchr {
             mCoupon.setBusinessName(couponJsonObject.getString("businessName"));
             mCoupon.setCouponURL(couponJsonObject.getString("couponURL"));
             mCoupon.setCouponPhone(couponJsonObject.getString("phone"));
-            mCoupon.setCouponAddress(couponJsonObject.getString("street" + " - " + couponJsonObject.getString("zip")));
-            JSONArray couponJsonArray = couponJsonObject.getJSONArray("coupon");
+            mCoupon.setCouponAddress(couponJsonObject.getString("street") + " - " + couponJsonObject.getString("state"));
+            JSONObject couponJson = couponJsonObject.getJSONObject("coupons");
+            JSONArray couponJsonArray = couponJson.getJSONArray("coupon");
             for(int j = 0;j<couponJsonArray.length();j++){
                 JSONObject couponElementJsonObject = couponJsonArray.getJSONObject(j);
                 mCoupon.setCouponDescription(couponElementJsonObject.getString("couponDescription"));
                 mCoupon.setCouponDisclaimer(couponElementJsonObject.getString("couponDisclaimer"));
-                mCoupon.setCouponEndDate(couponElementJsonObject.getString("couponExpirationDate"));
-                mCoupon.setCouponStartDate(couponElementJsonObject.getString("couponStartDate"));
+                mCoupon.setCouponEndDate(couponElementJsonObject.getString("couponExpiration"));
+                mCoupon.setCouponStartDate(couponElementJsonObject.getString("couponCreatedAt"));
                 mCoupon.setCouponTitle(couponElementJsonObject.getString("couponTitle"));
             }
             items.add(mCoupon);
