@@ -1,5 +1,6 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -43,6 +44,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     ImageView mImageView;
     RatingBar mRatingBar;
     List<Review> mReviewList;
+    private ProgressDialog progDailog;
 
     public static VendorFragment newInstance(String placeID, String iconURL) {
         Bundle args = new Bundle();
@@ -81,6 +83,8 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
         mWeb = (TextView) view.findViewById(R.id.place_text_view_website);
         mImageView = (ImageView) view.findViewById(R.id.place_web_view_image);
         mRatingBar = (RatingBar) view.findViewById(R.id.place_rating);
+        progDailog = ProgressDialog.show(getActivity(), "Loading","Please wait...", true);
+        progDailog.setCancelable(false);
 
         mGoogleApiClient = new GoogleApiClient
                 .Builder(getActivity())
@@ -190,7 +194,6 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     }
 
     private class FetchReviewTask extends AsyncTask<Void,Void,List<Review>> {
-
         @Override
         protected List<Review> doInBackground(Void... voids) {
             return new PlaceFetchr().fetchVendorReview(placeID);
@@ -211,6 +214,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
                 mReview.append(reviewList.get(i).getText());
                 mReview.append("\n");
             }
+            progDailog.dismiss();
         }
     }
 

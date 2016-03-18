@@ -42,8 +42,42 @@
         android:textSize="10dip"
         android:layout_marginTop="1dip"
         android:layout_toRightOf="@+id/deal_thumbnail"
-         />
+        />
 
+    <GridLayout
+        android:id="@+id/music_grid_layout"
+        android:layout_below="@id/deal_description"
+        android:layout_toRightOf="@id/deal_thumbnail"
+
+        android:columnCount="3"
+        android:rowCount="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignWithParentIfMissing="false"
+        >
+        <Button
+            android:id="@+id/music_view_video"
+
+            android:background="@drawable/ic_music_play"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <Button
+            android:id="@+id/save_to_music_list_button"
+            android:background="@drawable/ic_action_save"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            />
+        <Button
+            android:id="@+id/view_music_list_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_action_favorite"/>
+
+    </GridLayout>
 
     <!-- Rightend Duration -->
     <TextView
@@ -51,7 +85,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/deal_description"
+        android:layout_alignBottom="@id/music_grid_layout"
+        android:layout_toRightOf="@id/music_grid_layout"
         android:gravity="right"
         android:text="5:45"
         android:layout_marginRight="5dip"
