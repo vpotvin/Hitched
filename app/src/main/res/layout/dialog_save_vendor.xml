@@ -1,50 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_gravity="center"
-              android:gravity="center_horizontal"
+              android:orientation="horizontal"
+              android:id="@+id/fragment_review"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
-    <EditText
-        android:id="@+id/edit_text_vendor_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter the vendor name here"/>
+              android:gravity="center">
 
-    <EditText
-        android:id="@+id/edit_text_vendor_website"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter the website address here"/>
-    <EditText
-        android:id="@+id/edit_text_vendor_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter the physical address here"/>
-    <EditText
-        android:id="@+id/edit_text_vendor_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter the phone number here"/>
 
-    <EditText
-        android:id="@+id/edit_text_vendor_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter the email here"/>
-    <RatingBar
-        android:id="@+id/vendor_rating_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0"
-        android:rating="2.0" />
-
-    <EditText
-        android:id="@+id/edit_text_vendor_review"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter the review here"/>
+    <Button
+        android:id="@+id/deal_button"
+        android:text="Deals"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        style="@style/MenuDetailButton"/>
+    <Button
+        android:id="@+id/music_button"
+        android:text="Music"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        style="@style/MenuDetailButton"/>
+    <Button
+        android:id="@+id/detail_button"
+        android:text="Detail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        style="@style/MenuDetailButton"/>
 
 
 </LinearLayout>

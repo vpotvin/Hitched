@@ -10,6 +10,15 @@ public class VendorPlace {
     private String mPriceLevel;
     private String mID;
     private String iconURL;
+    private ReviewList mReviewList;
+
+    public ReviewList getReviewList() {
+        return mReviewList;
+    }
+
+    public void setReviewList(ReviewList reviewList) {
+        mReviewList = reviewList;
+    }
 
     public String getIconURL() {
         return iconURL;
