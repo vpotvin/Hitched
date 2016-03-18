@@ -53,6 +53,7 @@ public class SavedVendorList {
 
     }
 
+
     public void deleteDataFromDatabase(String tableName){
         ParseQuery query = new ParseQuery(tableName);
         query.findInBackground(new FindCallback<ParseObject>() {
