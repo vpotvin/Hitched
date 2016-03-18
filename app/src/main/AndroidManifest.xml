@@ -95,6 +95,11 @@
             android:label="SavedVendorListActivity"
             android:parentActivityName=".VendorDetailsPagerActivity"
             android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".WebTutorialActivity"
+            android:label="WebTutorial Activity"
+
+            android:theme="@style/Theme.AppCompat.Light" />
 
         <activity android:name=".Pictures" />
         <activity

@@ -28,6 +28,13 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         style="@style/MenuDetailButton"/>
+    <Button
+        android:id="@+id/website_button"
+        android:text="Website"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        style="@style/MenuDetailButton"/>
 
 
 </LinearLayout>
