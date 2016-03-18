@@ -145,6 +145,13 @@
             android:text="Wedding Party"
             android:editable="false"
             android:layout_gravity="center_horizontal" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkRSVP"
+            android:text="RSVP"
+            android:editable="false"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
 
