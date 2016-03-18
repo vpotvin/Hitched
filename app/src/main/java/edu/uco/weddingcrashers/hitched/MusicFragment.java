@@ -69,6 +69,8 @@ public class MusicFragment extends Fragment {
         });
         return view;
     }
+
+
     private class FetchItemsTask extends AsyncTask<Void,Void,List<Song>> {
 
         @Override
