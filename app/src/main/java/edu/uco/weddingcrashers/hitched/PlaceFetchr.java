@@ -139,13 +139,14 @@ public class PlaceFetchr {
             Coupon mCoupon = new Coupon();
             JSONObject couponJsonObject = searchJsonArray.getJSONObject(i);
             mCoupon.setBusinessName(couponJsonObject.getString("businessName"));
-            mCoupon.setCouponURL(couponJsonObject.getString("couponURL"));
+            mCoupon.setCouponURL(couponJsonObject.getString("websiteURL"));
             mCoupon.setCouponPhone(couponJsonObject.getString("phone"));
             mCoupon.setCouponAddress(couponJsonObject.getString("street") + " - " + couponJsonObject.getString("state"));
             JSONObject couponJson = couponJsonObject.getJSONObject("coupons");
             JSONArray couponJsonArray = couponJson.getJSONArray("coupon");
             for(int j = 0;j<couponJsonArray.length();j++){
                 JSONObject couponElementJsonObject = couponJsonArray.getJSONObject(j);
+                mCoupon.setLogoURL(couponElementJsonObject.getString("couponBusinessLogo"));
                 mCoupon.setCouponDescription(couponElementJsonObject.getString("couponDescription"));
                 mCoupon.setCouponDisclaimer(couponElementJsonObject.getString("couponDisclaimer"));
                 mCoupon.setCouponEndDate(couponElementJsonObject.getString("couponExpiration"));

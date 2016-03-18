@@ -14,7 +14,15 @@ public class Coupon {
     private String couponEndDate;
     private String couponTitle;
     private String couponPhone;
+    private String logoURL;
 
+    public String getLogoURL() {
+        return logoURL;
+    }
+
+    public void setLogoURL(String logoURL) {
+        this.logoURL = logoURL;
+    }
 
     public String getBusinessName() {
         return businessName;
