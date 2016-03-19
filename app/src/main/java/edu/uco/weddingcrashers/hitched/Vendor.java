@@ -1,5 +1,7 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.UUID;
 
 /**
@@ -11,6 +13,15 @@ public class Vendor {
     private String mVendorContact;
     private String mVendorWebsite;
     private String mCategory;
+    private Drawable mImage;
+
+    public Drawable getImage() {
+        return mImage;
+    }
+
+    public void setImage(Drawable image) {
+        mImage = image;
+    }
 
     public String getCategory() {
         return mCategory;
@@ -43,6 +54,7 @@ public class Vendor {
         mQuery = Query;
         mVendorID = UUID.randomUUID();
         mCategory = category;
+
     }
 
     public UUID getVendorID() {

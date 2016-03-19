@@ -20,6 +20,7 @@
     <uses-permission android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
 
     <application
+        android:largeHeap="true"
         android:name=".ParseDatabase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

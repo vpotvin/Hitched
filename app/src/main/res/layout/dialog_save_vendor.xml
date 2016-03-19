@@ -10,31 +10,58 @@
     <Button
         android:id="@+id/deal_button"
         android:text="Deals"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        style="@style/MenuDetailButton"/>
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="@mipmap/mainvendor"
+        android:textColor="#ffffff"
+        android:onClick="launchActivity"
+        android:textStyle="bold"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:padding="10sp"/>
     <Button
         android:id="@+id/music_button"
         android:text="Music"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        style="@style/MenuDetailButton"/>
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="@mipmap/mainvendor"
+        android:textColor="#ffffff"
+        android:onClick="launchActivity"
+        android:textStyle="bold"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:padding="10sp"/>
     <Button
         android:id="@+id/detail_button"
         android:text="Detail"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        style="@style/MenuDetailButton"/>
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="@mipmap/mainvendor"
+        android:textColor="#ffffff"
+        android:onClick="launchActivity"
+        android:textStyle="bold"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:padding="10sp"/>
     <Button
         android:id="@+id/website_button"
-        android:text="Website"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        style="@style/MenuDetailButton"/>
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="@mipmap/mainvendor"
+        android:textColor="#ffffff"
+        android:onClick="launchActivity"
+        android:textStyle="bold"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:padding="10sp"/>
 
 
 </LinearLayout>

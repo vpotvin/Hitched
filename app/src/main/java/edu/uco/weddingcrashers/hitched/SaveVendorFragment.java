@@ -79,7 +79,6 @@ public class SaveVendorFragment extends DialogFragment {
 
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setTitle("Menu")
                 .create();
 //                .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
 //                    @Override

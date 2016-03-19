@@ -1,11 +1,13 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +58,13 @@ public class DetailsFragment extends Fragment {
     private void updateUI(){
         VendorList vendorList = VendorList.get(getActivity());
         List<Vendor> vendors = vendorList.getVendors();
+        for(int i = 0;i<vendors.size();i++){
+            int index = i+1;
+            int drawableID = getResources().getIdentifier("@drawable/a"+index,"drawable",getActivity().getPackageName());
+            Log.i("Drawable","ID: " + drawableID);
+            Drawable d = getActivity().getResources().getDrawable(drawableID);
+            vendors.get(i).setImage(d);
+        }
         if(mAdapter == null) {
             mAdapter = new VendorAdapter(vendors);
             mVendorRecycleView.setAdapter(mAdapter);
@@ -77,7 +86,7 @@ public class DetailsFragment extends Fragment {
         public void bindVendor(Vendor vendor){
             mVendor = vendor;
             mTextView.setText(mVendor.getVendorName());
-            //mImageView.setImageResource(R.drawable.a);
+            mImageView.setImageDrawable(mVendor.getImage());
         }
 
         @Override
