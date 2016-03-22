@@ -20,6 +20,7 @@
     <uses-permission android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
 
     <application
+        android:largeHeap="true"
         android:name=".ParseDatabase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -94,6 +95,11 @@
             android:name=".SavedVendorListActivity"
             android:label="SavedVendorListActivity"
             android:parentActivityName=".VendorDetailsPagerActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".WebTutorialActivity"
+            android:label="WebTutorial Activity"
+
             android:theme="@style/Theme.AppCompat.Light" />
 
         <activity android:name=".Pictures" />

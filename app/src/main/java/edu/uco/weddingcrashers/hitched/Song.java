@@ -11,6 +11,15 @@ public class Song {
     private String singer;
     private String streamingURL;
     private String imgURL;
+    private String listener;
+
+    public String getListener() {
+        return listener;
+    }
+
+    public void setListener(String listener) {
+        this.listener = listener;
+    }
 
     public String getStreamingURL() {
         return streamingURL;

@@ -1,5 +1,7 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.UUID;
 
 /**
@@ -10,6 +12,24 @@ public class Vendor {
     private String mVendorName;
     private String mVendorContact;
     private String mVendorWebsite;
+    private String mCategory;
+    private Drawable mImage;
+
+    public Drawable getImage() {
+        return mImage;
+    }
+
+    public void setImage(Drawable image) {
+        mImage = image;
+    }
+
+    public String getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(String category) {
+        mCategory = category;
+    }
 
     public String getQuery() {
         return mQuery;
@@ -28,6 +48,13 @@ public class Vendor {
         mVendorName = Name;
         mQuery = Query;
         mVendorID = UUID.randomUUID();
+    }
+    public Vendor(String Name,String Query,String category) {
+        mVendorName = Name;
+        mQuery = Query;
+        mVendorID = UUID.randomUUID();
+        mCategory = category;
+
     }
 
     public UUID getVendorID() {
@@ -59,6 +86,6 @@ public class Vendor {
     }
     @Override
     public String toString(){
-        return mVendorName;
+        return mCategory;
     }
 }

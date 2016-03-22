@@ -97,7 +97,7 @@ public class PlaceFetchr {
                     .appendQueryParameter("method","track.search")
                     .appendQueryParameter("track",trackName)
                     .appendQueryParameter("artist",artist)
-                    .appendQueryParameter("limit","1")
+                    //.appendQueryParameter("limit","1")
                     .appendQueryParameter("api_key",MUSIC_API_KEY)
                     .appendQueryParameter("format","json").build().toString();
             String jsonString = getURLString(url);
@@ -139,13 +139,14 @@ public class PlaceFetchr {
             Coupon mCoupon = new Coupon();
             JSONObject couponJsonObject = searchJsonArray.getJSONObject(i);
             mCoupon.setBusinessName(couponJsonObject.getString("businessName"));
-            mCoupon.setCouponURL(couponJsonObject.getString("couponURL"));
+            mCoupon.setCouponURL(couponJsonObject.getString("websiteURL"));
             mCoupon.setCouponPhone(couponJsonObject.getString("phone"));
             mCoupon.setCouponAddress(couponJsonObject.getString("street") + " - " + couponJsonObject.getString("state"));
             JSONObject couponJson = couponJsonObject.getJSONObject("coupons");
             JSONArray couponJsonArray = couponJson.getJSONArray("coupon");
             for(int j = 0;j<couponJsonArray.length();j++){
                 JSONObject couponElementJsonObject = couponJsonArray.getJSONObject(j);
+                mCoupon.setLogoURL(couponElementJsonObject.getString("couponBusinessLogo"));
                 mCoupon.setCouponDescription(couponElementJsonObject.getString("couponDescription"));
                 mCoupon.setCouponDisclaimer(couponElementJsonObject.getString("couponDisclaimer"));
                 mCoupon.setCouponEndDate(couponElementJsonObject.getString("couponExpiration"));
@@ -179,15 +180,18 @@ public class PlaceFetchr {
             JSONObject resultSongJsonObject = jsonBody.getJSONObject("results");
             JSONObject songMatchJsonObject = resultSongJsonObject.getJSONObject("trackmatches");
             JSONArray songJsonArray = songMatchJsonObject.getJSONArray("track");
-            Song mSong = new Song();
-            JSONObject songFoundJsonObject = songJsonArray.getJSONObject(0);
-            mSong.setName(songFoundJsonObject.getString("name"));
-            mSong.setSinger(songFoundJsonObject.getString("artist"));
-            mSong.setStreamingURL(songFoundJsonObject.getString("url"));
-            JSONArray songImageJsonArray = songFoundJsonObject.getJSONArray("image");
-            JSONObject songImageJsonObject = songImageJsonArray.getJSONObject(3);
-            mSong.setImgURL(songImageJsonObject.getString("#text"));
-            items.add(mSong);
+            for(int i = 0;i<songJsonArray.length();i++) {
+                Song mSong = new Song();
+                JSONObject songFoundJsonObject = songJsonArray.getJSONObject(i);
+                mSong.setName(songFoundJsonObject.getString("name"));
+                mSong.setSinger(songFoundJsonObject.getString("artist"));
+                mSong.setStreamingURL(songFoundJsonObject.getString("url"));
+                mSong.setListener(songFoundJsonObject.getString("listeners"));
+                JSONArray songImageJsonArray = songFoundJsonObject.getJSONArray("image");
+                JSONObject songImageJsonObject = songImageJsonArray.getJSONObject(3);
+                mSong.setImgURL(songImageJsonObject.getString("#text"));
+                items.add(mSong);
+            }
         }
     }
     private void parseItems(List<VendorPlace> items, JSONObject jsonBody) throws IOException, JSONException {

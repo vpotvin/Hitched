@@ -19,7 +19,7 @@ public class SaveVendorFragment extends DialogFragment {
     // private static final String ARG_URL = "url";
     private String userState;
     private Spinner mSpinner;
-    private Button mDealButton, mMusicButton, mDetailButton;
+    private Button mDealButton, mMusicButton, mDetailButton, mWebsiteButton;
 
 //    public static SaveVendorFragment newInstance(String url){
 //        Bundle args = new Bundle();
@@ -60,6 +60,15 @@ public class SaveVendorFragment extends DialogFragment {
                 startActivity(i);
             }
         });
+
+        mWebsiteButton = (Button) view.findViewById(R.id.website_button);
+        mWebsiteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),WebTutorialActivity.class);
+                startActivity(i);
+            }
+        });
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
 //                R.array.StateList, android.R.layout.simple_spinner_item);
 //        // Specify the layout to use when the list of choices appears
@@ -70,7 +79,6 @@ public class SaveVendorFragment extends DialogFragment {
 
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setTitle("Menu")
                 .create();
 //                .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
 //                    @Override
