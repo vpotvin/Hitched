@@ -1,0 +1,42 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/viewVows"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            android:text="Write Your Vows Here!" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editVows"
+            android:visibility="invisible"
+            android:inputType="textMultiLine"
+            android:lines="40"
+            android:minLines="6"
+            android:gravity="top|left"
+            android:maxLines="50"
+            android:scrollbars="vertical"
+            />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:visibility="invisible"
+            android:id="@+id/submitVowsButton"
+            android:layout_below="@+id/editVows"
+            android:layout_alignStart="@+id/viewVows"
+            android:text="Submit" />
+    </RelativeLayout>
+</ScrollView>
