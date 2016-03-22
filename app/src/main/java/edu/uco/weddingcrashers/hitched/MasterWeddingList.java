@@ -9,15 +9,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.parse.ParseObject;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -33,7 +34,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_wedding_list);
 
-       // addButton = (Button) findViewById(R.id.addTaskButton);// Rehana Moved this button to toolbar
+       addButton = (Button) findViewById(R.id.addTaskButton);// Rehana Moved this button to toolbar
 
         recyclerView = (RecyclerView) findViewById(R.id.masterListRecView);
         recyclerView.setHasFixedSize(true);
@@ -45,7 +46,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
 
         theList = new ArrayList<Object>();
 
-        buildParse();
+       // buildParse();
 
         int day = 1;
         boolean com = false;
@@ -55,7 +56,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         {
 
 
-            theList.add(new MasterListItem("Test Item"+ x,calendar.getTime(), new Date(), "here are some notes", com));
+            //theList.add(new MasterListItem("Test Item"+ x,calendar.getTime(), new Date(), "here are some notes", com));
             calendar.add(Calendar.DAY_OF_MONTH, 10);
             if(com == false)
             {
@@ -93,26 +94,26 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         theList.add(new DateLabel(calendar.getTime(), calendar2.getTime(), "Week Of Wedding "));
 
 
-        Collections.sort(theList, new theListComparator());
-        masterListAdapter = new MasterListRecViewAdapter(theList);
+        //Collections.sort(theList, new theListComparator());
+        masterListAdapter = new MasterListRecViewAdapter();
         recyclerView.setAdapter(masterListAdapter);
 
         //masterListAdapter.notifyDataSetChanged();
 
 
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                DialogFragment newFragment = new MasterListNewItemInput();
-//                newFragment.show(getFragmentManager(), "New Entry");
-//            }
-//        }); // Rehana Moved this button to toolbar
+        addButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                DialogFragment newFragment = new MasterListNewItemInput();
+                newFragment.show(getFragmentManager(), "New Entry");
+            }
+        }); // Rehana Moved this button to toolbar
 
     }
 
-    private void buildParse() {
+    /*private void buildParse() {
         ParseObject masterListItem = new ParseObject("MasterListItem");
     }
-
+*/
     public void showNoticeDialog() {
         // Create an instance of the dialog fragment and show it
         //FragmentManager fragmentManager = getActivity().getFragmentManager();
@@ -146,9 +147,17 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
 
     private void addTask(String Title, String Notes, Date dueDate)
     {
-        theList.add(new MasterListItem(Title, dueDate, null, Notes, false));
-        Collections.sort(theList, new theListComparator());
-        masterListAdapter.notifyDataSetChanged();
+        MasterListItem item = new MasterListItem(Title, dueDate, null,Notes,false,"static");
+        item.saveInBackground(new SaveCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    masterListAdapter.updateTheList();
+                }
+            }
+        });
+        //theList.add(new MasterListItem(Title, dueDate, null, Notes, false));
+        //Collections.sort(theList, new theListComparator());
+        //masterListAdapter.notifyDataSetChanged();
     }
     ///Rehana Added Toolbar from here
 

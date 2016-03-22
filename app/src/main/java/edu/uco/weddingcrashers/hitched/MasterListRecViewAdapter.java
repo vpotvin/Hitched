@@ -12,8 +12,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,9 +35,18 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
     private Context context;
     //private LayoutInflater inflater;
 
-    public MasterListRecViewAdapter(List<Object> theList) {
-        this.theList = theList;
-        //inflater = LayoutInflater.from(context);
+    public MasterListRecViewAdapter() {
+        ParseQuery<MasterListItem> query = ParseQuery.getQuery(MasterListItem.class);
+
+        query.findInBackground(new FindCallback<MasterListItem>() {
+            @Override
+            public void done(List<MasterListItem> objects, ParseException e) {
+                theList = new ArrayList<Object>(objects);
+                notifyDataSetChanged();
+            }
+        });
+
+
     }
 
     @Override
@@ -104,6 +118,10 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
             String reportDate = df.format(currentItem.getDueDate());
             holder.dueDate.setText(reportDate);
         }
+        else
+        {
+            holder.dueDate.setText("");
+        }
         if(currentItem.getCompletedDate() != null)
         {
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
@@ -139,7 +157,27 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemCount() {
-        return theList.size();
+        if(theList != null)
+        {
+            return theList.size();
+        }
+        else
+        {
+            return 0;
+        }
+
+    }
+
+    public void updateTheList() {
+        ParseQuery<MasterListItem> query = ParseQuery.getQuery(MasterListItem.class);
+
+        query.findInBackground(new FindCallback<MasterListItem>() {
+            @Override
+            public void done(List<MasterListItem> objects, ParseException e) {
+                theList = new ArrayList<Object>(objects);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override

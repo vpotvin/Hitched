@@ -1,22 +1,22 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
-public class MainActivity extends Activity {
-    private Button venue,dress,party,honeymoon,cake,vendor,picture;
+public class MainActivity extends AppCompatActivity {
+    private Button venue,dress,party,honeymoon,cake,vendor,picture,vow, menu;
     private Button invites,registry,budget,assignseats;
     private Button itinerary,guestlist,tasks,contacts,update;
     private TextView you, your, date, month, day;
@@ -25,6 +25,14 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
+
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
         you = (TextView)findViewById(R.id.you);
@@ -60,6 +68,8 @@ public class MainActivity extends Activity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
+        vow = (Button)findViewById(R.id.vow);
+        menu = (Button)findViewById(R.id.menu);
 
         update.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
