@@ -18,6 +18,10 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class SignUpActivity extends Activity {
 
     protected EditText usernameEditText,passwordEditText, emailEditText,bridename,groomname;
@@ -223,7 +227,7 @@ public class SignUpActivity extends Activity {
         item23.saveInBackground();
         MasterListItem item24 = new MasterListItem("Start composing a day-of timeline",null,null,"Draw up a schedule of the event and slot in each component (the cake-cutting, the first dance)",false,"Six Months");
         item24.saveInBackground();
-        MasterListItem item25 = new MasterListItem("Book the rehearsal and rehearsal-dinner venues",null,null,"Negotiate the cost and the menu. If you’re planning to host a day-after brunch for guests, book that place as well",false,"");
+        MasterListItem item25 = new MasterListItem("Book the rehearsal and rehearsal-dinner venues",null,null,"Negotiate the cost and the menu. If you’re planning to host a day-after brunch for guests, book that place as well",false,"Four Months");
         item25.saveInBackground();
         MasterListItem item26 = new MasterListItem("Check on the wedding invitations",null,null,"Ask the stationer for samples of the finished invitations and revise them to suit your needs",false,"Four Months");
         item26.saveInBackground();
@@ -313,7 +317,17 @@ public class SignUpActivity extends Activity {
         MasterListItem item68 = new MasterListItem("Pack for your honeymoon",null,null,"",false,"Week of the Wedding");
         item68.saveInBackground();
 
-
+        if(!(date.equals("No Set Date")))
+        {
+            DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+            Date startDate = null;
+            try {
+                startDate = df.parse(date);
+            } catch (java.text.ParseException e) {
+                e.printStackTrace();
+            }
+            UtilityFunctions.updateMasterListDueDates(startDate);
+        }
 
 
     }

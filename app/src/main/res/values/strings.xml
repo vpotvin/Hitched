@@ -45,4 +45,6 @@
     <string name="title_activity_venue_search">VenueSearch</string>
     <string name="title_activity_venue_search_result">VenueSearchResult</string>
     <string name="title_activity_venue_fragment">VenueFragment</string>
+    <string name="title_activity_vows">VowsActivity</string>
+    <string name="title_activity_menu">MenuActivity</string>
 </resources>
