@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -57,11 +56,13 @@ public class GuestListRecViewAdapter extends
             holder.role.setText(theList.get(position).getRole());
             holder.weddingParty.setChecked(theList.get(position).isWeddingParty());
 
-        holder.checkRSVP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            final int pos = position;
+
+            holder.checkRSVP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                theList.get(position).setRSVP(isChecked);
-                theList.get(position).saveInBackground();
+                theList.get(pos).setRSVP(isChecked);
+                theList.get(pos).saveInBackground();
             }
         });
 

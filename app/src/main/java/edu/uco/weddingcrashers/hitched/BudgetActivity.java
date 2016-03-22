@@ -41,6 +41,7 @@ public class BudgetActivity extends Activity implements
 
         //replaced with database population
 
+
         ParseQuery<BudgetItem> budgetQuery = ParseQuery.getQuery(BudgetItem.class);
         budgetQuery.whereEqualTo(BudgetItem.TITLE, BudgetItem.MAIN_TITLE);
         budgetQuery.findInBackground(new FindCallback<BudgetItem>() {

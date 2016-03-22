@@ -95,7 +95,6 @@
             android:label="SavedVendorListActivity"
             android:parentActivityName=".VendorDetailsPagerActivity"
             android:theme="@style/Theme.AppCompat.Light" />
-
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"
@@ -131,7 +130,6 @@
             android:label="@string/title_activity_share"
             android:theme="@style/AppTheme.NoActionBar" />
 
-
         <service android:name="com.parse.PushService" />
 
         <receiver
@@ -163,10 +161,13 @@
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FloorPlanActivity"
+            android:label="@string/title_activity_floor_plan"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

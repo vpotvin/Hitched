@@ -39,7 +39,7 @@ public class MainActivity extends FragmentActivity {
             your.setText(currentUser.getString("groom"));
             day.setText(currentUser.getString("day"));
             month.setText(currentUser.getString("month"));
-        ParseAnalytics.trackAppOpened(getIntent());;
+        ParseAnalytics.trackAppOpened(getIntent());
 
         }else {
             you.setText("");
