@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
+                android:orientation="horizontal"
+                android:padding="5dip"  >
+
+    <!--  ListRow Left sied Thumbnail image -->
+    <LinearLayout android:id="@+id/music_thumbnail"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="3dip"
+                  android:layout_alignParentLeft="true"
+                  android:layout_marginRight="5dip">
+
+        <ImageView
+            android:id="@+id/music_image"
+            android:layout_width="75dip"
+            android:layout_height="75dip" />
+
+    </LinearLayout>
+
+    <!-- Title Of Song-->
+    <TextView
+        android:id="@+id/music_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/music_thumbnail"
+        android:layout_toRightOf="@+id/music_thumbnail"
+        android:textColor="#f40b0b"
+        android:typeface="sans"
+        android:textSize="15dip"
+        android:textStyle="bold"/>
+
+    <!-- Artist Name -->
+    <TextView
+        android:id="@+id/music_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/music_title"
+        android:textColor="#212121"
+        android:textSize="15dip"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/music_thumbnail"
+        />
+
+    <GridLayout
+        android:id="@+id/music_grid_layout"
+        android:layout_below="@id/music_description"
+        android:layout_toRightOf="@id/music_thumbnail"
+
+        android:columnCount="3"
+        android:rowCount="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/music_thumbnail"
+        >
+        <Button
+            android:id="@+id/music_view_video"
+            android:background="@drawable/ic_music_play"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+        <Button
+            android:id="@+id/save_to_music_list_button"
+            android:background="@drawable/ic_action_save"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            />
+        <Button
+            android:id="@+id/view_music_list_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_action_favorite"/>
+
+    </GridLayout>
+
+    <!-- Rightend Duration -->
+    <TextView
+        android:id="@+id/music_listeners"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/music_thumbnail"
+        android:gravity="right"
+
+        android:layout_marginRight="5dip"
+        android:textSize="10dip"
+        android:textColor="#10bcc9"
+        android:textStyle="bold"/>
+
+
+
+</RelativeLayout>

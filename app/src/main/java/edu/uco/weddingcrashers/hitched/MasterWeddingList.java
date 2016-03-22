@@ -46,7 +46,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
 
         theList = new ArrayList<Object>();
 
-       // buildParse();
+        //buildParse();
 
         int day = 1;
         boolean com = false;

@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
@@ -27,20 +28,16 @@ public class UpdateInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_information);
 
-        currentBrideName = (TextView)findViewById(R.id.currentBrideName);
-        currentGroomName = (TextView)findViewById(R.id.currentGroomName);
-        currentWeddingDate = (TextView)findViewById(R.id.currentDate);
-        editBrideButton = (Button)findViewById(R.id.editBrideButton);
-        editGroomButton = (Button)findViewById(R.id.editGroomButton);
-        newBrideName = (EditText)findViewById(R.id.newBrideName);
-        newGroomName = (EditText)findViewById(R.id.newGroomName);
-        update = (Button)findViewById(R.id.update);
-        checkBox = (CheckBox)findViewById(R.id.checkBox);
-        datePicker=(DatePicker)findViewById(R.id.datePicker);
-
-
-
-
+        currentBrideName = (TextView) findViewById(R.id.currentBrideName);
+        currentGroomName = (TextView) findViewById(R.id.currentGroomName);
+        currentWeddingDate = (TextView) findViewById(R.id.currentDate);
+        editBrideButton = (Button) findViewById(R.id.editBrideButton);
+        editGroomButton = (Button) findViewById(R.id.editGroomButton);
+        newBrideName = (EditText) findViewById(R.id.newBrideName);
+        newGroomName = (EditText) findViewById(R.id.newGroomName);
+        update = (Button) findViewById(R.id.update);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
 
 
         if (currentUser != null) {
@@ -48,7 +45,7 @@ public class UpdateInformation extends AppCompatActivity {
             currentGroomName.setText(currentUser.getString("groom"));
             currentWeddingDate.setText((currentUser.getString("date")));
 
-        }else {
+        } else {
             currentBrideName.setText("");
             currentGroomName.setText("");
             currentWeddingDate.setText("");
@@ -69,14 +66,14 @@ public class UpdateInformation extends AppCompatActivity {
                 editGroomButton.setVisibility(View.GONE);
             }
         });
-        newdate="olddate";
+        newdate = "olddate";
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!checkBox.isChecked()){
+                if (!checkBox.isChecked()) {
                     datePicker.setVisibility(View.INVISIBLE);
-                    date="No Set Date";
-                }else if(checkBox.isChecked()){
+                    date = "No Set Date";
+                } else if (checkBox.isChecked()) {
                     datePicker.setVisibility(View.VISIBLE);
 
                 }
@@ -87,32 +84,34 @@ public class UpdateInformation extends AppCompatActivity {
                 String newbride = newBrideName.getText().toString();
                 String newGroom = newGroomName.getText().toString();
                 day = datePicker.getDayOfMonth();
-                month = (datePicker.getMonth()+1);
+                month = (datePicker.getMonth() + 1);
                 year = datePicker.getYear();
-                date = "" + day + "-" + month  + "-" + year;
-                wday= ""+day;
-                wmonth= ""+month;
-                wyear= ""+year;
+                date = "" + day + "-" + month + "-" + year;
+                wday = "" + day;
+                wmonth = "" + month;
+                wyear = "" + year;
 
                 currentUser.put("date", date);
                 currentUser.put("day", wday);
                 currentUser.put("month", wmonth);
                 currentUser.put("year", wyear);
 
-                if(!newbride.equals("")){
+                if (!newbride.equals("")) {
                     currentUser.put("bride", newbride);
 
                 }
-                if(!newGroom.equals("")){
+                if (!newGroom.equals("")) {
                     currentUser.put("groom", newGroom);
                 }
                 currentUser.saveInBackground();
+                Toast.makeText(getApplicationContext(), "Your account has been updated!",
+                        Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(UpdateInformation.this, MainActivity.class);
                 startActivity(intent);
 
+
             }
         });
-
-
     }
+
 }
