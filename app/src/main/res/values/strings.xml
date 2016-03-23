@@ -99,5 +99,7 @@
     <string name="title_activity_venue_search">VenueSearch</string>
     <string name="title_activity_venue_search_result">VenueSearchResult</string>
     <string name="title_activity_venue_fragment">VenueFragment</string>
+    <string name="update">UPDATE MY ACCOUNT</string>
+    <string name="menu">Menu</string>
 
 </resources>
