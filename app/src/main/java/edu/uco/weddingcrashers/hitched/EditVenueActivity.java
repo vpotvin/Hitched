@@ -48,7 +48,7 @@ public class EditVenueActivity extends Activity {
                     public void onClick(View v) {
 
 
-                        /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Bill_venues");
+                        ParseQuery<ParseObject> query = ParseQuery.getQuery("Bill_venues");
                         query.whereEqualTo("Name", n1);
                         query.getFirstInBackground(new GetCallback<ParseObject>() {
                             public void done(ParseObject object, ParseException e) {
@@ -75,7 +75,7 @@ public class EditVenueActivity extends Activity {
                                     });
                                 }
                             }
-                        });*/
+                        });
 
                         Intent editVenue = new Intent(EditVenueActivity.this, VenueActivity.class);
                         startActivity(editVenue);

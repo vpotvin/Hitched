@@ -18,6 +18,7 @@ import java.util.UUID;
  */
 public class VendorDetailsPagerActivity extends AppCompatActivity {
     private static final String EXTRA_VENDOR_ID = "edu.uco.weddingcrashers.hitched.vendorID";
+    private static final String EXTRA_STATE="edu.uco.weddingcrashers.hitched.state";
 
     private ViewPager mViewPager;
     private List<Vendor> mVendors;

@@ -9,9 +9,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 
@@ -25,6 +29,7 @@ public class GuestListActivity extends FragmentActivity implements GuestListNewI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_list);
+        guestListAdapter = new GuestListRecViewAdapter();
 
         addButton = (Button) findViewById(R.id.addGuestButton);
 
@@ -36,31 +41,31 @@ public class GuestListActivity extends FragmentActivity implements GuestListNewI
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        theList = new ArrayList<GuestListItem>();
 
+        /*
         GuestListItem item = new GuestListItem("Derek Renfro", "6816 Bear Canyon", "Oklahoma City",
                 "OK", "73162", "Groom", "405-517-7375", true, "hitchedtestemail@gmail.com");
         item.saveInBackground();
 
-        theList.add(item);
+
 
         item = new GuestListItem("Hannah Helper", "1234 Somewhere Ln", "Oklahoma City", "OK",
                 "73209", "Bridesmaid", "505-222-3333", true, "hitchedtestemail@gmail.com");
         item.saveInBackground();
 
-        theList.add(item);
+        */
 
-        guestListAdapter = new GuestListRecViewAdapter(theList);
+
         recyclerView.setAdapter(guestListAdapter);
 
-        /* moved to menu bar
+
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 DialogFragment newFragment = new GuestListNewItem();
                 newFragment.show(getFragmentManager(), "New Entry");
             }
         });
-        */
+
 
     }
 
@@ -88,8 +93,15 @@ public class GuestListActivity extends FragmentActivity implements GuestListNewI
 
     private void addTask(String name, String address, String city, String state, String zip, String role,String phone, boolean wp)
     {
-        theList.add(new GuestListItem(name, address, city,state,zip,role,phone,wp, null));
-        guestListAdapter.notifyDataSetChanged();
+        GuestListItem item = new GuestListItem(name, address, city,state,zip,role,phone,wp, "");
+        item.saveInBackground(new SaveCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    guestListAdapter.updateTheList();
+                }
+            }
+        });
+
     }
 
     @Override

@@ -26,5 +26,10 @@
         android:title="Show favorite list"
         app:showAsAction="ifRoom|withText"
         />
+    <item
+        android:id="@+id/menu_item_review"
+        android:icon="@drawable/ic_action_review"
+        android:title="Rate and review this vendor"
+        app:showAsAction="ifRoom|withText"/>
 
 </menu>

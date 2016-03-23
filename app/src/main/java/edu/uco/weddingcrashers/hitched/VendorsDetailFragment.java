@@ -1,17 +1,14 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -30,6 +27,7 @@ public class VendorsDetailFragment extends Fragment {
     private Vendor mVendor;
     private RecyclerView mVendorPlaceRecycleView;
     private List<VendorPlace> mVendorPlaces = new ArrayList<>();
+    private ProgressDialog progDailog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +53,8 @@ public class VendorsDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail,container,false);
         mVendorPlaceRecycleView = (RecyclerView) view.findViewById(R.id.detail_vendor_recycle_view);
         mVendorPlaceRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        progDailog = ProgressDialog.show(getActivity(), "Loading","Please wait...", true);
+        progDailog.setCancelable(false);
 
 //        mWebView = (WebView)view.findViewById(R.id.web_view);
 //        mWebView = new WebView(getActivity());
@@ -74,12 +74,13 @@ public class VendorsDetailFragment extends Fragment {
 
         @Override
         protected List<VendorPlace> doInBackground(Void... voids) {
-            return new PlaceFetchr().fetchItems(mVendor.getQuery());
+            return new PlaceFetchr().fetchItems(mVendor.getQuery()+ ((ParseDatabase)getActivity().getApplication()).getUserState());
 
         }
 
         @Override
         protected void onPostExecute(List<VendorPlace> vendorPlaces) {
+            progDailog.dismiss();
             mVendorPlaces = vendorPlaces;
             updateUI();
         }
@@ -100,8 +101,8 @@ public class VendorsDetailFragment extends Fragment {
             mVendor = vendor;
             mNameTextView.setText(mVendor.getName());
             mAddressTextView.setText(mVendor.getAddress());
-            mPriveLevelTextView.setText(mVendor.getPriceLevel());
-            mRatingTextView.setText(mVendor.getRating());
+          //  mPriveLevelTextView.setText(mVendor.getPriceLevel());
+          //  mRatingTextView.setText(mVendor.getRating());
 
             // mImageView.setImageResource(R.drawable.a);
         }

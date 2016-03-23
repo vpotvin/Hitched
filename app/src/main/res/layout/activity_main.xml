@@ -1,54 +1,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-   tools:context=".MainActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
     android:background="#F6ECEB"
-    android:paddingRight="@dimen/activity_horizontal_margin">
+    android:theme="@style/AppTheme.NoActionBar">
+            <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbars" />
 
-    <FrameLayout
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="100sp"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_centerHorizontal="true"
-        android:padding="2sp"
-        android:outlineProvider="paddedBounds"
-        android:layout_alignParentRight="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:layout_column="1"
-            android:src="@mipmap/ic_launcher"
-            android:layout_gravity="center_horizontal|top" />
+        android:layout_height="wrap_content"
+        android:id="@+id/dateGrid"
+        android:layout_below="@+id/nameLayout"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Are Getting Hitched On"
             android:id="@+id/simpletext"
-            android:layout_column="1"
-            android:layout_gravity="center"
-            android:gravity="center" />
+            android:layout_column="0"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_row="1"
+            android:layout_columnSpan="3" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="WEDDING DATE"
-            android:id="@+id/simpletext2"
-            android:layout_column="1"
-            android:layout_gravity="center_horizontal|bottom" />
+    </GridLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Your"
-            android:id="@+id/your"
-            android:layout_column="3"
-            android:layout_gravity="top|right" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_alignParentStart="true"
+        android:id="@+id/nameLayout"
+        android:gravity="center"
+        android:layout_below="@+id/toolbar">
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,203 +48,366 @@
             android:text="You"
             android:id="@+id/you"
             android:layout_column="0"
-            android:layout_gravity="top|left"
-            android:gravity="center" />
-    </FrameLayout>
+            android:layout_row="0"
+            android:paddingRight="10sp" />
 
-    <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="230sp"
-    android:id="@+id/frameLayout"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_column="1"
+            android:src="@mipmap/ic_launcher"
+            android:layout_row="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Your"
+            android:id="@+id/your"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:paddingLeft="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_below="@+id/dateGrid"
         android:layout_alignParentStart="true"
-        android:layout_centerInParent="true">
+        android:id="@+id/datelayout"
+        android:gravity="center">
 
-    <Button
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Month"
+            android:id="@+id/tv1"
+            android:padding="5sp"
+            android:layout_below="@+id/dateGrid"
+            android:layout_toEndOf="@+id/month"
+            android:gravity="center"
+            android:textColor="#DE84B5" />
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundtextview"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:layout_width="60sp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Mon"
+                android:id="@+id/month"
+                android:gravity="center"
+                android:layout_above="@+id/frameLayout"
+                android:layout_alignParentStart="true"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:id="@+id/tv3"
+            android:textSize="25sp"
+            android:paddingLeft="3sp"
+            android:paddingRight="3sp"
+            android:textStyle="bold" />
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundtextview"
+            android:layout_centerInParent="true">
+            <TextView
+                android:layout_width="60sp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Day"
+                android:id="@+id/day"
+                android:layout_below="@+id/dateGrid"
+                android:layout_alignParentStart="true"
+                android:background="#88CDE6"
+                android:gravity="center"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Day   "
+            android:id="@+id/tv2"
+            android:padding="5sp"
+            android:layout_below="@+id/dateGrid"
+            android:layout_toEndOf="@+id/month"
+            android:gravity="center"
+            android:textColor="#DE84B5" />
+    </LinearLayout>
+
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Venue"
-        android:id="@+id/venue"
-        android:layout_gravity="left|top"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="#88CDE6"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:layout_below="@+id/dateGrid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:id="@+id/gridLayout">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dress"
-        android:id="@+id/dress"
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:text="Venue"
+            android:id="@+id/venue"
+            android:layout_gravity="left|top"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/mainvenue"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:padding="10sp" />
+
+        <Button
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+            android:id="@+id/dress"
         android:layout_gravity="center_horizontal|top"
         android:height="70dp"
         android:width="100dp"
-        android:background="#88CDE6"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Picture"
-        android:id="@+id/picture"
-        android:layout_gravity="right|top"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="#88CDE6"
+        android:background="@mipmap/maindress"
         android:textColor="#ffffff"
         android:textStyle="bold"
-        android:onClick="pictureActivity"/>
+            android:layout_row="0"
+            android:layout_column="1"
+            android:padding="10sp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cake"
-        android:id="@+id/party"
-        android:layout_gravity="center"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="#88CDE6"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:id="@+id/registry"
+            android:layout_gravity="center_horizontal"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/mainregistry"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:padding="10sp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vendor"
-        android:id="@+id/vendor"
-        android:layout_gravity="right|center_vertical"
-        android:height="70dp"
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:id="@+id/guestlist"
+            android:layout_gravity="left|center_vertical"
+            android:background="@mipmap/mainguestlist"
+            android:textColor="#000000"
+            android:width="100dp"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:padding="10sp" />
+
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:id="@+id/invites"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/maininvites"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:padding="10sp" />
+
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:id="@+id/vow"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/mainempty"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:padding="10sp"
+            android:text="Vow" />
+
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:id="@+id/tasks"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/maintasks"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:padding="10sp" />
+
+        <Button
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+            android:id="@+id/vendor"
+            android:height="70dp"
         android:width="100dp"
-        android:background="#88CDE6"
+        android:background="@mipmap/mainvendor"
         android:textColor="#ffffff"
         android:onClick="launchActivity"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:padding="10sp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Invites"
-        android:id="@+id/invites"
-        android:layout_gravity="left|bottom"
-        android:height="70dp"
+        <Button
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+            android:id="@+id/budget"
+            android:height="70dp"
         android:width="100dp"
-        android:background="#88CDE6"
+        android:background="@mipmap/mainbudget"
         android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+            android:layout_above="@+id/frameLayout3"
+            android:layout_alignParentStart="true"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:padding="10sp" />
 
-    <Button
-        android:layout_width="wrap_content"
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:id="@+id/itinerary"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/mainitinerary"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:padding="10sp" />
+
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:id="@+id/menu"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/mainempty"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:padding="10sp"
+            android:text="Menu"
+            android:textSize="15sp" />
+
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:id="@+id/cake"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/mainempty"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="2"
+            android:layout_column="3"
+            android:padding="10sp"
+            android:text="Cake"
+            android:textSize="15sp" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="250sp"
         android:layout_height="wrap_content"
-        android:text="Registry"
-        android:id="@+id/registry"
-        android:layout_gravity="center_horizontal|bottom"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="#88CDE6"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:layout_below="@+id/gridLayout"
+        android:layout_alignStart="@+id/gridLayout"
+        android:layout_marginTop="10dp"
+        android:layout_alignEnd="@+id/gridLayout"
+        android:id="@+id/gridLayout2">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Budget"
-        android:id="@+id/budget"
-        android:layout_gravity="right|bottom"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="#88CDE6"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Honeymoon"
-        android:id="@+id/honeymoon"
-        android:layout_gravity="left|center_vertical"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="#88CDE6"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-
-    </FrameLayout>
-
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="140dp"
-    android:layout_below="@+id/frameLayout"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentEnd="false"
-    android:paddingTop="10sp"
-    android:paddingBottom="15sp">
-
-    <Button
+        <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tasks"
-        android:id="@+id/tasks"
-        android:layout_gravity="left|bottom"
-        android:background="#DABCD2"
-        android:textColor="#000000"
-        android:width="100dp" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contacts"
+        android:layout_width="150sp"
+        android:layout_height="40sp"
+        android:text="CONTACTS"
         android:id="@+id/contacts"
-        android:layout_gravity="center_horizontal|bottom"
-        android:background="#DABCD2"
-        android:textColor="#000000"
-        android:width="100dp" />
+            android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:width="100sp"
+            android:layout_row="0"
+            android:layout_column="0" />
+
+        <Button
+        android:layout_width="150sp"
+        android:layout_height="40sp"
+        android:text="Picture"
+        android:id="@+id/picture"
+        android:layout_gravity="center_vertical"
+            android:width="100sp"
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+            android:onClick="pictureActivity"
+            android:layout_row="0"
+            android:layout_column="2" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="150sp"
+            android:layout_height="40sp"
+            android:text="Assign Seats"
+            android:id="@+id/assignseats"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:width="100sp"
+            android:layout_row="2"
+            android:layout_column="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/gap"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:textSize="5sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textView5"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:textSize="5sp" />
+
+        <Button
+            android:layout_width="150sp"
+            android:layout_height="40sp"
+            android:id="@+id/honeymoon"
+            android:width="100sp"
+            android:background="#88CDE6"
+            android:textColor="#ffffff"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:text="HONEYMOON" />
+
+    </GridLayout>
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update Account"
+        android:layout_width="320sp"
+        android:layout_height="40sp"
+        android:text="UPDATE MY ACCOUNT"
         android:id="@+id/update"
-        android:layout_gravity="right|bottom"
-        android:background="#DABCD2"
-        android:textColor="#000000"
-        android:width="100dp" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Assign Seats"
-        android:id="@+id/assignseats"
-        android:layout_gravity="left|top"
-        android:background="#DABCD2"
-        android:textColor="#000000"
-        android:width="100dp" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Guest List"
-        android:id="@+id/guestlist"
-        android:layout_gravity="center_horizontal|top"
-        android:background="#DABCD2"
-        android:textColor="#000000"
-        android:width="100dp" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Itinerary"
-        android:id="@+id/itinerary"
-        android:layout_gravity="right|top"
-        android:background="#DABCD2"
-        android:textColor="#000000"
-        android:width="100dp" />
-</FrameLayout>
+        android:background="#88CDE6"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/gridLayout2"
+        android:layout_marginBottom="10dp" />
 
 </RelativeLayout>
