@@ -6,9 +6,6 @@
     tools:context=".MainActivity"
     android:background="#F6ECEB"
     android:theme="@style/AppTheme.NoActionBar">
-            <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbars" />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -38,8 +35,7 @@
         android:layout_height="40sp"
         android:layout_alignParentStart="true"
         android:id="@+id/nameLayout"
-        android:gravity="center"
-        android:layout_below="@+id/toolbar">
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"

@@ -99,5 +99,7 @@
     <string name="title_activity_venue_search">VenueSearch</string>
     <string name="title_activity_venue_search_result">VenueSearchResult</string>
     <string name="title_activity_venue_fragment">VenueFragment</string>
+    <string name="title_activity_wedding_dress_list">WeddingDressList</string>
+    <string name="title_activity_dress_search_result">DressSearchResult</string>
 
 </resources>

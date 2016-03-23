@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         dress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent dress = new Intent(MainActivity.this, WeddingDressActivity.class);
+                Intent dress = new Intent(MainActivity.this, WeddingDressList.class);
                 startActivity(dress);
             }
         });
