@@ -173,7 +173,8 @@
         <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UpdateInformation"></activity>
     </application>
-
+          
 </manifest>

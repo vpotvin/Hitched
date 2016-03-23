@@ -18,7 +18,7 @@ public class Login extends Activity {
 
     private Button loginbutton,testbutton,signupbutton,forgot;
     private EditText user,password;
-    private TextView signUpTextView;
+    private TextView signUpTextView,test2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,12 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="edu.uco.weddingcrashers.hitched.MainActivity">
+    tools:context="edu.uco.weddingcrashers.hitched.WeddingDressActivity">
 
     <item
-        android:id="@+id/action_updatebudgettool"
+        android:id="@+id/action_dress"
         android:orderInCategory="100"
-        android:title="updatebudgettoolbar"
+        android:title="Dress"
         android:icon="@mipmap/mainmenu_logo"
         app:showAsAction="always" />
 

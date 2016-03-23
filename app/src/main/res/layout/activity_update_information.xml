@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.uco.weddingcrashers.hitched.UpdateInformation"
+    android:background="#F6ECEB">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Update Information"
+        android:id="@+id/tv1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:id="@+id/gridLayout3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Bride Name:"
+            android:id="@+id/tvBride"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp" />
+
+        <EditText
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/newBrideName"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:layout_gravity="right" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:id="@+id/editBrideButton"
+            android:layout_row="0"
+            android:layout_column="4"
+            android:background="@mipmap/updatebudget"
+            android:layout_gravity="right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Groom Name:"
+            android:id="@+id/tvGroom"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="2"
+            android:id="@+id/currentGroomName"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_gravity="center_horizontal|right"
+            android:textSize="20sp" />
+
+        <EditText
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/newGroomName"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:layout_gravity="right" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:id="@+id/editGroomButton"
+            android:layout_row="1"
+            android:layout_column="4"
+            android:background="@mipmap/updatebudget"
+            android:layout_gravity="right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="1"
+            android:id="@+id/currentBrideName"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="center_horizontal|right"
+            android:textSize="20sp" />
+
+    </GridLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/update"
+        android:layout_marginTop="105dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Wedding Date"
+        android:id="@+id/checkBox"
+        android:checked="false"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:textSize="20sp"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/gridLayout3"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="3"
+        android:id="@+id/currentDate"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:layout_below="@+id/checkBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="160sp"
+        android:layout_below="@+id/currentDate"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:layout_alignEnd="@+id/gridLayout3"
+        android:foregroundGravity="center">
+
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="150sp"
+            android:id="@+id/datePicker"
+            style="@android:style/Widget.DatePicker"
+            android:calendarTextColor="#88CDE6"
+            android:visibility="invisible"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+</RelativeLayout>
