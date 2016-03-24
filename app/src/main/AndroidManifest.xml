@@ -178,6 +178,10 @@
         <activity
             android:name=".DressSearchResult"
             android:label="@string/title_activity_dress_search_result"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VenueDetail"
+            android:label="@string/title_activity_venue_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

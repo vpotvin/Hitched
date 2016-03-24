@@ -103,5 +103,6 @@
     <string name="title_activity_dress_search_result">DressSearchResult</string>
     <string name="update">UPDATE MY ACCOUNT</string>
     <string name="menu">Menu</string>
+    <string name="title_activity_venue_detail">VenueDetail</string>
 
 </resources>

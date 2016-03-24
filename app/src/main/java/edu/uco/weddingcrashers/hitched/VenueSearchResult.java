@@ -35,7 +35,7 @@ public class VenueSearchResult extends ListActivity {
 
     private static String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
     private static final String TAG_RESULTS = "results";
-    private static final String TAG_ID = "id";
+    private static final String TAG_ID = "place_id";
     private static final String TAG_NAME = "name";
     private static final String TAG_ADDRESS = "formatted_address";
 
@@ -59,6 +59,22 @@ public class VenueSearchResult extends ListActivity {
         venueList = new ArrayList<HashMap<String, String>>();
 
         final ListView searchList = getListView();
+
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String myPlaceID = ((TextView) view.findViewById(R.id.placeID))
+                        .getText().toString();
+
+                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
+
+                venueDetail.putExtra("myID", myPlaceID);
+                Log.i("WHAT", myPlaceID);
+                startActivity(venueDetail);
+
+            }
+        });
 
         searchList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -155,9 +171,10 @@ public class VenueSearchResult extends ListActivity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     VenueSearchResult.this, venueList,
-                    R.layout.list_item, new String[] { TAG_NAME, TAG_ADDRESS},
+                    R.layout.list_item, new String[] { TAG_NAME, TAG_ADDRESS, TAG_ID},
                     new int[] {R.id.name,
-                            R.id.address});
+                            R.id.address,
+                            R.id.placeID});
 
             setListAdapter(adapter);
         }

@@ -159,9 +159,10 @@ public class DressSearchResult extends ListActivity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     DressSearchResult.this, dressList,
-                    R.layout.list_item, new String[] { TAG_NAME, TAG_ADDRESS},
+                    R.layout.list_item, new String[] { TAG_NAME, TAG_ADDRESS, TAG_ID},
                     new int[] {R.id.name,
-                            R.id.address});
+                            R.id.address,
+                            R.id.placeID});
 
             setListAdapter(adapter);
         }
