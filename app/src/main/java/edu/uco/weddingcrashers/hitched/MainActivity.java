@@ -27,6 +27,14 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        //setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
+
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
         you = (TextView)findViewById(R.id.you);
         your = (TextView)findViewById(R.id.your);
@@ -79,7 +87,7 @@ public class MainActivity extends FragmentActivity {
 
         dress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent dress = new Intent(MainActivity.this, WeddingDressActivity.class);
+                Intent dress = new Intent(MainActivity.this, WeddingDressList.class);
                 startActivity(dress);
             }
         });
