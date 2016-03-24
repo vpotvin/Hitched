@@ -12,6 +12,13 @@
     tools:context="edu.uco.weddingcrashers.hitched.FloorPlanActivity"
     tools:showIn="@layout/activity_floor_plan">
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:onClick="addTable"/>
+
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

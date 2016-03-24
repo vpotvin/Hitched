@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.parse.FindCallback;
@@ -43,16 +44,26 @@ public class FloorPlanActivity extends AppCompatActivity {
                 else tables = new ArrayList<>();
             }
         });
+    }
 
+
+    public void addTable(View v) {
+        //TODO create/open dialog
 
     }
 
     private void updateView() {
         FrameLayout tableFrame = (FrameLayout) findViewById(R.id.tableFrame);
         tableFrame.removeAllViews();
-        int i=0;
+        int c = 0;
+        for(int i = 0; i < tables.size(); i++ ) {
+            Button button = new Button(this);
+            String title = "Table " + c;
+            button.setText(title);
+            //TODO add click listener for pulling up dialog fragment
+            tableFrame.addView(button);
+        }
 
-        //TODO: update tables 
 
     }
 
