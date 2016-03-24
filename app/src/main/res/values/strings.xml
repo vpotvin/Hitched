@@ -102,5 +102,6 @@
     <string name="title_activity_menu">MenuActivity</string>
     <string name="update">UPDATE MY ACCOUNT</string>
     <string name="menu">Menu</string>
+    <string name="title_activity_day_of">DayOfActivity</string>
 
 </resources>

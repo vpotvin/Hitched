@@ -16,7 +16,7 @@ import com.parse.ParseUser;
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends AppCompatActivity {
-    private Button venue,dress,party,honeymoon,cake,vendor,picture,vow, menu;
+    private Button venue,dress,party,honeymoon,cake,vendor,picture,dayOf, menu;
     private Button invites,registry,budget,assignseats;
     private Button itinerary,guestlist,tasks,contacts,update;
     private TextView you, your, date, month, day;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
-        vow = (Button)findViewById(R.id.vow);
+        dayOf = (Button)findViewById(R.id.dayOfWedding);
         menu = (Button)findViewById(R.id.menu);
 
         update.setOnClickListener(new View.OnClickListener() {
@@ -119,10 +119,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        contacts.setOnClickListener(new View.OnClickListener() {
+        dayOf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, VowsActivity.class);
+                Intent intent = new Intent(MainActivity.this, DayOfActivity.class);
                 startActivity(intent);
             }
         });
