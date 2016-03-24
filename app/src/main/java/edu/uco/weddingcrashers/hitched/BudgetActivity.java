@@ -1,10 +1,10 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,17 +12,20 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-@SuppressWarnings("unused")
-public class BudgetActivity extends AppCompatActivity implements
+public class BudgetActivity extends Activity implements
         BudgetUpdateFragment.BudgetUpdateListener {
 
     private ArrayList<BudgetItem> budgetItems;
 
-    private double budget;
-    private double used;
+    private BudgetItem mainBudget;
+    private double totalUsedAccounted;
 
     TextView budgetView;
     TextView budgetUsedView;
@@ -36,46 +39,70 @@ public class BudgetActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_budget);
 
         //replaced with database population
-        budget = 10000;
-        used = 2000;
+
+        ParseQuery<BudgetItem> budgetQuery = ParseQuery.getQuery(BudgetItem.class);
+        budgetQuery.whereEqualTo(BudgetItem.TITLE, BudgetItem.MAIN_TITLE);
+        budgetQuery.findInBackground(new FindCallback<BudgetItem>() {
+            @Override
+            public void done(List<BudgetItem> objects, ParseException e) {
+                if (objects.isEmpty() || objects == null) {
+                    //TODO: custom dialog to set budget if none exists;
+                    mainBudget = new BudgetItem();
+                    mainBudget.setTitle(BudgetItem.MAIN_TITLE);
+                    mainBudget.saveInBackground();
+                } else {
+                    mainBudget = objects.get(0);
+                }
+
+                budgetView.setText(NumberFormat.getCurrencyInstance().format(
+                        mainBudget.getValue()));
+                budgetUsedView.setText(NumberFormat.getCurrencyInstance().format(
+                        mainBudget.getUsed()));
+            }
+        });
 
         budgetView =  (TextView) findViewById(R.id.budgetValueText);
         budgetUsedView =  (TextView) findViewById(R.id.budgetUsedText);
 
-        budgetView.setText(NumberFormat.getCurrencyInstance().format(budget));
-        budgetUsedView.setText(NumberFormat.getCurrencyInstance().format(used));
 
         budgetItems = new ArrayList<>();
 
-        //will be replaced with database population
-        BudgetItem budgetItem = new BudgetItem("Dress", 5000, 0);
-        BudgetItem budgetItem2 = new BudgetItem("Cake", 1000, 0);
+        ParseQuery<BudgetItem> arrayQuery = ParseQuery.getQuery(BudgetItem.class);
+        arrayQuery.whereNotEqualTo(BudgetItem.TITLE, BudgetItem.MAIN_TITLE);
 
-        budgetItems.add(budgetItem);
-        budgetItems.add(budgetItem2);
-
-        budgetItemAdapter = new BudgetItemAdapter(this, budgetItems);
-
-        budgetListView = (ListView) findViewById(R.id.itemizedBudgetList);
-
-        budgetListView.setAdapter(budgetItemAdapter);
-        budgetListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        arrayQuery.findInBackground(new FindCallback<BudgetItem>() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
-                                           long id) {
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-                DialogFragment newFragment = BudgetUpdateFragment.newInstance(
-                        budgetItems.get(position).getValue(), budgetItems.get(position).getUsed(),
-                        position, budgetItems.get(position).getTitle());
-                newFragment.show(ft, "dialog");
-                return false;
+            public void done(List<BudgetItem> objects, ParseException e) {
+                budgetItems = new ArrayList<BudgetItem>(objects);
+                caculateListUsed();
+                budgetItemAdapter = new BudgetItemAdapter(getApplicationContext(), budgetItems);
+
+                budgetListView = (ListView) findViewById(R.id.itemizedBudgetList);
+
+                budgetListView.setAdapter(budgetItemAdapter);
+                budgetListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
+                                                   long id) {
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                        if (prev != null) {
+                            ft.remove(prev);
+                        }
+                        ft.addToBackStack(null);
+                        DialogFragment newFragment = BudgetUpdateFragment.newInstance(
+                                budgetItems.get(position).getValue(), budgetItems.get(position).getUsed(),
+                                position, budgetItems.get(position).getTitle());
+                        newFragment.show(ft, "dialog");
+                        return false;
+                    }
+                });
             }
         });
+
+
+
+
 
 
 
@@ -84,15 +111,18 @@ public class BudgetActivity extends AppCompatActivity implements
     public void updateBudgetAndUsed(double budget, double used, int position) {
 
         if(position == -1) {
-            this.budget = budget;
-            this.used = used;
+            mainBudget.setValue(budget);
+            mainBudget.setUsed(used);
+            mainBudget.saveInBackground();
 
             budgetView.setText(NumberFormat.getCurrencyInstance().format(budget));
             budgetUsedView.setText(NumberFormat.getCurrencyInstance().format(used));
         } else {
             budgetItems.get(position).setValue(budget);
             budgetItems.get(position).setUsed(used);
+            budgetItems.get(position).saveInBackground();
         }
+
 
         removeDialog();
     }
@@ -101,6 +131,7 @@ public class BudgetActivity extends AppCompatActivity implements
         Fragment dialog = getFragmentManager().findFragmentByTag("dialog");
         if (dialog != null) ((DialogFragment) dialog).dismiss();
         budgetItemAdapter.notifyDataSetChanged();
+        caculateListUsed();
     }
 
     public void launchNewItemDialog(View v){
@@ -125,7 +156,8 @@ public class BudgetActivity extends AppCompatActivity implements
         }
         ft.addToBackStack(null);
 
-        DialogFragment newFragment = BudgetUpdateFragment.newInstance(budget, used, -1, null);
+        DialogFragment newFragment = BudgetUpdateFragment.newInstance(mainBudget.getValue(),
+                mainBudget.getUsed(), -1, null);
 
         newFragment.show(ft, "dialog");
 
@@ -133,11 +165,16 @@ public class BudgetActivity extends AppCompatActivity implements
     }
 
     public void deleteItem(int pos) {
+        budgetItems.get(pos).deleteInBackground();
         budgetItems.remove(pos);
+        budgetItemAdapter.notifyDataSetChanged();
+
     }
 
     public void addItem(BudgetItem item) {
         budgetItems.add(item);
+        item.saveInBackground();
+        budgetItemAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -167,6 +204,16 @@ public class BudgetActivity extends AppCompatActivity implements
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void caculateListUsed(){
+        double used = 0;
+        for(BudgetItem item: budgetItems) {
+            used += item.getUsed();
+        }
+
+        ((TextView) findViewById(R.id.textCalculateUsed)).setText(
+                NumberFormat.getCurrencyInstance().format(used));
     }
 
 }

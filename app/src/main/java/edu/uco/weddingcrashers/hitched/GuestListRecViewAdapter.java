@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -56,7 +56,17 @@ public class GuestListRecViewAdapter extends
             holder.role.setText(theList.get(position).getRole());
             holder.weddingParty.setChecked(theList.get(position).isWeddingParty());
 
-            String csz = theList.get(position).getAddress() + "," + theList.get(position).getState() + " " + theList.get(position).getZipcode();
+            final int pos = position;
+
+            holder.checkRSVP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                theList.get(pos).setRSVP(isChecked);
+                theList.get(pos).saveInBackground();
+            }
+        });
+
+        String csz = theList.get(position).getAddress() + "," + theList.get(position).getState() + " " + theList.get(position).getZipcode();
 
             holder.cityStateZip.setText(csz);
         }
@@ -102,8 +112,8 @@ public class GuestListRecViewAdapter extends
         private TextView cityStateZip;
         private TextView role;
         private CheckBox weddingParty;
-
-        public MyViewHolder(View itemView) {
+        private CheckBox checkRSVP;
+        public MyViewHolder(View itemView){
             super(itemView);
             this.name = (TextView) itemView.findViewById(R.id.GuestListName);
             this.phoneNumber = (TextView) itemView.findViewById(R.id.GuestListPhoneNumber);
@@ -111,6 +121,7 @@ public class GuestListRecViewAdapter extends
             this.cityStateZip = (TextView) itemView.findViewById(R.id.GuestListCityStateZip);
             this.role = (TextView) itemView.findViewById(R.id.GuestListRole);
             this.weddingParty = (CheckBox) itemView.findViewById(R.id.GuestListWeddingParty);
+            this.checkRSVP = (CheckBox) itemView.findViewById(R.id.checkRSVP);
         }
     }
 
