@@ -15,7 +15,8 @@
         android:paddingTop="6dip"
         android:textColor="#43bd00"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="Test" />
 
     <TextView
         android:id="@+id/address"
