@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             your.setText(currentUser.getString("groom"));
             day.setText(currentUser.getString("day"));
             month.setText(currentUser.getString("month"));
-        ParseAnalytics.trackAppOpened(getIntent());;
+            ParseAnalytics.trackAppOpened(getIntent());;
 
         }else {
             you.setText("");
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         }
         dress = (Button) findViewById(R.id.dress);
         venue = (Button) findViewById(R.id.venue);
-       // party = (Button)findViewById(R.id.party);
+        // party = (Button)findViewById(R.id.party);
         picture = (Button) findViewById(R.id.picture);
         honeymoon = (Button) findViewById(R.id.honeymoon);
         cake = (Button)findViewById(R.id.cake);
@@ -146,10 +146,10 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-     public void launchActivity(View view){
-         Intent i = new Intent(this,DetailActivity.class);
-         startActivity(i);
-     }
+    public void launchActivity(View view){
+        Intent i = new Intent(this,DetailActivity.class);
+        startActivity(i);
+    }
 
     public void launchBudgetActivity(View view) {
         Intent i = new Intent(this, BudgetActivity.class);

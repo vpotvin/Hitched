@@ -101,5 +101,7 @@
     <string name="title_activity_venue_fragment">VenueFragment</string>
     <string name="title_activity_wedding_dress_list">WeddingDressList</string>
     <string name="title_activity_dress_search_result">DressSearchResult</string>
+    <string name="update">UPDATE MY ACCOUNT</string>
+    <string name="menu">Menu</string>
 
 </resources>
