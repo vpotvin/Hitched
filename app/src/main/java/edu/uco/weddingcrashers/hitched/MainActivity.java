@@ -109,7 +109,20 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        });
+        contacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, VowsActivity.class);
+                startActivity(intent);
+            }
+        });
 
 //rehana
     }
