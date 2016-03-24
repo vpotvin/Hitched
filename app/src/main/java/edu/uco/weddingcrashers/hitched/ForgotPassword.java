@@ -23,7 +23,7 @@ public class ForgotPassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forgot_password);
+        setContentView(R.layout.forgot_pass);
         Intent resetIntent = getIntent();
         resetButton= (Button)findViewById(R.id.resetButton);
         resetEmail= (EditText)findViewById(R.id.resetEmail);

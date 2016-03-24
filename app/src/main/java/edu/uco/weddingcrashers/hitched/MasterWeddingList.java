@@ -48,6 +48,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
 
         theList = new ArrayList<Object>();
 
+        //buildParse();
 
 
 

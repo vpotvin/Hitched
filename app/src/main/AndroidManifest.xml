@@ -20,6 +20,7 @@
     <uses-permission android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
 
     <application
+        android:largeHeap="true"
         android:name=".ParseDatabase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -62,8 +63,28 @@
             android:label="@string/title_activity_vendor"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
+            android:name=".SavedMusicListActivity"
+            android:label="Save Music List Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
             android:name=".VendorsDetailActivity"
             android:label="@string/title_activity_vendor"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".MusicListActivity"
+            android:label="Music List Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".VendorDealActivity"
+            android:label="Vendor Deal Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".DealDetailActivity"
+            android:label="Deal Detail Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".MusicActivity"
+            android:label="Music Activity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".VendorDetailsPagerActivity"
@@ -75,6 +96,12 @@
             android:label="SavedVendorListActivity"
             android:parentActivityName=".VendorDetailsPagerActivity"
             android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".WebTutorialActivity"
+            android:label="WebTutorial Activity"
+
+            android:theme="@style/Theme.AppCompat.Light" />
+
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"
@@ -141,6 +168,7 @@
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
@@ -153,6 +181,8 @@
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UpdateInformation"></activity>
     </application>
 
 </manifest>

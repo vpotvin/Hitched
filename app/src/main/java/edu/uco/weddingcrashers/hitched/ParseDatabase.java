@@ -14,6 +14,16 @@ public class ParseDatabase extends Application {
     public static String USER_ID;
     public static String USER_NAME;
     public static String COMBINED_USERNAME;
+    private String userState = "Oklahoma";
+
+    public String getUserState() {
+        return userState;
+    }
+
+    public void setUserState(String userState) {
+        this.userState = userState;
+    }
+
 
     @Override
     public void onCreate() {

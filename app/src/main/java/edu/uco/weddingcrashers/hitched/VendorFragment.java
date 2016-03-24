@@ -1,7 +1,9 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,6 +27,8 @@ import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 /**
  * Created by PC User on 2/4/2016.
  */
@@ -39,6 +43,8 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     TextView mName, mAddress, mPhone, mWeb, mReview;
     ImageView mImageView;
     RatingBar mRatingBar;
+    List<Review> mReviewList;
+    private ProgressDialog progDailog;
 
     public static VendorFragment newInstance(String placeID, String iconURL) {
         Bundle args = new Bundle();
@@ -53,6 +59,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new FetchReviewTask().execute();
         setHasOptionsMenu(true);
         placeID = (String) getArguments().getSerializable(ARG_PLACE_ID);
         iconURL = (String) getArguments().getSerializable(ARG_ICON_URL);
@@ -76,6 +83,8 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
         mWeb = (TextView) view.findViewById(R.id.place_text_view_website);
         mImageView = (ImageView) view.findViewById(R.id.place_web_view_image);
         mRatingBar = (RatingBar) view.findViewById(R.id.place_rating);
+        progDailog = ProgressDialog.show(getActivity(), "Loading","Please wait...", true);
+        progDailog.setCancelable(false);
 
         mGoogleApiClient = new GoogleApiClient
                 .Builder(getActivity())
@@ -168,8 +177,45 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel: "+mPhone.getText().toString()));
                 startActivity(intent);
                 return true;
+            case R.id.menu_item_review:
+                Intent reviewIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mReviewList.get(0).getUrl()));
+                reviewIntent.setPackage("com.google.android.apps.maps");
+                if (reviewIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(reviewIntent);
+                }
+
+//                FragmentManager manager = getActivity().getSupportFragmentManager();
+//                SaveVendorFragment dialog = SaveVendorFragment.newInstance(mReviewList.get(0).getUrl());
+//                dialog.show(manager,"DIALOG_RATE");
+
             default:return super.onOptionsItemSelected(item);
         }
 
     }
+
+    private class FetchReviewTask extends AsyncTask<Void,Void,List<Review>> {
+        @Override
+        protected List<Review> doInBackground(Void... voids) {
+            return new PlaceFetchr().fetchVendorReview(placeID);
+
+        }
+
+        @Override
+        protected void onPostExecute(List<Review> reviewList) {
+            mReviewList = reviewList;
+            for(int i = 0;i<reviewList.size();i++){
+                mReview.append("\n");
+                mReview.append((i+1)+". Name: " +reviewList.get(i).getAuthorName());
+                mReview.append("\n");
+                mReview.append("Rating: "+reviewList.get(i).getRating());
+                mReview.append("\n");
+                mReview.append("Time: "+reviewList.get(i).getTime());
+                mReview.append("\n");
+                mReview.append(reviewList.get(i).getText());
+                mReview.append("\n");
+            }
+            progDailog.dismiss();
+        }
+    }
+
 }
