@@ -18,8 +18,8 @@ import com.parse.ParseUser;
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends FragmentActivity {
     private static final String USER_STATE = "UserState";
-    private Button venue,dress,party,honeymoon,cake,vendor,picture;
-    private Button invites,registry,budget,assignseats;
+    private Button venue,dress,party,honeymoon,cake,vendor,picture, vow;
+    private Button invites,registry,budget,assignseats, menu;
     private Button itinerary,guestlist,tasks,contacts,update;
     private TextView you, your, date, month, day;
     private Toolbar toolbar;
@@ -39,7 +39,7 @@ public class MainActivity extends FragmentActivity {
             your.setText(currentUser.getString("groom"));
             day.setText(currentUser.getString("day"));
             month.setText(currentUser.getString("month"));
-        ParseAnalytics.trackAppOpened(getIntent());;
+        ParseAnalytics.trackAppOpened(getIntent());
 
         }else {
             you.setText("");
@@ -143,7 +143,7 @@ public class MainActivity extends FragmentActivity {
          //Tung modified to launch different activity
          FragmentManager manager = getSupportFragmentManager();
          ChooseStateFragment dialog = new ChooseStateFragment();
-         dialog.show(manager,"StateDialog");
+         dialog.show(manager, "StateDialog");
 
      }
 

@@ -18,6 +18,7 @@ import com.parse.ParseQuery;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BudgetActivity extends Activity implements
         BudgetUpdateFragment.BudgetUpdateListener {

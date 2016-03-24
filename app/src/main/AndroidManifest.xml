@@ -160,14 +160,14 @@
             </intent-filter>
         </receiver>
 
-        <activity
+ <!--       <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
