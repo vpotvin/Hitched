@@ -48,7 +48,7 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
         query.findInBackground(new FindCallback<ItineraryItem>() {
             @Override
             public void done(List<ItineraryItem> objects, ParseException e) {
-                items = new ArrayList<ItineraryItem>(objects);
+                items = new ArrayList<>(objects);
                 if (items.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "There was no data found",
                             Toast.LENGTH_SHORT);

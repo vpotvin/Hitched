@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-
         you = (TextView)findViewById(R.id.you);
         your = (TextView)findViewById(R.id.your);
         month = (TextView)findViewById(R.id.month);
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         }
         dress = (Button) findViewById(R.id.dress);
         venue = (Button) findViewById(R.id.venue);
-        // party = (Button)findViewById(R.id.party);
+       // party = (Button)findViewById(R.id.party);
         picture = (Button) findViewById(R.id.picture);
         honeymoon = (Button) findViewById(R.id.honeymoon);
         cake = (Button)findViewById(R.id.cake);
@@ -126,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 //rehana
     }
