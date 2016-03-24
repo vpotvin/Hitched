@@ -6,8 +6,18 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.FrameLayout;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FloorPlanActivity extends AppCompatActivity {
+
+    private List<Table> tables;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +34,26 @@ public class FloorPlanActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        ParseQuery<Table> query = ParseQuery.getQuery(Table.class);
+        query.findInBackground(new FindCallback<Table>() {
+            @Override
+            public void done(List<Table> objects, ParseException e) {
+                if(!objects.isEmpty()) tables = objects;
+                else tables = new ArrayList<>();
+            }
+        });
+
+
+    }
+
+    private void updateView() {
+        FrameLayout tableFrame = (FrameLayout) findViewById(R.id.tableFrame);
+        tableFrame.removeAllViews();
+        int i=0;
+
+        //TODO: update tables 
+
     }
 
 }
