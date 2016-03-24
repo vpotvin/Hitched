@@ -96,9 +96,7 @@ public class SavedVendorList {
     }
 
     public boolean checkForItemExist(SavedVendor savedVendor){
-        if(getSavedVendor(savedVendor.getId()) == null)
-            return true;
-        return false;
+        return getSavedVendor(savedVendor.getId()) == null;
     }
     public boolean addSavedVendor(SavedVendor savedVendor){
         if(getSavedVendor(savedVendor.getId())==null) {

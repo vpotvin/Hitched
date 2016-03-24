@@ -99,7 +99,9 @@
         <activity
             android:name=".WebTutorialActivity"
             android:label="WebTutorial Activity"
+
             android:theme="@style/Theme.AppCompat.Light" />
+
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"
@@ -135,6 +137,7 @@
             android:label="@string/title_activity_share"
             android:theme="@style/AppTheme.NoActionBar" />
 
+
         <service android:name="com.parse.PushService" />
 
         <receiver
@@ -166,6 +169,7 @@
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
@@ -184,6 +188,12 @@
             android:name=".DayOfActivity"
             android:label="@string/title_activity_day_of"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".UpdateInformation"></activity>
+            
+        <activity
+            android:name=".FloorPlanActivity"
+            android:label="@string/title_activity_floor_plan"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
+          
 </manifest>
