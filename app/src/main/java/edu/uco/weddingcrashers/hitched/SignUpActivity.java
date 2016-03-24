@@ -13,8 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -124,15 +122,6 @@ public class SignUpActivity extends Activity {
                                 ParseDatabase.USER_ID = newUser.getObjectId().toString();
                                 ParseDatabase.USER_NAME = newUser.getUsername();
                                 ParseDatabase.COMBINED_USERNAME = ParseDatabase.USER_ID + ParseDatabase.USER_NAME;
-
-                                ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-                                installation.put("user", ParseUser.getCurrentUser());
-                                installation.put("myusername", ParseDatabase.USER_NAME);
-                                installation.saveInBackground();
-
-                                ParseObject userTable = new ParseObject("My_Users");
-                                userTable.put("My_Username", ParseDatabase.USER_NAME);
-                                userTable.saveInBackground();
 
 
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);

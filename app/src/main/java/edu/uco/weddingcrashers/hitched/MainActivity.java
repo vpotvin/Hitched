@@ -39,7 +39,7 @@ public class MainActivity extends FragmentActivity {
             your.setText(currentUser.getString("groom"));
             day.setText(currentUser.getString("day"));
             month.setText(currentUser.getString("month"));
-        ParseAnalytics.trackAppOpened(getIntent());
+        ParseAnalytics.trackAppOpened(getIntent());;
 
         }else {
             you.setText("");
@@ -61,8 +61,15 @@ public class MainActivity extends FragmentActivity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
+        vow = (Button)findViewById(R.id.vow);
+        menu = (Button)findViewById(R.id.menu);
 
-
+        update.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent update = new Intent(MainActivity.this, UpdateInformation.class);
+                startActivity(update);
+            }
+        });
         budget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent budget = new Intent(MainActivity.this, BudgetActivity.class);

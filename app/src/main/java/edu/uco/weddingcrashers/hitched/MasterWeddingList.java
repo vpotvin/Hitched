@@ -15,10 +15,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -45,6 +47,8 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         theList = new ArrayList<Object>();
+
+        //buildParse();
 
         int day = 1;
         boolean com = false;

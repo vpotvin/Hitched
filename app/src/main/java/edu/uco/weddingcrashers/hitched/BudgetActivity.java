@@ -18,7 +18,6 @@ import com.parse.ParseQuery;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BudgetActivity extends Activity implements
         BudgetUpdateFragment.BudgetUpdateListener {
@@ -40,7 +39,6 @@ public class BudgetActivity extends Activity implements
         setContentView(R.layout.activity_budget);
 
         //replaced with database population
-
 
         ParseQuery<BudgetItem> budgetQuery = ParseQuery.getQuery(BudgetItem.class);
         budgetQuery.whereEqualTo(BudgetItem.TITLE, BudgetItem.MAIN_TITLE);

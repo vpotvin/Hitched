@@ -1,5 +1,6 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class VendorsDetailFragment extends Fragment {
     private Vendor mVendor;
     private RecyclerView mVendorPlaceRecycleView;
     private List<VendorPlace> mVendorPlaces = new ArrayList<>();
+    private ProgressDialog progDailog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,8 @@ public class VendorsDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail,container,false);
         mVendorPlaceRecycleView = (RecyclerView) view.findViewById(R.id.detail_vendor_recycle_view);
         mVendorPlaceRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        progDailog = ProgressDialog.show(getActivity(), "Loading","Please wait...", true);
+        progDailog.setCancelable(false);
 
 //        mWebView = (WebView)view.findViewById(R.id.web_view);
 //        mWebView = new WebView(getActivity());
@@ -76,6 +80,7 @@ public class VendorsDetailFragment extends Fragment {
 
         @Override
         protected void onPostExecute(List<VendorPlace> vendorPlaces) {
+            progDailog.dismiss();
             mVendorPlaces = vendorPlaces;
             updateUI();
         }
