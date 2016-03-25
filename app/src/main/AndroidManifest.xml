@@ -20,11 +20,11 @@
     <uses-permission android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
 
     <application
-        android:largeHeap="true"
         android:name=".ParseDatabase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.parse.APPLICATION_ID"
@@ -99,9 +99,7 @@
         <activity
             android:name=".WebTutorialActivity"
             android:label="WebTutorial Activity"
-
             android:theme="@style/Theme.AppCompat.Light" />
-
         <activity android:name=".Pictures" />
         <activity
             android:name=".PicturesWeb"
@@ -168,6 +166,7 @@
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />-->
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
@@ -191,6 +190,19 @@
         <activity
             android:name=".FloorPlanActivity"
             android:label="@string/title_activity_floor_plan"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".UpdateInformation" />
+        <activity
+            android:name=".WeddingDressList"
+            android:label="@string/title_activity_wedding_dress_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DressSearchResult"
+            android:label="@string/title_activity_dress_search_result"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VenueDetail"
+            android:label="@string/title_activity_venue_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

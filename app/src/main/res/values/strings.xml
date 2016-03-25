@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hitched</string>
     <string name="parse_app_id">UliVJPYGezH8Q3RdrprOT26CKAWPyGsBw1Eo1sLG</string>
@@ -98,11 +99,14 @@
     <string name="title_activity_venue_search">VenueSearch</string>
     <string name="title_activity_venue_search_result">VenueSearchResult</string>
     <string name="title_activity_venue_fragment">VenueFragment</string>
+    <string name="title_activity_wedding_dress_list">WeddingDressList</string>
+    <string name="title_activity_dress_search_result">DressSearchResult</string>
     <string name="title_activity_vows">VowsActivity</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="update">UPDATE MY ACCOUNT</string>
     <string name="menu">Menu</string>
     <string name="title_activity_day_of">DayOfActivity</string>
+    <string name="title_activity_venue_detail">VenueDetail</string>
 
     <string name="title_activity_floor_plan">FloorPlanActivity</string>
 </resources>
