@@ -106,6 +106,7 @@ public class UpdateInformation extends AppCompatActivity {
                 currentUser.saveInBackground();
                 Toast.makeText(getApplicationContext(), "Your account has been updated!",
                         Toast.LENGTH_LONG).show();
+                UtilityFunctions.updateMasterListDueDates();
                 Intent intent = new Intent(UpdateInformation.this, MainActivity.class);
                 startActivity(intent);
 
