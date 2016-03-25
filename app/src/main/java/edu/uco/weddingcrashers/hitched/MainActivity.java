@@ -30,7 +30,7 @@ public class MainActivity extends FragmentActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         //setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
 
