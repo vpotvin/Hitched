@@ -34,6 +34,7 @@ public class ParseDatabase extends Application {
         ParseObject.registerSubclass(GuestListItem.class);
         ParseObject.registerSubclass(MasterListItem.class);
         ParseObject.registerSubclass(BudgetItem.class);
+        ParseObject.registerSubclass(WeddingVows.class);
         ParseObject.registerSubclass(Table.class);
         //ParseObject.registerSubclass(BudgetItem.class);
 

@@ -2,24 +2,22 @@ package edu.uco.weddingcrashers.hitched;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
-public class MainActivity extends FragmentActivity {
-    private static final String USER_STATE = "UserState";
-    private Button venue,dress,party,honeymoon,cake,vendor,picture, vow;
-    private Button invites,registry,budget,assignseats, menu;
+public class MainActivity extends AppCompatActivity {
+    private Button venue,dress,party,honeymoon,cake,vendor,picture,dayOf, menu;
+    private Button invites,registry,budget,assignseats;
     private Button itinerary,guestlist,tasks,contacts,update;
     private TextView you, your, date, month, day;
     private Toolbar toolbar;
@@ -47,7 +45,7 @@ public class MainActivity extends FragmentActivity {
             your.setText(currentUser.getString("groom"));
             day.setText(currentUser.getString("day"));
             month.setText(currentUser.getString("month"));
-        ParseAnalytics.trackAppOpened(getIntent());
+            ParseAnalytics.trackAppOpened(getIntent());;
 
         }else {
             you.setText("");
@@ -69,7 +67,7 @@ public class MainActivity extends FragmentActivity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
-        vow = (Button)findViewById(R.id.vow);
+        dayOf = (Button)findViewById(R.id.dayOfWedding);
         menu = (Button)findViewById(R.id.menu);
 
         update.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +119,19 @@ public class MainActivity extends FragmentActivity {
                 startActivity(intent);
             }
         });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dayOf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DayOfActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 //rehana
@@ -147,13 +158,10 @@ public class MainActivity extends FragmentActivity {
 
         return super.onOptionsItemSelected(item);
     }
-     public void launchActivity(View view){
-         //Tung modified to launch different activity
-         FragmentManager manager = getSupportFragmentManager();
-         ChooseStateFragment dialog = new ChooseStateFragment();
-         dialog.show(manager, "StateDialog");
-
-     }
+    public void launchActivity(View view){
+        Intent i = new Intent(this,DetailActivity.class);
+        startActivity(i);
+    }
 
     public void launchBudgetActivity(View view) {
         Intent i = new Intent(this, BudgetActivity.class);

@@ -171,6 +171,20 @@
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VowsActivity"
+            android:label="@string/title_activity_vows"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UpdateInformation" />
+        <activity
+            android:name=".DayOfActivity"
+            android:label="@string/title_activity_day_of"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".UpdateInformation"></activity>
             
         <activity
