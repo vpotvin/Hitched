@@ -308,14 +308,8 @@ public class SignUpActivity extends Activity {
 
         if(!(date.equals("No Set Date")))
         {
-            DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
-            Date startDate = null;
-            try {
-                startDate = df.parse(date);
-            } catch (java.text.ParseException e) {
-                e.printStackTrace();
-            }
-            UtilityFunctions.updateMasterListDueDates(startDate);
+
+            UtilityFunctions.updateMasterListDueDates();
         }
 
 

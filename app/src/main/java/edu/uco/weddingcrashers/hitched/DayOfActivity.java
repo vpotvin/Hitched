@@ -50,7 +50,7 @@ public class DayOfActivity extends AppCompatActivity {
 
         vows.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent update = new Intent(DayOfActivity.this, WeddingVows.class);
+                Intent update = new Intent(DayOfActivity.this, VowsActivity.class);
                 startActivity(update);
             }
         });

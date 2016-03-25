@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
@@ -40,15 +41,30 @@ public class UtilityFunctions {
         mListView.requestLayout();
     }
 
-    public static void updateMasterListDueDates(final Date weddingDate)
+    public static void updateMasterListDueDates()
     {
+        final Calendar weddingDate = null;
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("User");
+        query2.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> scoreList, ParseException e) {
+                if (e == null) {
+                    int day=scoreList.get(0).getInt("day");
+                    int month=scoreList.get(0).getInt("month");
+                    int year=scoreList.get(0).getInt("year");
+                    weddingDate.set(year, month - 1, day, 0, 0);
+
+                } else {
+
+                }
+            }
+        });
         ParseQuery<MasterListItem> query = ParseQuery.getQuery(MasterListItem.class);
 
         query.findInBackground(new FindCallback<MasterListItem>() {
             @Override
             public void done(List<MasterListItem> objects, ParseException e) {
                 ArrayList<MasterListItem> theList = new ArrayList<MasterListItem>(objects);
-                updateHelper(theList,weddingDate);
+                updateHelper(theList,weddingDate.getTime());
             }
 
             private void updateHelper(ArrayList<MasterListItem> theList,Date weddingDate) {
