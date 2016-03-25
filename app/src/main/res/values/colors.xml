@@ -2,7 +2,7 @@
 <resources>
     <color name="primary">#b7c0c7</color>
     <color name="ColorPrimaryDark">#637a91</color>
-    <item name="transparent" type="color">#00FFFFFF</item>
+    <item name="transparent" type="color">#FFFFFF</item>
     <item name="light_pink" type="color">#DABCD2</item>
     <item name="pink" type="color">#DE84B5</item>
     <item name="blue" type="color">#88CDE6</item>
