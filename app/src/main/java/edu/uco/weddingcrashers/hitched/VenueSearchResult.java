@@ -111,6 +111,7 @@ public class VenueSearchResult extends ListActivity {
                 editVenue.putExtra("vname", whichList);
                 editVenue.putExtra("myvalue", thevalue);
                 startActivity(editVenue);
+                //finish();
                 return true;
             }
         });

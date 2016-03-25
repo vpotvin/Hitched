@@ -40,6 +40,7 @@ public class WeddingDressActivity extends Activity {
                 search = search.replace(" ", "");
                 searchVenue.putExtra("search", search);
                 startActivity(searchVenue);
+                finish();
             }
         });
     }

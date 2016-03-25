@@ -47,6 +47,7 @@ public class VenueSearch extends AppCompatActivity {
                 search = search.replace(" ", "");
                 searchVenue.putExtra("search", search);
                 startActivity(searchVenue);
+                //finish();
             }
         });
     }

@@ -63,6 +63,7 @@ public class VenueActivity extends Activity {
                 thevalue = "no";
                 editVenue.putExtra("myvalue", thevalue);
                 startActivity(editVenue);
+                //finish();
             }
         });
 

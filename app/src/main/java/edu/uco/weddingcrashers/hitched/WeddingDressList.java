@@ -42,6 +42,7 @@ public class WeddingDressList extends Activity {
             public void onClick(View view) {
                 Intent dressSearch = new Intent(WeddingDressList.this, WeddingDressActivity.class);
                 startActivity(dressSearch);
+                finish();
             }
         });
 

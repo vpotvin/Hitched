@@ -64,7 +64,7 @@ public class DressSearchResult extends ListActivity {
 
         final ListView searchList = getListView();
 
-        searchList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+       /* searchList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -83,6 +83,39 @@ public class DressSearchResult extends ListActivity {
                 editVenue.putExtra("myvalue", thevalue);
                 startActivity(editVenue);
                 return true;
+            }
+        });*/
+
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                /*String myPlaceID = ((TextView) view.findViewById(R.id.placeID))
+                        .getText().toString();
+
+                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
+
+                venueDetail.putExtra("myID", myPlaceID);
+                Log.i("WHAT", myPlaceID);
+                startActivity(venueDetail);*/
+
+                String name = ((TextView) view.findViewById(R.id.name))
+                        .getText().toString();
+                String address = ((TextView) view.findViewById(R.id.address))
+                        .getText().toString();
+
+                Intent venueDetail = new Intent (DressSearchResult.this, VenueDetail.class);
+
+                //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
+                // Log.i("WHAT", whichList);
+
+                // thevalue = "yes";
+                venueDetail.putExtra("name", name);
+                venueDetail.putExtra("address", address);
+                //venueDetail.putExtra("myvalue", thevalue);
+                startActivity(venueDetail);
+                //finish();
+
             }
         });
 
