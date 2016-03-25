@@ -15,10 +15,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -58,14 +60,7 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
 
             //theList.add(new MasterListItem("Test Item"+ x,calendar.getTime(), new Date(), "here are some notes", com));
             calendar.add(Calendar.DAY_OF_MONTH, 10);
-            if(com == false)
-            {
-                com = true;
-            }
-            else
-            {
-                com = false;
-            }
+            com = com == false;
         }
         calendar.set(2015,1,1);
         Calendar calendar2 = Calendar.getInstance();

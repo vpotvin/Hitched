@@ -11,6 +11,11 @@
     <!--TextView to update stored budget value-->
 
     <!--Button to update budget value-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textCalculateUsed"
+        />
 
     <Button
         android:layout_width="wrap_content"

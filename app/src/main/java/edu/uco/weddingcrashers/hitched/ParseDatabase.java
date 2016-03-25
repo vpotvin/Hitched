@@ -33,6 +33,8 @@ public class ParseDatabase extends Application {
         ParseObject.registerSubclass(ItineraryItem.class);
         ParseObject.registerSubclass(GuestListItem.class);
         ParseObject.registerSubclass(MasterListItem.class);
+        ParseObject.registerSubclass(BudgetItem.class);
+        ParseObject.registerSubclass(Table.class);
         //ParseObject.registerSubclass(BudgetItem.class);
 
         // Enable Local Datastore.

@@ -2,22 +2,24 @@ package edu.uco.weddingcrashers.hitched;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
-public class MainActivity extends AppCompatActivity {
-    private Button venue,dress,party,honeymoon,cake,vendor,picture,vow, menu;
-    private Button invites,registry,budget,assignseats;
+public class MainActivity extends FragmentActivity {
+    private static final String USER_STATE = "UserState";
+    private Button venue,dress,party,honeymoon,cake,vendor,picture, vow;
+    private Button invites,registry,budget,assignseats, menu;
     private Button itinerary,guestlist,tasks,contacts,update;
     private TextView you, your, date, month, day;
     private Toolbar toolbar;
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-
         you = (TextView)findViewById(R.id.you);
         your = (TextView)findViewById(R.id.your);
         month = (TextView)findViewById(R.id.month);
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             your.setText(currentUser.getString("groom"));
             day.setText(currentUser.getString("day"));
             month.setText(currentUser.getString("month"));
-            ParseAnalytics.trackAppOpened(getIntent());;
+        ParseAnalytics.trackAppOpened(getIntent());
 
         }else {
             you.setText("");
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
         dress = (Button) findViewById(R.id.dress);
         venue = (Button) findViewById(R.id.venue);
-        // party = (Button)findViewById(R.id.party);
+       // party = (Button)findViewById(R.id.party);
         picture = (Button) findViewById(R.id.picture);
         honeymoon = (Button) findViewById(R.id.honeymoon);
         cake = (Button)findViewById(R.id.cake);
@@ -146,10 +147,13 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void launchActivity(View view){
-        Intent i = new Intent(this,DetailActivity.class);
-        startActivity(i);
-    }
+     public void launchActivity(View view){
+         //Tung modified to launch different activity
+         FragmentManager manager = getSupportFragmentManager();
+         ChooseStateFragment dialog = new ChooseStateFragment();
+         dialog.show(manager, "StateDialog");
+
+     }
 
     public void launchBudgetActivity(View view) {
         Intent i = new Intent(this, BudgetActivity.class);
