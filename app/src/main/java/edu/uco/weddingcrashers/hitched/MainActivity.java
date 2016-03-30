@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
-        vow = (Button)findViewById(R.id.vow);
+        //vow = (Button)findViewById(R.id.vowsButton);
         menu = (Button)findViewById(R.id.menu);
 
         update.setOnClickListener(new View.OnClickListener() {

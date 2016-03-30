@@ -1,29 +1,12 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.Activity;
-import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,10 +62,10 @@ public class VenueDetail extends Activity {
             TAG_NAME = n1;
             TAG_ADDRESS = n2;
 
-            if(TAG_NAME.equals("Coles Garden")) {
+            if(TAG_NAME.equals("Impression Bridal OKC")) {
 
-                TAG_PHONE = "(405) 478-1529";
-                TAG_WEBSITE= "http://www.colesgarden.net/";
+                TAG_PHONE = "(405) 752-0200";
+                TAG_WEBSITE= "http://www.impressionbridalstore.com/";
 
                 name.setText(TAG_NAME);
                 address.setText(TAG_ADDRESS);
@@ -92,7 +75,7 @@ public class VenueDetail extends Activity {
                 add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent addVenue = new Intent(VenueDetail.this, VenueActivity.class);
+                        Intent addVenue = new Intent(VenueDetail.this, WeddingDressList.class);
 
                         String myName = name.getText().toString();
                         String myAddress = address.getText().toString();
@@ -108,13 +91,14 @@ public class VenueDetail extends Activity {
                         addVenue.putExtra("vname", whichList);
                         addVenue.putExtra("myvalue", thevalue);
                         startActivity(addVenue);
+                        finish();
                     }
                 });
 
             } else {
 
-                TAG_PHONE = "(405) 603-7673";
-                TAG_WEBSITE= "http://www.rosebriarplace.com/";
+                TAG_PHONE = "(405) 752-0029";
+                TAG_WEBSITE= "http://jjkellybridal.com/";
 
                 name.setText(TAG_NAME);
                 address.setText(TAG_ADDRESS);
@@ -124,7 +108,7 @@ public class VenueDetail extends Activity {
                 add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent addVenue = new Intent(VenueDetail.this, VenueActivity.class);
+                        Intent addVenue = new Intent(VenueDetail.this, WeddingDressList.class);
 
                         String myName = name.getText().toString();
                         String myAddress = address.getText().toString();
@@ -140,6 +124,7 @@ public class VenueDetail extends Activity {
                         addVenue.putExtra("vname", whichList);
                         addVenue.putExtra("myvalue", thevalue);
                         startActivity(addVenue);
+                        finish();
                     }
                 });
             }
