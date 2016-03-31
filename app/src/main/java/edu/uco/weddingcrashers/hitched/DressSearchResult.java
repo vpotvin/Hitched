@@ -1,25 +1,14 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.ListActivity;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -31,7 +20,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class DressSearchResult extends ListActivity {
 
@@ -119,6 +107,39 @@ public class DressSearchResult extends ListActivity {
             }
         });
 
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                /*String myPlaceID = ((TextView) view.findViewById(R.id.placeID))
+                        .getText().toString();
+
+                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
+
+                venueDetail.putExtra("myID", myPlaceID);
+                Log.i("WHAT", myPlaceID);
+                startActivity(venueDetail);*/
+
+                String name = ((TextView) view.findViewById(R.id.name))
+                        .getText().toString();
+                String address = ((TextView) view.findViewById(R.id.address))
+                        .getText().toString();
+
+                Intent venueDetail = new Intent(DressSearchResult.this, VenueDetail.class);
+
+                //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
+                // Log.i("WHAT", whichList);
+
+                // thevalue = "yes";
+                venueDetail.putExtra("name", name);
+                venueDetail.putExtra("address", address);
+                //venueDetail.putExtra("myvalue", thevalue);
+                startActivity(venueDetail);
+
+
+            }
+        });
+
         new GetVenues().execute();
 
     }
@@ -200,4 +221,5 @@ public class DressSearchResult extends ListActivity {
             setListAdapter(adapter);
         }
     }
+
 }

@@ -1,24 +1,20 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.parse.GetCallback;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeddingDressList extends Activity {
+public class WeddingDressList extends AppCompatActivity {
 
     private Button addVenue;
     private Button share;
@@ -30,13 +26,18 @@ public class WeddingDressList extends Activity {
     private String whichList;
     private String thevalue;
     private final int RETURN = 1;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wedding_dress_list);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+
+        Button fab = (Button) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,16 +48,8 @@ public class WeddingDressList extends Activity {
         });
 
 
-        share = (Button) findViewById(R.id.dShareButton);
-        dresses = (ListView) findViewById(R.id.dlistView);
 
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shareActivity = new Intent(WeddingDressList.this, ShareActivity.class);
-                startActivity(shareActivity);
-            }
-        });
+        dresses = (ListView) findViewById(R.id.dlistView);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         dresses.setAdapter(adapter);
@@ -73,4 +66,44 @@ public class WeddingDressList extends Activity {
         }
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.weddingdress, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.action_weddingshare) {
+            Intent shareActivity = new Intent(WeddingDressList.this, ShareActivity.class);
+            startActivity(shareActivity);
+
+        }
+
+        if (id == R.id.action_main) {
+            Intent shareActivity = new Intent(WeddingDressList.this, MainActivity.class);
+            startActivity(shareActivity);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+
+
+
+
 }

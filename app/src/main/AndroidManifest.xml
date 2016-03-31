@@ -52,6 +52,10 @@
             android:name=".BudgetActivity"
             android:label="@string/title_activity_budget" />
         <activity
+            android:name=".ForgotPassword"
+            android:label="@string/title_activity_forgot_password"
+            />
+        <activity
             android:name=".MasterWeddingList"
             android:label="@string/title_activity_checklist" />
         <activity
@@ -124,8 +128,9 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" />
+
         <activity android:name=".MasterListAssignementActivity" />
-        android:label="@string/title_activity_sign_up" />
+
         <activity
             android:name=".EditVenueActivity"
             android:label="@string/title_activity_edit_venue"
@@ -167,10 +172,7 @@
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />-->
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ForgotPassword"
-            android:label="@string/title_activity_forgot_password"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".VowsActivity"
             android:label="@string/title_activity_vows"
