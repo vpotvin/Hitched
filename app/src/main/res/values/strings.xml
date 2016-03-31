@@ -109,4 +109,5 @@
     <string name="title_activity_venue_detail">VenueDetail</string>
 
     <string name="title_activity_floor_plan">FloorPlanActivity</string>
+    <string name="title_activity_dress_detail">DressDetail</string>
 </resources>

@@ -53,8 +53,7 @@
             android:label="@string/title_activity_budget" />
         <activity
             android:name=".ForgotPassword"
-            android:label="@string/title_activity_forgot_password"
-            />
+            android:label="@string/title_activity_forgot_password" />
         <activity
             android:name=".MasterWeddingList"
             android:label="@string/title_activity_checklist" />
@@ -128,9 +127,7 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" />
-
         <activity android:name=".MasterListAssignementActivity" />
-
         <activity
             android:name=".EditVenueActivity"
             android:label="@string/title_activity_edit_venue"
@@ -162,17 +159,15 @@
                 <category android:name="edu.uco.weddingcrashers.hitched" />
             </intent-filter>
         </receiver>
-
- <!--       <activity
+            <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
-            android:theme="@style/AppTheme.NoActionBar" />-->
             android:theme="@style/AppTheme.NoActionBar" />
-
+        android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VowsActivity"
             android:label="@string/title_activity_vows"
@@ -186,13 +181,12 @@
         <activity
             android:name=".DayOfActivity"
             android:label="@string/title_activity_day_of"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".UpdateInformation"></activity>
-            
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UpdateInformation" />
         <activity
             android:name=".FloorPlanActivity"
             android:label="@string/title_activity_floor_plan"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateInformation" />
         <activity
             android:name=".WeddingDressList"
@@ -205,6 +199,10 @@
         <activity
             android:name=".VenueDetail"
             android:label="@string/title_activity_venue_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DressDetail"
+            android:label="@string/title_activity_dress_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

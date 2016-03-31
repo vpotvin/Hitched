@@ -56,16 +56,16 @@ public class VenueDetail extends Activity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            final String n1 = extras.getString("name");
-            final String n2 = extras.getString("address");
+            final String n3 = extras.getString("name");
+            final String n4 = extras.getString("address");
 
-            TAG_NAME = n1;
-            TAG_ADDRESS = n2;
+            TAG_NAME = n3;
+            TAG_ADDRESS = n4;
 
-            if(TAG_NAME.equals("Impression Bridal OKC")) {
+            if (TAG_NAME.equals("Coles Garden")) {
 
-                TAG_PHONE = "(405) 752-0200";
-                TAG_WEBSITE= "http://www.impressionbridalstore.com/";
+                TAG_PHONE = "(405) 478-1529";
+                TAG_WEBSITE = "http://www.colesgarden.net/";
 
                 name.setText(TAG_NAME);
                 address.setText(TAG_ADDRESS);
@@ -75,7 +75,7 @@ public class VenueDetail extends Activity {
                 add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent addVenue = new Intent(VenueDetail.this, WeddingDressList.class);
+                        Intent addVenue = new Intent(VenueDetail.this, VenueActivity.class);
 
                         String myName = name.getText().toString();
                         String myAddress = address.getText().toString();
@@ -83,8 +83,8 @@ public class VenueDetail extends Activity {
                         String myWeb = web.getText().toString();
 
                         whichList = myName + System.getProperty("line.separator") + System.getProperty("line.separator") +
-                                myAddress +  System.getProperty("line.separator") + System.getProperty("line.separator") + myPhone
-                                +  System.getProperty("line.separator") + System.getProperty("line.separator")  + myWeb;
+                                myAddress + System.getProperty("line.separator") + System.getProperty("line.separator") + myPhone
+                                + System.getProperty("line.separator") + System.getProperty("line.separator") + myWeb;
                         Log.i("WHAT", whichList);
 
                         thevalue = "yes";
@@ -97,8 +97,8 @@ public class VenueDetail extends Activity {
 
             } else {
 
-                TAG_PHONE = "(405) 752-0029";
-                TAG_WEBSITE= "http://jjkellybridal.com/";
+                TAG_PHONE = "(405) 603-7673";
+                TAG_WEBSITE = "http://www.rosebriarplace.com/";
 
                 name.setText(TAG_NAME);
                 address.setText(TAG_ADDRESS);
@@ -116,8 +116,8 @@ public class VenueDetail extends Activity {
                         String myWeb = web.getText().toString();
 
                         whichList = myName + System.getProperty("line.separator") + System.getProperty("line.separator") +
-                                myAddress +  System.getProperty("line.separator") + System.getProperty("line.separator") + myPhone
-                                +  System.getProperty("line.separator") + System.getProperty("line.separator")  + myWeb;
+                                myAddress + System.getProperty("line.separator") + System.getProperty("line.separator") + myPhone
+                                + System.getProperty("line.separator") + System.getProperty("line.separator") + myWeb;
                         Log.i("WHAT", whichList);
 
                         thevalue = "yes";
@@ -133,6 +133,10 @@ public class VenueDetail extends Activity {
             //url = String.valueOf(Uri.parse(url + n1 + "&key=AIzaSyB4cW0S6qfFUERb8he2jOupGO5z9cLiDm4"));
             //Log.i("WHAT", url);
         }
+
+
+    }
+
 
 
         /*final ListView searchList = getListView();
@@ -162,7 +166,7 @@ public class VenueDetail extends Activity {
 
         new GetDetails().execute();*/
 
-    }
+}
 
     /*private class GetDetails extends AsyncTask<Void, Void, Void> {
         @Override
@@ -242,5 +246,6 @@ public class VenueDetail extends Activity {
             setListAdapter(adapter);
         }
     }*/
-}
+
+
 

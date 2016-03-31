@@ -81,11 +81,14 @@ public class VenueSearchResult extends ListActivity {
                 Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
 
                 //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
-               // Log.i("WHAT", whichList);
+                // Log.i("WHAT", whichList);
 
-               // thevalue = "yes";
+                String whichClass = "";
+
+                // thevalue = "yes";
                 venueDetail.putExtra("name", name);
                 venueDetail.putExtra("address", address);
+                venueDetail.putExtra("done", whichClass);
                 //venueDetail.putExtra("myvalue", thevalue);
                 startActivity(venueDetail);
 
@@ -111,7 +114,6 @@ public class VenueSearchResult extends ListActivity {
                 editVenue.putExtra("vname", whichList);
                 editVenue.putExtra("myvalue", thevalue);
                 startActivity(editVenue);
-                //finish();
                 return true;
             }
         });

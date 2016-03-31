@@ -19,12 +19,13 @@ public class VenueSearch extends AppCompatActivity {
     private TextView shareText;
     private String search;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue_search);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // setSupportActionBar(toolbar);
 
         vSearch = (Button) findViewById(R.id.vSearchButton);
         shareText = (TextView) findViewById(R.id.vSearchText);
@@ -47,7 +48,6 @@ public class VenueSearch extends AppCompatActivity {
                 search = search.replace(" ", "");
                 searchVenue.putExtra("search", search);
                 startActivity(searchVenue);
-                //finish();
             }
         });
     }

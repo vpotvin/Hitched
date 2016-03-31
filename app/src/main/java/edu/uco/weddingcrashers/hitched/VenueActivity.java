@@ -41,8 +41,8 @@ public class VenueActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // setSupportActionBar(toolbar);
 
         venues = (ListView) findViewById(R.id.vListView);
 
@@ -58,7 +58,6 @@ public class VenueActivity extends AppCompatActivity{
                 thevalue = "no";
                 editVenue.putExtra("myvalue", thevalue);
                 startActivity(editVenue);
-                //finish();
             }
         });
 
