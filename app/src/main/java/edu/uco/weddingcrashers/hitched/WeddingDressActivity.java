@@ -22,7 +22,7 @@ public class WeddingDressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wedding_dress);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
         dressSearch = (Button) findViewById(R.id.dressSearchButton);
         mySearch = (EditText) findViewById(R.id.dressSearchText);
