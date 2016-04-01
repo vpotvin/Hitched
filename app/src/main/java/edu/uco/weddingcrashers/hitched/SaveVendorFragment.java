@@ -71,7 +71,7 @@ public class SaveVendorFragment extends DialogFragment {
         });
 
         mRingButton = (Button) view.findViewById(R.id.ring_button);
-        mWebsiteButton.setOnClickListener(new View.OnClickListener() {
+        mRingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),RingActivity.class);
