@@ -1,6 +1,7 @@
 package edu.uco.weddingcrashers.hitched;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,6 +31,8 @@ public class RingFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Intent i = getActivity().getIntent();
+        String gender = i.getStringExtra("GENDER");
         View view = inflater.inflate(R.layout.fragment_ring, null);
        // mTextView = (TextView) view.findViewById(R.id.ring_text_view);
         ringList = new ArrayList<>();

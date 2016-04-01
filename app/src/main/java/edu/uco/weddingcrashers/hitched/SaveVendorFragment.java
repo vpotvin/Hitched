@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,8 +75,11 @@ public class SaveVendorFragment extends DialogFragment {
         mRingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),RingActivity.class);
-                startActivity(i);
+                FragmentManager manager = getFragmentManager();
+                RingGenderFragment dialog = new RingGenderFragment();
+                dialog.show(manager,"RING GENDER");
+//                Intent i = new Intent(getActivity(),RingActivity.class);
+//                startActivity(i);
             }
         });
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
