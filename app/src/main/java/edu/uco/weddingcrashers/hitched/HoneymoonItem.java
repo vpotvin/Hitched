@@ -6,6 +6,7 @@ package edu.uco.weddingcrashers.hitched;
 public class HoneymoonItem {
     private String Name;
     private Integer img;
+	TextView tv;
     private String Description;
 
     public HoneymoonItem(String name, Integer img, String description) {

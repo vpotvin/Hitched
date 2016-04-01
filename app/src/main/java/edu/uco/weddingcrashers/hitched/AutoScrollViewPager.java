@@ -82,6 +82,7 @@ public class AutoScrollViewPager extends ViewPager {
     }
 
     private void init() {
+		
         handler = new MyHandler(this);
         setViewPagerScroller();
     }

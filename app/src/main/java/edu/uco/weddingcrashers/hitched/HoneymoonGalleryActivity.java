@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class HoneymoonGalleryActivity extends Activity {
 
     private Integer[] pics={R.drawable.red_beach,R.drawable.caldera_at_sunset,R.drawable.boat_at_kamari_beach};
-
+TextView tv;
     private ImageView imageview;
 
     protected void onCreate(Bundle savedInstanceState){
