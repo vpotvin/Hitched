@@ -75,6 +75,10 @@
             android:label="Music List Activity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
+            android:name=".RingActivity"
+            android:label="Ring Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
             android:name=".VendorDealActivity"
             android:label="Vendor Deal Activity"
             android:theme="@style/Theme.AppCompat.Light" />

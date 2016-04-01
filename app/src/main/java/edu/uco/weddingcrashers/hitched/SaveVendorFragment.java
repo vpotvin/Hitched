@@ -19,7 +19,7 @@ public class SaveVendorFragment extends DialogFragment {
     // private static final String ARG_URL = "url";
     private String userState;
     private Spinner mSpinner;
-    private Button mDealButton, mMusicButton, mDetailButton, mWebsiteButton;
+    private Button mDealButton, mMusicButton, mDetailButton, mWebsiteButton,mRingButton;
 
 //    public static SaveVendorFragment newInstance(String url){
 //        Bundle args = new Bundle();
@@ -66,6 +66,15 @@ public class SaveVendorFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),WebTutorialActivity.class);
+                startActivity(i);
+            }
+        });
+
+        mRingButton = (Button) view.findViewById(R.id.ring_button);
+        mWebsiteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),RingActivity.class);
                 startActivity(i);
             }
         });
