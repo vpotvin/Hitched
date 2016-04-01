@@ -6,11 +6,6 @@
     tools:context="edu.uco.weddingcrashers.hitched.VenueActivity"
     android:background="#F6ECEB">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbars"
-        ></include>
-
 
     <ListView
         android:layout_width="wrap_content"
@@ -19,7 +14,6 @@
         android:longClickable="true"
         android:paddingBottom="50sp"
         android:paddingLeft="15sp"
-        android:layout_below="@+id/toolbar"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5sp"
         android:paddingRight="15sp" />
