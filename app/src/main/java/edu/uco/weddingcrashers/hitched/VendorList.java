@@ -37,7 +37,7 @@ public class VendorList {
         mVendors.add(new Vendor("Lighting & Decor","lighting+stores+in+","Decoration"));
         mVendors.add(new Vendor("Men's Formal Wear","formal+wear+in+","Formal Wear"));
         mVendors.add(new Vendor("Registry","Wedding+Registry+in+","Registry"));
-
+        mVendors.add(new Vendor("Wedding Planner","Wedding+planner+in","Wedding Planner"));
 
 
 
