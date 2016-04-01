@@ -3,47 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.uco.weddingcrashers.hitched.VenueActivity">
+    tools:context="edu.uco.weddingcrashers.hitched.VenueActivity"
+    android:background="#F6ECEB">
 
-    <TextView
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbars"
+        ></include>
+
+
+    <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Your Venues"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="400sp"
+        android:id="@+id/vListView"
+        android:longClickable="true"
+        android:paddingBottom="50sp"
+        android:paddingLeft="15sp"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5sp"
+        android:paddingRight="15sp" />
+
+
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/vsharebutton"
-        android:text="Share"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/fab" />
-
-    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
         android:layout_gravity="bottom|end"
         android:src="@android:drawable/ic_input_add"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/vListView"
-        android:longClickable="true"
-        android:layout_below="@+id/vsharebutton"
-        android:layout_alignParentEnd="true" />
+        android:background="@mipmap/venuesearch"
+        android:layout_below="@+id/vListView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="28dp" />
 
 </RelativeLayout>
