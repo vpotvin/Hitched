@@ -35,8 +35,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_wedding_list">WeddingListActivity</string>
     <string name="title_activity_itinerary">ItineraryActivity</string>
-     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
-        AIzaSyA_tCDAzglMY71KW_YnX3hKIMSNN-K2lmE
+      <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+       AIzaSyDcc4zSsw06cBvcQTfLp9uPs5jQ-te-tV8
     </string>
     <string name="title_activity_edit_venue">EditVenueActivity</string>
     <string name="title_activity_share">ShareActivity</string>
@@ -109,4 +109,5 @@
     <string name="title_activity_venue_detail">VenueDetail</string>
 
     <string name="title_activity_floor_plan">FloorPlanActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
