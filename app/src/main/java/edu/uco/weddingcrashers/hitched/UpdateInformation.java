@@ -11,7 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class UpdateInformation extends AppCompatActivity {
     private TextView currentBrideName, currentGroomName, currentWeddingDate;
@@ -103,10 +105,18 @@ public class UpdateInformation extends AppCompatActivity {
                 if (!newGroom.equals("")) {
                     currentUser.put("groom", newGroom);
                 }
-                currentUser.saveInBackground();
+                currentUser.saveInBackground(new SaveCallback() {
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            UtilityFunctions.updateMasterListDueDates();
+                        } else {
+
+                        }
+                    }
+                });
                 Toast.makeText(getApplicationContext(), "Your account has been updated!",
                         Toast.LENGTH_LONG).show();
-                UtilityFunctions.updateMasterListDueDates();
+
                 Intent intent = new Intent(UpdateInformation.this, MainActivity.class);
                 startActivity(intent);
 

@@ -122,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainActivity.this, UpdateInformation.class);
+                startActivity(intent);
             }
         });
         dayOf.setOnClickListener(new View.OnClickListener() {

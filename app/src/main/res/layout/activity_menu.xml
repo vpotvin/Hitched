@@ -12,5 +12,12 @@
         android:layout_width="match_parent">
     </ListView>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addMenuItem"
+        android:text="Add Item"
+        android:layout_gravity="center_horizontal" />
+
 
 </LinearLayout>

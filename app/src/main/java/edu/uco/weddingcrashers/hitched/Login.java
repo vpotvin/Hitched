@@ -19,6 +19,7 @@ public class Login extends Activity {
     private Button loginbutton,testbutton,signupbutton,forgot;
     private EditText user,password;
     private TextView signUpTextView,test2;
+    public static String theUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class Login extends Activity {
             public void onClick(View v) {
                 String useraddress = user.getText().toString();
                 String pass = password.getText().toString();
-
+                theUsername = useraddress;
                 useraddress = useraddress.trim();
                 pass= pass.trim();
 

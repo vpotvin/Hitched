@@ -3,6 +3,7 @@ package edu.uco.weddingcrashers.hitched;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,7 +42,7 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
     private int day;
     private int month;
     private int year;
-    private Calendar weddingDate;
+    private Calendar weddingDate = Calendar.getInstance() ;
     //private LayoutInflater inflater;
 
     public MasterListRecViewAdapter() {
@@ -57,18 +59,20 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("User");
         query2.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> scoreList, ParseException e) {
-                if (e == null) {
-                    day=scoreList.get(0).getInt("day");
-                    month=scoreList.get(0).getInt("month");
-                    year=scoreList.get(0).getInt("year");
+                if (e == null && scoreList.size() != 0) {
+                    day = scoreList.get(0).getInt("day");
+                    month = scoreList.get(0).getInt("month");
+                    year = scoreList.get(0).getInt("year");
                     weddingDate.set(year, month - 1, day, 0, 0);
                     addLabels();
 
                 } else {
 
                 }
+
             }
         });
+
 
     }
 
@@ -196,6 +200,8 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
         holder.notes.setText(currentItem.getNotes());
         holder.completed.setChecked(currentItem.isCompleted());
 
+        colorCard(holder, position);
+
         holder.guests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,13 +211,51 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
             }
         });
 
-        holder.delete.setOnClickListener(new View.OnClickListener(){
+        holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MasterListItem toDelete = (MasterListItem)theList.get(position);
+                toDelete.deleteEventually();
                 theList.remove(position);
                 notifyDataSetChanged();
             }
         });
+
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add edit function here
+            }
+        });
+    }
+
+    private void colorCard(ListItem holder, int position) {
+        MasterListItem current = (MasterListItem)theList.get(position);
+        Date dueDate1 = current.getDueDate();
+        Calendar dueDate = Calendar.getInstance();
+        dueDate.setTime(dueDate1);
+        Calendar today = Calendar.getInstance();
+        today.add(Calendar.MONTH, 10);
+        long days = UtilityFunctions.daysBetween(today, dueDate);
+        if(!(current.isCompleted()))
+        {
+            if(days >= 30)
+            {
+                holder.title.setBackgroundColor(Color.GREEN);
+            }
+            else if(days < 30 && days > -1)
+            {
+                holder.title.setBackgroundColor(Color.YELLOW);
+            }
+            else
+            {
+                holder.title.setBackgroundColor(Color.RED);
+            }
+        }
+        else
+        {
+            holder.title.setBackgroundColor(Color.WHITE);
+        }
     }
 
 
@@ -255,6 +299,7 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
         private CheckBox completed;
         private Button guests;
         private Button delete;
+        private Button edit;
 
         public ListItem(View itemView){
             super(itemView);
@@ -265,6 +310,7 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
             this.completed = (CheckBox) itemView.findViewById(R.id.masterListCompleted);
             this.guests = (Button) itemView.findViewById(R.id.assignementsButton);
             this.delete = (Button) itemView.findViewById(R.id.masterListDeleteButton);
+            this.edit = (Button) itemView.findViewById(R.id.masterListEditButton);
             context = itemView.getContext();
 
 
@@ -288,6 +334,19 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
         {
             if(c1 instanceof  MasterListItem && c2 instanceof  MasterListItem)
             {
+                if(((MasterListItem) c1).getDueDate() == null && ((MasterListItem) c2).getDueDate() == null)
+                {
+                    return 0;
+                }
+                else if(((MasterListItem) c1).getDueDate() == null)
+                {
+                    return 0;
+                }
+                else if(((MasterListItem) c2).getDueDate() == null)
+                {
+                    return 0;
+                }
+
                 if(((MasterListItem) c1).getDueDate().before(((MasterListItem) c2).getDueDate()))
                 {
                     return -1;

@@ -45,6 +45,7 @@ public class SignUpActivity extends Activity {
         checkBox = (CheckBox)findViewById(R.id.checkBox);
         signUpButton = (Button)findViewById(R.id.signupButton);
         message = (TextView)findViewById(R.id.message);
+        date="No Set Date";
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +116,7 @@ public class SignUpActivity extends Activity {
                     newUser.put("month", wmonth);
                     newUser.put("year", wyear);
 
+                    final String finalDate = date;
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {
@@ -131,7 +133,7 @@ public class SignUpActivity extends Activity {
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                createMasterWeddingList();
+                                createMasterWeddingList(finalDate);
                                 startActivity(intent);
                             }
                             else {
@@ -164,7 +166,7 @@ public class SignUpActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void createMasterWeddingList()
+    public void createMasterWeddingList(String theDate)
     {
         MasterListItem item = new MasterListItem("Start a wedding folder or binder",null,null,"Begin leafing through bridal, lifestyle, fashion, gardening, design, and food magazines for inspiration",false,"Nine Months");
         item.saveInBackground();
@@ -306,7 +308,7 @@ public class SignUpActivity extends Activity {
         MasterListItem item68 = new MasterListItem("Pack for your honeymoon",null,null,"",false,"Week of the Wedding");
         item68.saveInBackground();
 
-        if(!(date.equals("No Set Date")))
+        if(!(theDate.equals("No Set Date")))
         {
 
             UtilityFunctions.updateMasterListDueDates();

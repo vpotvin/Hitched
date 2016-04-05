@@ -29,13 +29,14 @@ public class ParseDatabase extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //RegisterItineraryItemSubclass
+        //RegisterItineraryItemSubclass MenuItem
         ParseObject.registerSubclass(ItineraryItem.class);
         ParseObject.registerSubclass(GuestListItem.class);
         ParseObject.registerSubclass(MasterListItem.class);
         ParseObject.registerSubclass(BudgetItem.class);
         ParseObject.registerSubclass(WeddingVows.class);
         ParseObject.registerSubclass(Table.class);
+        ParseObject.registerSubclass(MenuItem.class);
         //ParseObject.registerSubclass(BudgetItem.class);
 
         // Enable Local Datastore.
