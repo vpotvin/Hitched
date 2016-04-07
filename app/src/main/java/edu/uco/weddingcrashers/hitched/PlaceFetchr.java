@@ -24,6 +24,8 @@ public class PlaceFetchr {
     private static final String API_KEY = "AIzaSyB3Zguv8wJcA5Kqjbk-HaVbmycjB4IPQdA";
     private static final String MUSIC_API_KEY="30233dd4d3780583b8741e26f6defd82";
     private static final String DEALS_API_KEY="87w4czzpy3";
+    private static final String RING_API_KEY="AIzaSyBOb62v2yNyx-DC23tIeax9RXwA9ZpnJmk";
+    private static final String SEARCH_ENGINE_ID="014766176905852190470:yobmpbyohpm";
 
     public byte[] getURLBytes(String urlSpec) throws IOException {
         URL url = new URL(urlSpec);
@@ -49,20 +51,41 @@ public class PlaceFetchr {
     String getURLString(String urlSpec) throws IOException {
         return new String(getURLBytes(urlSpec));
     }
+    public List<Ring> fetchRing(String query){
+        List<Ring> ringList = new ArrayList<>();
+        try{
+            String url = Uri.parse("https://www.googleapis.com/customsearch/v1")
+                    .buildUpon()
+                    .appendQueryParameter("q",query)
+                    .appendQueryParameter("cx",SEARCH_ENGINE_ID)
+                    .appendQueryParameter("key",RING_API_KEY)
+                    .build().toString();
+            String jsonString = getURLString(url);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            Log.i("RING","Received Ring JSON: " + jsonString);
+            parseRing(ringList,jsonBody);
 
-    public List<Coupon> fetchCoupon(String searchTerm, String state){
+        }catch (JSONException je){
+            Log.e("RING","Failed to parseJSON",je);
+        }catch (IOException ioe){
+            Log.e("RING","Failed to fetch rating",ioe);
+        }
+        return ringList;
+    }
+
+    public List<Coupon> fetchCoupon(String searchTerm, String state) {
         List<Coupon> couponList = new ArrayList<>();
         try{
             String url = Uri.parse("http://api2.yp.com/listings/v1/coupons")
                     .buildUpon()
-                    .appendQueryParameter("format","json")
+                    .appendQueryParameter("format", "json")
                     .appendQueryParameter("key",DEALS_API_KEY)
                     .appendQueryParameter("searchloc",state)
                     .appendQueryParameter("term",searchTerm).build().toString();
             String jsonString = getURLString(url);
             JSONObject jsonBody = new JSONObject(jsonString);
             Log.i("Coupon", "Received JSON: " + jsonString);
-            parseCoupon(couponList,jsonBody);
+            parseCoupon(couponList, jsonBody);
         }catch (JSONException je){
             Log.e("Coupon","Failed to parseJSON",je);
         }catch (IOException ioe){
@@ -80,8 +103,8 @@ public class PlaceFetchr {
                     .appendQueryParameter("key",API_KEY).build().toString();
             String jsonString = getURLString(url);
             JSONObject jsonBody = new JSONObject(jsonString);
-            parseReview(reviewList,jsonBody);
-        }catch (JSONException je){
+            parseReview(reviewList, jsonBody);
+        } catch (JSONException je){
             Log.e("VendorReview","Failed to parseJSON",je);
         }catch (IOException ioe){
             Log.e("VendorReview","Failed to fetch rating",ioe);
@@ -95,15 +118,15 @@ public class PlaceFetchr {
             String url = Uri.parse("http://ws.audioscrobbler.com/2.0/")
                     .buildUpon()
                     .appendQueryParameter("method","track.search")
-                    .appendQueryParameter("track",trackName)
-                    .appendQueryParameter("artist",artist)
-                    //.appendQueryParameter("limit","1")
-                    .appendQueryParameter("api_key",MUSIC_API_KEY)
+                    .appendQueryParameter("track", trackName)
+                    .appendQueryParameter("artist", artist)
+                            //.appendQueryParameter("limit","1")
+                    .appendQueryParameter("api_key", MUSIC_API_KEY)
                     .appendQueryParameter("format","json").build().toString();
             String jsonString = getURLString(url);
             Log.i("Song", "Received JSON: " + jsonString);
             JSONObject jsonBody = new JSONObject(jsonString);
-            parseSong(songList,jsonBody);
+            parseSong(songList, jsonBody);
         }catch (JSONException je){
             Log.e("Song","Failed to parseJSON",je);
         }catch (IOException ioe){
@@ -130,6 +153,25 @@ public class PlaceFetchr {
             Log.e(TAG, "Failed to fetch items", ioe);
         }
         return items;
+    }
+
+    private void parseRing(List<Ring> items, JSONObject jsonBody) throws IOException,JSONException{
+        JSONArray itemJsonArray = jsonBody.getJSONArray("items");
+        for(int i = 0;i<itemJsonArray.length();i++){
+            Ring mRing = new Ring();
+            JSONObject itemJsonObject = itemJsonArray.getJSONObject(i);
+            JSONObject pagemapJsonObject = itemJsonObject.getJSONObject("pagemap");
+            JSONArray productJsonArray = pagemapJsonObject.getJSONArray("hproduct");
+            for(int j = 0;j<productJsonArray.length();j++){
+                JSONObject productJsonObject = productJsonArray.getJSONObject(j);
+                mRing.setName(productJsonObject.getString("fn"));
+                mRing.setDescription(productJsonObject.getString("description"));
+                mRing.setImgURL(productJsonObject.getString("photo"));
+                mRing.setWebURL(productJsonObject.getString("url"));
+                mRing.setPrice(productJsonObject.getString("currency_iso4217")+" "+productJsonObject.getString("currency"));
+            }
+            items.add(mRing);
+        }
     }
     private void parseCoupon(List<Coupon> items, JSONObject jsonBody) throws IOException,JSONException{
         JSONObject resultJsonObject = jsonBody.getJSONObject("searchResult");
