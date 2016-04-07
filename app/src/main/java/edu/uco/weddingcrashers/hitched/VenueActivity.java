@@ -43,6 +43,8 @@ public class VenueActivity extends AppCompatActivity{
         setContentView(R.layout.activity_venue);
         //toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+    //    setSupportActionBar(toolbar);
 
         venues = (ListView) findViewById(R.id.vListView);
 

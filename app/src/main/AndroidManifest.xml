@@ -160,6 +160,7 @@
             </intent-filter>
         </receiver>
             <activity
+        <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -176,18 +177,20 @@
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateInformation" />
         <activity
             android:name=".DayOfActivity"
             android:label="@string/title_activity_day_of"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateInformation" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity
             android:name=".FloorPlanActivity"
             android:label="@string/title_activity_floor_plan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateInformation" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WeddingDressList"
             android:label="@string/title_activity_wedding_dress_list"
