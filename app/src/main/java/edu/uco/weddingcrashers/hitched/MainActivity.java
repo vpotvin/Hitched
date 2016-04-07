@@ -79,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(update);
             }
         });
+        menu.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent menuactivity = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(menuactivity);
+            }
+        });
         dayofwedding.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent DOW = new Intent(MainActivity.this, DayOfActivity.class);
