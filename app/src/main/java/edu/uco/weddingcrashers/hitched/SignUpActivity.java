@@ -14,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -117,6 +118,15 @@ public class SignUpActivity extends AppCompatActivity {
                     newUser.put("day", wday);
                     newUser.put("month", wmonth);
                     newUser.put("year", wyear);
+                    /*****************Tung Part to save to the wedding date table*******************************/
+                    ParseObject wDate = new ParseObject("WeddingDate");
+                    wDate.put("Day",wday);
+                    wDate.put("Month",wmonth);
+                    wDate.put("Year",wyear);
+
+                    wDate.saveInBackground();
+
+                    /*****************End of Tung Part********************************************************/
 
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
