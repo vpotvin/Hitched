@@ -77,6 +77,8 @@ public class VenueSearchResult extends ListActivity {
                         .getText().toString();
                 String address = ((TextView) view.findViewById(R.id.address))
                         .getText().toString();
+                String place_id = ((TextView) view.findViewById(R.id.placeID)).getText().toString();
+
 
                 Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
 
@@ -86,6 +88,7 @@ public class VenueSearchResult extends ListActivity {
                 String whichClass = "";
 
                 // thevalue = "yes";
+                venueDetail.putExtra("place_id", place_id);
                 venueDetail.putExtra("name", name);
                 venueDetail.putExtra("address", address);
                 venueDetail.putExtra("done", whichClass);
