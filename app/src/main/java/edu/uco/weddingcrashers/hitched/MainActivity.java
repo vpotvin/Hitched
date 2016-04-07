@@ -18,7 +18,7 @@ import com.parse.ParseUser;
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends AppCompatActivity {
     private static final String USER_STATE = "UserState";
-    private Button venue,dress,party,honeymoon,cake,vendor,picture, vow;
+    private Button venue,dress,party,honeymoon,cake,vendor,picture, vow,dayofwedding;
     private Button invites,registry,budget,assignseats, menu;
     private Button itinerary,guestlist,tasks,contacts,update;
     private TextView you, your, date, month, day;
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         tasks = (Button)findViewById(R.id.tasks);
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
+        dayofwedding = (Button)findViewById(R.id.dayOfWedding);
         //vow = (Button)findViewById(R.id.vow);
         menu = (Button)findViewById(R.id.menu);
 
@@ -76,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent update = new Intent(MainActivity.this, UpdateInformation.class);
                 startActivity(update);
+            }
+        });
+        dayofwedding.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent DOW = new Intent(MainActivity.this, DayOfActivity.class);
+                startActivity(DOW);
             }
         });
         budget.setOnClickListener(new View.OnClickListener() {
