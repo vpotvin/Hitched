@@ -5,10 +5,6 @@
     android:layout_height="match_parent"
     tools:context="edu.uco.weddingcrashers.hitched.WeddingDressActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbars"
-        ></include>
     <Button
         android:layout_width="50sp"
         android:layout_height="50sp"
@@ -34,7 +30,6 @@
         android:layout_height="200sp"
         android:id="@+id/imageView4"
         android:src="@mipmap/dress"
-        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp" />
 
