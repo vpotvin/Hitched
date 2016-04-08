@@ -32,6 +32,7 @@ public class BudgetItemAdapter extends ArrayAdapter<BudgetItem> {
         TextView budgetView = (TextView) convertView.findViewById(R.id.budgetItemValue);
         TextView usedView = (TextView) convertView.findViewById(R.id.budgetItemUsed);
         CheckBox paidView = (CheckBox) convertView.findViewById(R.id.checkPaid);
+        paidView.setFocusable(false);
 
         titleView.setText(budgetItem.getTitle());
         budgetView.setText(NumberFormat.getCurrencyInstance().format(budgetItem.getValue()));
