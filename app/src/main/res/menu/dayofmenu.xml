@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="edu.uco.weddingcrashers.hitched.DayOfActivity">
+
+    <item
+        android:id="@+id/action_main"
+        android:orderInCategory="100"
+        android:title="mainmenubutton"
+        android:icon="@mipmap/mainmenu"
+        app:showAsAction="always" />
+
+
+</menu>

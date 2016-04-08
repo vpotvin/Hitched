@@ -36,7 +36,6 @@
         android:layout_width="200sp"
         android:layout_height="200sp"
         android:id="@+id/imageView5"
-        android:src="@drawable/venuesearch"
         android:layout_marginTop="23dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />

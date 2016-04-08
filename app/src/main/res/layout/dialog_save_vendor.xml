@@ -15,7 +15,6 @@
 
     <Button
         android:id="@+id/deal_button"
-        android:text="Deals"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:height="70dp"
@@ -29,7 +28,6 @@
         android:padding="10sp"/>
     <Button
         android:id="@+id/music_button"
-        android:text="Music"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:height="70dp"
@@ -43,7 +41,6 @@
         android:padding="10sp"/>
     <Button
         android:id="@+id/detail_button"
-        android:text="Detail"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:height="70dp"
@@ -57,7 +54,6 @@
         android:padding="10sp"/>
     <Button
         android:id="@+id/ring_button"
-        android:text="Detail"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:height="70dp"
