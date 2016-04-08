@@ -171,9 +171,6 @@
             </intent-filter>
         </receiver>
 
-        <!--
-            <activity
-
         <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
@@ -182,7 +179,6 @@
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />
-        -->
         android:theme="@style/AppTheme.NoActionBar" />
         android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -219,8 +215,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_maps" />
+        android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DressDetail"
             android:label="@string/title_activity_dress_detail"

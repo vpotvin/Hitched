@@ -46,6 +46,7 @@ public class VenueDetail extends ListActivity {
     ArrayList<HashMap<String, String>> venueList;
     private String whichList;
     private String thevalue;
+    private String picture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class VenueDetail extends ListActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             final String n1 = extras.getString("place_id");
+           // final String n2 = extras.getString("photo");
+         //   picture = n2;
             url = String.valueOf(Uri.parse(url + n1 + "&key=AIzaSyB4cW0S6qfFUERb8he2jOupGO5z9cLiDm4"));
             Log.i("WHAT:", url);
         }
@@ -81,6 +84,17 @@ public class VenueDetail extends ListActivity {
                 startActivity(editVenue);
                 finish();
                 return true;
+            }
+        });
+
+        searchList. setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent pictureVenue = new Intent(VenueDetail.this, VenuePictures.class);
+
+                //pictureVenue.putExtra("picture", picture);
+                startActivity(pictureVenue);
             }
         });
 

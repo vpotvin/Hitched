@@ -38,8 +38,11 @@ public class VenueSearchResult extends ListActivity {
     private static final String TAG_ID = "place_id";
     private static final String TAG_NAME = "name";
     private static final String TAG_ADDRESS = "formatted_address";
+    private static final String TAG_PIC = "photos";
+    private static final String TAG_PHOTO = "photo_reference";
 
     JSONArray venues = null;
+    JSONObject picture = null;
 
     ArrayList<HashMap<String, String>> venueList;
     private String whichList;
@@ -80,6 +83,7 @@ public class VenueSearchResult extends ListActivity {
                 String address = ((TextView) view.findViewById(R.id.address))
                         .getText().toString();
                 String place_id = ((TextView) view.findViewById(R.id.placeID)).getText().toString();
+               // String photo = ((TextView) view.findViewById(R.id.photo)).getText().toString();
 
 
                 Intent venueDetail = new Intent(VenueSearchResult.this, VenueDetail.class);
@@ -90,6 +94,7 @@ public class VenueSearchResult extends ListActivity {
                 String whichClass = "";
 
                 // thevalue = "yes";
+                //venueDetail.putExtra("photo", photo);
                 venueDetail.putExtra("place_id", place_id);
                 venueDetail.putExtra("name", name);
                 venueDetail.putExtra("address", address);
@@ -156,6 +161,8 @@ public class VenueSearchResult extends ListActivity {
 
                     // Getting JSON Array node
                     venues = jsonObj.getJSONArray(TAG_RESULTS);
+//                    picture = jsonObj.getJSONObject(TAG_PIC);
+//                    String pic = picture.getString(TAG_PHOTO);
 
                     // looping through All Contacts
                     for (int i = 0; i < venues.length(); i++) {
@@ -172,6 +179,7 @@ public class VenueSearchResult extends ListActivity {
                         myVenues.put(TAG_ID, id);
                         myVenues.put(TAG_NAME, name);
                         myVenues.put(TAG_ADDRESS, address);
+                       // myVenues.put(TAG_PHOTO, pic);
                         // adding contact to contact list
                         venueList.add(myVenues);
                     }
@@ -196,7 +204,7 @@ public class VenueSearchResult extends ListActivity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     VenueSearchResult.this, venueList,
-                    R.layout.list_item, new String[] { TAG_NAME, TAG_ADDRESS, TAG_ID},
+                    R.layout.list_item, new String[] { TAG_NAME, TAG_ADDRESS, TAG_ID, },
                     new int[] {R.id.name,
                             R.id.address,
                             R.id.placeID});
