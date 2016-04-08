@@ -19,6 +19,13 @@
 
     <uses-permission android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".ParseDatabase"
         android:allowBackup="true"
@@ -76,6 +83,10 @@
         <activity
             android:name=".MusicListActivity"
             android:label="Music List Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".RingActivity"
+            android:label="Ring Activity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".VendorDealActivity"
@@ -160,6 +171,9 @@
             </intent-filter>
         </receiver>
 
+        <!--
+            <activity
+
         <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
@@ -168,6 +182,8 @@
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />
+        -->
+        android:theme="@style/AppTheme.NoActionBar" />
         android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VowsActivity"
@@ -177,6 +193,7 @@
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
+        android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateInformation" />
         <activity
             android:name=".DayOfActivity"
@@ -199,6 +216,10 @@
         <activity
             android:name=".VenueDetail"
             android:label="@string/title_activity_venue_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DressDetail"

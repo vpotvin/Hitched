@@ -20,6 +20,7 @@ public class MenuActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+      //  menu = (ListView) findViewById(R.id.menuListView);
         //menu = (ListView) findViewById(R.id.menuListView);
         String[] values = new String[]{"Turkey","Fish","Vegetable"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
