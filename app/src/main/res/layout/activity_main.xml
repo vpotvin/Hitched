@@ -151,7 +151,6 @@
         <Button
             android:layout_width="80sp"
             android:layout_height="80sp"
-            android:text="Venue"
             android:id="@+id/venue"
             android:layout_gravity="left|top"
             android:height="70dp"
