@@ -3,13 +3,16 @@
     android:id="@+id/masterListCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="50dp"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     card_view:cardCornerRadius="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     app:cardUseCompatPadding="true"
     android:background="#DABCD2"
-    xmlns:app="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/tools"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
 
     <!--
@@ -22,11 +25,11 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DABCD2">
+        android:background="#DE84B5">
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:rowCount="1"
             android:columnCount="2">
@@ -36,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Name: "
-                android:id="@+id/GuestListNameLabel" />
+                android:id="@+id/GuestListNameLabel"
+                android:paddingLeft="10sp" />
 
             <TextView
                 android:id="@+id/GuestListName"
@@ -48,7 +52,7 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:rowCount="1"
             android:columnCount="2">
@@ -58,7 +62,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Phone Number: "
-                android:id="@+id/GuestListPhoneNumberLabel" />
+                android:id="@+id/GuestListPhoneNumberLabel"
+                android:paddingLeft="10sp" />
 
             <TextView
                 android:id="@+id/GuestListPhoneNumber"
@@ -70,7 +75,7 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:rowCount="1"
             android:columnCount="2">
@@ -80,7 +85,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Address: "
-                android:id="@+id/GuestListAddressLabel" />
+                android:id="@+id/GuestListAddressLabel"
+                android:paddingLeft="10sp" />
 
 
             <TextView
@@ -93,7 +99,7 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:rowCount="1"
             android:columnCount="2">
@@ -103,7 +109,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="City,State Zip: "
-                android:id="@+id/GuestListCityStateZipLabel" />
+                android:id="@+id/GuestListCityStateZipLabel"
+                android:paddingLeft="10sp" />
 
 
             <TextView
@@ -116,7 +123,7 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:rowCount="1"
             android:columnCount="2">
@@ -126,7 +133,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Role: "
-                android:id="@+id/GuestListRoleLabel" />
+                android:id="@+id/GuestListRoleLabel"
+                android:paddingLeft="10sp" />
 
 
             <TextView
@@ -138,20 +146,28 @@
         </GridLayout>
 
 
-        <CheckBox
-            android:id="@+id/GuestListWeddingParty"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wedding Party"
-            android:editable="false"
-            android:layout_gravity="center_horizontal" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkRSVP"
-            android:text="RSVP"
-            android:editable="false"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+
+            <CheckBox
+                android:id="@+id/GuestListWeddingParty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wedding Party"
+                android:editable="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkRSVP"
+                android:text="RSVP"
+                android:editable="false" />
+        </LinearLayout>
+
     </LinearLayout>
 
 

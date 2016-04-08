@@ -1,53 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
               android:id="@+id/fragment_review"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="center">
+
+    android:verticalSpacing="10dp"
+    android:horizontalSpacing="10dp"
+    android:scrollbarStyle="outsideOverlay"
+    android:verticalScrollbarPosition="right"
+    android:scrollbars="vertical"
+    android:columnCount="4">
 
 
     <Button
         android:id="@+id/deal_button"
-        android:text="Deals"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:height="70dp"
         android:width="100dp"
-        android:background="@mipmap/mainvendor"
+        android:background="@mipmap/deals"
         android:textColor="#ffffff"
-        android:onClick="launchActivity"
+
         android:textStyle="bold"
         android:layout_row="1"
-        android:layout_column="2"
+
         android:padding="10sp"/>
     <Button
         android:id="@+id/music_button"
-        android:text="Music"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:height="70dp"
         android:width="100dp"
-        android:background="@mipmap/mainvendor"
+        android:background="@mipmap/music"
         android:textColor="#ffffff"
-        android:onClick="launchActivity"
+
         android:textStyle="bold"
         android:layout_row="1"
-        android:layout_column="2"
+
         android:padding="10sp"/>
     <Button
         android:id="@+id/detail_button"
-        android:text="Detail"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:height="70dp"
         android:width="100dp"
         android:background="@mipmap/mainvendor"
         android:textColor="#ffffff"
-        android:onClick="launchActivity"
+
         android:textStyle="bold"
         android:layout_row="1"
-        android:layout_column="2"
+
+        android:padding="10sp"/>
+    <Button
+        android:id="@+id/ring_button"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:height="70dp"
+        android:width="100dp"
+        android:background="@mipmap/mainvendor"
+        android:textColor="#ffffff"
+
+        android:textStyle="bold"
+        android:layout_row="1"
+
         android:padding="10sp"/>
     <Button
         android:id="@+id/website_button"
@@ -55,13 +71,14 @@
         android:layout_height="80sp"
         android:height="70dp"
         android:width="100dp"
-        android:background="@mipmap/mainvendor"
+        android:background="@mipmap/tutorial"
         android:textColor="#ffffff"
-        android:onClick="launchActivity"
+
         android:textStyle="bold"
         android:layout_row="1"
-        android:layout_column="2"
+
         android:padding="10sp"/>
 
 
-</LinearLayout>
+
+</GridLayout>

@@ -1,9 +1,11 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -11,16 +13,12 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class SignUpActivity extends Activity {
+public class SignUpActivity extends AppCompatActivity {
 
     protected EditText usernameEditText,passwordEditText, emailEditText,bridename,groomname;
     protected CheckBox checkBox;
@@ -28,13 +26,19 @@ public class SignUpActivity extends Activity {
     protected Button signUpButton;
     private String date, bride, groom;
     private TextView message;
-
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_sign_up);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar);
+
+
+
+
+
 
         usernameEditText = (EditText)findViewById(R.id.usernameField);
         passwordEditText = (EditText)findViewById(R.id.passwordField);
@@ -114,6 +118,15 @@ public class SignUpActivity extends Activity {
                     newUser.put("day", wday);
                     newUser.put("month", wmonth);
                     newUser.put("year", wyear);
+                    /*****************Tung Part to save to the wedding date table*******************************/
+                    ParseObject wDate = new ParseObject("WeddingDate");
+                    wDate.put("Day",wday);
+                    wDate.put("Month",wmonth);
+                    wDate.put("Year",wyear);
+
+                    wDate.saveInBackground();
+
+                    /*****************End of Tung Part********************************************************/
 
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
@@ -151,6 +164,12 @@ public class SignUpActivity extends Activity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_signup, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -158,12 +177,18 @@ public class SignUpActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_signuptologin) {
+
+            Intent intent1 = new Intent(SignUpActivity.this, Login.class);
+            startActivity(intent1);
+
+
         }
+
         return super.onOptionsItemSelected(item);
     }
-
     public void createMasterWeddingList()
     {
         MasterListItem item = new MasterListItem("Start a wedding folder or binder",null,null,"Begin leafing through bridal, lifestyle, fashion, gardening, design, and food magazines for inspiration",false,"Nine Months");

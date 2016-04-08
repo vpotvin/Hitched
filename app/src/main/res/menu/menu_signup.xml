@@ -1,12 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="edu.uco.weddingcrashers.hitched.SignUpActivity">
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_signuptologin"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        android:showAsAction="never" />
+        android:title="weddingdress"
+        android:icon="@mipmap/loginicon"
+        app:showAsAction="always" />
+
 
 
 </menu>
