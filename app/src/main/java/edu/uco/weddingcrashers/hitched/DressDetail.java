@@ -84,6 +84,18 @@ public class DressDetail extends ListActivity {
             }
         });
 
+
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent pictureVenue = new Intent(DressDetail.this, DressPictures.class);
+
+                //pictureVenue.putExtra("picture", picture);
+                startActivity(pictureVenue);
+            }
+        });
+
         new GetVenues().execute();
 
     }
