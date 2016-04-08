@@ -19,6 +19,13 @@
 
     <uses-permission android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".ParseDatabase"
         android:allowBackup="true"
@@ -52,6 +59,9 @@
             android:name=".BudgetActivity"
             android:label="@string/title_activity_budget" />
         <activity
+            android:name=".ForgotPassword"
+            android:label="@string/title_activity_forgot_password" />
+        <activity
             android:name=".MasterWeddingList"
             android:label="@string/title_activity_checklist" />
         <activity
@@ -73,6 +83,10 @@
         <activity
             android:name=".MusicListActivity"
             android:label="Music List Activity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".RingActivity"
+            android:label="Ring Activity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".VendorDealActivity"
@@ -125,7 +139,6 @@
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" />
         <activity android:name=".MasterListAssignementActivity" />
-        android:label="@string/title_activity_sign_up" />
         <activity
             android:name=".EditVenueActivity"
             android:label="@string/title_activity_edit_venue"
@@ -158,19 +171,17 @@
             </intent-filter>
         </receiver>
 
- <!--       <activity
+        <!--
+            <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
-            android:theme="@style/AppTheme.NoActionBar" />-->
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ForgotPassword"
-            android:label="@string/title_activity_forgot_password"
-            android:theme="@style/AppTheme.NoActionBar" />
+        -->
+        android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VowsActivity"
             android:label="@string/title_activity_vows"
@@ -184,13 +195,12 @@
         <activity
             android:name=".DayOfActivity"
             android:label="@string/title_activity_day_of"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".UpdateInformation"></activity>
-            
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UpdateInformation" />
         <activity
             android:name=".FloorPlanActivity"
             android:label="@string/title_activity_floor_plan"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateInformation" />
         <activity
             android:name=".WeddingDressList"
@@ -203,7 +213,10 @@
         <activity
             android:name=".VenueDetail"
             android:label="@string/title_activity_venue_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
     </application>
 
 </manifest>

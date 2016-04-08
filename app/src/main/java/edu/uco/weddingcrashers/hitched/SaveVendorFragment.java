@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ public class SaveVendorFragment extends DialogFragment {
     // private static final String ARG_URL = "url";
     private String userState;
     private Spinner mSpinner;
-    private Button mDealButton, mMusicButton, mDetailButton, mWebsiteButton;
+    private Button mDealButton, mMusicButton, mDetailButton, mWebsiteButton,mRingButton;
 
 //    public static SaveVendorFragment newInstance(String url){
 //        Bundle args = new Bundle();
@@ -67,6 +68,18 @@ public class SaveVendorFragment extends DialogFragment {
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),WebTutorialActivity.class);
                 startActivity(i);
+            }
+        });
+
+        mRingButton = (Button) view.findViewById(R.id.ring_button);
+        mRingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager manager = getFragmentManager();
+                RingGenderFragment dialog = new RingGenderFragment();
+                dialog.show(manager,"RING GENDER");
+//                Intent i = new Intent(getActivity(),RingActivity.class);
+//                startActivity(i);
             }
         });
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),

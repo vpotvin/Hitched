@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="edu.uco.weddingcrashers.hitched.WeddingDressActivity">
+
+    <item
+        android:id="@+id/action_weddingdressactivity"
+        android:orderInCategory="100"
+        android:title="weddingdress"
+        android:icon="@mipmap/mainmenu"
+        app:showAsAction="always" />
+
+
+</menu>

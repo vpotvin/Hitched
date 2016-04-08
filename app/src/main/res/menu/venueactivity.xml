@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="edu.uco.weddingcrashers.hitched.VenueActivity">
+    <item
+        android:id="@+id/action_venueshare"
+        android:orderInCategory="100"
+        android:title="addbudgettoolbar"
+        android:icon="@mipmap/venueshare"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_main"
+        android:orderInCategory="100"
+        android:title="addbudgettoolbar"
+        android:icon="@mipmap/mainmenu"
+        app:showAsAction="always" />
+
+</menu>
