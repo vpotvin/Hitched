@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="ADD ITEM"
+            android:id="@+id/masterTitleInputView"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="#DE84B5" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="70sp">
+
+            <TextView
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Due Date"
+                android:id="@+id/MasterDueDateInputView"
+                android:layout_gravity="bottom|center"
+                android:gravity="center" />
+
+            <EditText
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/masterTitleInput"
+                android:layout_gravity="center_horizontal|top"
+                android:hint="Title"
+                android:gravity="center" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="300sp"
+            android:layout_height="250sp"
+            android:layout_gravity="center_horizontal">
+
+            <DatePicker
+                android:layout_width="300sp"
+                android:layout_height="283dp"
+                android:id="@+id/MasterDueDateInput"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_gravity="center_horizontal|top"
+                android:calendarViewShown="false"
+                android:headerBackground="#DE84B5" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100sp"
+            android:layout_gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/MasterNotesEdit"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:minLines="6"
+                android:layout_gravity="center"
+                android:hint="Notes"
+                android:gravity="center" />
+
+        </FrameLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:id="@+id/MasterCompletedEditBox"
+            android:layout_gravity="center_horizontal" />
+
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:text="Submit"-->
+        <!--android:id="@+id/MasterSubmitInputButton" Rehana Commented out/>-->
+
+
+    </LinearLayout>
+</ScrollView>
