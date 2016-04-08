@@ -1,5 +1,6 @@
 package edu.uco.weddingcrashers.hitched;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -30,12 +31,12 @@ import java.util.List;
 
 
 
-public class VenueDetail extends ListActivity {
+public class VenuePictures extends ListActivity {
 
 
     private ProgressDialog pDialog;
 
-    private static String url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
+    private static String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=";
     private static final String TAG_RESULTS = "result";
     private static final String TAG_NAME = "name";
     private static final String TAG_ADDRESS = "formatted_address";
@@ -55,34 +56,14 @@ public class VenueDetail extends ListActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             final String n1 = extras.getString("place_id");
-            url = String.valueOf(Uri.parse(url + n1 + "&key=AIzaSyB4cW0S6qfFUERb8he2jOupGO5z9cLiDm4"));
+            url = String.valueOf(Uri.parse(url + n1 + "&sensor=false&key=AddYourOwnKeyHere"));
             Log.i("WHAT:", url);
         }
 
         venueList = new ArrayList<HashMap<String, String>>();
 
-        final ListView searchList = getListView();
+        //final ListView searchList = getListView();
 
-        searchList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-                String name = ((TextView) view.findViewById(R.id.name))
-                        .getText().toString();
-
-                Intent editVenue = new Intent(VenueDetail.this, VenueActivity.class);
-
-                whichList = name + System.getProperty("line.separator");
-                Log.i("WHAT", whichList);
-
-                thevalue = "yes";
-                editVenue.putExtra("vname", whichList);
-                editVenue.putExtra("myvalue", thevalue);
-                startActivity(editVenue);
-                finish();
-                return true;
-            }
-        });
 
         new GetVenues().execute();
 
@@ -94,7 +75,7 @@ public class VenueDetail extends ListActivity {
             super.onPreExecute();
             // Showing prog
             // ress dialog
-            pDialog = new ProgressDialog(VenueDetail.this);
+            pDialog = new ProgressDialog(VenuePictures.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -167,7 +148,7 @@ public class VenueDetail extends ListActivity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    VenueDetail.this, venueList,
+                    VenuePictures.this, venueList,
                     R.layout.list_item_detail, new String[] {TAG_NAME, TAG_ADDRESS, TAG_PHONE},
                     new int[] {R.id.name,
                             R.id.address,

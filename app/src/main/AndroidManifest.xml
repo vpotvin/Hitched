@@ -159,6 +159,7 @@
                 <category android:name="edu.uco.weddingcrashers.hitched" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
@@ -182,14 +183,11 @@
             android:label="@string/title_activity_day_of"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateInformation" />
-
-
         <activity
             android:name=".FloorPlanActivity"
             android:label="@string/title_activity_floor_plan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateInformation" />
-
         <activity
             android:name=".WeddingDressList"
             android:label="@string/title_activity_wedding_dress_list"
@@ -205,6 +203,10 @@
         <activity
             android:name=".DressDetail"
             android:label="@string/title_activity_dress_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VenuePictures"
+            android:label="@string/title_activity_venue_pictures"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

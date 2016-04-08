@@ -6,9 +6,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -20,20 +24,24 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+
 
 public class DressSearchResult extends ListActivity {
+
 
     private ProgressDialog pDialog;
 
     private static String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
     private static final String TAG_RESULTS = "results";
-    private static final String TAG_ID = "id";
+    private static final String TAG_ID = "place_id";
     private static final String TAG_NAME = "name";
     private static final String TAG_ADDRESS = "formatted_address";
 
-    JSONArray dresses = null;
+    JSONArray venues = null;
 
-    ArrayList<HashMap<String, String>> dressList;
+    ArrayList<HashMap<String, String>> venueList;
     private String whichList;
     private String thevalue;
 
@@ -41,18 +49,59 @@ public class DressSearchResult extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dress_search_result);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             final String n1 = extras.getString("search");
-            url = String.valueOf(Uri.parse(url + n1 + "&key=AIzaSyBdaXki8OZJsX79vweMiJMaH09bYjXvjWY"));
+            url = String.valueOf(Uri.parse(url + n1 + "&key=AIzaSyAUL3D1ApTbq2uoglUlpYVhKJUqYlKwjP8"));
         }
+        new GetVenues().execute();
 
-        dressList = new ArrayList<HashMap<String, String>>();
+
+
+        venueList = new ArrayList<HashMap<String, String>>();
 
         final ListView searchList = getListView();
 
-       /* searchList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                /*String myPlaceID = ((TextView) view.findViewById(R.id.placeID))
+                        .getText().toString();
+
+                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
+
+                venueDetail.putExtra("myID", myPlaceID);
+                Log.i("WHAT", myPlaceID);
+                startActivity(venueDetail);*/
+
+                String name = ((TextView) view.findViewById(R.id.name))
+                        .getText().toString();
+                String address = ((TextView) view.findViewById(R.id.address))
+                        .getText().toString();
+                String place_id = ((TextView) view.findViewById(R.id.placeID)).getText().toString();
+
+
+                Intent venueDetail = new Intent(DressSearchResult.this, DressDetail.class);
+
+                //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
+                // Log.i("WHAT", whichList);
+
+                String whichClass = "";
+
+                // thevalue = "yes";
+                venueDetail.putExtra("place_id", place_id);
+                venueDetail.putExtra("name", name);
+                venueDetail.putExtra("address", address);
+                venueDetail.putExtra("done", whichClass);
+                //venueDetail.putExtra("myvalue", thevalue);
+                startActivity(venueDetail);
+
+
+            }
+        });
+
+        searchList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -72,75 +121,9 @@ public class DressSearchResult extends ListActivity {
                 startActivity(editVenue);
                 return true;
             }
-        });*/
-
-        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                /*String myPlaceID = ((TextView) view.findViewById(R.id.placeID))
-                        .getText().toString();
-
-                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
-
-                venueDetail.putExtra("myID", myPlaceID);
-                Log.i("WHAT", myPlaceID);
-                startActivity(venueDetail);*/
-
-                String name = ((TextView) view.findViewById(R.id.name))
-                        .getText().toString();
-                String address = ((TextView) view.findViewById(R.id.address))
-                        .getText().toString();
-
-                Intent venueDetail = new Intent (DressSearchResult.this, VenueDetail.class);
-
-                //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
-                // Log.i("WHAT", whichList);
-
-                // thevalue = "yes";
-                venueDetail.putExtra("name", name);
-                venueDetail.putExtra("address", address);
-                //venueDetail.putExtra("myvalue", thevalue);
-                startActivity(venueDetail);
-                //finish();
-
-            }
         });
 
-        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                /*String myPlaceID = ((TextView) view.findViewById(R.id.placeID))
-                        .getText().toString();
-
-                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
-
-                venueDetail.putExtra("myID", myPlaceID);
-                Log.i("WHAT", myPlaceID);
-                startActivity(venueDetail);*/
-
-                String name = ((TextView) view.findViewById(R.id.name))
-                        .getText().toString();
-                String address = ((TextView) view.findViewById(R.id.address))
-                        .getText().toString();
-
-                Intent venueDetail = new Intent(DressSearchResult.this, VenueDetail.class);
-
-                //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
-                // Log.i("WHAT", whichList);
-
-                // thevalue = "yes";
-                venueDetail.putExtra("name", name);
-                venueDetail.putExtra("address", address);
-                //venueDetail.putExtra("myvalue", thevalue);
-                startActivity(venueDetail);
-
-
-            }
-        });
-
-        new GetVenues().execute();
+        // new GetVenues().execute();
 
     }
 
@@ -172,11 +155,11 @@ public class DressSearchResult extends ListActivity {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
-                    dresses = jsonObj.getJSONArray(TAG_RESULTS);
+                    venues = jsonObj.getJSONArray(TAG_RESULTS);
 
                     // looping through All Contacts
-                    for (int i = 0; i < dresses.length(); i++) {
-                        JSONObject c = dresses.getJSONObject(i);
+                    for (int i = 0; i < venues.length(); i++) {
+                        JSONObject c = venues.getJSONObject(i);
 
                         String id = c.getString(TAG_ID);
                         String name = c.getString(TAG_NAME);
@@ -190,7 +173,7 @@ public class DressSearchResult extends ListActivity {
                         myVenues.put(TAG_NAME, name);
                         myVenues.put(TAG_ADDRESS, address);
                         // adding contact to contact list
-                        dressList.add(myVenues);
+                        venueList.add(myVenues);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -212,7 +195,7 @@ public class DressSearchResult extends ListActivity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    DressSearchResult.this, dressList,
+                    DressSearchResult.this, venueList,
                     R.layout.list_item, new String[] { TAG_NAME, TAG_ADDRESS, TAG_ID},
                     new int[] {R.id.name,
                             R.id.address,
@@ -221,5 +204,4 @@ public class DressSearchResult extends ListActivity {
             setListAdapter(adapter);
         }
     }
-
 }

@@ -49,12 +49,14 @@ public class VenueSearchResult extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue_search_result);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             final String n1 = extras.getString("search");
             url = String.valueOf(Uri.parse(url + n1 + "&key=AIzaSyBdaXki8OZJsX79vweMiJMaH09bYjXvjWY"));
         }
+        new GetVenues().execute();
+
+
 
         venueList = new ArrayList<HashMap<String, String>>();
 
@@ -80,7 +82,7 @@ public class VenueSearchResult extends ListActivity {
                 String place_id = ((TextView) view.findViewById(R.id.placeID)).getText().toString();
 
 
-                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
+                Intent venueDetail = new Intent(VenueSearchResult.this, VenueDetail.class);
 
                 //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
                 // Log.i("WHAT", whichList);
@@ -121,7 +123,7 @@ public class VenueSearchResult extends ListActivity {
             }
         });
 
-        new GetVenues().execute();
+       // new GetVenues().execute();
 
     }
 
