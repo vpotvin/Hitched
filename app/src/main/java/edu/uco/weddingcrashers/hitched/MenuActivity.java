@@ -29,6 +29,7 @@ public class MenuActivity extends AppCompatActivity {
     private ListView menu;
     private Button addItem;
     ArrayList<MenuItem> values = new ArrayList<>();
+    ArrayList<String> valuesStrings = new ArrayList<>();
 
 
     @Override
@@ -41,15 +42,9 @@ public class MenuActivity extends AppCompatActivity {
 
         ParseQuery<MenuItem> query = ParseQuery.getQuery(MenuItem.class);
 
-        query.findInBackground(new FindCallback<MenuItem>() {
-            @Override
-            public void done(List<MenuItem> objects, ParseException e) {
-                values = new ArrayList<MenuItem>(objects);
-            }
-        });
+
         menu.setLongClickable(true);
-        final ArrayAdapter<MenuItem> adapter = new ArrayAdapter<MenuItem>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1, valuesStrings);
         menu.setAdapter(adapter);
         addItem = (Button) findViewById(R.id.addMenuItem);
         addItem.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +60,7 @@ public class MenuActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         MenuItem newItem = new MenuItem(input.getText().toString());
                         newItem.saveInBackground();
-                        values.add(newItem);
+                        valuesStrings.add(input.getText().toString());
 
                         adapter.notifyDataSetChanged();
                     }
@@ -87,10 +82,21 @@ public class MenuActivity extends AppCompatActivity {
                                            int pos, long id) {
                 MenuItem toDelete = values.get(pos);
                 toDelete.deleteEventually();
-                values.remove(pos);
+                valuesStrings.remove(pos);
                 adapter.notifyDataSetChanged();
 
                 return true;
+            }
+        });
+
+        query.findInBackground(new FindCallback<MenuItem>() {
+            @Override
+            public void done(List<MenuItem> objects, ParseException e) {
+                values = new ArrayList<MenuItem>(objects);
+                for (int x = 0; x < values.size(); x++) {
+                    valuesStrings.add(values.get(x).getItem());
+                }
+                adapter.notifyDataSetChanged();
             }
         });
 

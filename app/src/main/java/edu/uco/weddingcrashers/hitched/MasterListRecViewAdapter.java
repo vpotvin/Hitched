@@ -60,7 +60,7 @@ public class MasterListRecViewAdapter extends RecyclerView.Adapter<RecyclerView.
                 notifyDataSetChanged();
             }
         });
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("User");
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("WeddingDate");
         query2.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> scoreList, ParseException e) {
                 if (e == null && scoreList.size() != 0) {

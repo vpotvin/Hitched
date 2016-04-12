@@ -45,18 +45,19 @@ public class UtilityFunctions {
     public static void updateMasterListDueDates()
     {
 
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("User");
-        query2.whereEqualTo("username", Login.theUsername);
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("WeddingDate");
+        //query2.whereEqualTo("username", Login.theUsername);
         query2.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> scoreList, ParseException e) {
                 if (e == null) {
-                    /*
+
                     int day=scoreList.get(0).getInt("day");
                     int month=scoreList.get(0).getInt("month");
                     int year=scoreList.get(0).getInt("year");
-                    weddingDate.set(year, month - 1, day, 0, 0);
-                    */
+
+
                     Calendar weddingDate = Calendar.getInstance();
+                    weddingDate.set(year, month - 1, day, 0, 0);
                     weddingDate.set(2017, 3 - 1, 9, 0, 0);
                     final Calendar finalDate = weddingDate;
                     ParseQuery<MasterListItem> query = ParseQuery.getQuery(MasterListItem.class);

@@ -16,12 +16,12 @@ android:layout_height="match_parent"
 android:scrollbars="vertical"
 android:id="@+id/guestListRecView"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/imageView6">
+        >
 
 
 
 </android.support.v7.widget.RecyclerView>
-
+<!--
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="80sp"
@@ -29,5 +29,5 @@ android:id="@+id/guestListRecView"
         android:src="@drawable/guestlist"
         android:layout_centerHorizontal="true" />
 
-
+-->
 </RelativeLayout>
