@@ -20,8 +20,6 @@ public class DayOfActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_of);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         menu = (Button) findViewById(R.id.menuButton);
         iten = (Button) findViewById(R.id.iteneraryButton);
         seating = (Button) findViewById(R.id.seatingButton);

@@ -127,6 +127,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cake.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CakeDetailActivityCake.class);
+                startActivity(intent);
+            }
+        });
+
         itinerary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pictureActivity(View view){
-        Intent intent = new Intent(MainActivity.this, Pictures.class);
+        Intent intent = new Intent(MainActivity.this, PhotographerPDetailActivity.class);
         startActivity(intent);
     }
 
