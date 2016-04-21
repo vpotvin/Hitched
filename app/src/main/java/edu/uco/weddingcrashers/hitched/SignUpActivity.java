@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -59,6 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
                     date="No Set Date";
                 }else if(checkBox.isChecked()){
                     datePicker.setVisibility(View.VISIBLE);
+                    date="date set";
                 }
             }
         });
@@ -96,9 +98,9 @@ public class SignUpActivity extends AppCompatActivity {
                     int month = datePicker.getMonth();
                     int year = datePicker.getYear();
                 date = "" + day + "-" + month  + "-" + year;
-                String wday= ""+day;
-                String wmonth= ""+month;
-                String wyear= ""+year;
+                final String wday= ""+day;
+                final String wmonth= ""+month;
+                final String wyear= ""+year;
                 if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     builder.setMessage(R.string.signup_error_message)
@@ -120,17 +122,9 @@ public class SignUpActivity extends AppCompatActivity {
                     newUser.put("day", wday);
                     newUser.put("month", wmonth);
                     newUser.put("year", wyear);
-                    /*****************Tung Part to save to the wedding date table*******************************/
-                    ParseObject wDate = new ParseObject("WeddingDate");
-                    wDate.put("Day",wday);
-                    wDate.put("Month",wmonth);
-                    wDate.put("Year",wyear);
+
 
                     final String finalDate = date;
-                    wDate.saveInBackground();
-
-                    /*****************End of Tung Part********************************************************/
-
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {
@@ -147,7 +141,25 @@ public class SignUpActivity extends AppCompatActivity {
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                createMasterWeddingList();
+                                /*****************Tung Part to save to the wedding date table*******************************/
+                                ParseObject wDate = new ParseObject("WeddingDate");
+                                wDate.put("Day",wday);
+                                wDate.put("Month",wmonth);
+                                wDate.put("Year", wyear);
+
+                                //final String finalDate = finalDate;
+                                wDate.saveInBackground(new SaveCallback() {
+                                    @Override
+                                    public void done(ParseException e) {
+                                        if (e == null)
+                                        {
+                                            createMasterWeddingList();
+                                        }
+                                }
+                                });
+
+                                /*****************End of Tung Part********************************************************/
+
                                 startActivity(intent);
                             }
                             else {
@@ -333,6 +345,8 @@ public class SignUpActivity extends AppCompatActivity {
         item67.saveInBackground();
         MasterListItem item68 = new MasterListItem("Pack for your honeymoon",null,null,"",false,"Week of the Wedding");
         item68.saveInBackground();
+
+
 
         if(!(date.equals("No Set Date")))
         {

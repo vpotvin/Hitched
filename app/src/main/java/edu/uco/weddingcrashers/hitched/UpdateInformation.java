@@ -11,9 +11,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import java.util.List;
 
 public class UpdateInformation extends AppCompatActivity {
     private TextView currentBrideName, currentGroomName, currentWeddingDate;
@@ -93,6 +99,30 @@ public class UpdateInformation extends AppCompatActivity {
                 wmonth = "" + month;
                 wyear = "" + year;
 
+
+                ParseQuery<ParseObject> query2 = ParseQuery.getQuery("WeddingDate");
+                query2.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> scoreList, ParseException e) {
+                        if (e == null && scoreList.size() != 0) {
+                            ParseObject object = scoreList.get(0);
+                            object.put("Day", Integer.toString(day));
+                            object.put("Month", Integer.toString(month));
+                            object.put("Year", Integer.toString(year));
+                            object.saveInBackground(new SaveCallback() {
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                UtilityFunctions.updateMasterListDueDates();
+                            } else {
+
+                            }
+                        }
+                    });
+                } else {
+                    // do something with the error...
+                }
+            }
+        });
+
                 currentUser.put("date", date);
                 currentUser.put("day", wday);
                 currentUser.put("month", wmonth);
@@ -108,7 +138,6 @@ public class UpdateInformation extends AppCompatActivity {
                 currentUser.saveInBackground(new SaveCallback() {
                     public void done(ParseException e) {
                         if (e == null) {
-                            UtilityFunctions.updateMasterListDueDates();
                         } else {
 
                         }

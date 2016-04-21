@@ -50,18 +50,23 @@ public class UtilityFunctions {
         query2.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> scoreList, ParseException e) {
                 if (e == null) {
-
-                    int day=scoreList.get(0).getInt("day");
-                    int month=scoreList.get(0).getInt("month");
-                    int year=scoreList.get(0).getInt("year");
+                    ParseObject date = scoreList.get(0);
+                    int day = Integer.parseInt(date.getString("Day"));
+                    int month = Integer.parseInt(date.getString("Month"));
+                    int year = Integer.parseInt(date.getString("Year"));
 
 
                     Calendar weddingDate = Calendar.getInstance();
                     weddingDate.set(year, month - 1, day, 0, 0);
-                    weddingDate.set(2017, 3 - 1, 9, 0, 0);
+                    //weddingDate.set(2017, 3 - 1, 9, 0, 0);
                     final Calendar finalDate = weddingDate;
-                    ParseQuery<MasterListItem> query = ParseQuery.getQuery(MasterListItem.class);
 
+                    try {
+                        Thread.sleep(5000);                 //1000 milliseconds is one second.
+                    } catch(InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
+                    ParseQuery<MasterListItem> query = ParseQuery.getQuery(MasterListItem.class);
                     query.findInBackground(new FindCallback<MasterListItem>() {
                         @Override
                         public void done(List<MasterListItem> objects, ParseException e) {
@@ -77,21 +82,21 @@ public class UtilityFunctions {
                                 if (current.getDistanceFromWeddingDay().equals("static")) {
 
                                 } else if (distance.equals("Nine Months")) {
-                                    cal.add(Calendar.MONTH, -9);
+                                    cal.add(Calendar.WEEK_OF_MONTH, -40);
                                 } else if (distance.equals("Eight Months")) {
-                                    cal.add(Calendar.MONTH, -8);
+                                    cal.add(Calendar.WEEK_OF_MONTH, -31);
                                 } else if (distance.equals("Six Months")) {
-                                    cal.add(Calendar.MONTH, -6);
+                                    cal.add(Calendar.WEEK_OF_MONTH, -22);
                                 } else if (distance.equals("Four Months")) {
-                                    cal.add(Calendar.MONTH, -4);
+                                    cal.add(Calendar.WEEK_OF_MONTH, -14);
                                 } else if (distance.equals("Three Months")) {
-                                    cal.add(Calendar.MONTH, -3);
+                                    cal.add(Calendar.WEEK_OF_MONTH, -10);
                                 } else if (distance.equals("Two Months")) {
-                                    cal.add(Calendar.MONTH, -2);
+                                    cal.add(Calendar.WEEK_OF_MONTH, -6);
                                 } else if (distance.equals("One Month")) {
-                                    cal.add(Calendar.MONTH, -1);
+                                    cal.add(Calendar.WEEK_OF_MONTH, -2);
                                 } else if (distance.equals("Week of the Wedding")) {
-                                    cal.add(Calendar.WEEK_OF_MONTH, -1);
+                                    cal.add(Calendar.DAY_OF_WEEK, -1);
                                 }
 
                                 current.setDueDate(cal.getTime());
