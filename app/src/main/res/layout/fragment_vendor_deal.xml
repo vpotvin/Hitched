@@ -2,16 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+    android:background="#F6ECEB"
+    android:paddingTop="30sp">
     <Spinner
         android:id="@+id/vendor_deal_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></Spinner>
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:foregroundGravity="center_horizontal"></Spinner>
     <Button
         android:text="Find deal"
         android:id="@+id/vendor_deal_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#88CDE6"
+        android:textColor="#ffffff" />
 
 
 </LinearLayout>
