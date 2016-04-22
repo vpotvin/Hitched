@@ -8,52 +8,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.parse.ParseAnalytics;
-import com.parse.ParseUser;
-
-import com.parse.ParseInstallation;
-import com.parse.ParsePush;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
-
 //This activity was created by Rehana Jahan
 // Last Edited 2-19-16 12:30AM
 public class MainActivity extends Activity {
-    private Button venue,dress,party,honeymoon,cake,vendor,picture;
+    private Button venue,dress,cake,honeymoon,party,vendor,picture;
     private Button invites,registry,budget,assignseats;
     private Button itinerary,guestlist,tasks,contacts,update;
-    private TextView you, your, date, month, day;
-    private Toolbar toolbar;
+    private TextView you, your;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-        you = (TextView)findViewById(R.id.you);
-        your = (TextView)findViewById(R.id.your);
-        month = (TextView)findViewById(R.id.month);
-        day = (TextView)findViewById(R.id.day);
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser != null) {
-            you.setText(currentUser.getString("bride"));
-            your.setText(currentUser.getString("groom"));
-            day.setText(currentUser.getString("day"));
-            month.setText(currentUser.getString("month"));
-        ParseAnalytics.trackAppOpened(getIntent());;
 
-        }else {
-            you.setText("");
-            your.setText("");
-        }
-        dress = (Button) findViewById(R.id.dress);
-        venue = (Button) findViewById(R.id.venue);
-       // party = (Button)findViewById(R.id.party);
-        picture = (Button) findViewById(R.id.picture);
-        honeymoon = (Button) findViewById(R.id.honeymoon);
-        cake = (Button)findViewById(R.id.cake);
+
+        dress = (Button)findViewById(R.id.dress);
+        venue = (Button)findViewById(R.id.venue);
+//        cake = (Button)findViewById(R.id.cake);
+        picture = (Button)findViewById(R.id.picture);
+        honeymoon = (Button)findViewById(R.id.honeymoon);
+        party = (Button)findViewById(R.id.honeymoon);
         vendor = (Button)findViewById(R.id.vendor);
         invites = (Button)findViewById(R.id.invites);
         registry = (Button)findViewById(R.id.registry);
@@ -101,17 +81,18 @@ public class MainActivity extends Activity {
                 startActivity(taskList);
             }
         });
-       honeymoon.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent taskList = new Intent(MainActivity.this, HoneymoonActivity.class);
-                startActivity(taskList);
-            }
-        });
 
         itinerary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ItineraryActivity.class);
+                startActivity(intent);
+            }
+        });
+        honeymoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,HoneymoonActivity.class);
                 startActivity(intent);
             }
         });
@@ -153,10 +134,6 @@ public class MainActivity extends Activity {
 
     public void pictureActivity(View view){
         Intent intent = new Intent(MainActivity.this, Pictures.class);
-        startActivity(intent);
-    }
-    public void honeymoonActivity(View view){
-        Intent intent = new Intent(MainActivity.this, HoneymoonActivity.class);
         startActivity(intent);
     }
 

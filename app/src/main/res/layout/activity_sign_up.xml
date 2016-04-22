@@ -9,8 +9,6 @@
     tools:context=".SignUpActivity"
     android:background="#F6ECEB">
 
-
-
     <EditText
         android:id="@+id/usernameField"
         android:layout_width="300sp"
@@ -50,12 +48,12 @@
     <Button
         android:id="@+id/signupButton"
         android:layout_width="300sp"
-        android:layout_height="50sp"
+        android:layout_height="wrap_content"
         android:text="Sign Up!"
         android:background="#DE84B5"
         android:textColor="#F6ECEB"
-        android:layout_below="@+id/datePicker"
-        android:layout_alignStart="@+id/message" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/bridename"
@@ -75,7 +73,6 @@
         android:hint="@string/groomname"
         android:layout_below="@+id/bridename"
         android:layout_centerHorizontal="true" />
-
 
 
     <CheckBox

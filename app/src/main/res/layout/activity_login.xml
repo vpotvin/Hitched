@@ -12,16 +12,12 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="150sp"
+        android:layout_height="200sp"
         android:id="@+id/frameLayout2"
         android:layout_marginTop="13dp"
         android:layout_below="@+id/imageView2"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
         <EditText
             android:layout_width="wrap_content"
@@ -31,24 +27,8 @@
             android:id="@+id/userID"
             android:layout_gravity="center_horizontal|top"
             android:hint="User"
-            android:gravity="center"
-            />
-        </android.support.design.widget.TextInputLayout>
+            android:gravity="center" />
 
-
-        <Button
-            android:layout_width="207sp"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:id="@+id/loginbutton"
-            android:layout_gravity="center_horizontal|bottom"
-            android:background="#DE84B5"
-            android:textColor="#ffffff" />
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,58 +37,58 @@
             android:id="@+id/password"
             android:layout_gravity="center"
             android:hint="Password"
-            android:textColorHint="#DE84B5"
             android:gravity="center" />
-        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:id="@+id/loginbutton"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="#DE84B5"
+            android:textColor="#ffffff" />
+
     </FrameLayout>
 
     <Button
-        android:layout_width="207sp"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:text="New User Registration"
         android:id="@+id/signupButton"
         android:layout_gravity="center_horizontal|bottom"
         android:background="#88CDE6"
         android:textColor="#ffffff"
-        android:layout_marginTop="28dp"
-        android:layout_below="@+id/forgot"
-        android:layout_alignStart="@+id/forgot" />
+        android:layout_below="@+id/frameLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
 
     <Button
-        android:layout_width="80sp"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:text="Test"
         android:id="@+id/testbutton"
-        android:background="#F6ECEB"
-        android:textColor="#000000"
+        android:background="#88CDE6"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/frameLayout2" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         android:src="@drawable/logo11"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="207sp"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password"
-        android:id="@+id/forgot"
-        android:layout_gravity="center_horizontal|bottom"
-        android:background="#F6ECEB"
-        android:textColor="#DE84B5"
-        android:layout_below="@+id/frameLayout2"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HELLLO! Its me"
+        android:text="HITCHED"
         android:id="@+id/textView"
-        android:layout_below="@+id/signupButton"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

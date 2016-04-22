@@ -13,8 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -26,7 +24,6 @@ public class SignUpActivity extends Activity {
     protected Button signUpButton;
     private String date, bride, groom;
     private TextView message;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,13 +81,8 @@ public class SignUpActivity extends Activity {
                 email = email.trim();
                 bride = bride.trim();
                 groom = groom.trim();
-                    int day = datePicker.getDayOfMonth();
-                    int month = datePicker.getMonth();
-                    int year = datePicker.getYear();
-                date = "" + day + "-" + month  + "-" + year;
-                String wday= ""+day;
-                String wmonth= ""+month;
-                String wyear= ""+year;
+                date = date.trim();
+
                 if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     builder.setMessage(R.string.signup_error_message)
@@ -106,12 +98,6 @@ public class SignUpActivity extends Activity {
                     newUser.setUsername(username);
                     newUser.setPassword(password);
                     newUser.setEmail(email);
-                    newUser.put("groom", groom);
-                    newUser.put("bride", bride);
-                    newUser.put("date", date);
-                    newUser.put("day", wday);
-                    newUser.put("month", wmonth);
-                    newUser.put("year", wyear);
 
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
@@ -124,15 +110,6 @@ public class SignUpActivity extends Activity {
                                 ParseDatabase.USER_ID = newUser.getObjectId().toString();
                                 ParseDatabase.USER_NAME = newUser.getUsername();
                                 ParseDatabase.COMBINED_USERNAME = ParseDatabase.USER_ID + ParseDatabase.USER_NAME;
-
-                                ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-                                installation.put("user", ParseUser.getCurrentUser());
-                                installation.put("myusername", ParseDatabase.USER_NAME);
-                                installation.saveInBackground();
-
-                                ParseObject userTable = new ParseObject("My_Users");
-                                userTable.put("My_Username", ParseDatabase.USER_NAME);
-                                userTable.saveInBackground();
 
 
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
