@@ -51,6 +51,7 @@ public class DressDetail extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dress_detail);
+        //toolbar
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
