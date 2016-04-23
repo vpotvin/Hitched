@@ -23,7 +23,7 @@ public class ChooseStateFragment extends DialogFragment implements AdapterView.O
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_choose_state,null);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_choose_state, null);
         mSpinner = (Spinner) view.findViewById(R.id.state_spinner);
                 ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.StateList, android.R.layout.simple_spinner_item);
@@ -33,16 +33,18 @@ public class ChooseStateFragment extends DialogFragment implements AdapterView.O
         mSpinner.setAdapter(adapter);
         mSpinner.setOnItemSelectedListener(this);
         return new AlertDialog.Builder(getActivity())
+
                 .setView(view)
                 .setTitle("Choose your state")
                 .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        ((ParseDatabase)getActivity().getApplication()).setUserState(userState);
-                        Toast.makeText(getActivity(),"Marked " + userState+" as default location" ,Toast.LENGTH_SHORT).show();
+                        ((ParseDatabase) getActivity().getApplication()).setUserState(userState);
+                        Toast.makeText(getActivity(), "Marked " + userState + " as default location", Toast.LENGTH_SHORT).show();
                         FragmentManager manager = getFragmentManager();
                         SaveVendorFragment dialog = new SaveVendorFragment();
                         dialog.show(manager,"MenuDialog");
+
 
                     }
                 })

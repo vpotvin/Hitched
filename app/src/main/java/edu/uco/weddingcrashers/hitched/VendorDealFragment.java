@@ -59,4 +59,6 @@ public class VendorDealFragment extends Fragment implements AdapterView.OnItemSe
     public void onNothingSelected(AdapterView<?> adapterView) {
         Toast.makeText(getActivity(),"Please choose category",Toast.LENGTH_SHORT).show();
     }
+
+
 }
