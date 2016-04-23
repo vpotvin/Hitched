@@ -91,7 +91,7 @@ public class DressDetail extends ListActivity {
 
                 Intent pictureVenue = new Intent(DressDetail.this, DressPictures.class);
 
-                //pictureVenue.putExtra("picture", picture);
+
                 startActivity(pictureVenue);
             }
         });
@@ -140,24 +140,6 @@ public class DressDetail extends ListActivity {
                     myVenues.put(TAG_PHONE, phone);
                     venueList.add(myVenues);
 
-                    // looping through All Contacts
-//                    for (int i = 0; i < venues.length(); i++) {
-//                        JSONObject c = venues.getJSONObject(i);
-//
-//                        String id = c.getString(TAG_ID);
-//                        String name = c.getString(TAG_NAME);
-//                        String address = c.getString(TAG_ADDRESS);
-//
-//                        // tmp hashmap for single contact
-//
-//
-//                        // adding each child node to HashMap key => value
-//                        myVenues.put(TAG_ID, id);
-//                        myVenues.put(TAG_NAME, name);
-//                        myVenues.put(TAG_ADDRESS, address);
-//                        // adding contact to contact list
-//                        venueList.add(myVenues);
-//                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();

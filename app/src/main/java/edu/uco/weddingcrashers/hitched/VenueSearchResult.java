@@ -38,11 +38,8 @@ public class VenueSearchResult extends ListActivity {
     private static final String TAG_ID = "place_id";
     private static final String TAG_NAME = "name";
     private static final String TAG_ADDRESS = "formatted_address";
-    private static final String TAG_PIC = "photos";
-    private static final String TAG_PHOTO = "photo_reference";
 
     JSONArray venues = null;
-    JSONObject picture = null;
 
     ArrayList<HashMap<String, String>> venueList;
     private String whichList;
@@ -69,37 +66,23 @@ public class VenueSearchResult extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                /*String myPlaceID = ((TextView) view.findViewById(R.id.placeID))
-                        .getText().toString();
-
-                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
-
-                venueDetail.putExtra("myID", myPlaceID);
-                Log.i("WHAT", myPlaceID);
-                startActivity(venueDetail);*/
 
                 String name = ((TextView) view.findViewById(R.id.name))
                         .getText().toString();
                 String address = ((TextView) view.findViewById(R.id.address))
                         .getText().toString();
                 String place_id = ((TextView) view.findViewById(R.id.placeID)).getText().toString();
-               // String photo = ((TextView) view.findViewById(R.id.photo)).getText().toString();
 
 
                 Intent venueDetail = new Intent(VenueSearchResult.this, VenueDetail.class);
 
-                //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
-                // Log.i("WHAT", whichList);
 
                 String whichClass = "";
 
-                // thevalue = "yes";
-                //venueDetail.putExtra("photo", photo);
                 venueDetail.putExtra("place_id", place_id);
                 venueDetail.putExtra("name", name);
                 venueDetail.putExtra("address", address);
                 venueDetail.putExtra("done", whichClass);
-                //venueDetail.putExtra("myvalue", thevalue);
                 startActivity(venueDetail);
 
 
@@ -127,8 +110,6 @@ public class VenueSearchResult extends ListActivity {
                 return true;
             }
         });
-
-       // new GetVenues().execute();
 
     }
 
