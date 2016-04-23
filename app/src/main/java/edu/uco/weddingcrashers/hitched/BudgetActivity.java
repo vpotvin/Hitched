@@ -1,10 +1,10 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +20,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BudgetActivity extends Activity implements
+public class BudgetActivity extends AppCompatActivity implements
         BudgetUpdateFragment.BudgetUpdateListener {
 
     private ArrayList<BudgetItem> budgetItems;

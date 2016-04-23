@@ -17,6 +17,9 @@
         android:text="Search"
         android:id="@+id/submit_music_search_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#88CDE6"
+        android:textColor="#ffffff" />
 
 </LinearLayout>
