@@ -66,14 +66,6 @@ public class DressSearchResult extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                /*String myPlaceID = ((TextView) view.findViewById(R.id.placeID))
-                        .getText().toString();
-
-                Intent venueDetail = new Intent (VenueSearchResult.this, VenueDetail.class);
-
-                venueDetail.putExtra("myID", myPlaceID);
-                Log.i("WHAT", myPlaceID);
-                startActivity(venueDetail);*/
 
                 String name = ((TextView) view.findViewById(R.id.name))
                         .getText().toString();
@@ -84,17 +76,13 @@ public class DressSearchResult extends ListActivity {
 
                 Intent venueDetail = new Intent(DressSearchResult.this, DressDetail.class);
 
-                //whichList = name + System.getProperty("line.separator") + System.getProperty("line.separator") + address;
-                // Log.i("WHAT", whichList);
 
                 String whichClass = "";
 
-                // thevalue = "yes";
                 venueDetail.putExtra("place_id", place_id);
                 venueDetail.putExtra("name", name);
                 venueDetail.putExtra("address", address);
                 venueDetail.putExtra("done", whichClass);
-                //venueDetail.putExtra("myvalue", thevalue);
                 startActivity(venueDetail);
 
 
@@ -122,8 +110,6 @@ public class DressSearchResult extends ListActivity {
                 return true;
             }
         });
-
-        // new GetVenues().execute();
 
     }
 
