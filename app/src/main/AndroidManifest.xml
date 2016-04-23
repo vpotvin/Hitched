@@ -82,24 +82,21 @@
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".MusicListActivity"
-            android:label="Music List Activity"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:label="Music List Activity" />
         <activity
             android:name=".RingActivity"
             android:label="Ring Activity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".VendorDealActivity"
-            android:label="Vendor Deal Activity"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:label="Vendor Deal Activity" />
         <activity
             android:name=".DealDetailActivity"
             android:label="Deal Detail Activity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".MusicActivity"
-            android:label="Music Activity"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:label="Music Activity" />
         <activity
             android:name=".VendorDetailsPagerActivity"
             android:label="@string/title_activity_vendor"
@@ -147,6 +144,50 @@
             android:name=".ShareActivity"
             android:label="@string/title_activity_share"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CakeDetailActivityCake"
+            android:label="Select State"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".CakeVActivity"
+            android:label="Bakery"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".CakeVDetailActivity"
+            android:label="Bakery"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".CakeDetailsPagerActivity"
+            android:label="Bakery"
+            android:parentActivityName=".CakeDetailActivityCake"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".CakeSavedListActivityCake"
+            android:label="SavedVendorListActivity"
+            android:parentActivityName=".CakeDetailsPagerActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".PhotographerPDetailActivity"
+            android:label="Select State"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".PhotographerVActivity"
+            android:label="Photographer"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".PhotographerVDetailActivity"
+            android:label="Photographer"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".PhotographerDetailsPagerActivity"
+            android:label="Photographer"
+            android:parentActivityName=".PhotographerPDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".PhotographerPSavedListActivity"
+            android:label="SavedPhotographerListActivity"
+            android:parentActivityName=".PhotographerDetailsPagerActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
 
         <service android:name="com.parse.PushService" />
 
@@ -171,8 +212,7 @@
             </intent-filter>
         </receiver>
 
-        <!--
-            <activity
+        <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -180,7 +220,7 @@
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />
-        -->
+        android:theme="@style/AppTheme.NoActionBar" />
         android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VowsActivity"
@@ -194,8 +234,7 @@
         <activity android:name=".UpdateInformation" />
         <activity
             android:name=".DayOfActivity"
-            android:label="@string/title_activity_day_of"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_day_of" />
         <activity android:name=".UpdateInformation" />
         <activity
             android:name=".FloorPlanActivity"
@@ -216,7 +255,23 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DressDetail"
+            android:label="@string/title_activity_dress_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VenuePictures"
+            android:label="@string/title_activity_venue_pictures"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DressPictures"
+            android:label="@string/title_activity_dress_pictures"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TableActivity">
+
+        </activity>
     </application>
 
 </manifest>

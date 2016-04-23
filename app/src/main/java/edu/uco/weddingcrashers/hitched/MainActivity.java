@@ -70,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
         contacts = (Button)findViewById(R.id.contacts);
         update = (Button)findViewById(R.id.update);
         dayofwedding = (Button)findViewById(R.id.dayOfWedding);
-        //vow = (Button)findViewById(R.id.vow);
-        menu = (Button)findViewById(R.id.menu);
+
 
         update.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -79,12 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(update);
             }
         });
-        menu.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent menuactivity = new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(menuactivity);
-            }
-        });
+
         dayofwedding.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent DOW = new Intent(MainActivity.this, DayOfActivity.class);
@@ -124,6 +118,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent taskList = new Intent(MainActivity.this, GuestListActivity.class);
                 startActivity(taskList);
+            }
+        });
+
+        cake.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CakeDetailActivityCake.class);
+                startActivity(intent);
             }
         });
 
@@ -188,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pictureActivity(View view){
-        Intent intent = new Intent(MainActivity.this, Pictures.class);
+        Intent intent = new Intent(MainActivity.this, PhotographerPDetailActivity.class);
         startActivity(intent);
     }
 

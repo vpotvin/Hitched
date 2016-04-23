@@ -110,4 +110,7 @@
 
     <string name="title_activity_floor_plan">FloorPlanActivity</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_dress_detail">DressDetail</string>
+    <string name="title_activity_venue_pictures">VenuePictures</string>
+    <string name="title_activity_dress_pictures">DressPictures</string>
 </resources>

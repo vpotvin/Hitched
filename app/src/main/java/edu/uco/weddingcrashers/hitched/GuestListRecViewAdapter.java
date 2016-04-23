@@ -55,14 +55,15 @@ public class GuestListRecViewAdapter extends
             holder.address.setText(theList.get(position).getAddress());
             holder.role.setText(theList.get(position).getRole());
             holder.weddingParty.setChecked(theList.get(position).isWeddingParty());
+            holder.checkRSVP.setChecked(theList.get(position).getRSVP());
 
             final int pos = position;
 
             holder.checkRSVP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //theList.get(pos).setRSVP(isChecked);
-                //theList.get(pos).saveInBackground();
+                theList.get(pos).setRSVP(isChecked);
+                theList.get(pos).saveInBackground();
             }
         });
 
