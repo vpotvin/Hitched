@@ -18,6 +18,7 @@ public class PicturesWeb extends Activity {
         webView.loadUrl("https://www.weddingwire.com/shared/search?utf8=✓&l=y&cid=10&category=Photography&geo=73162&commit=Find+Vendors");
 //        String customHtml = "<html><body><h1>Hello, WebView</h1></body></html>";
 //        webView.loadData(customHtml, "text/html", "UTF-8");
+        //testsd
 
     }
 

@@ -135,6 +135,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UpdateInformation.class);
+                startActivity(intent);
+            }
+        });
+        dayofwedding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DayOfActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 //rehana

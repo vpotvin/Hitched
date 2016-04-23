@@ -58,7 +58,7 @@
         android:layout_height="80sp"
         android:height="70dp"
         android:width="100dp"
-        android:background="@mipmap/mainvendor"
+        android:background="@mipmap/ring"
         android:textColor="#ffffff"
 
         android:textStyle="bold"

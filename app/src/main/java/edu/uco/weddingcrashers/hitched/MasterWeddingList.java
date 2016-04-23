@@ -11,8 +11,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.parse.ParseException;
 import com.parse.SaveCallback;
@@ -22,7 +24,7 @@ import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 
-public class MasterWeddingList extends FragmentActivity implements MasterListNewItemInput.NoticeDialogListener{
+public class MasterWeddingList extends FragmentActivity implements MasterListNewItemInput.NoticeDialogListener, MasterListEditItemInput.NoticeDialogListener2{
 
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
@@ -139,4 +141,25 @@ public class MasterWeddingList extends FragmentActivity implements MasterListNew
     }
 
 
+    @Override
+    public void onDialogPositiveClick2(DialogFragment dialog) {
+        Dialog dialogView = dialog.getDialog();
+        EditText notes = (EditText)dialogView.findViewById(R.id.MasterNotesEdit);
+        EditText title = (EditText)dialogView.findViewById(R.id.masterTitleInput);
+        TextView pos = (TextView)dialogView.findViewById(R.id.hiddenPos);
+        DatePicker due = (DatePicker)dialogView.findViewById(R.id.MasterDueDateInput);
+        CheckBox comp = (CheckBox)dialogView.findViewById(R.id.MasterCompletedEditBox);
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(0);
+        cal.set(due.getYear(), due.getMonth(), due.getDayOfMonth());
+        Date date = cal.getTime();
+        String po = pos.getText().toString();
+        masterListAdapter.editTheList(Integer.parseInt(po),notes.getText().toString(), title.getText().toString(), date, comp.isEnabled() );
+
+    }
+
+    @Override
+    public void onDialogNegativeClick2(DialogFragment dialog) {
+        dialog.dismiss();
+    }
 }

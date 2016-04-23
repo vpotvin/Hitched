@@ -33,7 +33,7 @@ public class MasterListItem extends ParseObject implements Serializable {
     }
 
     public String getDistanceFromWeddingDay() {
-        return getString("getDistanceFromWeddingDay");
+        return getString("distanceFromWeddingDay");
     }
 
     public void setDistanceFromWeddingDay(String distanceFromWeddingDay) {
