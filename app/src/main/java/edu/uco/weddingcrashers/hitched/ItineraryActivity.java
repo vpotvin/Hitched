@@ -121,9 +121,9 @@ public class ItineraryActivity extends AppCompatActivity implements ItineraryDia
         query.findInBackground(new FindCallback<GuestListItem>() {
             @Override
             public void done(List<GuestListItem> objects, ParseException e) {
-                if(objects != null && !objects.isEmpty()) {
+                if (objects != null && !objects.isEmpty()) {
                     String[] emails = new String[objects.size()];
-                    for(int i = 0; i < objects.size(); i++) {
+                    for (int i = 0; i < objects.size(); i++) {
                         emails[i] = objects.get(i).getEmail();
                     }
                     //TODO troubleshoot email
@@ -182,6 +182,36 @@ public class ItineraryActivity extends AppCompatActivity implements ItineraryDia
                     Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void emailItinerary(View v) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
+
+
+        String emailBody = "This is the itinerary for my wedding day: " +
+                System.getProperty("line.separator");
+
+
+        for(ItineraryItem item: items) {
+
+            if(item.getTime() != null) {
+                emailBody = emailBody + simpleDateFormat.format(item.getTime()) + " ";
+            }
+            emailBody = emailBody + item.getTitle()
+                    + System.getProperty("line.separator");
+        }
+
+        Intent i = new Intent();
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_SUBJECT, "Wedding Itinerary");
+        i.putExtra(Intent.EXTRA_TEXT, emailBody);
+
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(ItineraryActivity.this, "There are no email clients installed.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Only used for debugging purposes to repopulate Database table
