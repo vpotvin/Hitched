@@ -32,4 +32,12 @@
         android:textColor="#acacac"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/photo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textColor="#acacac"
+        android:visibility="gone"/>
+
 </LinearLayout>
