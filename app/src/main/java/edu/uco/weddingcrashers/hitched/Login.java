@@ -55,8 +55,8 @@ public class Login extends Activity {
         testbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setText("Drenfro87");
-                password.setText("pass0324");
+                user.setText("maryjames");
+                password.setText("forever2");
             }
         });
 
