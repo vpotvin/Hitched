@@ -41,7 +41,7 @@ public class DayOfActivity extends AppCompatActivity {
 
         seating.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent update = new Intent(DayOfActivity.this, FloorPlanActivity.class);
+                Intent update = new Intent(DayOfActivity.this, TableActivity.class);
                 startActivity(update);
             }
         });
