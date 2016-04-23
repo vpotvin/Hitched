@@ -24,4 +24,11 @@
         android:id="@+id/addItinItem"
         android:text="+"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="emailItinerary"
+        android:id="@+id/emailItinerary"
+        android:text="Email Itinerary"/>
+
 </LinearLayout>
