@@ -215,8 +215,7 @@
             </intent-filter>
         </receiver>
 
-        <!--
-            <activity
+        <activity
             android:name=".VenueSearch"
             android:label="@string/title_activity_venue_search"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -224,7 +223,7 @@
             android:name=".VenueSearchResult"
             android:label="@string/title_activity_venue_search_result"
             android:theme="@style/AppTheme.NoActionBar" />
-        -->
+        android:theme="@style/AppTheme.NoActionBar" />
         android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VowsActivity"
@@ -259,7 +258,20 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DressDetail"
+            android:label="@string/title_activity_dress_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VenuePictures"
+            android:label="@string/title_activity_venue_pictures"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DressPictures"
+            android:label="@string/title_activity_dress_pictures"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

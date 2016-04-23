@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         update = (Button)findViewById(R.id.update);
         dayofwedding = (Button)findViewById(R.id.dayOfWedding);
         //vow = (Button)findViewById(R.id.vow);
+        //vow = (Button)findViewById(R.id.vow);
+        //vow = (Button)findViewById(R.id.vowsButton);
         menu = (Button)findViewById(R.id.menu);
 
         update.setOnClickListener(new View.OnClickListener() {

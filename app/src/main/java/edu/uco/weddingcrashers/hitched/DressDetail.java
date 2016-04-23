@@ -30,7 +30,7 @@ import java.util.List;
 
 
 
-public class VenueDetail extends ListActivity {
+public class DressDetail extends ListActivity {
 
 
     private ProgressDialog pDialog;
@@ -46,17 +46,16 @@ public class VenueDetail extends ListActivity {
     ArrayList<HashMap<String, String>> venueList;
     private String whichList;
     private String thevalue;
-    private String picture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_venue_detail);
+        setContentView(R.layout.activity_dress_detail);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             final String n1 = extras.getString("place_id");
-            url = String.valueOf(Uri.parse(url + n1 + "&key=AIzaSyB4cW0S6qfFUERb8he2jOupGO5z9cLiDm4"));
+            url = String.valueOf(Uri.parse(url + n1 + "&key=AIzaSyAOqYf1wSCRpbk9EaSUy4B3MN8S7F6uiNc"));
             Log.i("WHAT:", url);
         }
 
@@ -71,7 +70,7 @@ public class VenueDetail extends ListActivity {
                 String name = ((TextView) view.findViewById(R.id.name))
                         .getText().toString();
 
-                Intent editVenue = new Intent(VenueDetail.this, VenueActivity.class);
+                Intent editVenue = new Intent(DressDetail.this, WeddingDressList.class);
 
                 whichList = name + System.getProperty("line.separator");
                 Log.i("WHAT", whichList);
@@ -85,11 +84,13 @@ public class VenueDetail extends ListActivity {
             }
         });
 
+
         searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent pictureVenue = new Intent(VenueDetail.this, VenuePictures.class);
+                Intent pictureVenue = new Intent(DressDetail.this, DressPictures.class);
+
 
                 startActivity(pictureVenue);
             }
@@ -105,7 +106,7 @@ public class VenueDetail extends ListActivity {
             super.onPreExecute();
             // Showing prog
             // ress dialog
-            pDialog = new ProgressDialog(VenueDetail.this);
+            pDialog = new ProgressDialog(DressDetail.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -160,7 +161,7 @@ public class VenueDetail extends ListActivity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    VenueDetail.this, venueList,
+                    DressDetail.this, venueList,
                     R.layout.list_item_detail, new String[] {TAG_NAME, TAG_ADDRESS, TAG_PHONE},
                     new int[] {R.id.name,
                             R.id.address,

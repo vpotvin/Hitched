@@ -21,6 +21,7 @@ public class MenuActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
       //  menu = (ListView) findViewById(R.id.menuListView);
+        //menu = (ListView) findViewById(R.id.menuListView);
         String[] values = new String[]{"Turkey","Fish","Vegetable"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);

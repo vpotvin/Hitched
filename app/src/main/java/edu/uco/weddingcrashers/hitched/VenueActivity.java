@@ -42,7 +42,6 @@ public class VenueActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-    //    setSupportActionBar(toolbar);
 
         venues = (ListView) findViewById(R.id.vListView);
 
@@ -123,39 +122,10 @@ public class VenueActivity extends AppCompatActivity{
                 }
 
 
-                venues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        Intent editVenue = new Intent(VenueActivity.this, EditVenueActivity.class);
-//
-                        whichList = venues.getItemAtPosition(position).toString();
-                        Log.i("WHAT", whichList);
-
-                        thevalue = "yes";
-                        editVenue.putExtra("vname", whichList);
-                        editVenue.putExtra("myvalue", thevalue);
-                        startActivity(editVenue);
-                    }
-                });
-
                 venues.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                         final String what = parent.getItemAtPosition(position).toString();
-
-                        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Bill_venues");
-                        query2.whereEqualTo("Name", what);
-                        query2.findInBackground(new FindCallback<ParseObject>() {
-                            public void done(List<ParseObject> object, ParseException e) {
-                                if (e == null) {
-                                    for (ParseObject objects : object) {
-                                        objects.deleteInBackground();
-                                    }
-                                } else {
-                                }
-                            }
-                        });
                         adapter.remove(what);
                         adapter.notifyDataSetChanged();
                         return true;

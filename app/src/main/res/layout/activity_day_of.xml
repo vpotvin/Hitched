@@ -11,24 +11,24 @@
         android:layout_height="140sp"
         android:id="@+id/vowsButton"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/vows" />
+        android:layout_centerHorizontal="true"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="140sp"
         android:id="@+id/menuButton"
         android:layout_below="@+id/vowsButton"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/menu" />
+        android:layout_centerHorizontal="true"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="140sp"
         android:id="@+id/iteneraryButton"
         android:layout_below="@+id/menuButton"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/itinerary" />
+        android:layout_centerHorizontal="true"/>
+
 
     <Button
         android:layout_width="wrap_content"
@@ -36,5 +36,5 @@
         android:id="@+id/seatingButton"
         android:layout_below="@+id/iteneraryButton"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/seating" />
+        />
 </RelativeLayout>
