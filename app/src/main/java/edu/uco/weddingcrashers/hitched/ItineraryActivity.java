@@ -1,11 +1,13 @@
 package edu.uco.weddingcrashers.hitched;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,7 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class ItineraryActivity extends Activity implements ItineraryDialog.ItineraryUpdateListener {
+public class ItineraryActivity extends AppCompatActivity implements ItineraryDialog.ItineraryUpdateListener {
 
     ArrayList<ItineraryItem> items;
     ListView itineraryList;
@@ -226,5 +228,36 @@ public class ItineraryActivity extends Activity implements ItineraryDialog.Itine
         item.saveInBackground();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.itineraryactivitymenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_add) {
+            Intent main = new Intent(ItineraryActivity.this, ItineraryDialog.class);
+            startActivity(main);
+
+        }
+
+        if (id == R.id.action_main) {
+            Intent main2 = new Intent(ItineraryActivity.this, MainActivity.class);
+            startActivity(main2);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+
 
 }

@@ -152,7 +152,6 @@
             android:name=".CakeVActivity"
             android:label="Bakery"
             android:theme="@style/Theme.AppCompat.Light" />
-
         <activity
             android:name=".CakeVDetailActivity"
             android:label="Bakery"
@@ -167,7 +166,6 @@
             android:label="SavedVendorListActivity"
             android:parentActivityName=".CakeDetailsPagerActivity"
             android:theme="@style/Theme.AppCompat.Light" />
-
         <activity
             android:name=".PhotographerPDetailActivity"
             android:label="Select State"
@@ -176,7 +174,6 @@
             android:name=".PhotographerVActivity"
             android:label="Photographer"
             android:theme="@style/Theme.AppCompat.Light" />
-
         <activity
             android:name=".PhotographerVDetailActivity"
             android:label="Photographer"
@@ -237,7 +234,7 @@
         <activity android:name=".UpdateInformation" />
         <activity
             android:name=".DayOfActivity"
-            android:label="@string/title_activity_day_of"/>
+            android:label="@string/title_activity_day_of" />
         <activity android:name=".UpdateInformation" />
         <activity
             android:name=".FloorPlanActivity"
@@ -271,7 +268,10 @@
         <activity
             android:name=".DressPictures"
             android:label="@string/title_activity_dress_pictures"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TableActivity">
+
+        </activity>
     </application>
 
 </manifest>
