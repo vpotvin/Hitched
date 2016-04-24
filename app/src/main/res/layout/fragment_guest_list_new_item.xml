@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.uco.weddingcrashers.hitched.GuestListNewItem">
+    tools:context="edu.uco.weddingcrashers.hitched.GuestListNewItem"
+    android:padding="10sp">
 
     <GridLayout
         android:layout_width="match_parent"
@@ -13,11 +14,12 @@
         android:columnCount="2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Name"
-            android:id="@+id/GuestListNameInputView" />
+            android:text="Name      "
+            android:id="@+id/GuestListNameInputView"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="194dp"
@@ -35,11 +37,12 @@
         android:columnCount="2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Phone Number"
-            android:id="@+id/GuestListPhoneNumberInputView" />
+            android:text="Phone:"
+            android:id="@+id/GuestListPhoneNumberInputView"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="194dp"
@@ -57,11 +60,12 @@
         android:columnCount="2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Address"
-            android:id="@+id/GuestListAddressInputView" />
+            android:id="@+id/GuestListAddressInputView"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="194dp"
@@ -78,11 +82,12 @@
         android:columnCount="2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="City"
-            android:id="@+id/GuestListCityInputView" />
+            android:id="@+id/GuestListCityInputView"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="194dp"
@@ -100,11 +105,12 @@
         android:columnCount="2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="State"
-            android:id="@+id/GuestListStateInputView" />
+            android:id="@+id/GuestListStateInputView"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="194dp"
@@ -122,11 +128,12 @@
         android:columnCount="2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Zipcode"
-            android:id="@+id/GuestListZipcodeInputView" />
+            android:id="@+id/GuestListZipcodeInputView"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="194dp"
@@ -144,11 +151,12 @@
         android:columnCount="2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Role"
-            android:id="@+id/GuestListRoleInputView" />
+            android:id="@+id/GuestListRoleInputView"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="194dp"
@@ -163,6 +171,10 @@
         android:layout_height="wrap_content"
         android:text="Wedding Party"
         android:id="@+id/GuestListWeddingPartuInputCheckBox"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold" />
 
 </LinearLayout>
+
+
+
