@@ -4,12 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +34,7 @@ public class WeddingDressList extends AppCompatActivity {
     private String thevalue;
     private final int RETURN = 1;
     private Toolbar toolbar;
+    ParseObject dressList = new ParseObject(ParseDatabase.USER_NAME + "_dresses");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +62,39 @@ public class WeddingDressList extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         dresses.setAdapter(adapter);
 
+        dresses.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final String what = parent.getItemAtPosition(position).toString();
+                arrayList.remove(what);
+                adapter.notifyDataSetChanged();
+                dressList.remove(what);
+                dressList.saveInBackground();
+                return true;
+            }
+        });
+
+        final ParseQuery<ParseObject> query = ParseQuery.getQuery(ParseDatabase.USER_NAME + "_dresses");
+        query.whereExists("Dress");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> object, ParseException e) {
+                if (e == null) {
+
+                    Log.i("WHAT", object.size() + "  " + someList);
+
+                    for (ParseObject dealsObject : object) {
+                        arrayList.add(dealsObject.get("Dress").toString());
+                        Log.i("WHAT", arrayList.toString());
+                    }
+
+                    Log.i("WHAT", arrayList.toString());
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Log.d("WHAT", "Error: " + e.getMessage());
+                }
+            }
+        });
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             final String n1 = extras.getString("vname");
@@ -62,6 +103,8 @@ public class WeddingDressList extends AppCompatActivity {
             if (n2.equals("yes")) {
                 arrayList.add(n1);
                 adapter.notifyDataSetChanged();
+                dressList.put("Dress", n1);
+                dressList.saveInBackground();
             }
         }
 

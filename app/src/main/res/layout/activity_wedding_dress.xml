@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/dressSearchText"
         android:text="Search for the Perfect Dress"
+        android:singleLine = "true"
         android:gravity="center"
         android:inputType="textCapSentences"
         android:layout_below="@+id/imageView4"

@@ -36,7 +36,7 @@ public class VenueActivity extends AppCompatActivity{
     private String thevalue;
     private final int RETURN = 1;
     private Toolbar toolbar;
-
+    ParseObject venuesList = new ParseObject(ParseDatabase.USER_NAME + "_venues");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +64,40 @@ public class VenueActivity extends AppCompatActivity{
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         venues.setAdapter(adapter);
 
+        venues.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final String what = parent.getItemAtPosition(position).toString();
+                arrayList.remove(what);
+                adapter.notifyDataSetChanged();
+                venuesList.remove(what);
+                venuesList.saveInBackground();
+                return true;
+            }
+        });
+
+        final ParseQuery<ParseObject> query = ParseQuery.getQuery(ParseDatabase.USER_NAME + "_venues");
+        query.whereExists("Venue");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> object, ParseException e) {
+                if (e == null) {
+
+                    Log.i("WHAT", object.size() + "  " + someList);
+
+                    for (ParseObject dealsObject : object) {
+                        arrayList.add(dealsObject.get("Venue").toString());
+                        Log.i("WHAT", arrayList.toString());
+                    }
+
+                    Log.i("WHAT", arrayList.toString());
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Log.d("WHAT", "Error: " + e.getMessage());
+                }
+            }
+        });
+
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             final String n1 = extras.getString("vname");
@@ -72,92 +106,13 @@ public class VenueActivity extends AppCompatActivity{
             if(n2.equals("yes")){
                 arrayList.add(n1);
                 adapter.notifyDataSetChanged();
+                venuesList.put("Venue", n1);
+                venuesList.saveInBackground();
             }
 
-            else{
-                if (ParseDatabase.USER_NAME.equals("Bill")) {
-
-                    final ParseQuery<ParseObject> query = ParseQuery.getQuery(ParseDatabase.USER_NAME + "_venues");
-                    query.whereExists("Name");
-                    query.findInBackground(new FindCallback<ParseObject>() {
-                        public void done(List<ParseObject> object, ParseException e) {
-                            if (e == null) {
-
-                                Log.i("WHAT", object.size() + "  " + someList);
-
-                                for (ParseObject dealsObject : object) {
-                                    arrayList.add(dealsObject.get("Name").toString());
-                                    Log.i("WHAT", arrayList.toString());
-                                }
-
-                                Log.i("WHAT", arrayList.toString());
-                                adapter.notifyDataSetChanged();
-                            } else {
-                                Log.d("WHAT", "Error: " + e.getMessage());
-                            }
-                        }
-                    });
-                } else if(ParseDatabase.USER_NAME.equals("Sarah")) {
-
-                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Bill_venues");
-                    query.whereExists("Name");
-                    query.findInBackground(new FindCallback<ParseObject>() {
-                        public void done(List<ParseObject> object, ParseException e) {
-                            if (e == null) {
-
-                                Log.i("WHAT", object.size() + "  " + someList);
-
-                                for (ParseObject dealsObject : object) {
-                                    arrayList.add(dealsObject.get("Name").toString());
-                                    Log.i("WHAT", arrayList.toString());
-                                }
-
-                                Log.i("WHAT", arrayList.toString());
-                                adapter.notifyDataSetChanged();
-                            } else {
-                                Log.d("WHAT", "Error: " + e.getMessage());
-                            }
-                        }
-                    });
-                }
-
-
-                venues.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                        final String what = parent.getItemAtPosition(position).toString();
-                        adapter.remove(what);
-                        adapter.notifyDataSetChanged();
-                        return true;
-                    }
-                });
-
-            }
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery(ParseDatabase.USER_NAME + "_venues");
-        query.getInBackground("Name", new GetCallback<ParseObject>() {
-            @Override
-            public void done(ParseObject object, com.parse.ParseException e) {
-                if (e == null) {
-                    someList = object.getString("Name");
-                    Log.i("WHAT", object.toString() + "  " + someList);
-
-                    arrayList.add(someList);
-                    adapter.notifyDataSetChanged();
-                } else {
-                    // something went wrong
-                }
-            }
-        });
-
-
-
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
