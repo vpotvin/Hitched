@@ -3,82 +3,112 @@
 
               android:id="@+id/fragment_review"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
 
     android:verticalSpacing="10dp"
     android:horizontalSpacing="10dp"
     android:scrollbarStyle="outsideOverlay"
     android:verticalScrollbarPosition="right"
     android:scrollbars="vertical"
-    android:columnCount="4">
+    android:columnCount="3"
+    android:background="#F6ECEB">
 
 
-    <Button
-        android:id="@+id/deal_button"
-        android:layout_width="80sp"
-        android:layout_height="80sp"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="@mipmap/deals"
-        android:textColor="#ffffff"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="2"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal">
 
-        android:textStyle="bold"
+        <Button
+            android:id="@+id/website_button"
+            android:layout_width="90sp"
+            android:layout_height="90sp"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/tutorial"
+            android:textColor="#ffffff"
+
+            android:textStyle="bold"
+            android:layout_row="1"
+
+            android:layout_column="1"
+            android:layout_gravity="left|center_vertical" />
+
+        <Button
+            android:id="@+id/detail_button"
+            android:layout_width="90sp"
+            android:layout_height="90sp"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/mainvendor"
+            android:textColor="#ffffff"
+
+            android:textStyle="bold"
+
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_row="1"
+        android:layout_column="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_columnSpan="2"
+        android:gravity="center">
 
-        android:padding="10sp"/>
-    <Button
-        android:id="@+id/music_button"
-        android:layout_width="80sp"
-        android:layout_height="80sp"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="@mipmap/music"
-        android:textColor="#ffffff"
+        <Button
+            android:id="@+id/deal_button"
+            android:layout_width="90sp"
+            android:layout_height="90sp"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/deals"
+            android:textColor="#ffffff"
 
-        android:textStyle="bold"
-        android:layout_row="1"
+            android:textStyle="bold"
+            android:layout_row="0"
 
-        android:padding="10sp"/>
-    <Button
-        android:id="@+id/detail_button"
-        android:layout_width="80sp"
-        android:layout_height="80sp"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="@mipmap/mainvendor"
-        android:textColor="#ffffff"
+            android:padding="10sp"
+            android:layout_column="0" />
 
-        android:textStyle="bold"
-        android:layout_row="1"
+        <Button
+            android:id="@+id/music_button"
+            android:layout_width="90sp"
+            android:layout_height="90sp"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/music"
+            android:textColor="#ffffff"
 
-        android:padding="10sp"/>
-    <Button
-        android:id="@+id/ring_button"
-        android:layout_width="80sp"
-        android:layout_height="80sp"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="@mipmap/ring"
-        android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_row="0"
 
-        android:textStyle="bold"
-        android:layout_row="1"
+            android:padding="10sp"
+            android:layout_column="1" />
 
-        android:padding="10sp"/>
-    <Button
-        android:id="@+id/website_button"
-        android:layout_width="80sp"
-        android:layout_height="80sp"
-        android:height="70dp"
-        android:width="100dp"
-        android:background="@mipmap/tutorial"
-        android:textColor="#ffffff"
+        <Button
+            android:id="@+id/ring_button"
+            android:layout_width="90sp"
+            android:layout_height="90sp"
+            android:height="70dp"
+            android:width="100dp"
+            android:background="@mipmap/ring"
+            android:textColor="#ffffff"
 
-        android:textStyle="bold"
-        android:layout_row="1"
+            android:textStyle="bold"
+            android:layout_row="0"
 
-        android:padding="10sp"/>
-
+            android:padding="10sp"
+            android:layout_column="2" />
+    </LinearLayout>
 
 
 </GridLayout>

@@ -60,14 +60,13 @@ public class MainActivity extends AppCompatActivity {
         honeymoon = (Button) findViewById(R.id.honeymoon);
         cake = (Button)findViewById(R.id.cake);
         vendor = (Button)findViewById(R.id.vendor);
-        invites = (Button)findViewById(R.id.invites);
-        registry = (Button)findViewById(R.id.registry);
+
         budget = (Button)findViewById(R.id.budget);
         assignseats = (Button)findViewById(R.id.assignseats);
         itinerary = (Button)findViewById(R.id.itinerary);
         guestlist = (Button)findViewById(R.id.guestlist);
         tasks = (Button)findViewById(R.id.tasks);
-        contacts = (Button)findViewById(R.id.contacts);
+
         update = (Button)findViewById(R.id.update);
         dayofwedding = (Button)findViewById(R.id.dayOfWedding);
 
@@ -135,20 +134,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
+        assignseats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, UpdateInformation.class);
-                startActivity(intent);
+                Intent update = new Intent(MainActivity.this, TableActivity.class);
+                startActivity(update);
             }
         });
-        dayofwedding.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DayOfActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
 
 //rehana
