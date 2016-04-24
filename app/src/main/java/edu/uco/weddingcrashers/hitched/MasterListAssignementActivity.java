@@ -68,7 +68,10 @@ public class MasterListAssignementActivity extends AppCompatActivity {
                 });
             }
         });
-
+        if(assignedTo == null)
+        {
+            assignedTo = new ArrayList<>();
+        }
         assArrayAdapter = new MasterListAssignementAdapter(MasterListAssignementActivity.this, assignedTo);
         assListView.setAdapter(assArrayAdapter);
 
