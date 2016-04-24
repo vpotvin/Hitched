@@ -197,9 +197,30 @@ public class BudgetActivity extends AppCompatActivity implements
             return true;
         }
         if (id == R.id.action_addbudgettoolbar) { //Rehana Added this 2/11/15
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+            if (prev != null) {
+                ft.remove(prev);
+            }
+            ft.addToBackStack(null);
 
+            DialogFragment newFragment = BudgetUpdateFragment.newInstance(0, 0, -2,
+                    BudgetUpdateFragment.NEW_FLAG);
+
+            newFragment.show(ft, "dialog");
         }
         if (id == R.id.action_updatebudgettool) { //Rehana Added this 2/11/15
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+            if (prev != null) {
+                ft.remove(prev);
+            }
+            ft.addToBackStack(null);
+
+            DialogFragment newFragment = BudgetUpdateFragment.newInstance(mainBudget.getValue(),
+                    mainBudget.getUsed(), -1, null);
+
+            newFragment.show(ft, "dialog");
 
         }
 
@@ -213,8 +234,11 @@ public class BudgetActivity extends AppCompatActivity implements
             used += item.getUsed();
         }
 
-        ((TextView) findViewById(R.id.textCalculateUsed)).setText(
-                NumberFormat.getCurrencyInstance().format(used));
+        String number =
+                NumberFormat.getCurrencyInstance().format(used) +
+                        " of the budget has been used by items in this list.";
+
+        ((TextView) findViewById(R.id.textCalculateUsed)).setText(number);
     }
 
 }
