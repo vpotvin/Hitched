@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
         picture.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent update3 = new Intent(MainActivity.this, Pictures.class);
+                Intent update3 = new Intent(MainActivity.this, PhotographerPDetailActivity.class);
                 startActivity(update3);
             }
         });
