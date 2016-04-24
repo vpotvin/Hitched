@@ -3,6 +3,7 @@ package edu.uco.weddingcrashers.hitched;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class TableActivity extends AppCompatActivity {
     EditText editText , editText1;
@@ -22,8 +29,7 @@ public class TableActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<String> listItems;
     ArrayAdapter<String> adapter;
-    String FILENAME = "hello_file";
-    String string = "hello world!";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,15 +44,18 @@ public class TableActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, listItems);
         listView.setAdapter(adapter);
+        updateUIS();
         addButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 listItems.add("Table " + editText.getText().toString() + " - " + editText1.getText().toString());
                 adapter.notifyDataSetChanged();
+                ParseObject tables = new ParseObject("TableList");
+                tables.put("TableNumber", editText.getText().toString());
+                tables.put("TableName", editText1.getText().toString());
+                tables.saveInBackground();
                 editText.setText("");
                 editText1.setText("");
-
-
             }
         });
 
@@ -62,6 +71,32 @@ public class TableActivity extends AppCompatActivity {
 
                 ;
            return true; }
+        });
+    }
+
+    public void updateUIS() {
+        ParseQuery query = new ParseQuery("TableList");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> items, ParseException e) {
+                if (e == null) {
+//                    Log.d("FavoriteMusicList", "Retrieved " + items.size() + " vendors");
+                    listItems.clear();
+                    for (int i = 0; i < items.size(); i++) {
+//                        Song song = new Song();
+                        String one = items.get(i).getString("TableName");
+                        String two = items.get(i).getString("TableNumber");
+                        listItems.add(one + " - " + two);
+//                        adapter.notifyDataSetChanged();
+                    }
+                    if (adapter == null) {
+                    } else {
+                        adapter.notifyDataSetChanged();
+                    }
+
+                } else {
+                    Log.d("FavoriteVendor", "Error: " + e.getMessage());
+                }
+            }
         });
     }
 
