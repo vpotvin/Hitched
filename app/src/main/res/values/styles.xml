@@ -14,17 +14,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AlertDialogCustom" parent="@android:style/Theme.Dialog">
         <item name="android:textColor">#00FF00</item>
         <item name="android:typeface">monospace</item>
         <item name="android:textSize">10sp</item>
     </style>
-
-
-
-
-
-
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -17,13 +17,12 @@ public class VenueSearch extends AppCompatActivity {
     private String search;
     private Toolbar toolbar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue_search);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
         vSearch = (Button) findViewById(R.id.vSearchButton);
         shareText = (TextView) findViewById(R.id.vSearchText);
 

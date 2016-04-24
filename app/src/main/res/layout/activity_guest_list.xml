@@ -26,7 +26,8 @@ android:id="@+id/guestListRecView"
         android:layout_width="match_parent"
         android:layout_height="80sp"
         android:id="@+id/imageView6"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/guestlist" />
 
 
 </RelativeLayout>

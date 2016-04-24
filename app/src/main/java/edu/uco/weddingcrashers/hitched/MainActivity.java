@@ -60,18 +60,16 @@ public class MainActivity extends AppCompatActivity {
         honeymoon = (Button) findViewById(R.id.honeymoon);
         cake = (Button)findViewById(R.id.cake);
         vendor = (Button)findViewById(R.id.vendor);
-        invites = (Button)findViewById(R.id.invites);
-        registry = (Button)findViewById(R.id.registry);
+
         budget = (Button)findViewById(R.id.budget);
         assignseats = (Button)findViewById(R.id.assignseats);
         itinerary = (Button)findViewById(R.id.itinerary);
         guestlist = (Button)findViewById(R.id.guestlist);
         tasks = (Button)findViewById(R.id.tasks);
-        contacts = (Button)findViewById(R.id.contacts);
+
         update = (Button)findViewById(R.id.update);
         dayofwedding = (Button)findViewById(R.id.dayOfWedding);
-        //vow = (Button)findViewById(R.id.vow);
-        menu = (Button)findViewById(R.id.menu);
+
 
         update.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -79,12 +77,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(update);
             }
         });
-        menu.setOnClickListener(new View.OnClickListener() {
+        picture.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent menuactivity = new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(menuactivity);
+                Intent update3 = new Intent(MainActivity.this, Pictures.class);
+                startActivity(update3);
             }
         });
+
         dayofwedding.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent DOW = new Intent(MainActivity.this, DayOfActivity.class);
@@ -141,6 +140,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        assignseats.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent update = new Intent(MainActivity.this, TableActivity.class);
+                startActivity(update);
+            }
+        });
+
 
 
 //rehana
