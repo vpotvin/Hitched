@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edu.uco.weddingcrashers.hitched.BouncyLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<edu.uco.weddingcrashers.hitched.MyScrollView
+
+    android:layout_width="wrap_content"
+    android:scrollbars="none"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/honeymoonListLayout"
+    android:background="#F6ECEB">
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemizedHoneymoonList"
+        android:visibility="gone"
+        android:longClickable="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <edu.uco.weddingcrashers.hitched.AutoScrollViewPager
+            android:id="@+id/autopager"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            />
+        <edu.uco.weddingcrashers.hitched.CirclePageIndicator
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/indicator"
+            android:padding="10dip"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:background="@android:color/white"
+        android:paddingBottom="20dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/flight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:textColor="@color/primary"
+            android:drawableTop="@drawable/hongkang"
+            android:text="Flight"/>
+        <Button
+            android:id="@+id/hotel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:textColor="@color/primary"
+            android:drawableTop="@drawable/hotel"
+            android:text="Hotel"/>
+        <Button
+            android:id="@+id/area"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableTop="@drawable/plan"
+            android:textColor="@color/primary"
+            android:text="Area"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F1EFF0"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <View android:layout_width="1dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/design"></View>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Honeymoon List"/>
+            <TextView
+                android:id="@+id/more"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center"
+                android:drawableRight="@drawable/arrow_right"
+                android:text="more"
+
+                />
+        </LinearLayout>
+        <edu.uco.weddingcrashers.hitched.SodukuGridView
+            android:id="@+id/gv"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:horizontalSpacing="5dp"
+            android:scrollbars="none"
+            android:verticalSpacing="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numColumns="2">
+        </edu.uco.weddingcrashers.hitched.SodukuGridView>
+    </LinearLayout>
+
+
+
+</LinearLayout>
+</edu.uco.weddingcrashers.hitched.MyScrollView>
+</edu.uco.weddingcrashers.hitched.BouncyLinearLayout>
