@@ -20,10 +20,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
+/*import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBuffer;
-import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.Places;*/
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class PhotographerFragment extends Fragment implements GoogleApiClient.On
     private static final String ARG_ICON_URL = "iconURL";
     private static final String TAG = "PlaceAPI";
     private GoogleApiClient mGoogleApiClient;
-    private Place mPlace;
+/*    private Place mPlace;*/
     private String placeID, iconURL;
     TextView mName, mAddress, mPhone, mWeb, mReview;
     ImageView mImageView;
@@ -82,11 +82,11 @@ public class PhotographerFragment extends Fragment implements GoogleApiClient.On
         mImageView = (ImageView) view.findViewById(R.id.place_web_view_image);
         mRatingBar = (RatingBar) view.findViewById(R.id.place_rating);
 
-        mGoogleApiClient = new GoogleApiClient
+      /*  mGoogleApiClient = new GoogleApiClient
                 .Builder(getActivity())
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
-                .build();
+                .build();*/
         getPlace();
         return view;
 
@@ -95,7 +95,7 @@ public class PhotographerFragment extends Fragment implements GoogleApiClient.On
     public void getPlace() {
         mGoogleApiClient.connect();
 
-        Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeID)
+      /*  Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeID)
                 .setResultCallback(new ResultCallback<PlaceBuffer>() {
                     @Override
                     public void onResult(PlaceBuffer places) {
@@ -126,7 +126,7 @@ public class PhotographerFragment extends Fragment implements GoogleApiClient.On
                         places.release();
                     }
                 });
-
+*/
     }
 
     @Override

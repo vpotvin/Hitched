@@ -272,6 +272,20 @@
         <activity android:name=".TableActivity">
 
         </activity>
+
+        <activity android:name=".Activity01"
+            ></activity>
+        <activity android:name=".HoneymoonActivity"></activity>
+        <activity android:name=".AreaActivity"></activity>
+        <activity android:name=".MoreActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".HoneymoonGalleryActivity"></activity>
+        <activity android:name=".HotelActivity"
+            ></activity>
+        <activity android:name=".Flight"
+            ></activity>
+        <activity android:name=".HotelDetails"
+            ></activity>
+
     </application>
 
 </manifest>

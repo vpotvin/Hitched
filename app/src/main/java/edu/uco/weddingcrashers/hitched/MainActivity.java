@@ -83,6 +83,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(update3);
             }
         });
+        honeymoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,HoneymoonActivity.class));
+            }
+        });
 
         dayofwedding.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -113,4 +113,12 @@
     <string name="title_activity_dress_detail">DressDetail</string>
     <string name="title_activity_venue_pictures">VenuePictures</string>
     <string name="title_activity_dress_pictures">DressPictures</string>
+
+
+    <string name="xlistview_header_hint_normal">pull-to-refresh</string>
+    <string name="xlistview_header_hint_ready">Loosen the refresh data</string>
+    <string name="xlistview_header_hint_loading">Loding...</string>
+    <string name="xlistview_header_last_time">The last update time：</string>
+    <string name="xlistview_footer_hint_normal">See More</string>
+    <string name="xlistview_footer_hint_ready">Loosen the load more</string>
 </resources>
