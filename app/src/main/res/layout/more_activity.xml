@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <edu.uco.weddingcrashers.hitched.SwipeMenuListView
+        android:visibility="gone"
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="4dp">
+    </edu.uco.weddingcrashers.hitched.SwipeMenuListView>>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/webView"></WebView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/news4">
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/arrow_l"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:text="back"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HoneymoonArea"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

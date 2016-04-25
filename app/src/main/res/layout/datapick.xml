@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dip"
+        android:background="#00000000"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_bg_top_normal"
+            android:orientation="horizontal" >
+
+            <edu.uco.weddingcrashers.hitched.WheelView
+                android:id="@+id/year"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_weight="0.8" />
+
+            <edu.uco.weddingcrashers.hitched.WheelView
+                android:id="@+id/month"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:layout_weight="1" />
+
+            <edu.uco.weddingcrashers.hitched.WheelView
+                android:id="@+id/day"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+         <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_bg_bottom_normal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/set"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_btn_left_selector"
+            android:text="确定"
+            android:textColor="#1298FF" />
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.01"
+            android:background="#E9E2DD" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_btn_right_selector"
+            android:text="取消"
+            android:textColor="#5C5D5C" />
+    </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

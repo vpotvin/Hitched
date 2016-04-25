@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:visibility="gone"
+            android:id="@+id/honeymoongalleryimage"
+            android:scaleType="fitXY"
+            android:src="@drawable/red_beach" />
+
+        <Gallery
+            android:layout_width="fill_parent"
+            android:layout_marginTop="4dp"
+            android:spacing="@dimen/activity_horizontal_margin"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:id="@+id/honeymoongallery" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="50dp"
+            android:id="@+id/tv"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:maxLines="6"
+            android:ellipsize="end"
+            android:text="Your first order of business in Santorini is to hit the colorful beaches — the black and red sands make for a memorable visit. Next up, indulge in the archaeological delights of the impressively preserved Ancient Akrotiri. or climb the ancient stairs that lead to the historic city of Manolas in Thirassia. From there, catch a breathtaking view of the caldera, a brilliant turquoise pool of water that serves as nucleus for the varied isles of ..."/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/yu"/>
+
+
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/santorini"/>
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/webView"></WebView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/news4">
+
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/arrow_l"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:text="back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HoneymoonArea"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+</RelativeLayout>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

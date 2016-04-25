@@ -21,11 +21,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
+/*import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
-import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Picasso;*/
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     private static final String ARG_ICON_URL = "iconURL";
     private static final String TAG = "PlaceAPI";
     private GoogleApiClient mGoogleApiClient;
-    private Place mPlace;
+   /* private Place mPlace;*/
     private String placeID, iconURL;
     TextView mName, mAddress, mPhone, mWeb, mReview;
     ImageView mImageView;
@@ -85,12 +85,12 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
         mRatingBar = (RatingBar) view.findViewById(R.id.place_rating);
         progDailog = ProgressDialog.show(getActivity(), "Loading","Please wait...", true);
         progDailog.setCancelable(false);
-
+/*
         mGoogleApiClient = new GoogleApiClient
                 .Builder(getActivity())
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
-                .build();
+                .build();*/
         getPlace();
         return view;
 
@@ -99,7 +99,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
     public void getPlace() {
         mGoogleApiClient.connect();
 
-        Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeID)
+        /*Places.GeoDataApi.getPlaceById(mGoogleApiClient, placeID)
                 .setResultCallback(new ResultCallback<PlaceBuffer>() {
                     @Override
                     public void onResult(PlaceBuffer places) {
@@ -130,7 +130,7 @@ public class VendorFragment extends Fragment implements GoogleApiClient.OnConnec
                         places.release();
                     }
                 });
-
+*/
     }
 
     @Override
