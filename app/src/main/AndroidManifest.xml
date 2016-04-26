@@ -18,6 +18,7 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="edu.uco.weddingcrashers.hitched.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
