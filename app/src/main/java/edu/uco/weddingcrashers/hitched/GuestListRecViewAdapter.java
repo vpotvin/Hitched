@@ -67,6 +67,14 @@ public class GuestListRecViewAdapter extends
             }
         });
 
+            holder.weddingParty.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    theList.get(pos).setWeddingParty(isChecked);
+                    theList.get(pos).saveInBackground();
+                }
+            });
+
         String csz = theList.get(position).getAddress() + "," + theList.get(position).getState() + " " + theList.get(position).getZipcode();
 
             holder.cityStateZip.setText(csz);
